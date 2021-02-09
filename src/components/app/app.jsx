@@ -99,4 +99,8 @@ const App = (props) => {
   </React.Fragment>;
 };
 
+App.propTypes = {
+  cardsAddress: PropTypes.array.isRequired,
+};
+
 export default App;
