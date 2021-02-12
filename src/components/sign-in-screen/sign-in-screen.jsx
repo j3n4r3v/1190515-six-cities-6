@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 
-const LoginScreen = () => {
+const SignInScreen = () => {
   return <React.Fragment>
     <div>
       <div style={{display: `none`}}>
@@ -60,4 +60,4 @@ const LoginScreen = () => {
   </React.Fragment>;
 };
 
-export default LoginScreen;
+export default SignInScreen;
