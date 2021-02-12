@@ -1,9 +1,9 @@
-import React from "react";
+// import React from "react";
 
-const MainScreen = () => {
-  return (
+// const MainScreen = () => {
+//   return (
 
-  );
-};
+//   );
+// };
 
-export default MainScreen;
+// export default MainScreen;
