@@ -1,4 +1,4 @@
-export const reviews = [
+export const comments = [
   {
     comment: `I stayed here for one night and it was an unpleasant experience.`,
     date: `2021-01-23T08:17:53.220Z`,

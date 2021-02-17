@@ -14,7 +14,7 @@ export const offers = [
       "name": `Angelina`
     },
     "id": 1,
-    "images": [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img / studio-01.jpg`],
+    "images": [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img/studio-01.jpg`],
     "is_premium": false,
     "location": {
       "latitude": 52.35514938496378,
@@ -43,7 +43,7 @@ export const offers = [
       "name": `Max`
     },
     "id": 1,
-    "images": [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img / studio-01.jpg`],
+    "images": [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img/studio-01.jpg`],
     "is_favorite": false,
     "is_premium": false,
     "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
@@ -69,7 +69,7 @@ export const offers = [
       "name": `Angelina`
     },
     "id": 1,
-    "images": [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img / studio-01.jpg`],
+    "images": [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img/studio-01.jpg`],
     "is_favorite": false,
     "is_premium": false,
     "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
@@ -95,7 +95,7 @@ export const offers = [
       "name": `Max`
     },
     "id": 1,
-    "images": [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img / studio-01.jpg`],
+    "images": [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img/studio-01.jpg`],
     "is_favorite": false,
     "is_premium": false,
     "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
