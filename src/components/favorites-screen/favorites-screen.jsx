@@ -1,7 +1,12 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-const FavoritesScreen = () => {
+import {offerPropTypes} from "../../propetypes";
+
+const FavoritesScreen = (props) => {
+  const {offers} = props;
+  const {images, price, rating, title, type} = offers;
+
   return <React.Fragment>
     <div>
       <div style={{display: `none`}}>
@@ -47,13 +52,13 @@ const FavoritesScreen = () => {
                     <article className="favorites__card place-card">
                       <div className="favorites__image-wrapper place-card__image-wrapper">
                         <a href="#">
-                          <img className="place-card__image" src="img/apartment-small-03.jpg" width={150} height={110} alt="Place image" />
+                          <img className="place-card__image" src={images} width={150} height={110} alt="Place image" />
                         </a>
                       </div>
                       <div className="favorites__card-info place-card__info">
                         <div className="place-card__price-wrapper">
                           <div className="place-card__price">
-                            <b className="place-card__price-value">€180</b>
+                            <b className="place-card__price-value">{price}</b>
                             <span className="place-card__price-text">/&nbsp;night</span>
                           </div>
                           <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
@@ -65,26 +70,26 @@ const FavoritesScreen = () => {
                         </div>
                         <div className="place-card__rating rating">
                           <div className="place-card__stars rating__stars">
-                            <span style={{width: `100%`}} />
+                            <span style={rating} />
                             <span className="visually-hidden">Rating</span>
                           </div>
                         </div>
                         <h2 className="place-card__name">
-                          <a href="#">Nice, cozy, warm big bed apartment</a>
+                          <a href="#">{title}</a>
                         </h2>
-                        <p className="place-card__type">Apartment</p>
+                        <p className="place-card__type">{type}</p>
                       </div>
                     </article>
                     <article className="favorites__card place-card">
                       <div className="favorites__image-wrapper place-card__image-wrapper">
                         <a href="#">
-                          <img className="place-card__image" src="img/room-small.jpg" width={150} height={110} alt="Place image" />
+                          <img className="place-card__image" src={images} width={150} height={110} alt="Place image" />
                         </a>
                       </div>
                       <div className="favorites__card-info place-card__info">
                         <div className="place-card__price-wrapper">
                           <div className="place-card__price">
-                            <b className="place-card__price-value">€80</b>
+                            <b className="place-card__price-value">{price}</b>
                             <span className="place-card__price-text">/&nbsp;night</span>
                           </div>
                           <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
@@ -96,14 +101,14 @@ const FavoritesScreen = () => {
                         </div>
                         <div className="place-card__rating rating">
                           <div className="place-card__stars rating__stars">
-                            <span style={{width: `80%`}} />
+                            <span style={rating} />
                             <span className="visually-hidden">Rating</span>
                           </div>
                         </div>
                         <h2 className="place-card__name">
-                          <a href="#">Wood and stone place</a>
+                          <a href="#">{title}</a>
                         </h2>
-                        <p className="place-card__type">Private room</p>
+                        <p className="place-card__type">{type}</p>
                       </div>
                     </article>
                   </div>
@@ -120,13 +125,13 @@ const FavoritesScreen = () => {
                     <article className="favorites__card place-card">
                       <div className="favorites__image-wrapper place-card__image-wrapper">
                         <a href="#">
-                          <img className="place-card__image" src="img/apartment-small-04.jpg" width={150} height={110} alt="Place image" />
+                          <img className="place-card__image" src={images} width={150} height={110} alt="Place image" />
                         </a>
                       </div>
                       <div className="favorites__card-info place-card__info">
                         <div className="place-card__price-wrapper">
                           <div className="place-card__price">
-                            <b className="place-card__price-value">€180</b>
+                            <b className="place-card__price-value">{price}</b>
                             <span className="place-card__price-text">/&nbsp;night</span>
                           </div>
                           <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
@@ -138,14 +143,14 @@ const FavoritesScreen = () => {
                         </div>
                         <div className="place-card__rating rating">
                           <div className="place-card__stars rating__stars">
-                            <span style={{width: `100%`}} />
+                            <span style={rating} />
                             <span className="visually-hidden">Rating</span>
                           </div>
                         </div>
                         <h2 className="place-card__name">
-                          <a href="#">White castle</a>
+                          <a href="#">{title}</a>
                         </h2>
-                        <p className="place-card__type">Apartment</p>
+                        <p className="place-card__type">{type}</p>
                       </div>
                     </article>
                   </div>
@@ -162,6 +167,11 @@ const FavoritesScreen = () => {
       </div>
     </div>
   </React.Fragment>;
+};
+
+FavoritesScreen.propTypes = {
+  offers: offerPropTypes
+  // type: PropTypes.oneOf([OfferType.APARTMENT, OfferType.PRIVATEROOM, OfferType.STUDIO]).isRequired,
 };
 
 export default FavoritesScreen;

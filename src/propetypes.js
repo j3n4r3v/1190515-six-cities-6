@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const offerPropTypes = PropTypes.shape({
+export const offerPropTypes = PropTypes.shape({
   "bedrooms": PropTypes.string.isRequired,
   "city": PropTypes.shape({
     "location": {
@@ -34,7 +34,7 @@ const offerPropTypes = PropTypes.shape({
   "type": PropTypes.string.isRequired
 });
 
-const commentPropTypes = PropTypes.shape({
+export const commentPropTypes = PropTypes.shape({
   comment: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,

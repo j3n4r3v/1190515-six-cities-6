@@ -3,7 +3,7 @@ import React from "react";
 
 // import OfferType from "../../const";
 
-import offerPropTypes from "../../props";
+import offerPropTypes from "../../propetypes";
 
 
 const OfferCard = (props) => {
@@ -49,8 +49,8 @@ const OfferCard = (props) => {
 
 
 OfferCard.propTypes = {
-  offers: offerPropTypes,
-  // type: PropTypes.oneOf([OfferType.APARTMENT, OfferType.ROOM, OfferType.STUDIO]).isRequired,
+  offers: offerPropTypes
+  // type: PropTypes.oneOf([OfferType.APARTMENT, OfferType.PRIVATEROOM, OfferType.STUDIO]).isRequired,
 };
 
 export default OfferCard;

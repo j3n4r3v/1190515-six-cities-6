@@ -1,4 +1,4 @@
-const offers = [
+export const offers = [
   {
     "bedrooms": 3,
     "city": {
@@ -16,11 +16,7 @@ const offers = [
     "id": 1,
     "images": [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img/studio-01.jpg`],
     "is_premium": false,
-    "location": {
-      "latitude": 52.35514938496378,
-      "longitude": 4.673877537499948,
-      "zoom": 8
-    },
+    "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
     "max_adults": 2,
     "preview_image": `img/apartment-01.jpg`,
     "price": 120,
@@ -78,7 +74,7 @@ const offers = [
     "price": 120,
     "rating": 4,
     "title": `Canal View Prinsengracht`,
-    "type": `room`
+    "type": `Private room`
   },
   {
     "bedrooms": 3,
@@ -104,8 +100,7 @@ const offers = [
     "price": 120,
     "rating": 3,
     "title": `Wood and stone place`,
-    "type": `studio`
+    "type": `Studio`
   }
 ];
 
-export default offers;

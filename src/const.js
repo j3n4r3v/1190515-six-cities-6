@@ -1,5 +1,5 @@
 export const OfferType = {
-  APARTMENT: `apartment`,
-  ROOM: `room`,
-  STUDIO: `studio`
+  APARTMENT: `Apartment`,
+  PRIVATEROOM: `Private room`,
+  STUDIO: `Studio`
 };

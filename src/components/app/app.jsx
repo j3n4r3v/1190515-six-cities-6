@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 import FavoritesScreen from "../favorites-screen/favorites-screen";
@@ -8,7 +8,10 @@ import MainScreen from "../main-screen/main-sсreen";
 import PropertyScreen from "../property-screen/property-screen";
 import NotFoundScreen from "../not-found-screen/not-found-screen";
 
-import {offerPropTypes, commentPropTypes} from "../../props";
+import {offerPropTypes, commentPropTypes} from "../../propetypes";
+
+// import offers from "./mocks/offers-mocks";
+// import comments from "./mocks/comments-mocks";
 
 const App = (props) => {
   const {comments, offers} = props;

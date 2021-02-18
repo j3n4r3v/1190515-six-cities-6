@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import offers from "./mocks/offers-mocks";
+import {offers} from "./mocks/offers-mocks";
 import {comments} from "./mocks/comments-mocks";
 
 import App from "./components/app/app";
