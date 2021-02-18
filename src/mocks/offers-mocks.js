@@ -24,7 +24,7 @@ export const offers = [
     "max_adults": 4,
     "preview_image": `img/1.png`,
     "price": 120,
-    "rating": 4.8,
+    "rating": 5,
     "title": `Beautiful & luxurious studio at great location`,
     "type": `apartment`
   },

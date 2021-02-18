@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import PlaceCard from "../place-card/place-card";
+import {offers} from "../mocks/offers-mocks";
 
 const MainScreen = (props) => {
-  const {cardsAddress} = props;
+  const {offers} = props;
+  const {name} = offers;
   return <React.Fragment>
     <div style={{display: `none`}}>
       <svg xmlns="http://www.w3.org/2000/svg"><symbol id="icon-arrow-select" viewBox="0 0 7 4"><path fillRule="evenodd" clipRule="evenodd" d="M0 0l3.5 2.813L7 0v1.084L3.5 4 0 1.084V0z" /></symbol><symbol id="icon-bookmark" viewBox="0 0 17 18"><path d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z" /></symbol><symbol id="icon-star" viewBox="0 0 13 12"><path fillRule="evenodd" clipRule="evenodd" d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z" /></symbol></svg>
@@ -37,32 +40,32 @@ const MainScreen = (props) => {
             <ul className="locations__list tabs__list">
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
+                  <span>{name}</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
+                  <span>{name}</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
+                  <span>{name}</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
+                  <span>{name}</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
+                  <span>{name}</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
+                  <span>{name}</span>
                 </a>
               </li>
             </ul>
@@ -89,7 +92,7 @@ const MainScreen = (props) => {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {cardsAddress.map((cardAddress, i) => <PlaceCard key={cardAddress + i} cardAddress={cardAddress} />)}
+                {offers.map((offer, i) => <PlaceCard key={offer + i} offer={offer}/>)}
               </div>
             </section>
             <div className="cities__right-section">
@@ -103,7 +106,7 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  cardsAddress: PropTypes.array.isRequired,
+  offers: PropTypes.array.isRequired,
 };
 
 export default MainScreen;
