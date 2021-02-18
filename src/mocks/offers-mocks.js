@@ -50,7 +50,7 @@ export const offers = [
     "max_adults": 4,
     "preview_image": `img/1.png`,
     "price": 120,
-    "rating": 4.8,
+    "rating": 4.5,
     "title": `Nice, cozy, warm big bed apartment`,
     "type": `apartment`
   },
@@ -76,7 +76,7 @@ export const offers = [
     "max_adults": 4,
     "preview_image": `img/room.jpg`,
     "price": 120,
-    "rating": 4.8,
+    "rating": 4,
     "title": `Canal View Prinsengracht`,
     "type": `apartment`
   },
@@ -102,7 +102,7 @@ export const offers = [
     "max_adults": 4,
     "preview_image": `img/apartment-01.jpg`,
     "price": 120,
-    "rating": 4.8,
+    "rating": 3,
     "title": `Wood and stone place`,
     "type": `apartment`
   }
