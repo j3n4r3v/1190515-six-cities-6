@@ -1,10 +1,12 @@
-
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
-// import {offers} from "../mocks/offers-mocks";
+// import OfferType from "../../const";
 
-const PlaceCard = (props) => {
+import offerPropTypes from "../../props";
+
+
+const OfferCard = (props) => {
   const {offers} = props;
   const {images, price, rating, title, type} = offers;
   return <React.Fragment>
@@ -46,14 +48,9 @@ const PlaceCard = (props) => {
 };
 
 
-PlaceCard.propTypes = {
-  offers: PropTypes.shape({
-    images: PropTypes.arrayOf(PropTypes.array).isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired
-  })
+OfferCard.propTypes = {
+  offers: offerPropTypes,
+  // type: PropTypes.oneOf([OfferType.APARTMENT, OfferType.ROOM, OfferType.STUDIO]).isRequired,
 };
 
-export default PlaceCard;
+export default OfferCard;

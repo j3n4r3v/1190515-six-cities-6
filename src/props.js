@@ -1,15 +1,15 @@
 import PropTypes from "prop-types";
 
-const OfferPropTypes = PropTypes.shape({
+const offerPropTypes = PropTypes.shape({
   "bedrooms": PropTypes.string.isRequired,
-  "city": {
+  "city": PropTypes.shape({
     "location": {
       "latitude": PropTypes.number.isRequired,
       "longitude": PropTypes.number.isRequired,
       "zoom": PropTypes.number.isRequired
     },
     "name": PropTypes.string.isRequired
-  },
+  }),
   "description": PropTypes.string.isRequired,
   "goods": PropTypes.arrayOf(PropTypes.string.isRequired),
   "host": PropTypes.shape({
@@ -34,7 +34,7 @@ const OfferPropTypes = PropTypes.shape({
   "type": PropTypes.string.isRequired
 });
 
-const CommentPropTypes = PropTypes.shape({
+const commentPropTypes = PropTypes.shape({
   comment: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
@@ -47,4 +47,4 @@ const CommentPropTypes = PropTypes.shape({
   })
 });
 
-export {OfferPropTypes, CommentPropTypes};
+export default {offerPropTypes, commentPropTypes};

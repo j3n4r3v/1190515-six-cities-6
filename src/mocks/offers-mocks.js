@@ -1,4 +1,4 @@
-export const offers = [
+const offers = [
   {
     "bedrooms": 3,
     "city": {
@@ -21,8 +21,8 @@ export const offers = [
       "longitude": 4.673877537499948,
       "zoom": 8
     },
-    "max_adults": 4,
-    "preview_image": `img/1.png`,
+    "max_adults": 2,
+    "preview_image": `img/apartment-01.jpg`,
     "price": 120,
     "rating": 5,
     "title": `Beautiful & luxurious studio at great location`,
@@ -48,7 +48,7 @@ export const offers = [
     "is_premium": false,
     "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
     "max_adults": 4,
-    "preview_image": `img/1.png`,
+    "preview_image": `img/apartment-02.jpg`,
     "price": 120,
     "rating": 4.5,
     "title": `Nice, cozy, warm big bed apartment`,
@@ -73,12 +73,12 @@ export const offers = [
     "is_favorite": false,
     "is_premium": false,
     "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
-    "max_adults": 4,
+    "max_adults": 3,
     "preview_image": `img/room.jpg`,
     "price": 120,
     "rating": 4,
     "title": `Canal View Prinsengracht`,
-    "type": `apartment`
+    "type": `room`
   },
   {
     "bedrooms": 3,
@@ -99,11 +99,13 @@ export const offers = [
     "is_favorite": false,
     "is_premium": false,
     "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
-    "max_adults": 4,
-    "preview_image": `img/apartment-01.jpg`,
+    "max_adults": 1,
+    "preview_image": `img/studio-01.jpg`,
     "price": 120,
     "rating": 3,
     "title": `Wood and stone place`,
-    "type": `apartment`
+    "type": `studio`
   }
 ];
+
+export default offers;

@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import PlaceCard from "../place-card/place-card";
-import {offers} from "../mocks/offers-mocks";
+import offerPropTypes from "../../props";
+
+import OfferCard from "../offer-card/offer-card";
+// import {offers} from "../mocks/offers-mocks";
 
 const MainScreen = (props) => {
   const {offers} = props;
@@ -92,7 +94,7 @@ const MainScreen = (props) => {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {offers.map((offer, i) => <PlaceCard key={offer + i} offer={offer}/>)}
+                {offers.map((offer, i) => <OfferCard key={offer + i} offer={offer}/>)}
               </div>
             </section>
             <div className="cities__right-section">
@@ -106,7 +108,7 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  offers: PropTypes.array.isRequired,
+  offers: offerPropTypes
 };
 
 export default MainScreen;

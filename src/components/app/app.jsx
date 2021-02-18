@@ -8,6 +8,8 @@ import MainScreen from "../main-screen/main-sсreen";
 import PropertyScreen from "../property-screen/property-screen";
 import NotFoundScreen from "../not-found-screen/not-found-screen";
 
+import {offerPropTypes, commentPropTypes} from "../../props";
+
 const App = (props) => {
   const {comments, offers} = props;
   return <React.Fragment>
@@ -41,8 +43,8 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  comments: PropTypes.array.isRequired,
-  offers: PropTypes.array.isRequired
+  comments: commentPropTypes,
+  offers: offerPropTypes
 };
 
 export default App;
