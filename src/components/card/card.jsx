@@ -6,7 +6,9 @@ import cardPropTypes from "../../propetypes";
 const Card = (props) => {
   const {cards} = props;
   const {images, price, rating, title, type} = cards;
+
   return <React.Fragment>
+
     <article className="cities__place-card place-card">
       <div className="place-card__mark">
         <span>Premium</span>
@@ -41,6 +43,7 @@ const Card = (props) => {
         <p className="place-card__type">{type}</p>
       </div>
     </article>
+
   </React.Fragment>;
 };
 

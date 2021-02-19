@@ -49,4 +49,12 @@ export const commentPropTypes = PropTypes.shape({
   })
 });
 
-export default {cardPropTypes, commentPropTypes};
+export const authPropTypes = PropTypes.shape({
+  avatarUrl: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  isPro: PropTypes.bool.isRequired,
+  email: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
+});
+
+export default {cardPropTypes, commentPropTypes, authPropTypes};
