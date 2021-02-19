@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
 import {offerPropTypes} from "../../propetypes";
 
@@ -170,7 +171,7 @@ const FavoritesScreen = (props) => {
 };
 
 FavoritesScreen.propTypes = {
-  offers: offerPropTypes
+  offers: PropTypes.arrayOf(offerPropTypes)
   // type: PropTypes.oneOf([OfferType.APARTMENT, OfferType.PRIVATEROOM, OfferType.STUDIO]).isRequired,
 };
 

@@ -1,6 +1,5 @@
 import React from "react";
-// import PropTypes from "prop-types";
-
+import PropTypes from "prop-types";
 // import OfferType from "../../const";
 
 import offerPropTypes from "../../propetypes";
@@ -49,7 +48,7 @@ const OfferCard = (props) => {
 
 
 OfferCard.propTypes = {
-  offers: offerPropTypes
+  offers: PropTypes.arrayOf(offerPropTypes)
   // type: PropTypes.oneOf([OfferType.APARTMENT, OfferType.PRIVATEROOM, OfferType.STUDIO]).isRequired,
 };
 

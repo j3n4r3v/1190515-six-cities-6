@@ -1,5 +1,5 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 import FavoritesScreen from "../favorites-screen/favorites-screen";
@@ -46,8 +46,8 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  comments: commentPropTypes,
-  offers: offerPropTypes
+  comments: PropTypes.arrayOf(commentPropTypes), // comments: PropTypes.array.commentPropTypes,
+  offers: PropTypes.arrayOf(offerPropTypes) // offers: PropTypes.array.offerPropTypes
 };
 
 export default App;
