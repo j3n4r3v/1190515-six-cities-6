@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import React, {useState} from "react";
 
 const FeedBackForm = () => {
   const [userForm, setUserForm] = React.useState({
@@ -19,7 +19,7 @@ const FeedBackForm = () => {
     setUserForm({...userForm, [name]: value});
   };
 
-  const { "5-stars", "4-stars", "3-stars", "2-stars", "1-stars", "rewiev"} = useForm;
+  const {"5-stars", "4-stars", "3-stars", "2-stars", "1-stars", "rewiev"} = useForm;
 
  return <React.Fragment>
     <form onSubmit={handleSubmit} className="reviews__form form" action="#" method="post">
