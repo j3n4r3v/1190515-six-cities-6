@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import OfferType from "./const";
+import CardType from "./const";
 
 
-export const offerPropTypes = PropTypes.shape({
+export const cardPropTypes = PropTypes.shape({
   "bedrooms": PropTypes.number.isRequired,
   "city": PropTypes.shape({
     "location": {
@@ -33,7 +33,7 @@ export const offerPropTypes = PropTypes.shape({
   "price": PropTypes.number.isRequired,
   "rating": PropTypes.number.isRequired,
   "title": PropTypes.string.isRequired,
-  "type": PropTypes.oneOf([OfferType.APARTMENT, OfferType.PRIVATEROOM, OfferType.STUDIO]).isRequired
+  "type": PropTypes.oneOf([CardType.APARTMENT, CardType.PRIVATEROOM, CardType.STUDIO]).isRequired
 });
 
 export const commentPropTypes = PropTypes.shape({
@@ -49,4 +49,4 @@ export const commentPropTypes = PropTypes.shape({
   })
 });
 
-export default {offerPropTypes, commentPropTypes};
+export default {cardPropTypes, commentPropTypes};

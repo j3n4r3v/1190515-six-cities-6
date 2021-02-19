@@ -1,13 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import OfferType from "../../const";
 
-import offerPropTypes from "../../propetypes";
-
+import cardPropTypes from "../../propetypes";
 
 const Card = (props) => {
-  const {offers} = props;
-  const {images, price, rating, title, type} = offers;
+  const {cards} = props;
+  const {images, price, rating, title, type} = cards;
   return <React.Fragment>
     <article className="cities__place-card place-card">
       <div className="place-card__mark">
@@ -48,8 +46,7 @@ const Card = (props) => {
 
 
 Card.propTypes = {
-  offers: PropTypes.arrayOf(offerPropTypes)
-  // type: PropTypes.oneOf([OfferType.APARTMENT, OfferType.PRIVATEROOM, OfferType.STUDIO]).isRequired,
+  cards: PropTypes.arrayOf(cardPropTypes)
 };
 
 export default Card;

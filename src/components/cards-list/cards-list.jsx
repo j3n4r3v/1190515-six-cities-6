@@ -1,20 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import OfferType from "../../const";
 import Card from "../card/card";
-// import {offers} from "../mocks/offers-mocks";
-import offerPropTypes from "../../propetypes";
+// import {cards} from "../mocks/cards-mocks";
+import cardPropTypes from "../../propetypes";
 
 const CardsList = (props) => {
-  const {offers} = props;
+  const {cards} = props;
   return <React.Fragment>
-    {offers.map((offer, i) => <Card key={offer + i} offer={offer} />)}
+    {cards.map((card, i) => <Card key={card + i} card={card} />)}
   </React.Fragment>;
 };
 
 CardsList.propTypes = {
-  offers: PropTypes.arrayOf(offerPropTypes)
-  // type: ,
+  cards: PropTypes.arrayOf(cardPropTypes)
 };
 
 export default CardsList;

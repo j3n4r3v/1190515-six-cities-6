@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import {offers} from "./mocks/offers-mocks";
+import {cards} from "./mocks/cards-mocks"; // offers - no load in App, WTF?!
 import {comments} from "./mocks/comments-mocks";
 
 import App from "./components/app/app";
 
 ReactDOM.render(
     <App
-      offers={offers}
+      cards={cards}
       comments={comments}
     >
     </App>,

@@ -2,18 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import FavoritesCard from "../favorites-card/favorites-card";
-// import {offers} from "../mocks/offers-mocks";
-import offerPropTypes from "../../propetypes";
+// import {cards} from "../mocks/cards-mocks";
+import cardPropTypes from "../../propetypes";
 
 const FavoritesCardsList = (props) => {
-  const {offers} = props;
+  const {cards} = props;
   return <React.Fragment>
-    {offers.map((offer, i) => <FavoritesCard key={offer + i} offer={offer} />)}
+    {cards.map((card, i) => <FavoritesCard key={card + i} card={card} />)}
   </React.Fragment>;
 };
 
 FavoritesCardsList.propTypes = {
-  offers: PropTypes.arrayOf(offerPropTypes)
+  cards: PropTypes.arrayOf(cardPropTypes)
 };
 
 export default FavoritesCardsList;

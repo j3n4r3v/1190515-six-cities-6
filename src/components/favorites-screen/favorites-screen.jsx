@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 // import PropTypes from "prop-types";
 
-// import {offerPropTypes} from "../../propetypes";
+// import {cardPropTypes} from "../../propetypes";
 
 import FavoritesCard from "../favorites-card/favorites-card";
 
@@ -49,8 +49,10 @@ const FavoritesScreen = () => { // props delete
                     </div>
                   </div>
                   <div className="favorites__places">
+
                     <FavoritesCard />
                     <FavoritesCard />
+
                   </div>
                 </li>
                 <li className="favorites__locations-items">
@@ -62,7 +64,9 @@ const FavoritesScreen = () => { // props delete
                     </div>
                   </div>
                   <div className="favorites__places">
+
                     <FavoritesCard />
+
                   </div>
                 </li>
               </ul>
@@ -80,8 +84,7 @@ const FavoritesScreen = () => { // props delete
 };
 
 // FavoritesScreen.propTypes = {
-//   offers: PropTypes.arrayOf(offerPropTypes)
-//   // type: PropTypes.oneOf([OfferType.APARTMENT, OfferType.PRIVATEROOM, OfferType.STUDIO]).isRequired,
+//   cards: PropTypes.arrayOf(cardPropTypes)
 // };
 
 export default FavoritesScreen;

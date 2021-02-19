@@ -1,4 +1,4 @@
-export const offers = [
+export const cards = [
   {
     "bedrooms": 3,
     "city": {

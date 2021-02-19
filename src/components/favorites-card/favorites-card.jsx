@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import OfferType from "../../const";
+// import CardType from "../../const";
 
-import offerPropTypes from "../../propetypes";
+import cardPropTypes from "../../propetypes";
 
 const FavoritesCard = (props) => {
-  const {offers} = props;
-  const {images, price, rating, title, type} = offers;
+  const {cards} = props;
+  const {images, price, rating, title, type} = cards;
   return <React.Fragment>
     <article className="favorites__card place-card">
       <div className="favorites__image-wrapper place-card__image-wrapper">
@@ -44,7 +44,7 @@ const FavoritesCard = (props) => {
 
 
 FavoritesCard.propTypes = {
-  offers: PropTypes.arrayOf(offerPropTypes)
+  cards: PropTypes.arrayOf(cardPropTypes)
 };
 
 export default FavoritesCard;

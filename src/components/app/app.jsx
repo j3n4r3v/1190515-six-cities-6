@@ -8,19 +8,19 @@ import MainScreen from "../main-screen/main-sсreen";
 import PropertyScreen from "../property-screen/property-screen";
 import NotFoundScreen from "../not-found-screen/not-found-screen";
 
-import {offerPropTypes, commentPropTypes} from "../../propetypes";
+import {cardPropTypes, commentPropTypes} from "../../propetypes";
 
-// import offers from "./mocks/offers-mocks";
+// import cards from "./mocks/cards-mocks";
 // import comments from "./mocks/comments-mocks";
 
 const App = (props) => {
-  const {comments, offers} = props;
+  const {comments, cards} = props;
   return <React.Fragment>
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
           <MainScreen
-            offers={offers}
+            cards={cards}
           />
         </Route>
         <Route exact path="/login">
@@ -28,12 +28,12 @@ const App = (props) => {
         </Route>
         <Route exact path="/favorites">
           <FavoritesScreen
-            offers={offers}
+            cards={cards}
           />
         </Route>
-        <Route exact path="/offer/:id">
+        <Route exact path="/card/:id">
           <PropertyScreen
-            offers={offers}
+            cards={cards}
             comments={comments}
           />
         </Route>
@@ -47,7 +47,7 @@ const App = (props) => {
 
 App.propTypes = {
   comments: PropTypes.arrayOf(commentPropTypes), // comments: PropTypes.array.commentPropTypes,
-  offers: PropTypes.arrayOf(offerPropTypes) // offers: PropTypes.array.offerPropTypes
+  cards: PropTypes.arrayOf(cardPropTypes) // cards: PropTypes.array.offerPropTypes
 };
 
 export default App;
