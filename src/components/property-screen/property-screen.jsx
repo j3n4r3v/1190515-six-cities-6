@@ -1,17 +1,24 @@
 import React from "react";
 // import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
+
+import {authInfo} from "../../mocks/auth-info-mocks";
 import AuthInfo from "../auth-info/auth-info";
+
+import authPropTypes from "../../propetypes";
+// import FeedBackForm from "../feedbackform/feedbackform";
 
 import {cardPropTypes, commentPropTypes} from "../../propetypes";
 
-import NearPlacesCardsList from "../near-places-cards-list/near-places-cards-list"
+import NearPlacesCardsList from "../near-places-cards-list/near-places-cards-list";
 
 const PropertyScreen = (props) => {
   const {comments, cards} = props;
-  const {user.avatarUrl, user.name, comment, date} = comments;
-  const {images, bedrooms, price, maxAdults, goods, rating, title, type, host.name, host.avatarUrl, description} = cards;
 
+  // const {user, comment, date} = comments;
+  // const {name, avatarUrl} = user;
+  const {images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = cards;
+  const {hostname, hostAvatarUrl} = host;
   return <React.Fragment>
     <div>
       <div style={{display: `none`}}>
@@ -19,29 +26,31 @@ const PropertyScreen = (props) => {
       </div>
       <div className="page">
 
-        <AuthInfo /> {/* Правильно ли я вставляю компонент в другой компонент? */}
+        <AuthInfo
+          authInfo={authInfo}
+        />
 
         <main className="page__main page__main--property">
           <section className="property">
             <div className="property__gallery-container container">
               <div className="property__gallery">
                 <div className="property__image-wrapper">
-                  <img className="property__image" src={images} alt="Photo studio" />
+                  <img className="property__image" src={images[0]} alt="Photo studio" />
                 </div>
                 <div className="property__image-wrapper">
-                  <img className="property__image" src={images} alt="Photo studio" />
+                  <img className="property__image" src={images[1]} alt="Photo studio" />
                 </div>
                 <div className="property__image-wrapper">
-                  <img className="property__image" src={images} alt="Photo studio" />
+                  <img className="property__image" src={images[2]} alt="Photo studio" />
                 </div>
                 <div className="property__image-wrapper">
-                  <img className="property__image" src={images} alt="Photo studio" />
+                  <img className="property__image" src={images[3]} alt="Photo studio" />
                 </div>
                 <div className="property__image-wrapper">
-                  <img className="property__image" src={images} alt="Photo studio" />
+                  <img className="property__image" src={images[4]} alt="Photo studio" />
                 </div>
                 <div className="property__image-wrapper">
-                  <img className="property__image" src={images} alt="Photo studio" />
+                  <img className="property__image" src={images[0]} alt="Photo studio" />
                 </div>
               </div>
             </div>
@@ -122,10 +131,10 @@ const PropertyScreen = (props) => {
                   <h2 className="property__host-title">Meet the host</h2>
                   <div className="property__host-user user">
                     <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                      <img className="property__avatar user__avatar" src={host.avatarUrl} width={74} height={74} alt="Host avatar" />
+                      <img className="property__avatar user__avatar" src={hostAvatarUrl} width={74} height={74} alt="Host avatar" />
                     </div>
                     <span className="property__user-name">
-                      {host.name}
+                      {hostname}
                     </span>
                   </div>
                   <div className="property__description">
@@ -143,33 +152,37 @@ const PropertyScreen = (props) => {
                   {/* REWIEVS */}
                   {/* // Отсюда взять на компонент-комментариев лучше? */}
                   <ul className="reviews__list">
-                    <li className="reviews__item">
-                      <div className="reviews__user user">
-                                              <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                          <img className="reviews__avatar user__avatar" src={user.avatarUrl} width={54} height={54} alt="Reviews avatar" />
-                        </div>
-                        <span className="reviews__user-name">
-                          {user.name}
-                        </span>
-                      </div>
-                      <div className="reviews__info">
-                        <div className="reviews__rating rating">
-                          <div className="reviews__stars rating__stars">
-                            <span style={{width: `80%`}} />
-                            <span className="visually-hidden">Rating</span>
+                    {comments.map((com) => {
+                      const {id, user, comment, date} = com;
+                      return (<li className="reviews__item" key={id}>
+                        <div className="reviews__user user">
+                          <div className="reviews__avatar-wrapper user__avatar-wrapper">
+                            <img className="reviews__avatar user__avatar" src={user.avatarUrl} width={54} height={54} alt="Reviews avatar" />
                           </div>
+                          <span className="reviews__user-name">
+                            {user.name}
+                          </span>
                         </div>
-                        <p className="reviews__text">
-                          {comment}.
-                        </p>
-                        <time className="reviews__time" dateTime={date}>April 2019</time>
-                      </div>
-                    </li>
+                        <div className="reviews__info">
+                          <div className="reviews__rating rating">
+                            <div className="reviews__stars rating__stars">
+                              <span style={{width: `80%`}} />
+                              <span className="visually-hidden">Rating</span>
+                            </div>
+                          </div>
+                          <p className="reviews__text">
+                            {comment}.
+                          </p>
+                          <time className="reviews__time" dateTime={date}>April 2019</time>
+                        </div>
+                      </li>);
+                    }) }
+
                   </ul>
 
-                   {/* FORM */}
+                  {/* FORM */}
 
-                  <FeedBackForm />
+                  {/* <FeedBackForm /> */}
 
                 </section>
 
@@ -182,7 +195,9 @@ const PropertyScreen = (props) => {
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <div className="near-places__list places__list">
 
-                <NearPlacesCardsList />
+                <NearPlacesCardsList
+                  cards={[cards]}
+                />
 
               </div>
             </section>

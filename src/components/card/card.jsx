@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from 'react-router-dom';
 
 import cardPropTypes from "../../propetypes";
 
 const Card = (props) => {
-  const {cards} = props;
-  const {images, price, rating, title, type} = cards;
+  const {card} = props;
+  const {previewImage, price, rating, title, type, id} = card;
 
   return <React.Fragment>
 
@@ -14,9 +15,9 @@ const Card = (props) => {
         <span>Premium</span>
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
-          <img className="place-card__image" src={images} width={260} height={200} alt="Place image" />
-        </a>
+        <Link to={`/card/${id}`}>
+          <img className="place-card__image" src={previewImage} width={260} height={200} alt="Place image" />
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -33,12 +34,12 @@ const Card = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={rating}/>
+            <span style={{width: `${20 * rating}%`}}/>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <Link to={`/card/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -49,7 +50,7 @@ const Card = (props) => {
 
 
 Card.propTypes = {
-  cards: PropTypes.arrayOf(cardPropTypes)
+  card: PropTypes.arrayOf(cardPropTypes)
 };
 
 export default Card;
