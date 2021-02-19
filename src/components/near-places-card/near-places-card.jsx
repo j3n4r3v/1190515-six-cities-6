@@ -1,20 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import OfferType from "../../const";
 
 import offerPropTypes from "../../propetypes";
 
-const FavoritesCard = (props) => {
+const NearPlacesCard = (props) => {
   const {offers} = props;
-  const {images, price, rating, title, type} = offers;
+  const {images, price, type, title} = offers;
   return <React.Fragment>
-    <article className="favorites__card place-card">
-      <div className="favorites__image-wrapper place-card__image-wrapper">
+    <article className="near-places__card place-card">
+      <div className="near-places__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={images} width={150} height={110} alt="Place image" />
+          <img className="place-card__image" src={images} width={260} height={200} alt="Place image" />
         </a>
       </div>
-      <div className="favorites__card-info place-card__info">
+      <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">{price}</b>
@@ -29,7 +28,7 @@ const FavoritesCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={rating} />
+            <span style={{width: `80%`}} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -43,8 +42,8 @@ const FavoritesCard = (props) => {
 };
 
 
-FavoritesCard.propTypes = {
+NearPlacesCard.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes)
 };
 
-export default FavoritesCard;
+export default NearPlacesCard;

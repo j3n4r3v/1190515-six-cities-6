@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 import {offerPropTypes} from "../../propetypes";
 
-import OfferCardList from "../cards-list/cards-list";
-// import OfferCard from "../offer-card/offer-card";
+import CardList from "../cards-list/cards-list";
+// import Card from "../card/card";
 // import {offers} from "../mocks/offers-mocks";
 
 const MainScreen = () => { // props delete
@@ -94,8 +94,8 @@ const MainScreen = () => { // props delete
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OfferCardList />
-                {/* {offers.map((offer, i) => <OfferCard key={offer + i} offer={offer} />)} */}
+                <CardList />
+                {/* {offers.map((offer, i) => <Card key={offer + i} offer={offer} />)} */}
               </div>
             </section>
             <div className="cities__right-section">

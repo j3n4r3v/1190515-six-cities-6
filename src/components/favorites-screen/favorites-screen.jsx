@@ -1,8 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
-import {offerPropTypes} from "../../propetypes";
+// import {offerPropTypes} from "../../propetypes";
 
 import FavoritesCard from "../favorites-card/favorites-card";
 
@@ -79,9 +79,9 @@ const FavoritesScreen = () => { // props delete
   </React.Fragment>;
 };
 
-FavoritesScreen.propTypes = {
-  offers: PropTypes.arrayOf(offerPropTypes)
-  // type: PropTypes.oneOf([OfferType.APARTMENT, OfferType.PRIVATEROOM, OfferType.STUDIO]).isRequired,
-};
+// FavoritesScreen.propTypes = {
+//   offers: PropTypes.arrayOf(offerPropTypes)
+//   // type: PropTypes.oneOf([OfferType.APARTMENT, OfferType.PRIVATEROOM, OfferType.STUDIO]).isRequired,
+// };
 
 export default FavoritesScreen;

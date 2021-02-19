@@ -12,7 +12,7 @@ export const comments = [
     }
   },
   {
-    comment: `I stayed here for one night and it was an unpleasant experience.`,
+    comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century`,
     date: `2021-2-21T08:36:38.657`,
     id: 2,
     rating: 3,
