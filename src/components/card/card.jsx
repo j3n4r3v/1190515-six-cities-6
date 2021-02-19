@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import offerPropTypes from "../../propetypes";
 
 
-const OfferCard = (props) => {
+const Card = (props) => {
   const {offers} = props;
   const {images, price, rating, title, type} = offers;
   return <React.Fragment>
@@ -47,9 +47,9 @@ const OfferCard = (props) => {
 };
 
 
-OfferCard.propTypes = {
+Card.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes)
   // type: PropTypes.oneOf([OfferType.APARTMENT, OfferType.PRIVATEROOM, OfferType.STUDIO]).isRequired,
 };
 
-export default OfferCard;
+export default Card;

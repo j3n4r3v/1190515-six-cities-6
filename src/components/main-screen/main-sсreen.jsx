@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import {offerPropTypes} from "../../propetypes";
 
-import OfferCardList from "../offer-card-list/offer-card-list";
+import OfferCardList from "../cards-list/cards-list";
 // import OfferCard from "../offer-card/offer-card";
 // import {offers} from "../mocks/offers-mocks";
 
