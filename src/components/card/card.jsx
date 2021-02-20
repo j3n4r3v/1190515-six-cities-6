@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import cardPropTypes from "../../propetypes";
 
 const Card = (props) => {
-  const { card } = props;
-  const { previewImage, price, rating, title, type, id } = card;
+  const {card} = props;
+  const {previewImage, price, rating, title, type, id} = card;
 
   return <React.Fragment>
     <article className="cities__place-card place-card">
@@ -33,7 +33,7 @@ const Card = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${20 * rating}%` }} />
+            <span style={{width: `${20 * rating}%`}} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
