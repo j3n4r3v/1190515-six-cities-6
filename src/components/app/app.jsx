@@ -47,7 +47,7 @@ const App = (props) => {
 
 App.propTypes = {
   comments: PropTypes.arrayOf(commentPropTypes),
-  cards: PropTypes.shape(cardPropTypes)
+  cards: PropTypes.arrayOf(cardPropTypes)
 };
 
 export default App;

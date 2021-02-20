@@ -5,14 +5,14 @@ import NearPlacesCard from "../near-places-card/near-places-card";
 import cardPropTypes from "../../propetypes";
 
 const NearPlacesCardsList = (props) => {
-  const {cards} = props;
+  const {name} = props;
   return <React.Fragment>
-    {cards.map((card, i) => <NearPlacesCard key={card + i} card={card} />)}
+    {name.map((card, i) => <NearPlacesCard key={card + i} card={card} />)}
   </React.Fragment>;
 };
 
 NearPlacesCardsList.propTypes = {
-  cards: PropTypes.shape(cardPropTypes)
+  name: PropTypes.arrayOf(cardPropTypes)
 };
 
 export default NearPlacesCardsList;

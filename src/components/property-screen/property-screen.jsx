@@ -14,11 +14,8 @@ import NearPlacesCardsList from "../near-places-cards-list/near-places-cards-lis
 
 const PropertyScreen = (props) => {
   const {comments, cards} = props;
-
-  // const {user} = comments;
-  // const {name, avatarUrl} = user;
   const {images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = cards;
-  const {hostname, hostAvatarUrl} = host;
+  const {name, avatarUrl} = host;
   return <React.Fragment>
     <div>
       <div style={{display: `none`}}>
@@ -129,10 +126,10 @@ const PropertyScreen = (props) => {
                   <h2 className="property__host-title">Meet the host</h2>
                   <div className="property__host-user user">
                     <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                      <img className="property__avatar user__avatar" src={hostAvatarUrl} width={74} height={74} alt="Host avatar" />
+                      <img className="property__avatar user__avatar" src={avatarUrl} width={74} height={74} alt="Host avatar" />
                     </div>
                     <span className="property__user-name">
-                      {hostname}
+                      {name}
                     </span>
                   </div>
                   <div className="property__description">
@@ -188,7 +185,7 @@ const PropertyScreen = (props) => {
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <div className="near-places__list places__list">
                 <NearPlacesCardsList
-                  cards={[cards]}
+                  name={[cards]}
                 />
               </div>
             </section>

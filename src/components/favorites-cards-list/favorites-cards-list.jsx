@@ -12,7 +12,7 @@
 // };
 
 // FavoritesCardsList.propTypes = {
-//   cards: PropTypes.shape(cardPropTypes)
+//   cards: PropTypes.arrayOf(cardPropTypes)
 // };
 
 // export default FavoritesCardsList;
