@@ -1,4 +1,4 @@
-export const cards = [
+export const cardsMock = [
   {
     "bedrooms": 3,
     "city": {

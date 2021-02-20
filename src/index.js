@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import {cards} from "./mocks/cards-mocks";
+import {cardsMock} from "./mocks/cards-mocks";
 import {comments} from "./mocks/comments-mocks";
 
 import App from "./components/app/app";
 
 ReactDOM.render(
     <App
-      cards={cards}
+      cards={cardsMock}
       comments={comments}
     >
     </App>,

@@ -8,7 +8,7 @@ import CardsList from "../cards-list/cards-list";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import {authInfoMock} from "../../mocks/auth-info-mocks";
 
-import {cards} from "../../mocks/cards-mocks";
+import {cardsMock} from "../../mocks/cards-mocks";
 
 const MainScreen = () => {
   return <React.Fragment>
@@ -82,7 +82,7 @@ const MainScreen = () => {
               <div className="cities__places-list places__list tabs__content">
 
                 <CardsList
-                  cards={cards}
+                  cards={cardsMock}
                 />
 
               </div>
