@@ -6,7 +6,7 @@ import {authInfo} from "../../mocks/auth-info-mocks";
 import AuthInfo from "../auth-info/auth-info";
 
 import authPropTypes from "../../propetypes";
-// import FeedBackForm from "../feedbackform/feedbackform";
+import FeedBackForm from "../feedbackform/feedbackform";
 
 import {cardPropTypes, commentPropTypes} from "../../propetypes";
 
@@ -15,7 +15,7 @@ import NearPlacesCardsList from "../near-places-cards-list/near-places-cards-lis
 const PropertyScreen = (props) => {
   const {comments, cards} = props;
 
-  // const {user, comment, date} = comments;
+  // const {user} = comments;
   // const {name, avatarUrl} = user;
   const {images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = cards;
   const {hostname, hostAvatarUrl} = host;
@@ -25,11 +25,9 @@ const PropertyScreen = (props) => {
         <svg xmlns="http://www.w3.org/2000/svg"><symbol id="icon-arrow-select" viewBox="0 0 7 4"><path fillRule="evenodd" clipRule="evenodd" d="M0 0l3.5 2.813L7 0v1.084L3.5 4 0 1.084V0z" /></symbol><symbol id="icon-bookmark" viewBox="0 0 17 18"><path d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z" /></symbol><symbol id="icon-star" viewBox="0 0 13 12"><path fillRule="evenodd" clipRule="evenodd" d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z" /></symbol></svg>
       </div>
       <div className="page">
-
         <AuthInfo
           authInfo={authInfo}
         />
-
         <main className="page__main page__main--property">
           <section className="property">
             <div className="property__gallery-container container">
@@ -146,15 +144,14 @@ const PropertyScreen = (props) => {
                     </p>
                   </div>
                 </div>
-
                 <section className="property__reviews reviews">
                   <h2 className="reviews__title">Reviews · <span className="reviews__amount">1</span></h2>
                   {/* REWIEVS */}
                   {/* // Отсюда взять на компонент-комментариев лучше? */}
                   <ul className="reviews__list">
-                    {comments.map((com) => {
-                      const {id, user, comment, date} = com;
-                      return (<li className="reviews__item" key={id}>
+                    {comments.map((rewiev) => {
+                      const {id, user, comment, date} = rewiev;
+                      return <li className="reviews__item" key={id}>
                         <div className="reviews__user user">
                           <div className="reviews__avatar-wrapper user__avatar-wrapper">
                             <img className="reviews__avatar user__avatar" src={user.avatarUrl} width={54} height={54} alt="Reviews avatar" />
@@ -175,17 +172,13 @@ const PropertyScreen = (props) => {
                           </p>
                           <time className="reviews__time" dateTime={date}>April 2019</time>
                         </div>
-                      </li>);
-                    }) }
-
+                      </li>;
+                    })
+                    }
                   </ul>
-
                   {/* FORM */}
-
-                  {/* <FeedBackForm /> */}
-
+                  <FeedBackForm />
                 </section>
-
               </div>
             </div>
             <section className="property__map map" />
@@ -194,11 +187,9 @@ const PropertyScreen = (props) => {
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <div className="near-places__list places__list">
-
                 <NearPlacesCardsList
                   cards={[cards]}
                 />
-
               </div>
             </section>
           </div>
@@ -209,7 +200,7 @@ const PropertyScreen = (props) => {
 };
 
 PropertyScreen.propTypes = {
-  cards: PropTypes.arrayOf(cardPropTypes),
+  cards: PropTypes.shape(cardPropTypes),
   comments: PropTypes.arrayOf(commentPropTypes),
   authInfo: PropTypes.shape(authPropTypes)
 };

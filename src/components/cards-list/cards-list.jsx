@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import Card from "../card/card";
-// import {cards} from "../mocks/cards-mocks";
 import cardPropTypes from "../../propetypes";
 
 const CardsList = (props) => {
@@ -12,7 +12,7 @@ const CardsList = (props) => {
 };
 
 CardsList.propTypes = {
-  cards: PropTypes.arrayOf(cardPropTypes)
+  cards: PropTypes.shape(cardPropTypes)
 };
 
 export default CardsList;
