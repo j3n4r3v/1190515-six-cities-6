@@ -1,7 +1,7 @@
 import React from "react";
 
-import {authInfo} from "../../mocks/auth-info-mocks";
-import AuthInfo from "../auth-info/auth-info";
+import {authInfoMock} from "../../mocks/auth-info-mocks";
+import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 
 const SignInScreen = () => {
   return <React.Fragment>
@@ -11,8 +11,8 @@ const SignInScreen = () => {
       </div>
       <div className="page page--gray page--login">
 
-        <AuthInfo
-          authInfo={authInfo}
+        <AuthInfoScreen
+          authInfo={authInfoMock}
         />
 
         <main className="page__main page__main--login">

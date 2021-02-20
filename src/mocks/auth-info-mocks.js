@@ -1,4 +1,4 @@
-export const authInfo = {
+export const authInfoMock = {
   "avatarUrl": `img/logo.svg`,
   "email": `Oliver.conner@gmail.com`,
   "id": 1,

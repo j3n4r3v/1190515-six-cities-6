@@ -5,8 +5,8 @@ import {authPropTypes} from "../../propetypes";
 
 import CardsList from "../cards-list/cards-list";
 
-import AuthInfo from "../auth-info/auth-info";
-import {authInfo} from "../../mocks/auth-info-mocks";
+import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
+import {authInfoMock} from "../../mocks/auth-info-mocks";
 
 import {cards} from "../../mocks/cards-mocks";
 
@@ -17,8 +17,8 @@ const MainScreen = () => {
     </div>
     <div className="page page--gray page--main">
 
-      <AuthInfo
-        authInfo={authInfo}
+      <AuthInfoScreen
+        authInfo={authInfoMock}
       />
 
       <main className="page__main page__main--index">
