@@ -6,9 +6,9 @@ import {authPropTypes} from "../../propetypes";
 import CardsList from "../cards-list/cards-list";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
-import {authInfoMock} from "../../mocks/auth-info-mocks";
+import {authInfoMocks} from "../../mocks/auth-info-mocks";
 
-import {cardsMock} from "../../mocks/cards-mocks";
+import {cardsMocks} from "../../mocks/cards-mocks";
 
 const MainScreen = () => {
   return <React.Fragment>
@@ -18,7 +18,7 @@ const MainScreen = () => {
     <div className="page page--gray page--main">
 
       <AuthInfoScreen
-        authInfo={authInfoMock}
+        authInfo={authInfoMocks}
       />
 
       <main className="page__main page__main--index">
@@ -82,7 +82,7 @@ const MainScreen = () => {
               <div className="cities__places-list places__list tabs__content">
 
                 <CardsList
-                  cards={cardsMock}
+                  cards={cardsMocks}
                 />
 
               </div>

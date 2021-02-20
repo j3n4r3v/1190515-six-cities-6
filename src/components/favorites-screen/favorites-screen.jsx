@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {authPropTypes} from "../../propetypes";
 
-import {authInfoMock} from "../../mocks/auth-info-mocks";
+import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import FavoritesCard from "../favorites-card/favorites-card";
 
@@ -17,7 +17,7 @@ const FavoritesScreen = () => {
       <div className="page">
 
         <AuthInfoScreen
-          authInfo={authInfoMock}
+          authInfo={authInfoMocks}
         />
 
         <main className="page__main page__main--favorites">
