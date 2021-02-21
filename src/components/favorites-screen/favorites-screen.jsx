@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 import PropTypes from "prop-types";
 import {authPropTypes} from "../../propetypes";
-
+// import getRandomArrayItem from "../../utils";
 import {cardsMocks} from "../../mocks/cards-mocks";
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
@@ -37,10 +37,10 @@ const FavoritesScreen = () => {
                   <div className="favorites__places">
 
                     <FavoritesCard
-                      cards={cardsMocks}
+                      card={cardsMocks[2]} // Тут нужен конкретный обьект а не массив обьектов, как?
                     />
                     <FavoritesCard
-                      cards={cardsMocks}
+                      card={cardsMocks[1]}
                     />
 
                   </div>
@@ -56,7 +56,7 @@ const FavoritesScreen = () => {
                   <div className="favorites__places">
 
                     <FavoritesCard
-                      cards={cardsMocks}
+                      card={cardsMocks[0]}
                     />
 
                   </div>

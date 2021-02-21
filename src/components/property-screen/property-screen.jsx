@@ -14,7 +14,7 @@ import NearPlacesCardsList from "../near-places-cards-list/near-places-cards-lis
 
 const PropertyScreen = (props) => {
   const {comments, cards} = props;
-  const {images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = cards;
+  const {favoritesImages, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = cards;
   const {name, avatarUrl} = host;
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -31,22 +31,22 @@ const PropertyScreen = (props) => {
           <div className="property__gallery-container container">
             <div className="property__gallery">
               <div className="property__image-wrapper">
-                <img className="property__image" src={images[0]} alt="Photo studio" />
+                <img className="property__image" src={favoritesImages[0]} alt="Photo studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src={images[1]} alt="Photo studio" />
+                <img className="property__image" src={favoritesImages[1]} alt="Photo studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src={images[2]} alt="Photo studio" />
+                <img className="property__image" src={favoritesImages[2]} alt="Photo studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src={images[3]} alt="Photo studio" />
+                <img className="property__image" src={favoritesImages[3]} alt="Photo studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src={images[4]} alt="Photo studio" />
+                <img className="property__image" src={favoritesImages[4]} alt="Photo studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src={images[0]} alt="Photo studio" />
+                <img className="property__image" src={favoritesImages[0]} alt="Photo studio" />
               </div>
             </div>
           </div>

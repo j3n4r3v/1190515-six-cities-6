@@ -20,7 +20,7 @@ export const cardPropTypes = PropTypes.shape({
     "name": PropTypes.string.isRequired
   }),
   "id": PropTypes.number.isRequired,
-  "images": PropTypes.arrayOf(PropTypes.string.isRequired),
+  "favoitesImages": PropTypes.arrayOf(PropTypes.string.isRequired),
   "is_premium": PropTypes.bool.isRequired,
   "location": PropTypes.shape({
     "latitude": PropTypes.number.isRequired,

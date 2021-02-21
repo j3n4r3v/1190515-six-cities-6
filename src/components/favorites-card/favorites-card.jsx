@@ -1,16 +1,20 @@
+/* eslint-disable no-console */
 import React from "react";
-import PropTypes from "prop-types";
-
+// import PropTypes from "prop-types";
+import getRandomArrayItem from "../../utils";
 import {cardPropTypes} from "../../propetypes";
 
 const FavoritesCard = (props) => {
-  const {cards} = props;
-  const {previewImage, price, rating, title, type} = cards;
+  const {card} = props;
+  const {favoritesImages, price, rating, title, type} = card;
+
+  console.log(favoritesImages);
+
   return <React.Fragment>
     <article className="favorites__card place-card">
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={previewImage} width={150} height={110} alt="Place image" />
+          <img className="place-card__image" src={favoritesImages} width={150} height={110} alt="Place image" />
         </a>
       </div>
       <div className="favorites__card-info place-card__info">
@@ -28,7 +32,7 @@ const FavoritesCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={rating} />
+            <span style={{width: `${20 * rating}%`}} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -42,7 +46,7 @@ const FavoritesCard = (props) => {
 };
 
 FavoritesCard.propTypes = {
-  cards: PropTypes.arrayOf(cardPropTypes)
+  card: cardPropTypes
 };
 
 export default FavoritesCard;

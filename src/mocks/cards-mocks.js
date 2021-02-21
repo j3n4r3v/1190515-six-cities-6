@@ -14,11 +14,11 @@ export const cardsMocks = [
       "name": `Angelina`
     },
     "id": 1,
-    "images": [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img/studio-01.jpg`],
+    "favoritesImages": [`img/room-small.jpg`, `img/apartment-small-04.jpg`, `img/apartment-small-03.jpg`],
     "isPremium": false,
     "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
     "maxAdults": 2,
-    "previewImage": `img/apartment-01.jpg`,
+    "previewImage": `img/apartment-small-01.jpg`,
     "price": 115,
     "rating": 5,
     "title": `Beautiful & luxurious studio at great location`,
@@ -39,7 +39,7 @@ export const cardsMocks = [
       "name": `Max`
     },
     "id": 1,
-    "images": [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img/studio-01.jpg`],
+    "favoritesImages": [`img/room-small.jpg`, `img/apartment-small-04.jpg`, `img/apartment-small-03.jpg`],
     "isFavorite": false,
     "isPremium": false,
     "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
@@ -65,7 +65,7 @@ export const cardsMocks = [
       "name": `Angelina`
     },
     "id": 1,
-    "images": [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img/studio-01.jpg`],
+    "favoritesImages": [`img/room-small.jpg`, `img/apartment-small-04.jpg`, `img/apartment-small-03.jpg`],
     "isFavorite": false,
     "isPremium": false,
     "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
@@ -91,7 +91,7 @@ export const cardsMocks = [
       "name": `Max`
     },
     "id": 1,
-    "images": [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img/studio-01.jpg`],
+    "favoritesImages": [`img/room-small.jpg`, `img/apartment-small-04.jpg`, `img/apartment-small-03.jpg`],
     "isFavorite": false,
     "isPremium": false,
     "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
@@ -117,7 +117,7 @@ export const cardsMocks = [
       "name": `Max`
     },
     "id": 1,
-    "images": [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img/studio-01.jpg`],
+    "favoritesImages": [`img/room-small.jpg`, `img/apartment-small-04.jpg`, `img/apartment-small-03.jpg`],
     "isFavorite": false,
     "isPremium": false,
     "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
