@@ -7,7 +7,7 @@ import SignInScreen from "../sign-in-screen/sign-in-screen";
 import MainScreen from "../main-screen/main-sсreen";
 import PropertyScreen from "../property-screen/property-screen";
 import NotFoundScreen from "../not-found-screen/not-found-screen";
-
+import {getRandomArrayItem} from "../../utils";
 import {cardPropTypes, commentPropTypes} from "../../propetypes";
 
 const App = (props) => {
@@ -26,7 +26,7 @@ const App = (props) => {
         </Route>
         <Route exact path="/card/:id">
           <PropertyScreen
-            card={cards[0]}
+            card={getRandomArrayItem(cards)}
             comments={comments}
           />
         </Route>

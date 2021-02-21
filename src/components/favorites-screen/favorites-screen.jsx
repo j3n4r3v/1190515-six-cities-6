@@ -3,13 +3,14 @@ import {Link} from "react-router-dom";
 
 import PropTypes from "prop-types";
 import {authPropTypes} from "../../propetypes";
-// import getRandomArrayItem from "../../utils";
+import {getRandomArrayItem} from "../../utils";
 import {cardsMocks} from "../../mocks/cards-mocks";
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import FavoritesCard from "../favorites-card/favorites-card";
 
 const FavoritesScreen = () => {
+  const gerRandomCardsMock = getRandomArrayItem(cardsMocks);
   return <React.Fragment>
     <div>
       <div style={{display: `none`}}>
@@ -37,10 +38,10 @@ const FavoritesScreen = () => {
                   <div className="favorites__places">
 
                     <FavoritesCard
-                      card={cardsMocks[1]} // Тут нужен конкретный обьект а не массив обьектов, как?
+                      card={gerRandomCardsMock} // Тут нужен конкретный обьект а не массив обьектов, как?
                     />
                     <FavoritesCard
-                      card={cardsMocks[1]}
+                      card={gerRandomCardsMock}
                     />
 
                   </div>
@@ -56,7 +57,7 @@ const FavoritesScreen = () => {
                   <div className="favorites__places">
 
                     <FavoritesCard
-                      card={cardsMocks[1]}
+                      card={gerRandomCardsMock}
                     />
 
                   </div>

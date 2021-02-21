@@ -42,7 +42,7 @@ const NearPlacesCard = (props) => {
 
 
 NearPlacesCard.propTypes = {
-  card: cardPropTypes // PropTypes.arrayOf(cardPropTypes) ??
+  card: cardPropTypes
 };
 
 export default NearPlacesCard;

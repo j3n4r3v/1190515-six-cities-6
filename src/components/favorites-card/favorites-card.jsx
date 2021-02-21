@@ -1,19 +1,17 @@
-/* eslint-disable no-console */
 import React from "react";
-// import PropTypes from "prop-types";
-// import getRandomArrayItem from "../../utils";
+
+import {getRandomArrayItem} from "../../utils";
 import {cardPropTypes} from "../../propetypes";
 
 const FavoritesCard = (props) => {
   const {card} = props;
   const {favoritesImages, price, rating, title, type} = card;
-  let randomSrc = favoritesImages[Math.floor(Math.random() * favoritesImages.length)];
 
   return <React.Fragment>
     <article className="favorites__card place-card">
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={randomSrc} width={150} height={110} alt="Place image" />
+          <img className="place-card__image" src={getRandomArrayItem(favoritesImages)} width={150} height={110} alt="Place image" />
         </a>
       </div>
       <div className="favorites__card-info place-card__info">

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from "react";
 // import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
@@ -7,7 +6,7 @@ import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import {commentsMocks} from "../../mocks/comments-mocks";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import {getRandomArrayItem} from "../../utils";
-import {authPropTypes} from "../../propetypes"; // authPropTypes
+import {authPropTypes} from "../../propetypes";
 import FeedBackForm from "../feedbackform/feedbackform";
 import Rewiev from "../rewiev-list/review-list";
 
@@ -165,7 +164,7 @@ const PropertyScreen = (props) => {
             <div className="near-places__list places__list">
 
               <NearPlacesCardsList
-                nearCards={[card]} // cards = {cards[0]} in app
+                nearCards={[card]}
               />
 
             </div>
