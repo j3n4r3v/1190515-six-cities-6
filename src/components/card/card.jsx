@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-import cardPropTypes from "../../propetypes";
+import {cardPropTypes} from "../../propetypes";
 
 const Card = (props) => {
   const {card} = props;

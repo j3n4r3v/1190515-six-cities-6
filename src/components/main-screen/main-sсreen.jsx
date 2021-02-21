@@ -6,8 +6,8 @@ import {authPropTypes} from "../../propetypes";
 import CardsList from "../cards-list/cards-list";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
-import {authInfoMocks} from "../../mocks/auth-info-mocks";
 
+import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import {cardsMocks} from "../../mocks/cards-mocks";
 
 const MainScreen = () => {

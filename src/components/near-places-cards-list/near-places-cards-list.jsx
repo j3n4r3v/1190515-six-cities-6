@@ -2,17 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import NearPlacesCard from "../near-places-card/near-places-card";
-import cardPropTypes from "../../propetypes";
+import {cardPropTypes} from "../../propetypes"; // {cardPropTypes etc}
 
 const NearPlacesCardsList = (props) => {
-  const {name} = props;
+  const {nearCards} = props;
   return <React.Fragment>
-    {name.map((card, i) => <NearPlacesCard key={card + i} card={card} />)}
+    {nearCards.map((card, i) => <NearPlacesCard key={card + i} card={card} />)}
   </React.Fragment>;
 };
 
 NearPlacesCardsList.propTypes = {
-  name: PropTypes.arrayOf(cardPropTypes)
+  nearCards: PropTypes.arrayOf(cardPropTypes)
 };
 
 export default NearPlacesCardsList;

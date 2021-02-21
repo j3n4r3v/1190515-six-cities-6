@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import cardPropTypes from "../../propetypes";
+import {cardPropTypes} from "../../propetypes";
 
 const NearPlacesCard = (props) => {
   const {card} = props;

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 
-import authPropTypes from "../../propetypes";
+import {authPropTypes} from "../../propetypes"; // authPropTypes
 import FeedBackForm from "../feedbackform/feedbackform";
 
 import {cardPropTypes, commentPropTypes} from "../../propetypes";
@@ -185,7 +185,7 @@ const PropertyScreen = (props) => {
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <div className="near-places__list places__list">
                 <NearPlacesCardsList
-                  name={[cards]}
+                  nearCards={[cards]}
                 />
               </div>
             </section>

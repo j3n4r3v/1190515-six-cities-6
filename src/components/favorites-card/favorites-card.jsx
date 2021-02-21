@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 // import CardType from "../../const";
 
-import cardPropTypes from "../../propetypes";
+import {cardPropTypes} from "../../propetypes";
 
 const FavoritesCard = (props) => {
   const {cards} = props;

@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
-import authPropTypes from "../../propetypes";
+import {authPropTypes} from "../../propetypes";
 
 const AuthInfoScreen = (props) => {
   const {authInfo} = props;
