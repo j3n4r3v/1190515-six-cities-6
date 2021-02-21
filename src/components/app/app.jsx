@@ -16,17 +16,13 @@ const App = (props) => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <MainScreen
-            cards={cards}
-          />
+          <MainScreen/>
         </Route>
         <Route exact path="/login">
           <SignInScreen />
         </Route>
         <Route exact path="/favorites">
-          <FavoritesScreen
-            cards={cards}
-          />
+          <FavoritesScreen/>
         </Route>
         <Route exact path="/card/:id">
           <PropertyScreen

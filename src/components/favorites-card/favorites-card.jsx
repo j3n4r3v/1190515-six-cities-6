@@ -5,12 +5,12 @@ import {cardPropTypes} from "../../propetypes";
 
 const FavoritesCard = (props) => {
   const {cards} = props;
-  const {prevImages, price, rating, title, type} = cards;
+  const {previewImage, price, rating, title, type} = cards;
   return <React.Fragment>
     <article className="favorites__card place-card">
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={prevImages} width={150} height={110} alt="Place image" />
+          <img className="place-card__image" src={previewImage} width={150} height={110} alt="Place image" />
         </a>
       </div>
       <div className="favorites__card-info place-card__info">

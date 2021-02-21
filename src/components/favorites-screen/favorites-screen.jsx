@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {authPropTypes} from "../../propetypes";
 
+import {cardsMocks} from "../../mocks/cards-mocks";
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import FavoritesCard from "../favorites-card/favorites-card";
@@ -35,8 +36,12 @@ const FavoritesScreen = () => {
                   </div>
                   <div className="favorites__places">
 
-                    <FavoritesCard />
-                    <FavoritesCard />
+                    <FavoritesCard
+                      cards={cardsMocks}
+                    />
+                    <FavoritesCard
+                      cards={cardsMocks}
+                    />
 
                   </div>
                 </li>
@@ -50,7 +55,9 @@ const FavoritesScreen = () => {
                   </div>
                   <div className="favorites__places">
 
-                    <FavoritesCard />
+                    <FavoritesCard
+                      cards={cardsMocks}
+                    />
 
                   </div>
                 </li>

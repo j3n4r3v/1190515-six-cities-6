@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-
+// import getRandomArrayItem from "../../utils";
 import {cardPropTypes} from "../../propetypes";
 
 const Card = (props) => {
