@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import NearPlacesCard from "../near-places-card/near-places-card";
-import {cardPropTypes} from "../../propetypes"; // {cardPropTypes etc}
+import {cardPropTypes} from "../../propetypes";
 
 const NearPlacesCardsList = (props) => {
   const {nearCards} = props;

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import {cardPropTypes} from "../../propetypes";
 
@@ -43,7 +42,7 @@ const NearPlacesCard = (props) => {
 
 
 NearPlacesCard.propTypes = {
-  card: PropTypes.shape(cardPropTypes)
+  card: cardPropTypes // PropTypes.arrayOf(cardPropTypes) ??
 };
 
 export default NearPlacesCard;

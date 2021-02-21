@@ -19,8 +19,6 @@ const FeedBackForm = () => {
     setUserForm({...userForm, [id]: value});
   };
 
-  // const {5 - stars, 4 - stars, 3 - stars, 2 - stars, 1 - stars, rewiev} = userForm;
-
   return (<React.Fragment>
     <form onSubmit={handleSubmit} className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>

@@ -98,7 +98,7 @@ const MainScreen = () => {
 };
 
 MainScreen.propTypes = {
-  authInfo: PropTypes.shape(authPropTypes)
+  authInfo: PropTypes.arrayOf(authPropTypes)
 };
 
 export default MainScreen;

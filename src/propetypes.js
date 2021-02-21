@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import CardType from "./const";
 
-
 export const cardPropTypes = PropTypes.shape({
   "bedrooms": PropTypes.number.isRequired,
   "city": PropTypes.shape({

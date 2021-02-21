@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import CardType from "../../const";
 
 import {cardPropTypes} from "../../propetypes";
 
@@ -41,7 +40,6 @@ const FavoritesCard = (props) => {
     </article>
   </React.Fragment>;
 };
-
 
 FavoritesCard.propTypes = {
   cards: PropTypes.arrayOf(cardPropTypes)

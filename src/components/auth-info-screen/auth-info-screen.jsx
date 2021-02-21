@@ -1,6 +1,5 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import PropTypes from "prop-types";
 
 import {authPropTypes} from "../../propetypes";
 
@@ -37,7 +36,7 @@ const AuthInfoScreen = (props) => {
 };
 
 AuthInfoScreen.propTypes = {
-  authInfo: PropTypes.shape(authPropTypes)
+  authInfo: authPropTypes
 };
 
 export default AuthInfoScreen;

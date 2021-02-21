@@ -69,7 +69,7 @@ const FavoritesScreen = () => {
 };
 
 FavoritesScreen.propTypes = {
-  authInfo: PropTypes.shape(authPropTypes)
+  authInfo: PropTypes.arrayOf(authPropTypes)
 };
 
 export default FavoritesScreen;

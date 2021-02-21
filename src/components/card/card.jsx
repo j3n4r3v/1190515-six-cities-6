@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 import {cardPropTypes} from "../../propetypes";
@@ -48,7 +47,7 @@ const Card = (props) => {
 
 
 Card.propTypes = {
-  card: PropTypes.shape(cardPropTypes)
+  card: cardPropTypes // PropTypes.arrayOf(cardPropTypes) ??
 };
 
 export default Card;
