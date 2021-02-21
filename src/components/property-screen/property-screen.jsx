@@ -1,20 +1,23 @@
+/* eslint-disable no-console */
 import React from "react";
 // import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
+import {commentsMocks} from "../../mocks/comments-mocks";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
-
+import {getRandomArrayItem} from "../../utils";
 import {authPropTypes} from "../../propetypes"; // authPropTypes
 import FeedBackForm from "../feedbackform/feedbackform";
+import Rewiev from "../rewiev-list/review-list";
 
 import {cardPropTypes, commentPropTypes} from "../../propetypes";
 
 import NearPlacesCardsList from "../near-places-cards-list/near-places-cards-list";
 
 const PropertyScreen = (props) => {
-  const {comments, cards} = props;
-  const {favoritesImages, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = cards;
+  const {card} = props;
+  const {previewImage, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = card;
   const {name, avatarUrl} = host;
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -31,22 +34,22 @@ const PropertyScreen = (props) => {
           <div className="property__gallery-container container">
             <div className="property__gallery">
               <div className="property__image-wrapper">
-                <img className="property__image" src={favoritesImages[0]} alt="Photo studio" />
+                <img className="property__image" src={previewImage} alt="Photo studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src={favoritesImages[1]} alt="Photo studio" />
+                <img className="property__image" src={previewImage} alt="Photo studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src={favoritesImages[2]} alt="Photo studio" />
+                <img className="property__image" src={previewImage} alt="Photo studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src={favoritesImages[3]} alt="Photo studio" />
+                <img className="property__image" src={previewImage} alt="Photo studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src={favoritesImages[4]} alt="Photo studio" />
+                <img className="property__image" src={previewImage} alt="Photo studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src={favoritesImages[0]} alt="Photo studio" />
+                <img className="property__image" src={previewImage} alt="Photo studio" />
               </div>
             </div>
           </div>
@@ -92,34 +95,34 @@ const PropertyScreen = (props) => {
                 <h2 className="property__inside-title">What`s inside</h2>
                 <ul className="property__inside-list">
                   <li className="property__inside-item">
-                    {goods[0]}
+                    {getRandomArrayItem(goods)}
                   </li>
                   <li className="property__inside-item">
-                    {goods[1]}
+                    {getRandomArrayItem(goods)}
                   </li>
                   <li className="property__inside-item">
-                    {goods[0]}
+                    {getRandomArrayItem(goods)}
                   </li>
                   <li className="property__inside-item">
-                    {goods[2]}
+                    {getRandomArrayItem(goods)}
                   </li>
                   <li className="property__inside-item">
-                    {goods[3]}
+                    {getRandomArrayItem(goods)}
                   </li>
                   <li className="property__inside-item">
-                    {goods[4]}
+                    {getRandomArrayItem(goods)}
                   </li>
                   <li className="property__inside-item">
-                    {goods[5]}
+                    {getRandomArrayItem(goods)}
                   </li>
                   <li className="property__inside-item">
-                    {goods[0]}
+                    {getRandomArrayItem(goods)}
                   </li>
                   <li className="property__inside-item">
-                    {goods[1]}
+                    {getRandomArrayItem(goods)}
                   </li>
                   <li className="property__inside-item">
-                    {goods[2]}
+                    {getRandomArrayItem(goods)}
                   </li>
                 </ul>
               </div>
@@ -144,36 +147,10 @@ const PropertyScreen = (props) => {
               </div>
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews · <span className="reviews__amount">1</span></h2>
-                {/* REWIEVS */}
-                {/* // Отсюда взять на компонент-комментариев лучше? */}
-                <ul className="reviews__list">
-                  {comments.map((rewiev) => {
-                    const {id, user, comment, date} = rewiev;
-                    return <li className="reviews__item" key={id}>
-                      <div className="reviews__user user">
-                        <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                          <img className="reviews__avatar user__avatar" src={user.avatarUrl} width={54} height={54} alt="Reviews avatar" />
-                        </div>
-                        <span className="reviews__user-name">
-                          {user.name}
-                        </span>
-                      </div>
-                      <div className="reviews__info">
-                        <div className="reviews__rating rating">
-                          <div className="reviews__stars rating__stars">
-                            <span style={{width: `${20 * rating}%`}} />
-                            <span className="visually-hidden">Rating</span>
-                          </div>
-                        </div>
-                        <p className="reviews__text">
-                          {comment}.
-                        </p>
-                        <time className="reviews__time" dateTime={date}>April 2019</time>
-                      </div>
-                    </li>;
-                  })
-                  }
-                </ul>
+
+                <Rewiev
+                  comments = {commentsMocks}
+                />
 
                 <FeedBackForm />
 
@@ -188,7 +165,7 @@ const PropertyScreen = (props) => {
             <div className="near-places__list places__list">
 
               <NearPlacesCardsList
-                nearCards={[cards]} // cards = {cards[0]} in app
+                nearCards={[card]} // cards = {cards[0]} in app
               />
 
             </div>
@@ -200,7 +177,7 @@ const PropertyScreen = (props) => {
 };
 
 PropertyScreen.propTypes = {
-  cards: cardPropTypes,
+  card: cardPropTypes,
   comments: PropTypes.arrayOf(commentPropTypes),
   authInfo: PropTypes.arrayOf(authPropTypes)
 };

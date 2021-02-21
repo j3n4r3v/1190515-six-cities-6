@@ -5,10 +5,9 @@ const getRandomInteger = (a = 0, b = 1) => {
   return Math.floor(lower + Math.random() * (upper - lower + 1));
 };
 
-const getRandomArrayItem = (array) => {
+export const getRandomArrayItem = (array) => {
   const randomIndex = getRandomInteger(0, array.length - 1);
 
   return array[randomIndex];
 };
 
-export default {getRandomArrayItem, getRandomInteger};

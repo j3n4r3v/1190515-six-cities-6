@@ -26,7 +26,7 @@ const App = (props) => {
         </Route>
         <Route exact path="/card/:id">
           <PropertyScreen
-            cards={cards[0]}
+            card={cards[0]}
             comments={comments}
           />
         </Route>

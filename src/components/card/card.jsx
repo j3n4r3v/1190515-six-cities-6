@@ -47,7 +47,7 @@ const Card = (props) => {
 
 
 Card.propTypes = {
-  card: cardPropTypes // PropTypes.arrayOf(cardPropTypes) ??
+  card: cardPropTypes
 };
 
 export default Card;

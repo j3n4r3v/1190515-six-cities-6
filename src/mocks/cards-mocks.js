@@ -18,7 +18,7 @@ export const cardsMocks = [
     "isPremium": false,
     "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
     "maxAdults": 2,
-    "previewImage": `img/apartment-small-01.jpg`,
+    "previewImage": `img/apartment-01.jpg`,
     "price": 115,
     "rating": 5,
     "title": `Beautiful & luxurious studio at great location`,

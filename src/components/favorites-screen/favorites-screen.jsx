@@ -37,7 +37,7 @@ const FavoritesScreen = () => {
                   <div className="favorites__places">
 
                     <FavoritesCard
-                      card={cardsMocks[2]} // Тут нужен конкретный обьект а не массив обьектов, как?
+                      card={cardsMocks[1]} // Тут нужен конкретный обьект а не массив обьектов, как?
                     />
                     <FavoritesCard
                       card={cardsMocks[1]}
@@ -56,7 +56,7 @@ const FavoritesScreen = () => {
                   <div className="favorites__places">
 
                     <FavoritesCard
-                      card={cardsMocks[0]}
+                      card={cardsMocks[1]}
                     />
 
                   </div>
