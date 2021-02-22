@@ -40,7 +40,6 @@ const NearPlacesCard = (props) => {
   </React.Fragment>;
 };
 
-
 NearPlacesCard.propTypes = {
   card: cardPropTypes
 };

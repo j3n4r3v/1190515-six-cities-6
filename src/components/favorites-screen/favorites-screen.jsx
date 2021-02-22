@@ -10,7 +10,7 @@ import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import FavoritesCard from "../favorites-card/favorites-card";
 
 const FavoritesScreen = () => {
-  const gerRandomCardsMock = getRandomArrayItem(cardsMocks);
+  const gerRandomCardMock = getRandomArrayItem(cardsMocks);
   return <React.Fragment>
     <div>
       <div style={{display: `none`}}>
@@ -38,10 +38,10 @@ const FavoritesScreen = () => {
                   <div className="favorites__places">
 
                     <FavoritesCard
-                      card={gerRandomCardsMock} // Тут нужен конкретный обьект а не массив обьектов, как?
+                      card={gerRandomCardMock} // из массива обьектов cards - обьект рандомно
                     />
                     <FavoritesCard
-                      card={gerRandomCardsMock}
+                      card={gerRandomCardMock}
                     />
 
                   </div>
@@ -57,7 +57,7 @@ const FavoritesScreen = () => {
                   <div className="favorites__places">
 
                     <FavoritesCard
-                      card={gerRandomCardsMock}
+                      card={gerRandomCardMock}
                     />
 
                   </div>

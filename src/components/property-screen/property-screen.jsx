@@ -4,24 +4,24 @@ import PropTypes from "prop-types";
 
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import {commentsMocks} from "../../mocks/comments-mocks";
+
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
-import {getRandomArrayItem} from "../../utils";
-import {authPropTypes} from "../../propetypes";
+import {getRandomArrayItem, getRandomValueFromMassiveWithObjects} from "../../utils";
+
 import FeedBackForm from "../feedbackform/feedbackform";
 import Rewiev from "../rewiev-list/review-list";
 
-import {cardPropTypes, commentPropTypes} from "../../propetypes";
+import {cardPropTypes} from "../../propetypes";
 
 import NearPlacesCardsList from "../near-places-cards-list/near-places-cards-list";
 
 const PropertyScreen = (props) => {
-  const {card} = props;
-  const {previewImage, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = card;
+  const {cards} = props;
+  let gerRandomCardFromArray = getRandomArrayItem(cards);
+  const {previewImage, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = gerRandomCardFromArray;
   const {name, avatarUrl} = host;
+  let getRandomKey = getRandomValueFromMassiveWithObjects(cards);
   return <React.Fragment>
-    <div style={{display: `none`}}>
-      <svg xmlns="http://www.w3.org/2000/svg"><symbol id="icon-arrow-select" viewBox="0 0 7 4"><path fillRule="evenodd" clipRule="evenodd" d="M0 0l3.5 2.813L7 0v1.084L3.5 4 0 1.084V0z" /></symbol><symbol id="icon-bookmark" viewBox="0 0 17 18"><path d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z" /></symbol><symbol id="icon-star" viewBox="0 0 13 12"><path fillRule="evenodd" clipRule="evenodd" d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z" /></symbol></svg>
-    </div>
     <div className="page">
 
       <AuthInfoScreen
@@ -33,10 +33,10 @@ const PropertyScreen = (props) => {
           <div className="property__gallery-container container">
             <div className="property__gallery">
               <div className="property__image-wrapper">
-                <img className="property__image" src={previewImage} alt="Photo studio" />
+                <img className="property__image" src={getRandomKey} alt="Photo studio" />
               </div>
               <div className="property__image-wrapper">
-                <img className="property__image" src={previewImage} alt="Photo studio" />
+                <img className="property__image" src={getRandomKey} alt="Photo studio" />
               </div>
               <div className="property__image-wrapper">
                 <img className="property__image" src={previewImage} alt="Photo studio" />
@@ -148,7 +148,7 @@ const PropertyScreen = (props) => {
                 <h2 className="reviews__title">Reviews · <span className="reviews__amount">1</span></h2>
 
                 <Rewiev
-                  comments = {commentsMocks}
+                  comments={[getRandomArrayItem(commentsMocks)]}
                 />
 
                 <FeedBackForm />
@@ -164,7 +164,7 @@ const PropertyScreen = (props) => {
             <div className="near-places__list places__list">
 
               <NearPlacesCardsList
-                nearCards={[card]}
+                nearCards={[getRandomArrayItem(cards)]}
               />
 
             </div>
@@ -176,9 +176,7 @@ const PropertyScreen = (props) => {
 };
 
 PropertyScreen.propTypes = {
-  card: cardPropTypes,
-  comments: PropTypes.arrayOf(commentPropTypes),
-  authInfo: PropTypes.arrayOf(authPropTypes)
+  cards: PropTypes.arrayOf(cardPropTypes)
 };
 
 export default PropertyScreen;

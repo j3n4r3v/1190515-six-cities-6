@@ -11,3 +11,7 @@ export const getRandomArrayItem = (array) => {
   return array[randomIndex];
 };
 
+export const getRandomValueFromMassiveWithObjects = (array) => {
+  const randomIndex = getRandomInteger(0, array.length - 1);
+  return (array[randomIndex]).previewImage;
+};

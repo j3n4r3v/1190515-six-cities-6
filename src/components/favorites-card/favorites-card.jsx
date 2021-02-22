@@ -1,4 +1,5 @@
 import React from "react";
+// import PropTypes from "prop-types";
 
 import {getRandomArrayItem} from "../../utils";
 import {cardPropTypes} from "../../propetypes";
@@ -43,7 +44,7 @@ const FavoritesCard = (props) => {
 };
 
 FavoritesCard.propTypes = {
-  card: cardPropTypes
+  card: cardPropTypes // PropTypes.shape(cardPropTypes) - error?
 };
 
 export default FavoritesCard;
