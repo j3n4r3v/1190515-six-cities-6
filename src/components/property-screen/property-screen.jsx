@@ -11,6 +11,7 @@ import {getRandomArrayItem} from "../../utils";
 import FeedBackForm from "../feedbackform/feedbackform";
 import Rewiev from "../rewiev-list/review-list";
 import PropertyGalleryCard from "../property-gallery-card/property-gallery-card";
+import PropertyInsideItem from "../property-inside-item/property-inside-item";
 import {cardPropTypes} from "../../propetypes";
 
 import NearPlacesCardsList from "../near-places-cards-list/near-places-cards-list";
@@ -80,36 +81,9 @@ const PropertyScreen = (props) => {
               <div className="property__inside">
                 <h2 className="property__inside-title">What`s inside</h2>
                 <ul className="property__inside-list">
-                  <li className="property__inside-item">
-                    {getRandomArrayItem(goods)}
-                  </li>
-                  <li className="property__inside-item">
-                    {getRandomArrayItem(goods)}
-                  </li>
-                  <li className="property__inside-item">
-                    {getRandomArrayItem(goods)}
-                  </li>
-                  <li className="property__inside-item">
-                    {getRandomArrayItem(goods)}
-                  </li>
-                  <li className="property__inside-item">
-                    {getRandomArrayItem(goods)}
-                  </li>
-                  <li className="property__inside-item">
-                    {getRandomArrayItem(goods)}
-                  </li>
-                  <li className="property__inside-item">
-                    {getRandomArrayItem(goods)}
-                  </li>
-                  <li className="property__inside-item">
-                    {getRandomArrayItem(goods)}
-                  </li>
-                  <li className="property__inside-item">
-                    {getRandomArrayItem(goods)}
-                  </li>
-                  <li className="property__inside-item">
-                    {getRandomArrayItem(goods)}
-                  </li>
+                  {
+                    goods.map((good, i) => <PropertyInsideItem good={good} key={i} />)
+                  }
                 </ul>
               </div>
               <div className="property__host">
