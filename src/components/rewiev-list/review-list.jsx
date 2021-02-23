@@ -6,6 +6,7 @@ import {commentPropTypes} from "../../propetypes";
 
 const Rewiev = (props) => {
   const {comments} = props;
+
   return <React.Fragment>
     <ul className="reviews__list">
       {comments.map((rewiev) => {

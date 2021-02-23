@@ -12,6 +12,7 @@ import {cardPropTypes} from "../../propetypes";
 
 const App = (props) => {
   const {cards} = props;
+
   return <React.Fragment>
     <BrowserRouter>
       <Switch>

@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 const PropertyGalleryCard = (props) => {
   const {image} = props;
 
-  return (
+  return <React.Fragment>
     <div className="property__image-wrapper">
       <img className="property__image" src={image} alt="Photo studio" />
     </div>
-  );
+  </React.Fragment>;
 };
 
 PropertyGalleryCard.propTypes = {

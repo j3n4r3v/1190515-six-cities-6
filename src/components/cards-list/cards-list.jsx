@@ -6,6 +6,7 @@ import {cardPropTypes} from "../../propetypes";
 
 const CardsList = (props) => {
   const {cards} = props;
+
   return <React.Fragment>
     {cards.map((card, i) => <Card key={card + i} card={card} />)}
   </React.Fragment>;

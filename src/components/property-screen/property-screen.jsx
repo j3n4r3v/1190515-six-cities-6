@@ -22,6 +22,7 @@ const PropertyScreen = (props) => {
   const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = gerRandomCardFromArray;
   const {name, avatarUrl} = host;
   const imagesArray = images.length > 6 ? images.splice(0, 6) : images;
+
   return <React.Fragment>
     <div className="page">
 
