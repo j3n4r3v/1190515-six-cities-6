@@ -11,27 +11,32 @@ import NotFoundScreen from "../not-found-screen/not-found-screen";
 import {cardPropTypes} from "../../propetypes";
 
 const App = (props) => {
-  const {cards} = props;
+  const {offers} = props;
 
   return <React.Fragment>
     <BrowserRouter>
       <Switch>
+
         <Route exact path="/">
-          <MainScreen/>
+          <MainScreen />
         </Route>
+
         <Route exact path="/login">
           <SignInScreen />
         </Route>
+
         <Route exact path="/favorites">
           <FavoritesScreen
-            cards={cards}
+            offers={offers}
           />
         </Route>
-        <Route exact path="/card/:id">
+
+        <Route exact path="/offer/:id">
           <PropertyScreen
-            cards={cards}
+            offers={offers}
           />
         </Route>
+
         <Route>
           <NotFoundScreen />
         </Route>
@@ -41,7 +46,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  cards: PropTypes.arrayOf(cardPropTypes)
+  offers: PropTypes.arrayOf(cardPropTypes)
 };
 
 export default App;

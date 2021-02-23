@@ -7,12 +7,12 @@ import {authPropTypes, cardPropTypes} from "../../propetypes";
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
-import FavoritesCardList from "../favorites-card-list/favorites-card-list";
+import FavoritesCardList from "../favorites-offer-list/favorites-offer-list";
 
 const FavoritesScreen = (props) => {
-  const {cards} = props;
-  const city = cards[0].city;
-  const id = cards[0].id;
+  const {offers} = props;
+  const city = offers[0].city;
+  const id = offers[0].id;
 
   return <React.Fragment>
     <div>
@@ -41,7 +41,7 @@ const FavoritesScreen = (props) => {
                   <div className="favorites__places">
 
                     <FavoritesCardList
-                      cards={cards}
+                      offers={offers}
                     />
 
                   </div>
@@ -57,7 +57,7 @@ const FavoritesScreen = (props) => {
                   <div className="favorites__places">
 
                     <FavoritesCardList
-                      cards={cards}
+                      offers={offers}
                     />
 
                   </div>
@@ -78,7 +78,7 @@ const FavoritesScreen = (props) => {
 
 FavoritesScreen.propTypes = {
   authInfo: PropTypes.arrayOf(authPropTypes),
-  cards: PropTypes.arrayOf(cardPropTypes)
+  offers: PropTypes.arrayOf(cardPropTypes)
 };
 
 export default FavoritesScreen;

@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 
 import {authPropTypes} from "../../propetypes";
 
-import CardsList from "../cards-list/cards-list";
+import CardsList from "../offers-list/offers-list";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
-import {cardsMocks} from "../../mocks/cards-mocks";
+import {offersMocks} from "../../mocks/offers-mocks";
 
 const MainScreen = () => {
 
@@ -83,7 +83,7 @@ const MainScreen = () => {
               <div className="cities__places-list places__list tabs__content">
 
                 <CardsList
-                  cards={cardsMocks}
+                  offers={offersMocks}
                 />
 
               </div>

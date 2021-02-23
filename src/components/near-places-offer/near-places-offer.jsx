@@ -3,8 +3,8 @@ import React from "react";
 import {cardPropTypes} from "../../propetypes";
 
 const NearPlacesCard = (props) => {
-  const {card} = props;
-  const {previewImage, price, rating, title, type} = card;
+  const {offer} = props;
+  const {previewImage, price, rating, title, type} = offer;
 
   return <React.Fragment>
     <article className="near-places__card place-card">
@@ -42,7 +42,7 @@ const NearPlacesCard = (props) => {
 };
 
 NearPlacesCard.propTypes = {
-  card: cardPropTypes
+  offer: cardPropTypes
 };
 
 export default NearPlacesCard;

@@ -10,16 +10,16 @@ import {getRandomArrayItem} from "../../utils";
 
 import FeedBackForm from "../feedbackform/feedbackform";
 import Rewiev from "../rewiev-list/review-list";
-import PropertyGalleryCard from "../property-gallery-card/property-gallery-card";
+import PropertyGalleryCard from "../property-gallery-offer/property-gallery-offer";
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
 import {cardPropTypes} from "../../propetypes";
 
-import NearPlacesCardsList from "../near-places-cards-list/near-places-cards-list";
+import NearPlacesCardsList from "../near-places-offers-list/near-places-offers-list";
 
 const PropertyScreen = (props) => {
-  const {cards} = props;
-  const gerRandomCardFromArray = getRandomArrayItem(cards);
-  const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = gerRandomCardFromArray;
+  const {offers} = props;
+  const gerRandomOfferFromArray = getRandomArrayItem(offers);
+  const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = gerRandomOfferFromArray;
   const {name, avatarUrl} = host;
   const imagesArray = images.length > 6 ? images.splice(0, 6) : images;
 
@@ -72,7 +72,7 @@ const PropertyScreen = (props) => {
                   {bedrooms} Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                    Max {maxAdults} adults
+                  Max {maxAdults} adults
                 </li>
               </ul>
               <div className="property__price">
@@ -126,7 +126,7 @@ const PropertyScreen = (props) => {
             <div className="near-places__list places__list">
 
               <NearPlacesCardsList
-                nearCards={[getRandomArrayItem(cards)]}
+                nearOffers={[getRandomArrayItem(offers)]}
               />
 
             </div>
@@ -138,7 +138,7 @@ const PropertyScreen = (props) => {
 };
 
 PropertyScreen.propTypes = {
-  cards: PropTypes.arrayOf(cardPropTypes)
+  offers: PropTypes.arrayOf(cardPropTypes)
 };
 
 export default PropertyScreen;
