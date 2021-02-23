@@ -1,6 +1,6 @@
 import React from "react";
 
-import {cardPropTypes} from "../../propetypes";
+import {offerPropTypes} from "../../propetypes";
 
 const NearPlacesCard = (props) => {
   const {offer} = props;
@@ -42,7 +42,7 @@ const NearPlacesCard = (props) => {
 };
 
 NearPlacesCard.propTypes = {
-  offer: cardPropTypes
+  offer: offerPropTypes
 };
 
 export default NearPlacesCard;

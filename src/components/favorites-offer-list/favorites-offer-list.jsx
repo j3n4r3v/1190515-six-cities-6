@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import FavoritesCard from "../favorites-offer/favorites-offer";
-import {cardPropTypes} from "../../propetypes";
+import {offerPropTypes} from "../../propetypes";
 
 const FavoritesCardList = (props) => {
   const {offers} = props;
@@ -13,7 +13,7 @@ const FavoritesCardList = (props) => {
 };
 
 FavoritesCardList.propTypes = {
-  offers: PropTypes.arrayOf(cardPropTypes)
+  offers: PropTypes.arrayOf(offerPropTypes)
 };
 
 export default FavoritesCardList;

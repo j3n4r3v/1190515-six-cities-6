@@ -1,7 +1,7 @@
-const CardType = {
+const OfferType = {
   APARTMENT: `Apartment`,
   PRIVATEROOM: `Private room`,
   STUDIO: `Studio`
 };
 
-export default CardType;
+export default OfferType;

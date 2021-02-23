@@ -8,7 +8,7 @@ import MainScreen from "../main-screen/main-sсreen";
 import PropertyScreen from "../property-screen/property-screen";
 import NotFoundScreen from "../not-found-screen/not-found-screen";
 
-import {cardPropTypes} from "../../propetypes";
+import {offerPropTypes} from "../../propetypes";
 
 const App = (props) => {
   const {offers} = props;
@@ -46,7 +46,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  offers: PropTypes.arrayOf(cardPropTypes)
+  offers: PropTypes.arrayOf(offerPropTypes)
 };
 
 export default App;

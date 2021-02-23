@@ -1,5 +1,4 @@
 import React from "react";
-// import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
@@ -12,7 +11,7 @@ import FeedBackForm from "../feedbackform/feedbackform";
 import Rewiev from "../rewiev-list/review-list";
 import PropertyGalleryCard from "../property-gallery-offer/property-gallery-offer";
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
-import {cardPropTypes} from "../../propetypes";
+import {offerPropTypes} from "../../propetypes";
 
 import NearPlacesCardsList from "../near-places-offers-list/near-places-offers-list";
 
@@ -138,7 +137,7 @@ const PropertyScreen = (props) => {
 };
 
 PropertyScreen.propTypes = {
-  offers: PropTypes.arrayOf(cardPropTypes)
+  offers: PropTypes.arrayOf(offerPropTypes)
 };
 
 export default PropertyScreen;

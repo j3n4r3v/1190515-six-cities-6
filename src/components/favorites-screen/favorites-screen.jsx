@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 import PropTypes from "prop-types";
-import {authPropTypes, cardPropTypes} from "../../propetypes";
+import {authPropTypes, offerPropTypes} from "../../propetypes";
 
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 
@@ -78,7 +78,7 @@ const FavoritesScreen = (props) => {
 
 FavoritesScreen.propTypes = {
   authInfo: PropTypes.arrayOf(authPropTypes),
-  offers: PropTypes.arrayOf(cardPropTypes)
+  offers: PropTypes.arrayOf(offerPropTypes)
 };
 
 export default FavoritesScreen;

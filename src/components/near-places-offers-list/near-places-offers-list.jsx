@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import NearPlacesCard from "../near-places-offer/near-places-offer";
-import {cardPropTypes} from "../../propetypes";
+import {offerPropTypes} from "../../propetypes";
 
 const NearPlacesCardsList = (props) => {
   const {nearOffers} = props;
@@ -13,7 +13,7 @@ const NearPlacesCardsList = (props) => {
 };
 
 NearPlacesCardsList.propTypes = {
-  nearOffers: PropTypes.arrayOf(cardPropTypes)
+  nearOffers: PropTypes.arrayOf(offerPropTypes)
 };
 
 export default NearPlacesCardsList;

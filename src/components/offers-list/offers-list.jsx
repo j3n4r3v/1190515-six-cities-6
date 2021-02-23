@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Card from "../offer/offer";
-import {cardPropTypes} from "../../propetypes";
+import {offerPropTypes} from "../../propetypes";
 
 const CardsList = (props) => {
   const {offers} = props;
@@ -13,7 +13,7 @@ const CardsList = (props) => {
 };
 
 CardsList.propTypes = {
-  offers: PropTypes.arrayOf(cardPropTypes)
+  offers: PropTypes.arrayOf(offerPropTypes)
 };
 
 export default CardsList;
