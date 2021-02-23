@@ -1,12 +1,12 @@
 import React from "react";
 // import PropTypes from "prop-types";
 
-import { getRandomArrayItem } from "../../utils";
-import { cardPropTypes } from "../../propetypes";
+import {getRandomArrayItem} from "../../utils";
+import {cardPropTypes} from "../../propetypes";
 
 const FavoritesCard = (props) => {
-  const { card } = props;
-  const { images, price, rating, title, type } = card;
+  const {card} = props;
+  const {images, price, rating, title, type} = card;
 
   return <React.Fragment>
     <article className="favorites__card place-card">
@@ -30,7 +30,7 @@ const FavoritesCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${20 * rating}%` }} />
+            <span style={{width: `${20 * rating}%`}} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

@@ -3,7 +3,7 @@ import React, {useState} from "react";
 const FeedBackForm = () => {
   const [data, changeData] = useState({
     rating: ``,
-    rewiev: ``
+    review: ``
   });
 
   const handleSubmit = (evt) => {
