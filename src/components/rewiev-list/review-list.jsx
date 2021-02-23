@@ -30,7 +30,7 @@ const Rewiev = (props) => {
             <p className="reviews__text">
               {comment}.
             </p>
-            <time className="reviews__time" dateTime={date}>April 2019</time>
+            <time className="reviews__time" dateTime="2019-04-24">{new Date(date).toLocaleDateString(`en-US`, {year: `numeric`, month: `long`})}</time>
           </div>
         </li>;
       })
