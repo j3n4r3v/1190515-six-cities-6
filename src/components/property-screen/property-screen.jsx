@@ -6,11 +6,11 @@ import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import {commentsMocks} from "../../mocks/comments-mocks";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
-import {getRandomArrayItem, getRandomValueFromMassiveWithObjects} from "../../utils";
+import {getRandomArrayItem} from "../../utils";
 
 import FeedBackForm from "../feedbackform/feedbackform";
 import Rewiev from "../rewiev-list/review-list";
-
+import PropertyGalleryCard from "../property-gallery-card/property-gallery-card";
 import {cardPropTypes} from "../../propetypes";
 
 import NearPlacesCardsList from "../near-places-cards-list/near-places-cards-list";
@@ -18,10 +18,9 @@ import NearPlacesCardsList from "../near-places-cards-list/near-places-cards-lis
 const PropertyScreen = (props) => {
   const {cards} = props;
   const gerRandomCardFromArray = getRandomArrayItem(cards);
-  const {previewImage, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = gerRandomCardFromArray;
+  const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = gerRandomCardFromArray;
   const {name, avatarUrl} = host;
-  const getRandomKey = getRandomValueFromMassiveWithObjects(cards);
-
+  const imagesArray = images.length > 6 ? images.splice(0, 6) : images;
   return <React.Fragment>
     <div className="page">
 
@@ -33,31 +32,18 @@ const PropertyScreen = (props) => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              <div className="property__image-wrapper">
-                <img className="property__image" src={getRandomKey} alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src={getRandomKey} alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src={previewImage} alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src={previewImage} alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src={previewImage} alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src={previewImage} alt="Photo studio" />
-              </div>
+              {
+                imagesArray.map((image, i) => <PropertyGalleryCard image={image} key={i} />)
+              }
             </div>
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              <div className="property__mark">
-                <span>Premium</span>
-              </div>
+              {
+                isPremium && <div className="property__mark">
+                  <span>Premium</span>
+                </div>
+              }
               <div className="property__name-wrapper">
                 <h1 className="property__name">
                   {title}
