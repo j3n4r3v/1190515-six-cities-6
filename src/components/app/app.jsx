@@ -22,7 +22,9 @@ const App = (props) => {
           <SignInScreen />
         </Route>
         <Route exact path="/favorites">
-          <FavoritesScreen/>
+          <FavoritesScreen
+            cards={cards}
+          />
         </Route>
         <Route exact path="/card/:id">
           <PropertyScreen

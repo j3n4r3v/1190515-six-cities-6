@@ -2,18 +2,17 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 import PropTypes from "prop-types";
-import {authPropTypes} from "../../propetypes";
+import {authPropTypes, cardPropTypes} from "../../propetypes";
 
-import {getRandomArrayItem} from "../../utils";
-
-import {cardsMocks} from "../../mocks/cards-mocks";
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
-import FavoritesCard from "../favorites-card/favorites-card";
+import FavoritesCardList from "../favorites-card-list/favorites-card-list";
 
-const FavoritesScreen = () => {
-  const gerRandomCardMock = getRandomArrayItem(cardsMocks);
+const FavoritesScreen = (props) => {
+  const {cards} = props;
+  const city = cards[0].city;
+  const id = cards[0].id;
 
   return <React.Fragment>
     <div>
@@ -34,18 +33,15 @@ const FavoritesScreen = () => {
                 <li className="favorites__locations-items">
                   <div className="favorites__locations locations locations--current">
                     <div className="locations__item">
-                      <a className="locations__item-link" href="#">
-                        <span>Amsterdam</span>
-                      </a>
+                      <Link className="locations__item-link" to={`/city/${id}`}>
+                        <span>{city.name}</span>
+                      </Link>
                     </div>
                   </div>
                   <div className="favorites__places">
 
-                    <FavoritesCard
-                      card={gerRandomCardMock} // из массива обьектов cards - обьект рандомно
-                    />
-                    <FavoritesCard
-                      card={gerRandomCardMock}
+                    <FavoritesCardList
+                      cards={cards}
                     />
 
                   </div>
@@ -53,15 +49,15 @@ const FavoritesScreen = () => {
                 <li className="favorites__locations-items">
                   <div className="favorites__locations locations locations--current">
                     <div className="locations__item">
-                      <a className="locations__item-link" href="#">
-                        <span>Cologne</span>
-                      </a>
+                      <Link className="locations__item-link" to={`/city/${id}`}>
+                        <span>{city.name}</span>
+                      </Link>
                     </div>
                   </div>
                   <div className="favorites__places">
 
-                    <FavoritesCard
-                      card={gerRandomCardMock}
+                    <FavoritesCardList
+                      cards={cards}
                     />
 
                   </div>
@@ -81,7 +77,8 @@ const FavoritesScreen = () => {
 };
 
 FavoritesScreen.propTypes = {
-  authInfo: PropTypes.arrayOf(authPropTypes)
+  authInfo: PropTypes.arrayOf(authPropTypes),
+  cards: PropTypes.arrayOf(cardPropTypes)
 };
 
 export default FavoritesScreen;
