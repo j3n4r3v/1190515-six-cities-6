@@ -8,7 +8,6 @@ const AuthInfoScreen = (props) => {
   const {avatarUrl, email} = authInfo;
 
   return <React.Fragment>
-
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
@@ -31,7 +30,6 @@ const AuthInfoScreen = (props) => {
         </div>
       </div>
     </header>
-
   </React.Fragment>;
 };
 

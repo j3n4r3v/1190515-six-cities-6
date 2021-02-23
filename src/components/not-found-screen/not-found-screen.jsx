@@ -7,8 +7,7 @@ const NotFoundScreen = () => {
       <br />
       404 Not Found
     </h1>
-    <Link to="/">Go to Main Page
-    </Link>
+    <Link to="/">Go to Main Page</Link>
   </React.Fragment>;
 };
 

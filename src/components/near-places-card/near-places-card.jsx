@@ -5,6 +5,7 @@ import {cardPropTypes} from "../../propetypes";
 const NearPlacesCard = (props) => {
   const {card} = props;
   const {previewImage, price, rating, title, type} = card;
+
   return <React.Fragment>
     <article className="near-places__card place-card">
       <div className="near-places__image-wrapper place-card__image-wrapper">

@@ -3,14 +3,18 @@ import {Link} from "react-router-dom";
 
 import PropTypes from "prop-types";
 import {authPropTypes} from "../../propetypes";
+
 import {getRandomArrayItem} from "../../utils";
+
 import {cardsMocks} from "../../mocks/cards-mocks";
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
+
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import FavoritesCard from "../favorites-card/favorites-card";
 
 const FavoritesScreen = () => {
   const gerRandomCardMock = getRandomArrayItem(cardsMocks);
+
   return <React.Fragment>
     <div>
       <div style={{display: `none`}}>

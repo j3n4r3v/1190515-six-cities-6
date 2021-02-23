@@ -17,10 +17,11 @@ import NearPlacesCardsList from "../near-places-cards-list/near-places-cards-lis
 
 const PropertyScreen = (props) => {
   const {cards} = props;
-  let gerRandomCardFromArray = getRandomArrayItem(cards);
+  const gerRandomCardFromArray = getRandomArrayItem(cards);
   const {previewImage, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = gerRandomCardFromArray;
   const {name, avatarUrl} = host;
-  let getRandomKey = getRandomValueFromMassiveWithObjects(cards);
+  const getRandomKey = getRandomValueFromMassiveWithObjects(cards);
+
   return <React.Fragment>
     <div className="page">
 

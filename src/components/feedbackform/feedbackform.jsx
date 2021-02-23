@@ -1,13 +1,9 @@
 import React, {useState} from "react";
 
 const FeedBackForm = () => {
-  const [userForm, setUserForm] = useState({
-    "5-stars": ``,
-    "4-stars": ``,
-    "3-stars": ``,
-    "2-stars": ``,
-    "1-stars": ``,
-    "rewiev": ``
+  const [data, changeData] = useState({
+    rating: ``,
+    rewiev: ``
   });
 
   const handleSubmit = (evt) => {
@@ -15,11 +11,11 @@ const FeedBackForm = () => {
   };
 
   const handleFieldChange = (evt) => {
-    const {id, value} = evt.target;
-    setUserForm({...userForm, [id]: value});
+    const {name, value} = evt.target;
+    changeData({...data, [name]: value});
   };
 
-  return (<React.Fragment>
+  return <React.Fragment>
     <form onSubmit={handleSubmit} className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
@@ -62,7 +58,7 @@ const FeedBackForm = () => {
         <button className="reviews__submit form__submit button" type="submit" disabled>Submit</button>
       </div>
     </form>
-  </React.Fragment>);
+  </React.Fragment>;
 };
 
 export default FeedBackForm;

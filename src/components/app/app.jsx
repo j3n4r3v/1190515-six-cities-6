@@ -7,7 +7,7 @@ import SignInScreen from "../sign-in-screen/sign-in-screen";
 import MainScreen from "../main-screen/main-sсreen";
 import PropertyScreen from "../property-screen/property-screen";
 import NotFoundScreen from "../not-found-screen/not-found-screen";
-// import {getRandomArrayItem} from "../../utils";
+
 import {cardPropTypes} from "../../propetypes";
 
 const App = (props) => {
