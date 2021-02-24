@@ -8,7 +8,7 @@ const NearPlacesCardsList = (props) => {
   const {nearOffers} = props;
 
   return <React.Fragment>
-    {nearOffers.map((offer, id) => <NearPlacesCard key={id} offer={offer} />)}
+    {nearOffers.map((offer) => <NearPlacesCard key={offer.id} offer={offer} />)}
   </React.Fragment>;
 };
 

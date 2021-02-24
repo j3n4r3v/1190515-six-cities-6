@@ -8,7 +8,7 @@ const CardsList = (props) => {
   const {offers} = props;
 
   return <React.Fragment>
-    {offers.map((offer, id) => <Card key={id} offer={offer} />)}
+    {offers.map((offer) => <Card key={offer.id} offer={offer} />)}
   </React.Fragment>;
 };
 

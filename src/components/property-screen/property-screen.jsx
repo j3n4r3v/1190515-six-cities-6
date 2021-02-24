@@ -34,7 +34,7 @@ const PropertyScreen = (props) => {
           <div className="property__gallery-container container">
             <div className="property__gallery">
               {
-                imagesArray.map((image, id) => <PropertyGalleryCard image={image} key={id} />)
+                imagesArray.map((image, i) => <PropertyGalleryCard image={image} key={image + i} />)
               }
             </div>
           </div>
@@ -82,7 +82,7 @@ const PropertyScreen = (props) => {
                 <h2 className="property__inside-title">What`s inside</h2>
                 <ul className="property__inside-list">
                   {
-                    goods.map((good, id) => <PropertyInsideItem good={good} key={id} />)
+                    goods.map((good, i) => <PropertyInsideItem good={good} key={good + i} />)
                   }
                 </ul>
               </div>
