@@ -1,23 +1,26 @@
-
 import React from "react";
-import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
+// import PropTypes from "prop-types";
+import {offerPropTypes} from "../../propetypes";
 
-const PlaceCard = (props) => {
-  const {cardAddress} = props;
+const Card = (props) => {
+  const {offer} = props;
+  const {previewImage, price, rating, title, type, id} = offer;
+
   return <React.Fragment>
     <article className="cities__place-card place-card">
       <div className="place-card__mark">
         <span>Premium</span>
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
-          <img className="place-card__image" src={`img/${cardAddress}.jpg`} width={260} height={200} alt="Place image" />
-        </a>
+        <Link to={`/offer/${id}`}>
+          <img className="place-card__image" src={previewImage} width={260} height={200} alt="Place image" />
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">€120</b>
+            <b className="place-card__price-value">{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
           <button className="place-card__bookmark-button button" type="button">
@@ -29,21 +32,21 @@ const PlaceCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `80%`}} />
+            <span style={{width: `${20 * rating}%`}} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">Beautiful &amp; luxurious apartment at great location</a>
+          <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
-        <p className="place-card__type">Apartment</p>
+        <p className="place-card__type">{type}</p>
       </div>
     </article>
   </React.Fragment>;
 };
 
-PlaceCard.propTypes = {
-  cardAddress: PropTypes.string.isRequired,
+Card.propTypes = {
+  offer: offerPropTypes
 };
 
-export default PlaceCard;
+export default Card;
