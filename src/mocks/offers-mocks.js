@@ -9,7 +9,7 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-angelina.jpg`,
-      "id": 3,
+      "id": 5,
       "isPro": true,
       "name": `Angelina`
     },
@@ -47,11 +47,11 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-max.jpg`,
-      "id": 3,
+      "id": 4,
       "isPro": true,
       "name": `Max`
     },
-    "id": 1,
+    "id": 2,
     "images": [`https://assets.htmlacademy.ru/intensives/javascript-3/hotel/13.jpg`,
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg`,
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/19.jpg`,
@@ -90,7 +90,7 @@ export const offersMocks = [
       "isPro": true,
       "name": `Angelina`
     },
-    "id": 1,
+    "id": 3,
     "images": [`https://assets.htmlacademy.ru/intensives/javascript-3/hotel/13.jpg`,
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg`,
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/19.jpg`,
@@ -125,11 +125,11 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-max.jpg`,
-      "id": 3,
+      "id": 2,
       "isPro": true,
       "name": `Max`
     },
-    "id": 1,
+    "id": 4,
     "images": [`https://assets.htmlacademy.ru/intensives/javascript-3/hotel/13.jpg`,
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg`,
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/19.jpg`,
@@ -164,11 +164,11 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-max.jpg`,
-      "id": 3,
+      "id": 1,
       "isPro": true,
       "name": `Max`
     },
-    "id": 1,
+    "id": 5,
     "images": [`https://assets.htmlacademy.ru/intensives/javascript-3/hotel/13.jpg`,
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg`,
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/19.jpg`,

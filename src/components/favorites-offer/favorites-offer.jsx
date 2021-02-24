@@ -1,18 +1,17 @@
 import React from "react";
 // import PropTypes from "prop-types";
 
-import {getRandomArrayItem} from "../../utils";
 import {offerPropTypes} from "../../propetypes";
 
 const FavoritesCard = (props) => {
   const {offer} = props;
-  const {images, price, rating, title, type} = offer;
+  const {previewImage, price, rating, title, type} = offer;
 
   return <React.Fragment>
     <article className="favorites__card place-card">
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={getRandomArrayItem(images)} width={150} height={110} alt="Place image" />
+          <img className="place-card__image" src={previewImage} width={150} height={110} alt="Place image" />
         </a>
       </div>
       <div className="favorites__card-info place-card__info">
