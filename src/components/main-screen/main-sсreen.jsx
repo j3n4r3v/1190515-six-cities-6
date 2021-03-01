@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import {authPropTypes} from "../../propetypes";
+// import {CITIES} from "../../const";
+import {authPropTypes, offerPropTypes} from "../../propetypes";
 
 import OffersList from "../offers-list/offers-list";
 import Map from "../map/map";
@@ -11,8 +12,7 @@ import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import {offersMocks} from "../../mocks/offers-mocks";
 
-const MainScreen = (props) => {
-  const {activeTown} = props;
+const MainScreen = () => {
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -94,8 +94,12 @@ const MainScreen = (props) => {
               <section className="cities__map map">
 
                 <Map
-                  offers={offersMocks}
-                  activeTown={activeTown}
+                  offers={offersMocks.filter((offer) => {
+                    return offer.city.name === `Amsterdam`;
+                  })}
+                  activePin={offersMocks.filter((offer) => {
+                    return offer.city.name === `Amsterdam`;
+                  })[0].id}
                 />
 
               </section>
@@ -109,7 +113,8 @@ const MainScreen = (props) => {
 
 MainScreen.propTypes = {
   authInfo: PropTypes.arrayOf(authPropTypes),
-  activeTown: PropTypes.number
+  offer: offerPropTypes,
+  activePin: PropTypes.number
 };
 
 export default MainScreen;

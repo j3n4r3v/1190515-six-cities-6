@@ -9,16 +9,17 @@ import PropertyScreen from "../property-screen/property-screen";
 import NotFoundScreen from "../not-found-screen/not-found-screen";
 
 import {offerPropTypes} from "../../propetypes";
+// import {CITIES} from "../../const";
 
 const App = (props) => {
-  const {offers, activeTown} = props;
+  const {offers} = props;
 
   return <React.Fragment>
     <BrowserRouter>
       <Switch>
 
         <Route exact path="/">
-          <MainScreen activeTown={activeTown}/>
+          <MainScreen/>
         </Route>
 
         <Route exact path="/login">
@@ -45,7 +46,6 @@ const App = (props) => {
 
 App.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
-  activeTown: PropTypes.number
 };
 
 export default App;

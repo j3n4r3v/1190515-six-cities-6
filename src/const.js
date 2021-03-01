@@ -4,6 +4,6 @@ const OfferType = {
   STUDIO: `Studio`
 };
 
-const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
+const CITIES = [`Amsterdam`, `Cologne`, `Brussels`, `Paris`, `Hamburg`, `Dusseldorf`];
 
 export {OfferType, CITIES};

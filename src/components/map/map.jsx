@@ -3,7 +3,7 @@ import leaflet from "leaflet";
 import PropTypes from "prop-types";
 
 import {offerPropTypes} from "../../propetypes";
-// import {getRandomArrayItem} from "../../utils";
+// import {CITIES} from "../../const";
 
 import "leaflet/dist/leaflet.css";
 
@@ -19,18 +19,17 @@ const ACTIVE_ICON = leaflet.icon({
 });
 
 const Map = (props) => {
-  const {offers, activeTown} = props;
-  const offer = offers[0];
-  const {city, pointsLocation, title, id} = offer;
+  const {offers, activePin} = props;
+
   const mapRef = useRef();
 
   useEffect(() => {
     mapRef.current = leaflet.map(`map`, {
       center: {
-        lat: city.location.latitude,
-        lng: city.location.longitude
+        lat: offers[0].city.location.latitude,
+        lng: offers[0].city.location.longitude
       },
-      zoom: city.location.zoom,
+      zoom: offers[0].city.location.zoom,
       zoomControl: false,
       marker: true
     });
@@ -41,18 +40,18 @@ const Map = (props) => {
       })
       .addTo(mapRef.current);
 
-    offers.forEach(() => { // forEach/map - better? need offer in param ?
-
-      pointsLocation.forEach(() => {
-        leaflet.marker({
+    offers.forEach((offer) => {
+      const {pointsLocation, title, id} = offer;
+      leaflet
+        .marker({
           lat: pointsLocation.latitude,
           lng: pointsLocation.longitude
         },
-        {icon: id === activeTown ? ACTIVE_ICON : ICON}
+        {icon: id === activePin ? ACTIVE_ICON : ICON}
         )
           .addTo(mapRef.current)
           .bindPopup(title);
-      });
+
 
       return () => {
         mapRef.current.remove();
@@ -61,14 +60,14 @@ const Map = (props) => {
   }, []);
 
   return (
-    < div id = "map" style={{height: `100%`, width: `100%`}} ref={mapRef}></div>
+    <div id = "map" style={{height: `100%`, width: `100%`}} ref={mapRef}></div>
   );
 };
 
 Map.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
-  activeTown: PropTypes.number
+  activePin: PropTypes.number
 };
 
 export default Map;
