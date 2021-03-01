@@ -43,15 +43,16 @@ const Map = (props) => {
 
     offers.forEach(() => { // forEach/map - better? need offer in param ?
 
-      leaflet
-        .marker([{
+      pointsLocation.forEach(() => {
+        leaflet.marker({
           lat: pointsLocation.latitude,
           lng: pointsLocation.longitude
-        }],
+        },
         {icon: id === activeTown ? ACTIVE_ICON : ICON}
         )
-        .addTo(mapRef.current)
-        .bindPopup(title);
+          .addTo(mapRef.current)
+          .bindPopup(title);
+      });
 
       return () => {
         mapRef.current.remove();
