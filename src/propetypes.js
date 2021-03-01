@@ -22,7 +22,7 @@ export const offerPropTypes = PropTypes.shape({
   "id": PropTypes.number.isRequired,
   "favoitesImages": PropTypes.arrayOf(PropTypes.string.isRequired),
   "is_premium": PropTypes.bool.isRequired,
-  "points": PropTypes.shape({
+  "pointLocation": PropTypes.shape({
     "latitude": PropTypes.number.isRequired,
     "longitude": PropTypes.number.isRequired,
     "zoom": PropTypes.number.isRequired

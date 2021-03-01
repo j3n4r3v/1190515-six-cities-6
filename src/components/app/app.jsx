@@ -18,7 +18,7 @@ const App = (props) => {
       <Switch>
 
         <Route exact path="/">
-          <MainScreen />
+          <MainScreen/>
         </Route>
 
         <Route exact path="/login">
@@ -26,14 +26,12 @@ const App = (props) => {
         </Route>
 
         <Route exact path="/favorites">
-          <FavoritesScreen
-            offers={offers}
+          <FavoritesScreen offers={offers}
           />
         </Route>
 
         <Route exact path="/offer/:id">
-          <PropertyScreen
-            offers={offers}
+          <PropertyScreen offers={offers}
           />
         </Route>
 

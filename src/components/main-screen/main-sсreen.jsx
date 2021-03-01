@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import {authPropTypes} from "../../propetypes";
 
 import CardsList from "../offers-list/offers-list";
+import Map from "../map/map";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 
@@ -89,7 +90,13 @@ const MainScreen = () => {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map" />
+              <section className="cities__map map">
+
+                <Map
+                  offers={offersMocks}
+                />
+
+              </section>
             </div>
           </div>
         </div>
@@ -99,7 +106,8 @@ const MainScreen = () => {
 };
 
 MainScreen.propTypes = {
-  authInfo: PropTypes.arrayOf(authPropTypes)
+  authInfo: PropTypes.arrayOf(authPropTypes),
+  // offers: PropTypes.arrayOf(offerPropTypes)
 };
 
 export default MainScreen;
