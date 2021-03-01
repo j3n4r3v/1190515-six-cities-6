@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const PropertyGalleryOffer = (props) => {
-  const { image } = props;
+  const {image} = props;
 
   return <React.Fragment>
     <div className="property__image-wrapper">
