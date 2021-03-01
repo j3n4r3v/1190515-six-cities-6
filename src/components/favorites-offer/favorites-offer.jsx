@@ -1,11 +1,11 @@
 import React from "react";
 // import PropTypes from "prop-types";
 
-import {offerPropTypes} from "../../propetypes";
+import { offerPropTypes } from "../../propetypes";
 
-const FavoritesCard = (props) => {
-  const {offer} = props;
-  const {previewImage, price, rating, title, type} = offer;
+const FavoritesOffer = (props) => {
+  const { offer } = props;
+  const { previewImage, price, rating, title, type } = offer;
 
   return <React.Fragment>
     <article className="favorites__card place-card">
@@ -29,7 +29,7 @@ const FavoritesCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${20 * rating}%`}} />
+            <span style={{ width: `${20 * rating}%` }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -42,8 +42,8 @@ const FavoritesCard = (props) => {
   </React.Fragment>;
 };
 
-FavoritesCard.propTypes = {
+FavoritesOffer.propTypes = {
   offer: offerPropTypes // PropTypes.shape(offerPropTypes) - error?
 };
 
-export default FavoritesCard;
+export default FavoritesOffer;

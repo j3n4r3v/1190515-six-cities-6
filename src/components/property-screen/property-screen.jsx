@@ -1,25 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import {authInfoMocks} from "../../mocks/auth-info-mocks";
-import {commentsMocks} from "../../mocks/comments-mocks";
+import { authInfoMocks } from "../../mocks/auth-info-mocks";
+import { commentsMocks } from "../../mocks/comments-mocks";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
-import {getRandomArrayItem} from "../../utils";
+import { getRandomArrayItem } from "../../utils";
 
 import FeedBackForm from "../feedbackform/feedbackform";
 import Rewiev from "../rewiev-list/review-list";
-import PropertyGalleryCard from "../property-gallery-offer/property-gallery-offer";
+import PropertyGalleryOffer from "../property-gallery-offer/property-gallery-offer";
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
-import {offerPropTypes} from "../../propetypes";
+import { offerPropTypes } from "../../propetypes";
 
-import NearPlacesCardsList from "../near-places-offers-list/near-places-offers-list";
+import NearPlacesOffersList from "../near-places-offers-list/near-places-offers-list";
 
 const PropertyScreen = (props) => {
-  const {offers} = props;
+  const { offers } = props;
   const gerRandomOfferFromArray = getRandomArrayItem(offers);
-  const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = gerRandomOfferFromArray;
-  const {name, avatarUrl} = host;
+  const { isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description } = gerRandomOfferFromArray;
+  const { name, avatarUrl } = host;
   const imagesArray = images.length > 6 ? images.splice(0, 6) : images;
 
   return <React.Fragment>
@@ -34,7 +34,7 @@ const PropertyScreen = (props) => {
           <div className="property__gallery-container container">
             <div className="property__gallery">
               {
-                imagesArray.map((image, i) => <PropertyGalleryCard image={image} key={image + i} />)
+                imagesArray.map((image, i) => <PropertyGalleryOffer image={image} key={image + i} />)
               }
             </div>
           </div>
@@ -58,7 +58,7 @@ const PropertyScreen = (props) => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: `${20 * rating}%`}} />
+                  <span style={{ width: `${20 * rating}%` }} />
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{rating}</span>
@@ -124,7 +124,7 @@ const PropertyScreen = (props) => {
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
 
-              <NearPlacesCardsList
+              <NearPlacesOffersList
                 nearOffers={[getRandomArrayItem(offers)]}
               />
 

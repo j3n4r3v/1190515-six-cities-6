@@ -1,10 +1,10 @@
 import React from "react";
 
-import {offerPropTypes} from "../../propetypes";
+import { offerPropTypes } from "../../propetypes";
 
-const NearPlacesCard = (props) => {
-  const {offer} = props;
-  const {previewImage, price, rating, title, type} = offer;
+const NearPlacesOffer = (props) => {
+  const { offer } = props;
+  const { previewImage, price, rating, title, type } = offer;
 
   return <React.Fragment>
     <article className="near-places__card place-card">
@@ -28,7 +28,7 @@ const NearPlacesCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${20 * rating}%`}} />
+            <span style={{ width: `${20 * rating}%` }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -41,8 +41,8 @@ const NearPlacesCard = (props) => {
   </React.Fragment>;
 };
 
-NearPlacesCard.propTypes = {
+NearPlacesOffer.propTypes = {
   offer: offerPropTypes
 };
 
-export default NearPlacesCard;
+export default NearPlacesOffer;

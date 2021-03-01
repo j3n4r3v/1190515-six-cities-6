@@ -4,31 +4,31 @@ import {OfferType} from "./const";
 export const offerPropTypes = PropTypes.shape({
   "bedrooms": PropTypes.number.isRequired,
   "city": PropTypes.shape({
-    "location": {
+    "location": PropTypes.shape({
       "latitude": PropTypes.number.isRequired,
       "longitude": PropTypes.number.isRequired,
       "zoom": PropTypes.number.isRequired
-    },
+    }),
     "name": PropTypes.string.isRequired
   }),
   "description": PropTypes.string.isRequired,
   "goods": PropTypes.arrayOf(PropTypes.string.isRequired),
   "host": PropTypes.shape({
-    "avatar_url": PropTypes.string.isRequired,
+    "avatarUrl": PropTypes.string.isRequired,
     "id": PropTypes.number.isRequired,
-    "is_pro": PropTypes.bool.isRequired,
+    "isPro": PropTypes.bool.isRequired,
     "name": PropTypes.string.isRequired
   }),
   "id": PropTypes.number.isRequired,
   "favoitesImages": PropTypes.arrayOf(PropTypes.string.isRequired),
-  "is_premium": PropTypes.bool.isRequired,
-  "pointLocation": PropTypes.shape({
+  "isPremium": PropTypes.bool.isRequired,
+  "pointLocation": PropTypes.arrayOf(PropTypes.shape({
     "latitude": PropTypes.number.isRequired,
     "longitude": PropTypes.number.isRequired,
     "zoom": PropTypes.number.isRequired
-  }),
-  "max_adults": PropTypes.number.isRequired,
-  "preview_image": PropTypes.string.isRequired,
+  })),
+  "maxAdults": PropTypes.number.isRequired,
+  "previewImage": PropTypes.string.isRequired,
   "price": PropTypes.number.isRequired,
   "rating": PropTypes.number.isRequired,
   "title": PropTypes.string.isRequired,

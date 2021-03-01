@@ -1,19 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import NearPlacesCard from "../near-places-offer/near-places-offer";
-import {offerPropTypes} from "../../propetypes";
+import NearPlacesOffer from "../near-places-offer/near-places-offer";
+import { offerPropTypes } from "../../propetypes";
 
-const NearPlacesCardsList = (props) => {
-  const {nearOffers} = props;
+const NearPlacesOffersList = (props) => {
+  const { nearOffers } = props;
 
   return <React.Fragment>
-    {nearOffers.map((offer) => <NearPlacesCard key={offer.id} offer={offer} />)}
+    {nearOffers.map((offer) => <NearPlacesOffer key={offer.id} offer={offer} />)}
   </React.Fragment>;
 };
 
-NearPlacesCardsList.propTypes = {
+NearPlacesOffersList.propTypes = {
   nearOffers: PropTypes.arrayOf(offerPropTypes)
 };
 
-export default NearPlacesCardsList;
+export default NearPlacesOffersList;

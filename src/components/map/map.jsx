@@ -1,16 +1,27 @@
 import React, {useEffect, useRef} from "react";
 import leaflet from "leaflet";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import {offerPropTypes} from "../../propetypes";
-import {getRandomArrayItem} from "../../utils";
+// import {getRandomArrayItem} from "../../utils";
 
 import "leaflet/dist/leaflet.css";
 
+
+const ICON = leaflet.icon({
+  iconUrl: `./img/pin.svg`,
+  iconSize: [27, 39]
+});
+
+const ACTIVE_ICON = leaflet.icon({
+  iconUrl: `./img/pin-active.svg`,
+  iconSize: [27, 39]
+});
+
 const Map = (props) => {
-  const {offers} = props;
-  const getRandomOfferFromArray = getRandomArrayItem(offers);
-  const {city, pointLocation, title} = getRandomOfferFromArray;
+  const {offers, activeTown} = props;
+  const offer = offers[0];
+  const {city, pointsLocation, title, id} = offer;
   const mapRef = useRef();
 
   useEffect(() => {
@@ -31,19 +42,14 @@ const Map = (props) => {
       .addTo(mapRef.current);
 
     offers.forEach(() => { // forEach/map - better? need offer in param ?
-      // const {title, pointLocation} = offer ?
-      const customIcon = leaflet.icon({
-        iconUrl: `./img/pin.svg`,
-        iconSize: [27, 39]
-      });
 
-      leaflet.marker({
-        lat: pointLocation.latitude,
-        lng: pointLocation.longitude
-      },
-      {
-        icon: customIcon
-      })
+      leaflet
+        .marker([{
+          lat: pointsLocation.latitude,
+          lng: pointsLocation.longitude
+        }],
+        {icon: id === activeTown ? ACTIVE_ICON : ICON}
+        )
         .addTo(mapRef.current)
         .bindPopup(title);
 
@@ -54,13 +60,14 @@ const Map = (props) => {
   }, []);
 
   return (
-    < div id = "map" style={{height: `100%`}} ref={mapRef}></div>
+    < div id = "map" style={{height: `100%`, width: `100%`}} ref={mapRef}></div>
   );
 };
 
 Map.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
-  offer: offerPropTypes
+  offer: offerPropTypes,
+  activeTown: PropTypes.number
 };
 
 export default Map;

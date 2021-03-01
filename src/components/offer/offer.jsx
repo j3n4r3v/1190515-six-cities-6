@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 // import PropTypes from "prop-types";
 import {offerPropTypes} from "../../propetypes";
 
-const Card = (props) => {
+const Offer = (props) => {
   const {offer} = props;
   const {previewImage, price, rating, title, type, id} = offer;
 
@@ -45,8 +45,8 @@ const Card = (props) => {
   </React.Fragment>;
 };
 
-Card.propTypes = {
+Offer.propTypes = {
   offer: offerPropTypes
 };
 
-export default Card;
+export default Offer;

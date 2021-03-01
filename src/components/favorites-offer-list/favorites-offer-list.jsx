@@ -1,19 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import FavoritesCard from "../favorites-offer/favorites-offer";
-import {offerPropTypes} from "../../propetypes";
+import FavoritesOffer from "../favorites-offer/favorites-offer";
+import { offerPropTypes } from "../../propetypes";
 
-const FavoritesCardList = (props) => {
-  const {offers} = props;
+const FavoritesOfferList = (props) => {
+  const { offers } = props;
 
   return <React.Fragment>
-    {offers.map((offer) => <FavoritesCard key={offer.id} offer={offer} />)}
+    {offers.map((offer) => <FavoritesOffer key={offer.id} offer={offer} />)}
   </React.Fragment>;
 };
 
-FavoritesCardList.propTypes = {
+FavoritesOfferList.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes)
 };
 
-export default FavoritesCardList;
+export default FavoritesOfferList;

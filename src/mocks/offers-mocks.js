@@ -29,7 +29,12 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg`,
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isPremium": false,
-    "pointLocation": {"latitude": 52.3909553943508, "longitude": 4.85309666406198, "zoom": 8},
+    "pointsLocation": [
+      {"latitude": 52.3909553943508, "longitude": 4.85309666406198, "zoom": 10},
+      {"latitude": 52.369553943508, "longitude": 4.85309666406198, "zoom": 10},
+      {"latitude": 52.3909553943508, "longitude": 4.929309666406198, "zoom": 10},
+      {"latitude": 52.3809553943508, "longitude": 4.939309666406198, "zoom": 10}
+    ],
     "maxAdults": 2,
     "previewImage": `img/apartment-01.jpg`,
     "price": 115,
@@ -68,7 +73,12 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "pointLocation": {"latitude": 52.369553943508, "longitude": 4.85309666406198, "zoom": 8},
+    "pointsLocation": [
+      {"latitude": 52.3909553943508, "longitude": 4.85309666406198, "zoom": 10},
+      {"latitude": 52.369553943508, "longitude": 4.85309666406198, "zoom": 10},
+      {"latitude": 52.3909553943508, "longitude": 4.929309666406198, "zoom": 10},
+      {"latitude": 52.3809553943508, "longitude": 4.939309666406198, "zoom": 10}
+    ],
     "maxAdults": 4,
     "previewImage": `img/apartment-02.jpg`,
     "price": 110,
@@ -107,7 +117,12 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "pointLocation": {"latitude": 52.3909553943508, "longitude": 4.929309666406198, "zoom": 8},
+    "pointsLocation": [
+      {"latitude": 52.3909553943508, "longitude": 4.85309666406198, "zoom": 10},
+      {"latitude": 52.369553943508, "longitude": 4.85309666406198, "zoom": 10},
+      {"latitude": 52.3909553943508, "longitude": 4.929309666406198, "zoom": 10},
+      {"latitude": 52.3809553943508, "longitude": 4.939309666406198, "zoom": 10}
+    ],
     "maxAdults": 3,
     "previewImage": `img/room.jpg`,
     "price": 90,
@@ -146,7 +161,12 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "pointLocation": {"latitude": 52.3809553943508, "longitude": 4.939309666406198, "zoom": 8},
+    "pointsLocation": [
+      {"latitude": 52.3909553943508, "longitude": 4.85309666406198, "zoom": 10},
+      {"latitude": 52.369553943508, "longitude": 4.85309666406198, "zoom": 10},
+      {"latitude": 52.3909553943508, "longitude": 4.929309666406198, "zoom": 10},
+      {"latitude": 52.3809553943508, "longitude": 4.939309666406198, "zoom": 10}
+    ],
     "maxAdults": 1,
     "previewImage": `img/studio-01.jpg`,
     "price": 100,
@@ -185,7 +205,12 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "pointLocation": {"latitude": 52.379553943508, "longitude": 4.75309666406198, "zoom": 8},
+    "pointsLocation": [
+      {"latitude": 52.3909553943508, "longitude": 4.85309666406198, "zoom": 10},
+      {"latitude": 52.369553943508, "longitude": 4.85309666406198, "zoom": 10},
+      {"latitude": 52.3909553943508, "longitude": 4.929309666406198, "zoom": 10},
+      {"latitude": 52.3809553943508, "longitude": 4.939309666406198, "zoom": 10}
+    ],
     "maxAdults": 4,
     "previewImage": `img/apartment-02.jpg`,
     "price": 120,
