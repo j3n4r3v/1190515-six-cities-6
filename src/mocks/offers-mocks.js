@@ -2,8 +2,8 @@ export const offersMocks = [
   {
     "bedrooms": 3,
     "city": {
-      "location": {"latitude": 52.370216, "longitude": 4.895168, "zoom": 10},
-      "name": `Paris`
+      "location": {"latitude": 52.38333, "longitude": 4.895168, "zoom": 10},
+      "name": `Amsterdam`
     },
     "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
@@ -29,19 +29,19 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg`,
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isPremium": false,
-    "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
+    "pointLocation": {"latitude": 52.3909553943508, "longitude": 4.85309666406198, "zoom": 8},
     "maxAdults": 2,
     "previewImage": `img/apartment-01.jpg`,
     "price": 115,
     "rating": 5,
     "title": `Beautiful & luxurious studio at great location`,
-    "type": `apartment`
+    "type": `Apartment`
   },
   {
     "bedrooms": 3,
     "city": {
       "location": {"latitude": 52.370216, "longitude": 4.895168, "zoom": 10},
-      "name": `Amsterdam`
+      "name": `Paris`
     },
     "description": `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
@@ -68,13 +68,13 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
+    "pointLocation": {"latitude": 52.369553943508, "longitude": 4.85309666406198, "zoom": 8},
     "maxAdults": 4,
     "previewImage": `img/apartment-02.jpg`,
     "price": 110,
     "rating": 4.5,
     "title": `Nice, cozy, warm big bed apartment`,
-    "type": `apartment`
+    "type": `Apartment`
   },
   {
     "bedrooms": 3,
@@ -107,7 +107,7 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
+    "pointLocation": {"latitude": 52.3909553943508, "longitude": 4.929309666406198, "zoom": 8},
     "maxAdults": 3,
     "previewImage": `img/room.jpg`,
     "price": 90,
@@ -146,7 +146,7 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
+    "pointLocation": {"latitude": 52.3809553943508, "longitude": 4.939309666406198, "zoom": 8},
     "maxAdults": 1,
     "previewImage": `img/studio-01.jpg`,
     "price": 100,
@@ -158,7 +158,7 @@ export const offersMocks = [
     "bedrooms": 3,
     "city": {
       "location": {"latitude": 52.370216, "longitude": 4.895168, "zoom": 10},
-      "name": `Amsterdam`
+      "name": `Cologne`
     },
     "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
@@ -185,13 +185,13 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "location": {"latitude": 52.35514938496378, "longitude": 4.673877537499948, "zoom": 8},
+    "pointLocation": {"latitude": 52.379553943508, "longitude": 4.75309666406198, "zoom": 8},
     "maxAdults": 4,
     "previewImage": `img/apartment-02.jpg`,
     "price": 120,
     "rating": 4.5,
     "title": `Nice, cozy, warm big bed apartment`,
-    "type": `apartment`
+    "type": `Apartment`
   }
 ];
 

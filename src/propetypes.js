@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import OfferType from "./const";
+import {OfferType} from "./const";
 
 export const offerPropTypes = PropTypes.shape({
   "bedrooms": PropTypes.number.isRequired,
@@ -22,7 +22,7 @@ export const offerPropTypes = PropTypes.shape({
   "id": PropTypes.number.isRequired,
   "favoitesImages": PropTypes.arrayOf(PropTypes.string.isRequired),
   "is_premium": PropTypes.bool.isRequired,
-  "location": PropTypes.shape({
+  "points": PropTypes.shape({
     "latitude": PropTypes.number.isRequired,
     "longitude": PropTypes.number.isRequired,
     "zoom": PropTypes.number.isRequired
