@@ -16,8 +16,8 @@ const Map = (props) => {
   useEffect(() => {
     mapRef.current = leaflet.map(`map`, {
       center: {
-        latitude: city.location.latitude,
-        longitude: city.location.longitude
+        lat: city.location.latitude,
+        lng: city.location.longitude
       },
       zoom: city.location.zoom,
       zoomControl: false,
@@ -38,8 +38,8 @@ const Map = (props) => {
       });
 
       leaflet.marker({
-        latitude: pointLocation.latitude,
-        longitude: pointLocation.longitude
+        lat: pointLocation.latitude,
+        lng: pointLocation.longitude
       },
       {
         icon: customIcon
@@ -54,7 +54,7 @@ const Map = (props) => {
   }, []);
 
   return (
-    <section className="cities__map map" style={{height: `100%`}} ref={mapRef}></section>
+    < div id = "map" style={{height: `100%`}} ref={mapRef}></div>
   );
 };
 
