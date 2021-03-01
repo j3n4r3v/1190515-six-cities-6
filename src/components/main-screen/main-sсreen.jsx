@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// import {CITIES} from "../../const";
+import {CITIES} from "../../const";
 import {authPropTypes, offerPropTypes} from "../../propetypes";
 
 import OffersList from "../offers-list/offers-list";
@@ -13,6 +13,9 @@ import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import {offersMocks} from "../../mocks/offers-mocks";
 
 const MainScreen = () => {
+  const offers = offersMocks.filter((offer) => {
+    return offer.city.name === CITIES[3];
+  });
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -29,36 +32,17 @@ const MainScreen = () => {
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
+
+              {CITIES.map((city, i) => {
+                return (
+                  <li className="locations__item" key={city + i}>
+                    <a className="locations__item-link tabs__item" href="#">
+                      <span>{city}</span>
+                    </a>
+                  </li>
+                );
+              })}
+
             </ul>
           </section>
         </div>
@@ -85,7 +69,7 @@ const MainScreen = () => {
               <div className="cities__places-list places__list tabs__content">
 
                 <OffersList
-                  offers={offersMocks}
+                  offers={offers}
                 />
 
               </div>
@@ -94,12 +78,8 @@ const MainScreen = () => {
               <section className="cities__map map">
 
                 <Map
-                  offers={offersMocks.filter((offer) => {
-                    return offer.city.name === `Amsterdam`;
-                  })}
-                  activePin={offersMocks.filter((offer) => {
-                    return offer.city.name === `Amsterdam`;
-                  })[0].id}
+                  offers={offers}
+                  activePin={offers[0].id}
                 />
 
               </section>

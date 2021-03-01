@@ -154,7 +154,7 @@ export const offersMocks = [
   {
     "bedrooms": 3,
     "city": {
-      "location": {"latitude": 52.370216, "longitude": 4.895168, "zoom": 10},
+      "location": {"latitude": 48.908377778461805, "longitude": 2.352337335603193, "zoom": 10},
       "name": `Paris`
     },
     "description": `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
@@ -182,7 +182,7 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "pointsLocation": {"latitude": 52.369553943508, "longitude": 4.88509666406198, "zoom": 10},
+    "pointsLocation": {"latitude": 49.008377778461805, "longitude": 2.452337335603193, "zoom": 10},
     "maxAdults": 4,
     "previewImage": `img/apartment-02.jpg`,
     "price": 110,
@@ -193,7 +193,7 @@ export const offersMocks = [
   {
     "bedrooms": 3,
     "city": {
-      "location": {"latitude": 52.370216, "longitude": 4.895168, "zoom": 10},
+      "location": {"latitude": 48.908377778461805, "longitude": 2.352337335603193, "zoom": 10},
       "name": `Paris`
     },
     "description": `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
@@ -221,7 +221,7 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "pointsLocation": {"latitude": 52.369553943508, "longitude": 4.87509666406198, "zoom": 10},
+    "pointsLocation": {"latitude": 48.808377778461805, "longitude": 2.552337335603193, "zoom": 10},
     "maxAdults": 4,
     "previewImage": `img/apartment-02.jpg`,
     "price": 110,
@@ -232,8 +232,8 @@ export const offersMocks = [
   {
     "bedrooms": 3,
     "city": {
-      "location": {"latitude": 52.370216, "longitude": 4.895168, "zoom": 10},
-      "name": `Humburg`
+      "location": {"latitude": 53.70797913798359, "longitude": 9.896626143929176, "zoom": 10},
+      "name": `Hamburg`
     },
     "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
@@ -260,7 +260,7 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "pointsLocation": {"latitude": 52.3909553943508, "longitude": 4.929309666406198, "zoom": 10},
+    "pointsLocation": {"latitude": 53.80797913798359, "longitude": 9.796626143929176, "zoom": 10},
     "maxAdults": 3,
     "previewImage": `img/room.jpg`,
     "price": 90,
@@ -271,8 +271,8 @@ export const offersMocks = [
   {
     "bedrooms": 3,
     "city": {
-      "location": {"latitude": 52.370216, "longitude": 4.895168, "zoom": 10},
-      "name": `Humburg`
+      "location": {"latitude": 53.70797913798359, "longitude": 9.896626143929176, "zoom": 10},
+      "name": `Hamburg`
     },
     "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
@@ -299,7 +299,7 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "pointsLocation": {"latitude": 52.3909553943508, "longitude": 4.875309666406198, "zoom": 10},
+    "pointsLocation": {"latitude": 53.60797913798359, "longitude": 9.996626143929176, "zoom": 10},
     "maxAdults": 3,
     "previewImage": `img/room.jpg`,
     "price": 90,
@@ -310,7 +310,7 @@ export const offersMocks = [
   {
     "bedrooms": 3,
     "city": {
-      "location": {"latitude": 52.370216, "longitude": 4.895168, "zoom": 10},
+      "location": {"latitude": 50.93659143081592, "longitude": 4.362341978138121, "zoom": 10},
       "name": `Brussels`
     },
     "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
@@ -338,7 +338,7 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "pointsLocation": {"latitude": 52.3809553943508, "longitude": 4.939309666406198, "zoom": 10},
+    "pointsLocation": {"latitude": 50.94659143081592, "longitude": 4.372341978138121, "zoom": 10},
     "maxAdults": 1,
     "previewImage": `img/studio-01.jpg`,
     "price": 100,
@@ -349,7 +349,7 @@ export const offersMocks = [
   {
     "bedrooms": 3,
     "city": {
-      "location": {"latitude": 52.370216, "longitude": 4.895168, "zoom": 10},
+      "location": {"latitude": 50.93659143081592, "longitude": 4.362341978138121, "zoom": 10},
       "name": `Brussels`
     },
     "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
@@ -377,7 +377,7 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "pointsLocation": {"latitude": 52.3809553943508, "longitude": 4.875309666406198, "zoom": 10},
+    "pointsLocation": {"latitude": 50.96659143081592, "longitude": 4.382341978138121, "zoom": 10},
     "maxAdults": 1,
     "previewImage": `img/studio-01.jpg`,
     "price": 100,
@@ -388,7 +388,7 @@ export const offersMocks = [
   {
     "bedrooms": 3,
     "city": {
-      "location": {"latitude": 52.370216, "longitude": 4.895168, "zoom": 10},
+      "location": {"latitude": 51.319528864439526, "longitude": 6.775141414012327, "zoom": 10},
       "name": `Dusseldorf`
     },
     "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
@@ -416,7 +416,7 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "pointsLocation": {"latitude": 52.3809553943508, "longitude": 4.875309666406198, "zoom": 10},
+    "pointsLocation": {"latitude": 51.320528864439526, "longitude": 6.755141414012327, "zoom": 10},
     "maxAdults": 1,
     "previewImage": `img/apartment-01.jpg`,
     "price": 100,
@@ -427,7 +427,7 @@ export const offersMocks = [
   {
     "bedrooms": 3,
     "city": {
-      "location": {"latitude": 52.370216, "longitude": 4.895168, "zoom": 10},
+      "location": {"latitude": 51.319528864439526, "longitude": 6.775141414012327, "zoom": 10},
       "name": `Dusseldorf`
     },
     "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
@@ -455,7 +455,7 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "pointsLocation": {"latitude": 52.3809553943508, "longitude": 4.870309666406198, "zoom": 10},
+    "pointsLocation": {"latitude": 51.319028864439526, "longitude": 6.776141414012327, "zoom": 10},
     "maxAdults": 1,
     "previewImage": `img/apartment-02.jpg`,
     "price": 100,
@@ -466,7 +466,7 @@ export const offersMocks = [
   {
     "bedrooms": 3,
     "city": {
-      "location": {"latitude": 52.370216, "longitude": 4.895168, "zoom": 10},
+      "location": {"latitude": 51.25466677422319, "longitude": 6.941221369446122, "zoom": 10},
       "name": `Cologne`
     },
     "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
@@ -494,7 +494,7 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "pointsLocation": {"latitude": 52.3809553943508, "longitude": 4.870309666406198, "zoom": 10},
+    "pointsLocation": {"latitude": 51.25266677422319, "longitude": 6.921221369446122, "zoom": 10},
     "maxAdults": 1,
     "previewImage": `img/apartment-02.jpg`,
     "price": 100,
@@ -505,7 +505,7 @@ export const offersMocks = [
   {
     "bedrooms": 3,
     "city": {
-      "location": {"latitude": 52.370216, "longitude": 4.895168, "zoom": 10},
+      "location": {"latitude": 51.25466677422319, "longitude": 6.941221369446122, "zoom": 10},
       "name": `Cologne`
     },
     "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
@@ -533,7 +533,7 @@ export const offersMocks = [
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/18.jpg`],
     "isFavorite": false,
     "isPremium": false,
-    "pointsLocation": {"latitude": 52.3709553943508, "longitude": 4.850309666406198, "zoom": 10},
+    "pointsLocation": {"latitude": 51.25566677422319, "longitude": 6.951221369446122, "zoom": 10},
     "maxAdults": 1,
     "previewImage": `img/apartment-03.jpg`,
     "price": 100,

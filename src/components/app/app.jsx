@@ -9,7 +9,6 @@ import PropertyScreen from "../property-screen/property-screen";
 import NotFoundScreen from "../not-found-screen/not-found-screen";
 
 import {offerPropTypes} from "../../propetypes";
-// import {CITIES} from "../../const";
 
 const App = (props) => {
   const {offers} = props;

@@ -3,7 +3,6 @@ import leaflet from "leaflet";
 import PropTypes from "prop-types";
 
 import {offerPropTypes} from "../../propetypes";
-// import {CITIES} from "../../const";
 
 import "leaflet/dist/leaflet.css";
 
