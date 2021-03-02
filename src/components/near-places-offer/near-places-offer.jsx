@@ -2,7 +2,7 @@ import React from "react";
 
 import {offerPropTypes} from "../../propetypes";
 
-const NearPlacesCard = (props) => {
+const NearPlacesOffer = (props) => {
   const {offer} = props;
   const {previewImage, price, rating, title, type} = offer;
 
@@ -41,8 +41,8 @@ const NearPlacesCard = (props) => {
   </React.Fragment>;
 };
 
-NearPlacesCard.propTypes = {
+NearPlacesOffer.propTypes = {
   offer: offerPropTypes
 };
 
-export default NearPlacesCard;
+export default NearPlacesOffer;

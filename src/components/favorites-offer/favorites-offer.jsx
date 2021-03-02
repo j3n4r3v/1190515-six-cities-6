@@ -3,7 +3,7 @@ import React from "react";
 
 import {offerPropTypes} from "../../propetypes";
 
-const FavoritesCard = (props) => {
+const FavoritesOffer = (props) => {
   const {offer} = props;
   const {previewImage, price, rating, title, type} = offer;
 
@@ -42,8 +42,8 @@ const FavoritesCard = (props) => {
   </React.Fragment>;
 };
 
-FavoritesCard.propTypes = {
+FavoritesOffer.propTypes = {
   offer: offerPropTypes // PropTypes.shape(offerPropTypes) - error?
 };
 
-export default FavoritesCard;
+export default FavoritesOffer;

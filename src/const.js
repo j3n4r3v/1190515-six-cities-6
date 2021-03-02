@@ -4,4 +4,6 @@ const OfferType = {
   STUDIO: `Studio`
 };
 
-export default OfferType;
+const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
+
+export {OfferType, CITIES};

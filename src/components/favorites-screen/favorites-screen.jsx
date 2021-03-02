@@ -7,7 +7,7 @@ import {authPropTypes, offerPropTypes} from "../../propetypes";
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
-import FavoritesCardList from "../favorites-offer-list/favorites-offer-list";
+import FavoritesOfferList from "../favorites-offer-list/favorites-offer-list";
 
 const FavoritesScreen = (props) => {
   const {offers} = props;
@@ -40,7 +40,7 @@ const FavoritesScreen = (props) => {
                   </div>
                   <div className="favorites__places">
 
-                    <FavoritesCardList
+                    <FavoritesOfferList
                       offers={offers}
                     />
 
@@ -56,7 +56,7 @@ const FavoritesScreen = (props) => {
                   </div>
                   <div className="favorites__places">
 
-                    <FavoritesCardList
+                    <FavoritesOfferList
                       offers={offers}
                     />
 

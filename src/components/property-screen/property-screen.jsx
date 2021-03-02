@@ -9,11 +9,11 @@ import {getRandomArrayItem} from "../../utils";
 
 import FeedBackForm from "../feedbackform/feedbackform";
 import Rewiev from "../rewiev-list/review-list";
-import PropertyGalleryCard from "../property-gallery-offer/property-gallery-offer";
+import PropertyGalleryOffer from "../property-gallery-offer/property-gallery-offer";
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
 import {offerPropTypes} from "../../propetypes";
 
-import NearPlacesCardsList from "../near-places-offers-list/near-places-offers-list";
+import NearPlacesOffersList from "../near-places-offers-list/near-places-offers-list";
 
 const PropertyScreen = (props) => {
   const {offers} = props;
@@ -34,7 +34,7 @@ const PropertyScreen = (props) => {
           <div className="property__gallery-container container">
             <div className="property__gallery">
               {
-                imagesArray.map((image, i) => <PropertyGalleryCard image={image} key={image + i} />)
+                imagesArray.map((image, i) => <PropertyGalleryOffer image={image} key={image + i} />)
               }
             </div>
           </div>
@@ -124,7 +124,7 @@ const PropertyScreen = (props) => {
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
 
-              <NearPlacesCardsList
+              <NearPlacesOffersList
                 nearOffers={[getRandomArrayItem(offers)]}
               />
 

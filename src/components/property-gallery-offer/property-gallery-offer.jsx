@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const PropertyGalleryCard = (props) => {
+const PropertyGalleryOffer = (props) => {
   const {image} = props;
 
   return <React.Fragment>
@@ -11,8 +11,8 @@ const PropertyGalleryCard = (props) => {
   </React.Fragment>;
 };
 
-PropertyGalleryCard.propTypes = {
+PropertyGalleryOffer.propTypes = {
   image: PropTypes.string
 };
 
-export default PropertyGalleryCard;
+export default PropertyGalleryOffer;
