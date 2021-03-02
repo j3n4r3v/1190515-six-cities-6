@@ -2,7 +2,7 @@ export const offersMocks = [
   {
     "bedrooms": 3,
     "city": {
-      "location": {"latitude": 52.38333, "longitude": 4.895168, "zoom": 10},
+      "location": {"latitude": 52.38333, "longitude": 4.895168, "zoom": 12},
       "name": `Amsterdam`
     },
     "description": `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,

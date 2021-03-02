@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import {OfferType} from "./const";
+import { OfferType } from "./const";
 
 export const offerPropTypes = PropTypes.shape({
   "bedrooms": PropTypes.number.isRequired,
@@ -35,7 +35,7 @@ export const offerPropTypes = PropTypes.shape({
   "type": PropTypes.oneOf([OfferType.APARTMENT, OfferType.PRIVATEROOM, OfferType.STUDIO]).isRequired
 });
 
-export const commentPropTypes = PropTypes.shape({
+export const rewievPropTypes = PropTypes.shape({
   comment: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
@@ -56,4 +56,4 @@ export const authPropTypes = PropTypes.shape({
   name: PropTypes.string.isRequired
 });
 
-export default {offerPropTypes, commentPropTypes, authPropTypes};
+export default { offerPropTypes, rewievPropTypes, authPropTypes };

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
-import {commentsMocks} from "../../mocks/comments-mocks";
+import {rewievsMocks} from "../../mocks/rewievs-mocks";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import {getRandomArrayItem} from "../../utils";
@@ -109,7 +109,7 @@ const PropertyScreen = (props) => {
                 <h2 className="reviews__title">Reviews · <span className="reviews__amount">1</span></h2>
 
                 <Rewiev
-                  comments={[getRandomArrayItem(commentsMocks)]}
+                  rewievs={[getRandomArrayItem(rewievsMocks)]}
                 />
 
                 <FeedBackForm />

@@ -7,28 +7,29 @@ import {offerPropTypes} from "../../propetypes";
 import "leaflet/dist/leaflet.css";
 
 
-const ICON = leaflet.icon({
+const PIN = leaflet.icon({
   iconUrl: `./img/pin.svg`,
   iconSize: [27, 39]
 });
 
-const ACTIVE_ICON = leaflet.icon({
+const ACTIVE_PIN = leaflet.icon({
   iconUrl: `./img/pin-active.svg`,
   iconSize: [27, 39]
 });
 
 const Map = (props) => {
   const {offers, activePin} = props;
-
+  const card = offers[0];
+  const {city} = card;
   const mapRef = useRef();
 
   useEffect(() => {
     mapRef.current = leaflet.map(`map`, {
       center: {
-        lat: offers[0].city.location.latitude,
-        lng: offers[0].city.location.longitude
+        lat: city.location.latitude,
+        lng: city.location.longitude
       },
-      zoom: offers[0].city.location.zoom,
+      zoom: city.location.zoom,
       zoomControl: false,
       marker: true
     });
@@ -46,7 +47,7 @@ const Map = (props) => {
           lat: pointsLocation.latitude,
           lng: pointsLocation.longitude
         },
-        {icon: id === activePin ? ACTIVE_ICON : ICON}
+        {icon: id === activePin ? ACTIVE_PIN : PIN}
         )
           .addTo(mapRef.current)
           .bindPopup(title);
