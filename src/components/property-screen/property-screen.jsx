@@ -26,14 +26,10 @@ const PropertyScreen = (props) => {
   const {name, avatarUrl} = host;
   const imagesArray = images.length > 6 ? images.splice(0, 6) : images;
 
-  // const nearOffersMocks = offersMocks.length > 3 ? offersMocks.splice(0, 3) : offersMocks;
-  // const nearOffers = nearOffersMocks.filter((offer) => {
-  //   return offer.city.name !== CITIES[3];
-  // });
-  const nearOffersMocks = offersMocks.length > 3 ? offersMocks.splice(0, 3) : offersMocks;
-  const nearOffers = nearOffersMocks.filter((offer) => {
+  const nearOffers = offersMocks.filter((offer) => {
     return offer.city.name === CITIES[3];
   });
+  const nearOffersFilter = nearOffers.length > 3 ? nearOffers.splice(0, 4) : nearOffers;
 
   return <React.Fragment>
     <div className="page">
@@ -133,8 +129,8 @@ const PropertyScreen = (props) => {
           <section className="property__map map">
 
             <Map
-              offers={nearOffers}
-              activePin={nearOffers[0].id}
+              offers = {nearOffersFilter}
+              activePin = {nearOffersFilter[0].id}
             />
 
           </section>
@@ -143,13 +139,8 @@ const PropertyScreen = (props) => {
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <div className="near-places__list places__list">
 
-
-                {/* <NearPlacesOffersList
-                  nearOffers={nearOffers}
-                /> */}
-
                 <OffersList
-                  offers={nearOffers}
+                  offers={nearOffersFilter}
                 />
 
               </div>
@@ -162,7 +153,8 @@ const PropertyScreen = (props) => {
 };
 
 PropertyScreen.propTypes = {
-  offers: PropTypes.arrayOf(offerPropTypes)
+  offers: PropTypes.arrayOf(offerPropTypes),
+  activePin: PropTypes.number
 };
 
 export default PropertyScreen;
