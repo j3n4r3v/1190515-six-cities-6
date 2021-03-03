@@ -9,17 +9,17 @@ const Type = {
     divClass: `cities__places-list`, // куда вставляем(контейнер)
     article: `cities__place-card`, // что вставляем, карточка
     img: {
-      class: `cities`, // cities__image-wrapper обертка для изображения
+      containerClass: `cities`, // cities__image-wrapper обертка для изображения
       width: 260,
       height: 200
     },
     info: `place-card__info`, // информация о карточке
   },
-  NEAR: {
+  PROPERTY: {
     divClass: `near-places__list`, // куда вставляем(контейнер)
     article: `near-places__card`, // что вставляем, карточка
     img: {
-      class: `near-places`, // near-places__image-wrapper  обертка для изображения
+      containerClass: `near-places`, // near-places__image-wrapper  обертка для изображения
       width: 260,
       height: 200
     },
@@ -30,13 +30,12 @@ const Type = {
     divClass: `favorites__places`, // куда вставляем(контейнер)
     article: `favorites__card`, // что вставляем, карточка
     img: {
-      class: `favorites`, // favorites__image-wrapper обертка для изображения
+      containerClass: `favorites`, // favorites__image-wrapper обертка для изображения
       width: 150,
       height: 110
     },
-    info: `favorites__card-info`, // информация о карточке // куда вставляем(контейнер)
+    info: `favorites__card-info`, // информация о карточке
   },
-
 };
 
 const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];

@@ -1,23 +1,28 @@
 import React from "react";
 import {Link} from "react-router-dom";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import {offerPropTypes} from "../../propetypes";
+import Type from "../../const";
 
 const Offer = (props) => {
-  const {offer} = props;
-  const {previewImage, price, rating, title, type, id} = offer;
+  const {offer, typeCard} = props; // typeCard?
+  const {previewImage, price, rating, title, type, id, isPremium} = offer;
+
+  const cardType = Type[typeCard];
 
   return <React.Fragment>
-    <article className="cities__place-card place-card">
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
-      <div className="cities__image-wrapper place-card__image-wrapper">
+    <article className={`${cardType.article} place-card`}>
+      {
+        isPremium && <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
+      }
+      <div className={`${cardType.img.containerClass}__image-wrapper place-card__image-wrapper`}>
         <Link to={`/offer/${id}`}>
-          <img className="place-card__image" src={previewImage} width={260} height={200} alt="Place image" />
+          <img className="place-card__image" src={previewImage} width={`${cardType.img.width}`} height={`${cardType.img.height}`} alt="Place image" />
         </Link>
       </div>
-      <div className="place-card__info">
+      <div className={`${cardType.info}`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">{price}</b>
@@ -46,7 +51,8 @@ const Offer = (props) => {
 };
 
 Offer.propTypes = {
-  offer: offerPropTypes
+  offer: offerPropTypes,
+  typeCard: PropTypes.string
 };
 
 export default Offer;
