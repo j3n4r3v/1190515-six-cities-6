@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import {CITIES} from "../../const";
+
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import {reviewsMocks} from "../../mocks/reviews-mocks";
+import {offersMocks} from "../../mocks/offers-mocks";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import {getRandomArrayItem} from "../../utils";
@@ -13,7 +16,8 @@ import PropertyGalleryOffer from "../property-gallery-offer/property-gallery-off
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
 import {offerPropTypes} from "../../propetypes";
 
-import NearPlacesOffersList from "../near-places-offers-list/near-places-offers-list";
+import OffersList from "../offers-list/offers-list";
+import Map from "../map/map";
 
 const PropertyScreen = (props) => {
   const {offers} = props;
@@ -21,6 +25,15 @@ const PropertyScreen = (props) => {
   const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = gerRandomOfferFromArray;
   const {name, avatarUrl} = host;
   const imagesArray = images.length > 6 ? images.splice(0, 6) : images;
+
+  // const nearOffersMocks = offersMocks.length > 3 ? offersMocks.splice(0, 3) : offersMocks;
+  // const nearOffers = nearOffersMocks.filter((offer) => {
+  //   return offer.city.name !== CITIES[3];
+  // });
+  const nearOffersMocks = offersMocks.length > 3 ? offersMocks.splice(0, 3) : offersMocks;
+  const nearOffers = nearOffersMocks.filter((offer) => {
+    return offer.city.name === CITIES[3];
+  });
 
   return <React.Fragment>
     <div className="page">
@@ -117,20 +130,32 @@ const PropertyScreen = (props) => {
               </section>
             </div>
           </div>
-          <section className="property__map map" />
-        </section>
-        <div className="container">
-          <section className="near-places places">
-            <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <div className="near-places__list places__list">
+          <section className="property__map map">
 
-              <NearPlacesOffersList
-                nearOffers = {offers} //
-              />
+            <Map
+              offers={nearOffers}
+              activePin={nearOffers[0].id}
+            />
 
-            </div>
           </section>
-        </div>
+          <div className="container">
+            <section className="near-places places">
+              <h2 className="near-places__title">Other places in the neighbourhood</h2>
+              <div className="near-places__list places__list">
+
+
+                {/* <NearPlacesOffersList
+                  nearOffers={nearOffers}
+                /> */}
+
+                <OffersList
+                  offers={nearOffers}
+                />
+
+              </div>
+            </section>
+          </div>
+        </section>
       </main>
     </div>
   </React.Fragment>;
