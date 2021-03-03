@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import {CITIES} from "../../const";
+import {CITIES, Type} from "../../const";
 import {authPropTypes, offerPropTypes} from "../../propetypes";
 
-import OffersList from "../offers-list/offers-list";
+// import OffersList from "../offers-list/offers-list";
+import ContainerOffersList from "../container-offers-list/container-offers-list";
 import Map from "../map/map";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
@@ -66,13 +67,19 @@ const MainScreen = () => {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
 
-                <OffersList
-                  offers={offers}
-                />
+              <ContainerOffersList
+                offers = {offers}
+                typeOffer = {Type.CITY}
+              />
 
-              </div>
+              {/* // <div className="cities__places-list places__list tabs__content">
+
+              //   <OffersList
+              //     offers={offers}
+              //   />
+
+              // </div> */}
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
@@ -94,7 +101,7 @@ const MainScreen = () => {
 MainScreen.propTypes = {
   authInfo: PropTypes.arrayOf(authPropTypes),
   offer: offerPropTypes,
-  activePin: PropTypes.number
+  activePin: PropTypes.string
 };
 
 export default MainScreen;

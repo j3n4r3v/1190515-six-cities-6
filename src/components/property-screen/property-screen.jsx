@@ -16,7 +16,11 @@ import PropertyGalleryOffer from "../property-gallery-offer/property-gallery-off
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
 import {offerPropTypes} from "../../propetypes";
 
-import OffersList from "../offers-list/offers-list";
+import {Type} from "../../const";
+
+// import OffersList from "../offers-list/offers-list";
+import ContainerOffersList from "../container-offers-list/container-offers-list";
+
 import Map from "../map/map";
 
 const PropertyScreen = (props) => {
@@ -137,13 +141,18 @@ const PropertyScreen = (props) => {
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              <div className="near-places__list places__list">
+              {/* <div className="near-places__list places__list"> */}
 
-                <OffersList
+              <ContainerOffersList
+                offers={offers}
+                typeOffer={Type.PROPERTY}
+              />
+
+              {/* <OffersList
                   offers={nearOffersFilter}
                 />
 
-              </div>
+              </div> */}
             </section>
           </div>
         </section>

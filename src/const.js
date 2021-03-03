@@ -5,7 +5,7 @@ const OfferType = {
 };
 
 const Type = {
-  CITIES: {
+  CITY: {
     divClass: `cities__places-list`, // куда вставляем(контейнер)
     article: `cities__place-card`, // что вставляем, карточка
     img: {

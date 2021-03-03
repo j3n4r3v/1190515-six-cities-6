@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Type from "../../const";
+import {Type} from "../../const";
 
 import Offer from "../offer/offer";
 import {offerPropTypes} from "../../propetypes";
