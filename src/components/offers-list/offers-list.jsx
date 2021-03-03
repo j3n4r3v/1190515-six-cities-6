@@ -7,7 +7,7 @@ import Offer from "../offer/offer";
 import {offerPropTypes} from "../../propetypes";
 
 const OffersList = (props) => {
-  const {offers, cardType} = props;
+  const {offers} = props;
 
   const getComponentByType = (typeOffer, offer) => {
     switch (typeOffer) {
