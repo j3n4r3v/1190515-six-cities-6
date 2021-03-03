@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Offer from "../offer/offer";
-import {Type} from "../../const";
+// import {Type} from "../../const";
 import {offerPropTypes} from "../../propetypes";
 
 const ContainerOffersList = (props) => {
   const {offers, typeOffer} = props;
 
-  const containerType = Type.typeOffer;
+  const containerType = typeOffer;
 
   return (
     <div className={`${containerType.divClass} places__list ${typeOffer === `CITIES` ? `tabs__content` : ``}`}>

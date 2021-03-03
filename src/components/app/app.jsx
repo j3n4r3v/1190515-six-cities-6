@@ -18,7 +18,7 @@ const App = (props) => {
       <Switch>
 
         <Route exact path="/">
-          <MainScreen/>
+          <MainScreen />
         </Route>
 
         <Route exact path="/login">

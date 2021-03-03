@@ -2,13 +2,13 @@ import React from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {offerPropTypes} from "../../propetypes";
-import {Type} from "../../const";
+// import {Type} from "../../const";
 
 const Offer = (props) => {
   const {offer, typeOffer} = props; // typeoffer?
   const {previewImage, price, rating, title, type, id, isPremium} = offer;
 
-  const offerType = Type.typeOffer;
+  const offerType = typeOffer;
 
   return <React.Fragment>
     <article className={`${offerType.article} place-offer`}>
