@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
-import {rewievsMocks} from "../../mocks/rewievs-mocks";
+import {reviewsMocks} from "../../mocks/reviews-mocks";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import {getRandomArrayItem} from "../../utils";
 
 import FeedBackForm from "../feedbackform/feedbackform";
-import Rewiev from "../rewiev-list/review-list";
+import ReviewList from "../rewiev-list/review-list";
 import PropertyGalleryOffer from "../property-gallery-offer/property-gallery-offer";
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
 import {offerPropTypes} from "../../propetypes";
@@ -106,10 +106,10 @@ const PropertyScreen = (props) => {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">1</span></h2>
+                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{reviewsMocks.length}</span></h2>
 
-                <Rewiev
-                  rewievs={[getRandomArrayItem(rewievsMocks)]}
+                <ReviewList
+                  reviews = {reviewsMocks}
                 />
 
                 <FeedBackForm />
@@ -125,7 +125,7 @@ const PropertyScreen = (props) => {
             <div className="near-places__list places__list">
 
               <NearPlacesOffersList
-                nearOffers={[getRandomArrayItem(offers)]}
+                nearOffers = {offers} //
               />
 
             </div>

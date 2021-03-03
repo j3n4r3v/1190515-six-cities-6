@@ -5,16 +5,15 @@ import Offer from "../offer/offer";
 import {offerPropTypes} from "../../propetypes";
 
 const OffersList = (props) => {
-  const {offers, activeTown} = props;
+  const {offers} = props;
 
   return <React.Fragment>
-    {offers.map((offer) => <Offer key={offer.id} offer={offer} activeTown={activeTown} />)}
+    {offers.map((offer) => <Offer key={offer.id} offer={offer} />)}
   </React.Fragment>;
 };
 
 OffersList.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
-  activeTown: PropTypes.number
 };
 
 export default OffersList;
