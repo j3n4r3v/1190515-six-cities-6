@@ -70,7 +70,7 @@ const MainScreen = () => {
 
               <ContainerOffersList
                 offers = {offers}
-                typeOffer = {Type.CITY}
+                typeOffer = {Type.CITY} // Type[CITY] ?
               />
 
               {/* // <div className="cities__places-list places__list tabs__content">
@@ -101,7 +101,8 @@ const MainScreen = () => {
 MainScreen.propTypes = {
   authInfo: PropTypes.arrayOf(authPropTypes),
   offer: offerPropTypes,
-  activePin: PropTypes.string
+  activePin: PropTypes.string,
+  typeOffer: PropTypes.object
 };
 
 export default MainScreen;

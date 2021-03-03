@@ -113,9 +113,6 @@ const PropertyScreen = (props) => {
                   <p className="property__text">
                     {description}.
                   </p>
-                  <p className="property__text">
-                    {description}.
-                  </p>
                 </div>
               </div>
               <section className="property__reviews reviews">
@@ -141,18 +138,12 @@ const PropertyScreen = (props) => {
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              {/* <div className="near-places__list places__list"> */}
 
               <ContainerOffersList
                 offers={offers}
                 typeOffer={Type.PROPERTY}
               />
 
-              {/* <OffersList
-                  offers={nearOffersFilter}
-                />
-
-              </div> */}
             </section>
           </div>
         </section>
@@ -163,7 +154,8 @@ const PropertyScreen = (props) => {
 
 PropertyScreen.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
-  activePin: PropTypes.number
+  activePin: PropTypes.number,
+  typeOffer: PropTypes.object
 };
 
 export default PropertyScreen;

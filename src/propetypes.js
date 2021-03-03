@@ -56,4 +56,37 @@ export const authPropTypes = PropTypes.shape({
   name: PropTypes.string.isRequired
 });
 
-export default {offerPropTypes, reviewPropTypes, authPropTypes};
+export const TypePropTypes = PropTypes.shape({
+  CITY: PropTypes.shape({
+    divClass: PropTypes.string.isRequired,
+    article: PropTypes.string.isRequired,
+    img: PropTypes.shape({
+      containerClass: PropTypes.string.isRequired,
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired
+    }),
+    info: PropTypes.string.isRequired,
+  }),
+  PROPERTY: PropTypes.shape({
+    divClass: PropTypes.string.isRequired,
+    article: PropTypes.string.isRequired,
+    img: PropTypes.shape({
+      containerClass: PropTypes.string.isRequired,
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired
+    }),
+    info: PropTypes.string.isRequired,
+  }),
+  FAVORITE: PropTypes.shape({
+    divClass: PropTypes.string.isRequired,
+    article: PropTypes.string.isRequired,
+    img: PropTypes.shape({
+      containerClass: PropTypes.string.isRequired,
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired
+    }),
+    info: PropTypes.string.isRequired,
+  })
+});
+
+export default {offerPropTypes, reviewPropTypes, authPropTypes, TypePropTypes};

@@ -12,11 +12,11 @@ const OffersList = (props) => {
   const getComponentByType = (typeOffer, offer) => {
     switch (typeOffer) {
       case Type.CITIES:
-        return <Offer key={offer.id} offer={offer} cardType={typeOffer}/>;
+        return <Offer key={offer.id} offer={offer} typeOffer={typeOffer}/>;
       case Type.PROPERTY:
-        return <Offer key={offer.id} offer={offer} cardType={typeOffer}/>;
+        return <Offer key={offer.id} offer={offer} typeOffer={typeOffer}/>;
       case Type.FAVORITE:
-        return <Offer key={offer.id} offer={offer} cardType={typeOffer}/>;
+        return <Offer key={offer.id} offer={offer} typeOffer={typeOffer}/>;
     }
 
     return ``;
@@ -32,7 +32,7 @@ const OffersList = (props) => {
 OffersList.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
-  cardType: PropTypes.string
+  typeOffer: PropTypes.string
 
 };
 
