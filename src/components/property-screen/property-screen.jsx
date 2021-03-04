@@ -1,14 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import {CITIES} from "../../const";
-
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import {reviewsMocks} from "../../mocks/reviews-mocks";
-import {offersMocks} from "../../mocks/offers-mocks";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
-import {getRandomArrayItem} from "../../utils";
+import {randomArrayItem} from "../../utils";
 
 import FeedBackForm from "../feedbackform/feedbackform";
 import ReviewList from "../rewiev-list/review-list";
@@ -22,21 +19,17 @@ import Map from "../map/map";
 
 const PropertyScreen = (props) => {
   const {offers} = props;
-  const gerRandomOfferFromArray = getRandomArrayItem(offers);
-  const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = gerRandomOfferFromArray;
+  const randomOfferFromArray = randomArrayItem(offers);
+  const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description, id} = randomOfferFromArray;
   const {name, avatarUrl} = host;
-  const imagesArray = images.length > 6 ? images.splice(0, 6) : images;
+  const imagesArray = images.length > 6 ? images.slice(0, 6) : images;
 
-  const nearOffers = offersMocks.filter((offer) => {
-    return offer.city.name === CITIES[3];
-  });
-  const nearOffersFilter = nearOffers.length > 3 ? nearOffers.splice(0, 4) : nearOffers;
-  // eslint-disable-next-line no-console
-  console.log(nearOffersFilter);
+  const nearOffersFilter = offers.length > 3 ? offers.slice(0, 4) : offers;
+
   const PROPERTY = `PROPERTY`;
+
   const nearOffersFilterList = nearOffersFilter.filter((item) => item.id !== nearOffersFilter[0].id);
-  // eslint-disable-next-line no-console
-  console.log(nearOffersFilterList);
+
   return <React.Fragment>
     <div className="page">
 
@@ -133,7 +126,7 @@ const PropertyScreen = (props) => {
 
             <Map
               offers = {nearOffersFilter}
-              activePin={nearOffersFilter[0].id}
+              activePin={randomOfferFromArray.id}
               mapSettings={PROPERTY}
             />
 
@@ -157,8 +150,10 @@ const PropertyScreen = (props) => {
 
 PropertyScreen.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
+  randomOfferFromArray: offerPropTypes,
   activePin: PropTypes.number,
-  typeOffer: PropTypes.string
+  typeOffer: PropTypes.string,
+  mapSettings: PropTypes.string
 };
 
 export default PropertyScreen;

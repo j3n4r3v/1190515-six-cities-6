@@ -44,7 +44,7 @@ const MapSettings = {
     height: `100%`
   },
   PROPERTY: {
-    width: `1144px`, // зачем тут `` ?
+    width: `1144px`,
     height: `579px`,
     margin: `0 auto 50px`,
   }

@@ -7,7 +7,7 @@ import {offerPropTypes} from "../../propetypes";
 const ContainerOffersList = (props) => {
   const {offers, typeOffer} = props;
 
-  const container = Type[typeOffer]; // Type.typeOffer ?
+  const container = Type[typeOffer];
 
   return (
     <div className={`${container.divClass} places__list`}>

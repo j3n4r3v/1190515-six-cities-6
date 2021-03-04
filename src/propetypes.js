@@ -3,6 +3,7 @@ import {OfferType} from "./const";
 
 export const offerPropTypes = PropTypes.shape({
   "bedrooms": PropTypes.number.isRequired,
+  "id": PropTypes.number.isRequired,
   "city": PropTypes.shape({
     "location": PropTypes.shape({
       "latitude": PropTypes.number.isRequired,
@@ -19,7 +20,6 @@ export const offerPropTypes = PropTypes.shape({
     "isPro": PropTypes.bool.isRequired,
     "name": PropTypes.string.isRequired
   }),
-  "id": PropTypes.number.isRequired,
   "favoitesImages": PropTypes.arrayOf(PropTypes.string.isRequired),
   "isPremium": PropTypes.bool.isRequired,
   "pointLocation": PropTypes.arrayOf(PropTypes.shape({

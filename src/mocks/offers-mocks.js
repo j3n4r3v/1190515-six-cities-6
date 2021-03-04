@@ -1,6 +1,7 @@
 export const offersMocks = [
   {
     "bedrooms": 3,
+    "id": 1,
     "city": {
       "location": {"latitude": 52.38333, "longitude": 4.895168, "zoom": 12},
       "name": `Amsterdam`
@@ -13,7 +14,6 @@ export const offersMocks = [
       "isPro": true,
       "name": `Angelina`
     },
-    "id": 1,
     "images": [`https://assets.htmlacademy.ru/intensives/javascript-3/hotel/13.jpg`,
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/14.jpg`,
       `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/19.jpg`,
