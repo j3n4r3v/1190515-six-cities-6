@@ -31,9 +31,12 @@ const PropertyScreen = (props) => {
     return offer.city.name === CITIES[3];
   });
   const nearOffersFilter = nearOffers.length > 3 ? nearOffers.splice(0, 4) : nearOffers;
-
+  // eslint-disable-next-line no-console
+  console.log(nearOffersFilter);
   const PROPERTY = `PROPERTY`;
-
+  const nearOffersFilterList = nearOffersFilter.filter((item) => item.id !== 1);
+  // eslint-disable-next-line no-console
+  console.log(nearOffersFilterList);
   return <React.Fragment>
     <div className="page">
 
@@ -140,7 +143,7 @@ const PropertyScreen = (props) => {
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
 
               <ContainerOffersList
-                offers={nearOffersFilter}
+                offers={nearOffersFilterList}
                 typeOffer={PROPERTY}
               />
 
