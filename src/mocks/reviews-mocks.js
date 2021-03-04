@@ -1,4 +1,4 @@
-export const commentsMocks = [
+export const reviewsMocks = [
   {
     comment: `I stayed here for one night and it was an unpleasant experience.`,
     date: `2021-01-23T08:17:53.220Z`,
@@ -13,9 +13,9 @@ export const commentsMocks = [
   },
   {
     comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century`,
-    date: `2021-2-21T08:36:38.657`,
+    date: `2021-2-21T08:16:38.657`,
     id: 2,
-    rating: 3,
+    rating: 2,
     user: {
       avatarUrl: `img/avatar-angelina.jpg`,
       id: 16,

@@ -3,6 +3,7 @@ import {OfferType} from "./const";
 
 export const offerPropTypes = PropTypes.shape({
   "bedrooms": PropTypes.number.isRequired,
+  "id": PropTypes.number.isRequired,
   "city": PropTypes.shape({
     "location": PropTypes.shape({
       "latitude": PropTypes.number.isRequired,
@@ -19,7 +20,6 @@ export const offerPropTypes = PropTypes.shape({
     "isPro": PropTypes.bool.isRequired,
     "name": PropTypes.string.isRequired
   }),
-  "id": PropTypes.number.isRequired,
   "favoitesImages": PropTypes.arrayOf(PropTypes.string.isRequired),
   "isPremium": PropTypes.bool.isRequired,
   "pointLocation": PropTypes.arrayOf(PropTypes.shape({
@@ -35,7 +35,7 @@ export const offerPropTypes = PropTypes.shape({
   "type": PropTypes.oneOf([OfferType.APARTMENT, OfferType.PRIVATEROOM, OfferType.STUDIO]).isRequired
 });
 
-export const commentPropTypes = PropTypes.shape({
+export const reviewPropTypes = PropTypes.shape({
   comment: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
@@ -56,4 +56,37 @@ export const authPropTypes = PropTypes.shape({
   name: PropTypes.string.isRequired
 });
 
-export default {offerPropTypes, commentPropTypes, authPropTypes};
+export const TypePropTypes = PropTypes.shape({
+  CITY: PropTypes.shape({
+    divClass: PropTypes.string.isRequired,
+    article: PropTypes.string.isRequired,
+    img: PropTypes.shape({
+      containerClass: PropTypes.string.isRequired,
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired
+    }),
+    info: PropTypes.string.isRequired,
+  }),
+  PROPERTY: PropTypes.shape({
+    divClass: PropTypes.string.isRequired,
+    article: PropTypes.string.isRequired,
+    img: PropTypes.shape({
+      containerClass: PropTypes.string.isRequired,
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired
+    }),
+    info: PropTypes.string.isRequired,
+  }),
+  FAVORITE: PropTypes.shape({
+    divClass: PropTypes.string.isRequired,
+    article: PropTypes.string.isRequired,
+    img: PropTypes.shape({
+      containerClass: PropTypes.string.isRequired,
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired
+    }),
+    info: PropTypes.string.isRequired,
+  })
+});
+
+export default {offerPropTypes, reviewPropTypes, authPropTypes, TypePropTypes};

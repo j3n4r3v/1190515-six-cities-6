@@ -4,18 +4,17 @@ import PropTypes from "prop-types";
 import {CITIES} from "../../const";
 import {authPropTypes, offerPropTypes} from "../../propetypes";
 
-import OffersList from "../offers-list/offers-list";
+import ContainerOffersList from "../container-offers-list/container-offers-list";
+
 import Map from "../map/map";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
-import {offersMocks} from "../../mocks/offers-mocks";
 
-const MainScreen = () => {
-  const offers = offersMocks.filter((offer) => {
-    return offer.city.name === CITIES[3];
-  });
+const MainScreen = (props) => {
+  const {offers, activeCity} = props;
+  const MAIN = `MAIN`;
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -35,7 +34,7 @@ const MainScreen = () => {
 
               {CITIES.map((city, i) => {
                 return (
-                  <li className="locations__item" key={city + i}>
+                  <li className={`locations__item-link tabs__item ${city === activeCity && `tabs__item--active`}`} key={city + i}>
                     <a className="locations__item-link tabs__item" href="#">
                       <span>{city}</span>
                     </a>
@@ -66,13 +65,12 @@ const MainScreen = () => {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
 
-                <OffersList
-                  offers={offers}
-                />
+              <ContainerOffersList
+                offers={offers}
+                typeOffer={MAIN}
+              />
 
-              </div>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
@@ -80,6 +78,7 @@ const MainScreen = () => {
                 <Map
                   offers={offers}
                   activePin={offers[0].id}
+                  mapSettings = {MAIN}
                 />
 
               </section>
@@ -93,8 +92,11 @@ const MainScreen = () => {
 
 MainScreen.propTypes = {
   authInfo: PropTypes.arrayOf(authPropTypes),
+  offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
-  activePin: PropTypes.number
+  activePin: PropTypes.string,
+  typeOffer: PropTypes.string,
+  activeCity: PropTypes.string
 };
 
 export default MainScreen;

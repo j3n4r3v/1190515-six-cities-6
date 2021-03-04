@@ -3,16 +3,18 @@ import {Link} from "react-router-dom";
 
 import PropTypes from "prop-types";
 import {authPropTypes, offerPropTypes} from "../../propetypes";
-
+// import {Type} from "../../const";
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
-import FavoritesOfferList from "../favorites-offer-list/favorites-offer-list";
 
+import ContainerOffersList from "../container-offers-list/container-offers-list";
 const FavoritesScreen = (props) => {
   const {offers} = props;
   const city = offers[0].city;
   const id = offers[0].id;
+
+  const FAVORITE = `FAVORITE`;
 
   return <React.Fragment>
     <div>
@@ -38,13 +40,12 @@ const FavoritesScreen = (props) => {
                       </Link>
                     </div>
                   </div>
-                  <div className="favorites__places">
 
-                    <FavoritesOfferList
-                      offers={offers}
-                    />
+                  <ContainerOffersList
+                    offers={offers}
+                    typeOffer={FAVORITE}
+                  />
 
-                  </div>
                 </li>
                 <li className="favorites__locations-items">
                   <div className="favorites__locations locations locations--current">
@@ -54,13 +55,12 @@ const FavoritesScreen = (props) => {
                       </Link>
                     </div>
                   </div>
-                  <div className="favorites__places">
 
-                    <FavoritesOfferList
-                      offers={offers}
-                    />
+                  <ContainerOffersList
+                    offers={offers}
+                    typeOffer={FAVORITE}
+                  />
 
-                  </div>
                 </li>
               </ul>
             </section>
@@ -78,7 +78,8 @@ const FavoritesScreen = (props) => {
 
 FavoritesScreen.propTypes = {
   authInfo: PropTypes.arrayOf(authPropTypes),
-  offers: PropTypes.arrayOf(offerPropTypes)
+  offers: PropTypes.arrayOf(offerPropTypes),
+  typeOffer: PropTypes.string
 };
 
 export default FavoritesScreen;

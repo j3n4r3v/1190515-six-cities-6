@@ -1,29 +1,34 @@
 import React from "react";
 import {Link} from "react-router-dom";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import {offerPropTypes} from "../../propetypes";
+import {Type} from "../../const";
 
 const Offer = (props) => {
-  const {offer} = props;
-  const {previewImage, price, rating, title, type, id} = offer;
+  const {offer, typeOffer} = props; // typeoffer - куда нужно передавать?
+  const {previewImage, price, rating, title, type, id, isPremium, isFavorite} = offer;
+
+  const offerType = Type[typeOffer]; // Type.typeOffer - почему так нельзя ?
 
   return <React.Fragment>
-    <article className="cities__place-card place-card">
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
-      <div className="cities__image-wrapper place-card__image-wrapper">
+    <article className={`${offerType.article} place-card`}>
+      {
+        isPremium && <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
+      }
+      <div className={`${offerType.img.containerClass}__image-wrapper place-card__image-wrapper`}>
         <Link to={`/offer/${id}`}>
-          <img className="place-card__image" src={previewImage} width={260} height={200} alt="Place image" />
+          <img className="place-card__image" src={previewImage} width={`${offerType.img.width}`} height={`${offerType.img.height}`} alt="Place image" />
         </Link>
       </div>
-      <div className="place-card__info">
+      <div className={`${offerType.info}`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button button" type="button">
+          <button className={`place-card__bookmark-button button ${isFavorite && `place-card__bookmark-button--active`}`} type="button">
             <svg className="place-card__bookmark-icon" width={18} height={19}>
               <use xlinkHref="#icon-bookmark" />
             </svg>
@@ -46,7 +51,8 @@ const Offer = (props) => {
 };
 
 Offer.propTypes = {
-  offer: offerPropTypes
+  offer: offerPropTypes,
+  typeOffer: PropTypes.string
 };
 
 export default Offer;
