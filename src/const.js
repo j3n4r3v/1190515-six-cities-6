@@ -5,7 +5,7 @@ const OfferType = {
 };
 
 const Type = {
-  CITY: { // нужно ли сюда вставлять строку чтобы ссылаться?
+  MAIN: { // нужно ли сюда вставлять строку чтобы ссылаться?
     divClass: `cities__places-list`, // куда вставляем(контейнер)
     article: `cities__place-card`, // что вставляем, карточка
     img: {
@@ -44,7 +44,7 @@ const MapSettings = {
     height: `100%`
   },
   PROPERTY: {
-    width: `1144px`, // зачем тут `` ? width: `100%` - почему не такое значение
+    width: `1144px`, // зачем тут `` ?
     height: `579px`,
     margin: `0 auto 50px`,
   }

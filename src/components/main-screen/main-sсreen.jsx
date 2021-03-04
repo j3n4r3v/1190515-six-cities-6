@@ -18,8 +18,8 @@ const MainScreen = () => {
     return offer.city.name === CITIES[3];
   });
 
-  const CITY = `CITY`;
   const MAIN = `MAIN`;
+
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -73,7 +73,7 @@ const MainScreen = () => {
 
               <ContainerOffersList
                 offers={offers}
-                typeOffer={CITY}
+                typeOffer={MAIN}
               />
 
             </section>

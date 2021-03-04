@@ -16,8 +16,6 @@ import PropertyGalleryOffer from "../property-gallery-offer/property-gallery-off
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
 import {offerPropTypes} from "../../propetypes";
 
-// import {Type} from "../../const";
-
 import ContainerOffersList from "../container-offers-list/container-offers-list";
 
 import Map from "../map/map";
@@ -142,7 +140,7 @@ const PropertyScreen = (props) => {
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
 
               <ContainerOffersList
-                offers={offers}
+                offers={nearOffersFilter}
                 typeOffer={PROPERTY}
               />
 
