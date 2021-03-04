@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import Offer from "../offer/offer";
 import {Type} from "../../const";
-import {offerPropTypes, TypePropTypes} from "../../propetypes";
+import {offerPropTypes} from "../../propetypes";
 
 const ContainerOffersList = (props) => {
   const {offers, typeOffer} = props;
 
-  const containerType = typeOffer; // Type[typeOffer] / Type.typeOffer ?
+  const containerType = Type[typeOffer]; // Type.typeOffer ?
 
   return (
     <div className={`${containerType.divClass} places__list ${typeOffer === `CITY` ? `tabs__content` : ``}`}>
@@ -22,7 +22,7 @@ const ContainerOffersList = (props) => {
 
 ContainerOffersList.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
-  typeOffer: PropTypes.object // PropTypes.string = PropTypes.object? + TypePropTypes нужен ли?
+  typeOffer: PropTypes.string
 };
 
 export default ContainerOffersList;

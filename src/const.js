@@ -5,7 +5,7 @@ const OfferType = {
 };
 
 const Type = {
-  'CITY': { // нужно ли сюда вставлять строку чтобы ссылаться?
+  CITY: { // нужно ли сюда вставлять строку чтобы ссылаться?
     divClass: `cities__places-list`, // куда вставляем(контейнер)
     article: `cities__place-card`, // что вставляем, карточка
     img: {
@@ -15,7 +15,7 @@ const Type = {
     },
     info: `place-card__info`, // информация о карточке
   },
-  'PROPERTY': {
+  PROPERTY: {
     divClass: `near-places__list`, // куда вставляем(контейнер)
     article: `near-places__card`, // что вставляем, карточка
     img: {
@@ -26,7 +26,7 @@ const Type = {
     info: `place-card__info`, // информация о карточке
 
   },
-  'FAVORITE': {
+  FAVORITE: {
     divClass: `favorites__places`, // куда вставляем(контейнер)
     article: `favorites__card`, // что вставляем, карточка
     img: {

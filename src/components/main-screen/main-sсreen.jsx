@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import {CITIES, Type} from "../../const";
+import {CITIES} from "../../const";
 import {authPropTypes, offerPropTypes} from "../../propetypes";
 
-// import OffersList from "../offers-list/offers-list";
 import ContainerOffersList from "../container-offers-list/container-offers-list";
 import Map from "../map/map";
 
@@ -17,6 +16,8 @@ const MainScreen = () => {
   const offers = offersMocks.filter((offer) => {
     return offer.city.name === CITIES[3];
   });
+
+  const CITY = `CITY`;
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -70,16 +71,9 @@ const MainScreen = () => {
 
               <ContainerOffersList
                 offers = {offers}
-                typeOffer = {Type.CITY} // Type[CITY] ?
+                typeOffer={CITY}
               />
 
-              {/* // <div className="cities__places-list places__list tabs__content">
-
-              //   <OffersList
-              //     offers={offers}
-              //   />
-
-              // </div> */}
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
@@ -102,7 +96,7 @@ MainScreen.propTypes = {
   authInfo: PropTypes.arrayOf(authPropTypes),
   offer: offerPropTypes,
   activePin: PropTypes.string,
-  typeOffer: PropTypes.object
+  typeOffer: PropTypes.string
 };
 
 export default MainScreen;

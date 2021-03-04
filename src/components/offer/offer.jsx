@@ -1,14 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import {offerPropTypes, TypePropTypes} from "../../propetypes";
+import {offerPropTypes} from "../../propetypes";
 import {Type} from "../../const";
 
 const Offer = (props) => {
   const {offer, typeOffer} = props; // typeoffer - куда нужно передавать?
   const {previewImage, price, rating, title, type, id, isPremium, isFavorite} = offer;
 
-  const offerType = typeOffer; // Type[typeOffer] / Type.typeOffer - почему так нельзя ?
+  const offerType = Type[typeOffer]; // Type.typeOffer - почему так нельзя ?
 
   return <React.Fragment>
     <article className={`${offerType.article} place-card`}>
@@ -52,7 +52,7 @@ const Offer = (props) => {
 
 Offer.propTypes = {
   offer: offerPropTypes,
-  typeOffer: PropTypes.object // PropTypes.string = PropTypes.object? + TypePropTypes нужен ли?
+  typeOffer: PropTypes.string
 };
 
 export default Offer;

@@ -16,9 +16,8 @@ import PropertyGalleryOffer from "../property-gallery-offer/property-gallery-off
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
 import {offerPropTypes} from "../../propetypes";
 
-import {Type} from "../../const";
+// import {Type} from "../../const";
 
-// import OffersList from "../offers-list/offers-list";
 import ContainerOffersList from "../container-offers-list/container-offers-list";
 
 import Map from "../map/map";
@@ -34,6 +33,8 @@ const PropertyScreen = (props) => {
     return offer.city.name === CITIES[3];
   });
   const nearOffersFilter = nearOffers.length > 3 ? nearOffers.splice(0, 4) : nearOffers;
+
+  const PROPERTY = `PROPERTY`;
 
   return <React.Fragment>
     <div className="page">
@@ -141,7 +142,7 @@ const PropertyScreen = (props) => {
 
               <ContainerOffersList
                 offers={offers}
-                typeOffer={Type.PROPERTY}
+                typeOffer={PROPERTY}
               />
 
             </section>
@@ -155,7 +156,7 @@ const PropertyScreen = (props) => {
 PropertyScreen.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   activePin: PropTypes.number,
-  typeOffer: PropTypes.object
+  typeOffer: PropTypes.string
 };
 
 export default PropertyScreen;
