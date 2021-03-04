@@ -132,7 +132,8 @@ const PropertyScreen = (props) => {
 
             <Map
               offers = {nearOffersFilter}
-              activePin = {nearOffersFilter[0].id}
+              activePin={nearOffersFilter[0].id}
+              mapSettings={PROPERTY}
             />
 
           </section>

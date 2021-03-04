@@ -38,6 +38,18 @@ const Type = {
   },
 };
 
+const MapSettings = {
+  MAIN: {
+    width: `100%`,
+    height: `100%`
+  },
+  PROPERTY: {
+    width: `1144px`, // зачем тут `` ? width: `100%` - почему не такое значение
+    height: `579px`,
+    margin: `0 auto 50px`,
+  }
+};
+
 const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 
-export {OfferType, CITIES, Type};
+export {OfferType, CITIES, Type, MapSettings};

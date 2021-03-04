@@ -5,6 +5,7 @@ import {CITIES} from "../../const";
 import {authPropTypes, offerPropTypes} from "../../propetypes";
 
 import ContainerOffersList from "../container-offers-list/container-offers-list";
+
 import Map from "../map/map";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
@@ -18,6 +19,7 @@ const MainScreen = () => {
   });
 
   const CITY = `CITY`;
+  const MAIN = `MAIN`;
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -70,7 +72,7 @@ const MainScreen = () => {
               </form>
 
               <ContainerOffersList
-                offers = {offers}
+                offers={offers}
                 typeOffer={CITY}
               />
 
@@ -81,6 +83,7 @@ const MainScreen = () => {
                 <Map
                   offers={offers}
                   activePin={offers[0].id}
+                  mapSettings = {MAIN}
                 />
 
               </section>

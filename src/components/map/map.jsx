@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 
 import {offerPropTypes} from "../../propetypes";
 
+import {MapSettings} from "../../const";
+
 import "leaflet/dist/leaflet.css";
 
 
@@ -18,7 +20,7 @@ const ACTIVE_PIN = leaflet.icon({
 });
 
 const Map = (props) => {
-  const {offers, activePin} = props;
+  const {offers, activePin, mapSettings} = props;
   const card = offers[0];
   const {city} = card;
   const mapRef = useRef();
@@ -60,14 +62,15 @@ const Map = (props) => {
   }, []);
 
   return (
-    <div id = "map" style={{height: `100%`, width: `100%`}} ref={mapRef}></div>
+    <div id="map" style={MapSettings[mapSettings]} ref={mapRef}></div>
   );
 };
 
 Map.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
-  activePin: PropTypes.number
+  activePin: PropTypes.number,
+  mapSettings: PropTypes.string
 };
 
 export default Map;
