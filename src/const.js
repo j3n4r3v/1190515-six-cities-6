@@ -6,7 +6,7 @@ const OfferType = {
 
 const Type = {
   MAIN: { // нужно ли сюда вставлять строку чтобы ссылаться?
-    divClass: `cities__places-list`, // куда вставляем(контейнер)
+    divClass: `cities__places-list tabs__content`, // куда вставляем(контейнер)
     article: `cities__place-card`, // что вставляем, карточка
     img: {
       containerClass: `cities`, // cities__image-wrapper обертка для изображения

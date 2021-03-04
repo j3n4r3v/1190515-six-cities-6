@@ -7,10 +7,10 @@ import {offerPropTypes} from "../../propetypes";
 const ContainerOffersList = (props) => {
   const {offers, typeOffer} = props;
 
-  const containerType = Type[typeOffer]; // Type.typeOffer ?
+  const container = Type[typeOffer]; // Type.typeOffer ?
 
   return (
-    <div className={`${containerType.divClass} places__list ${typeOffer === `MAIN` ? `tabs__content` : ``}`}>
+    <div className={`${container.divClass} places__list`}>
 
       {
         offers.length > 0 ? offers.map((it) => <Offer typeOffer={typeOffer} offer={it} key={it.id} />) : <p>No places to stay available</p>
