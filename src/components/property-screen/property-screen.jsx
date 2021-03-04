@@ -34,7 +34,7 @@ const PropertyScreen = (props) => {
   // eslint-disable-next-line no-console
   console.log(nearOffersFilter);
   const PROPERTY = `PROPERTY`;
-  const nearOffersFilterList = nearOffersFilter.filter((item) => item.id !== 1);
+  const nearOffersFilterList = nearOffersFilter.filter((item) => item.id !== nearOffersFilter[0].id);
   // eslint-disable-next-line no-console
   console.log(nearOffersFilterList);
   return <React.Fragment>
