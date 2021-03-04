@@ -20,7 +20,7 @@ import Map from "../map/map";
 const PropertyScreen = (props) => {
   const {offers} = props;
   const randomOfferFromArray = randomArrayItem(offers);
-  const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description, id} = randomOfferFromArray;
+  const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = randomOfferFromArray;
   const {name, avatarUrl} = host;
   const imagesArray = images.length > 6 ? images.slice(0, 6) : images;
 
@@ -126,7 +126,7 @@ const PropertyScreen = (props) => {
 
             <Map
               offers = {nearOffersFilter}
-              activePin={randomOfferFromArray.id}
+              activePin={offers[0].id} // randomOfferFromArray.id
               mapSettings={PROPERTY}
             />
 
