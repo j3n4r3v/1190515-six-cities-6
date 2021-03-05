@@ -5,7 +5,7 @@ import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import {reviewsMocks} from "../../mocks/reviews-mocks";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
-import {randomArrayItem} from "../../utils";
+import {getRandomArrayItem} from "../../utils";
 
 import FeedBackForm from "../feedbackform/feedbackform";
 import ReviewList from "../rewiev-list/review-list";
@@ -19,7 +19,7 @@ import Map from "../map/map";
 
 const PropertyScreen = (props) => {
   const {offers} = props;
-  const randomOfferFromArray = randomArrayItem(offers);
+  const randomOfferFromArray = getRandomArrayItem(offers);
   const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = randomOfferFromArray;
   const {name, avatarUrl} = host;
   const imagesArray = images.length > 6 ? images.slice(0, 6) : images;
@@ -28,7 +28,8 @@ const PropertyScreen = (props) => {
 
   const PROPERTY = `PROPERTY`;
 
-  const nearOffersFilterList = nearOffersFilter.filter((item) => item.id !== nearOffersFilter[0].id);
+  const nearOffersFilterList = nearOffersFilter.slice(1);
+
 
   return <React.Fragment>
     <div className="page">
@@ -126,7 +127,7 @@ const PropertyScreen = (props) => {
 
             <Map
               offers = {nearOffersFilter}
-              activePin={offers[0].id} // randomOfferFromArray.id
+              activePin={randomOfferFromArray.id}
               mapSettings={PROPERTY}
             />
 
