@@ -3,12 +3,14 @@ import {Link} from "react-router-dom";
 
 import PropTypes from "prop-types";
 import {authPropTypes, offerPropTypes} from "../../propetypes";
-// import {Type} from "../../const";
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 
 import ContainerOffersList from "../container-offers-list/container-offers-list";
+
+import {connect} from "react-redux";
+
 const FavoritesScreen = (props) => {
   const {offers} = props;
   const city = offers[0].city;
@@ -82,4 +84,10 @@ FavoritesScreen.propTypes = {
   typeOffer: PropTypes.string
 };
 
-export default FavoritesScreen;
+const mapStateToProps = (state) => {
+  return {
+    offers: state.offers,
+  };
+};
+export {FavoritesScreen};
+export default connect(mapStateToProps)(FavoritesScreen);

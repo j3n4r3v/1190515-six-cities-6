@@ -3,3 +3,9 @@ export const ActionType = {
   FILTERED_OFFERS: `main/filteredOffers`
 };
 
+export const ActionCreator = {
+  changeCity: (city) => ({
+    type: ActionType.CHANGE_CITY,
+    payload: city
+  }),
+};

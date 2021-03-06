@@ -12,6 +12,7 @@ import ReviewList from "../rewiev-list/review-list";
 import PropertyGalleryOffer from "../property-gallery-offer/property-gallery-offer";
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
 import {offerPropTypes} from "../../propetypes";
+import {connect} from "react-redux";
 
 import ContainerOffersList from "../container-offers-list/container-offers-list";
 
@@ -29,7 +30,6 @@ const PropertyScreen = (props) => {
   const PROPERTY = `PROPERTY`;
 
   const nearOffersFilterList = nearOffersFilter.slice(1);
-
 
   return <React.Fragment>
     <div className="page">
@@ -157,4 +157,12 @@ PropertyScreen.propTypes = {
   mapSettings: PropTypes.string
 };
 
-export default PropertyScreen;
+const mapStateToProps = (state) => {
+  return {
+    activePin: state.city,
+    offers: state.offers,
+  };
+};
+
+export default connect(mapStateToProps)(PropertyScreen);
+export {PropertyScreen};

@@ -9,7 +9,7 @@ const filterOffers = offersMocks.filter((offer) => {
 });
 
 const initialState = {
-  city: `Paris`,
+  activeCity: `Paris`,
   offers: filterOffers, // уже отфильтрованные предложения
 };
 
