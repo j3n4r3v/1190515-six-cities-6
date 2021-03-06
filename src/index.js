@@ -5,10 +5,19 @@ import {offersMocks} from "./mocks/offers-mocks";
 
 import App from "./components/app/app";
 
+import {composeWithDevTools} from "redux-devtools-extension";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+import {reducer} from "../components/store/reducer";
+
+const store = createStore(reducer, composeWithDevTools());
+
 ReactDOM.render(
-    <App
-      offers={offersMocks}
-    >
-    </App>,
+    <Provider store={store}>
+      <App
+        offers={offersMocks}
+      >
+      </App>
+    </Provider>,
     document.querySelector(`#root`)
 );

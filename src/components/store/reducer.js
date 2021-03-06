@@ -1,7 +1,7 @@
-import {ActionType} from "../store/action";
+import {ActionType} from "./action";
 
-import {offersMocks} from "../mocks/offers-mocks";
-import {CITIES} from "../const";
+import {offersMocks} from "../../mocks/offers-mocks";
+import {CITIES} from "../../const";
 
 const ACTIVE_CITY = CITIES[3];
 const filterOffers = offersMocks.filter((offer) => {
