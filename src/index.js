@@ -8,7 +8,7 @@ import App from "./components/app/app";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
-import {reducer} from "../components/store/reducer";
+import {reducer} from "./components/store/reducer";
 
 const store = createStore(reducer, composeWithDevTools());
 

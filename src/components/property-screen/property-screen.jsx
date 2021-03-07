@@ -152,15 +152,15 @@ const PropertyScreen = (props) => {
 PropertyScreen.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   randomOfferFromArray: offerPropTypes,
-  activePin: PropTypes.number,
+  activePin: PropTypes.string,
   typeOffer: PropTypes.string,
   mapSettings: PropTypes.string
 };
 
 const mapStateToProps = (state) => {
   return {
-    activePin: state.city,
-    offers: state.offers,
+    activePin: state.activeCity,
+    offers: state.activeOffers,
   };
 };
 

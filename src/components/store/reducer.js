@@ -1,33 +1,28 @@
 import {ActionType} from "./action";
 
 import {offersMocks} from "../../mocks/offers-mocks";
-import {CITIES} from "../../const";
 
-const ACTIVE_CITY = CITIES[3];
-const filterOffers = offersMocks.filter((offer) => {
-  return offer.city.name === ACTIVE_CITY;
-});
+// import {CITIES} from "../../const";
+// const ACTIVE_CITY = CITIES[3];
 
-const initialState = {
-  activeCity: `Paris`,
-  offers: filterOffers, // уже отфильтрованные предложения
+const initialState = { // В глобальном хранилище начальное state(состояние)
+  activeCity: `Amsterdam`,
+  activeOffers: offersMocks.filter((offer) => {
+    return offer.city.name === `Amsterdam`;// activeCity - не могу сюда добавить
+  })
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => { // логика изменения хранилища
   switch (action.type) {
     case ActionType.CHANGE_CITY:
       return {
         ...state, // предыдущее состояние копирует
-        city: action.city // меняет в нем ключ city - на выбранный город
-      };
-    case ActionType.FILTERED_OFFERS:
-      return {
-        ...state, // предыдущее состояние копирует
-        offers: action.offers // меняет в нем ключ offers- на выбранный город
+        activeCity: action.town, // меняет в state ключ activeCity - на выбранный город
+        activeOffers: action.filter // меняет в state ключ activeOffers- на отфильтрованные предложения
       };
     default:
       return state;
   }
 };
 
-export {reducer}; // возвращает состояние - а это измененный обьект initialState?
+export {reducer}; // возвращает  измененное состояние хранилища

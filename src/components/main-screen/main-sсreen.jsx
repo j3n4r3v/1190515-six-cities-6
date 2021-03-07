@@ -13,7 +13,7 @@ import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {ActionCreator} from "../store/action";
 
 const MainScreen = (props) => {
   const {offers, activeCity, onChangeCity} = props;
@@ -37,10 +37,10 @@ const MainScreen = (props) => {
 
               {CITIES.map((city, i) => {
                 return (
-                  <li className={`locations__item-link tabs__item`} onChangeCity={onChangeCity} key={city + i}>
+                  <li className={`locations__item-link tabs__item`} key={city + i}>
                     <a className={`locations__item-link tabs__item ${city === activeCity && `tabs__item--active`}`}
                       href="#"
-                      onClick={() => onChangeCity(city)}>
+                      onClick={onChangeCity(city, offers)}>
                       <span>{city}</span>
                     </a>
                   </li>
@@ -105,16 +105,18 @@ MainScreen.propTypes = {
   onChangeCity: PropTypes.func
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => { // Передает обновленные свойства из store в компонент
   return {
-    activeCity: state.city,
-    offers: state.offers
+    activeCity: state.activeCity,
+    offers: state.activeOffers
   };
 };
 
-const mapDispatchToProps = {
-  onChangeCity: ActionCreator.changeCity,
-};
+const mapDispatchToProps = (dispatch) => ({ // Передает в компонент методы для обновления store
+  onChangeCity(city, offers) {
+    dispatch(ActionCreator.change(city, offers));
+  },
+});
 
 export {MainScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen); // использует store
