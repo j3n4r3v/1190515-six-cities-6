@@ -13,7 +13,7 @@ import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 
 import {connect} from "react-redux";
-import {ActionCreator} from "../store/action";
+import {ActionCreator} from "../../store/action";
 
 const MainScreen = (props) => {
   const {offers, activeCity, onChangeCity} = props;
@@ -40,7 +40,7 @@ const MainScreen = (props) => {
                   <li className={`locations__item-link tabs__item`} key={city + i}>
                     <a className={`locations__item-link tabs__item ${city === activeCity && `tabs__item--active`}`}
                       href="#"
-                      onClick={onChangeCity(city, offers)}>
+                      onClick={() => onChangeCity(city)}>
                       <span>{city}</span>
                     </a>
                   </li>
@@ -82,7 +82,7 @@ const MainScreen = (props) => {
 
                 <Map
                   offers={offers}
-                  activePin={offers[0].id}
+                  activeCity={offers[0].id}
                   mapSettings = {MAIN}
                 />
 
@@ -99,22 +99,23 @@ MainScreen.propTypes = {
   authInfo: PropTypes.arrayOf(authPropTypes),
   offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
-  activePin: PropTypes.string,
-  typeOffer: PropTypes.string,
   activeCity: PropTypes.string,
+  typeOffer: PropTypes.string,
   onChangeCity: PropTypes.func
 };
 
 const mapStateToProps = (state) => { // Передает обновленные свойства из store в компонент
   return {
     activeCity: state.activeCity,
-    offers: state.activeOffers
+    offers: state.offers.filter((offer) => {
+      return offer.city.name === state.activeCity;// Amsterdam - не могу сюда добавить
+    })
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({ // Передает в компонент методы для обновления store
-  onChangeCity(city, offers) {
-    dispatch(ActionCreator.change(city, offers));
+  onChangeCity(city) {
+    dispatch(ActionCreator.changeCity(city));
   },
 });
 

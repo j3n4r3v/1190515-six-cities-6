@@ -3,11 +3,11 @@ export const ActionType = { // Описываю название самого д
 };
 
 export const ActionCreator = {
-  change: (city, offers) => ({ // Для описания actions в виде обьектов
+  changeCity: (city) => ({ // Для описания actions в виде обьектов
     type: ActionType.CHANGE_CITY,
-    town: city, // почему здесь именно city ?
-    filter: offers.filter((offer) => {
-      return offer.city.name;
-    })
+    payload: city // почему здесь именно city ?
+    // filter: offers.filter((offer) => {
+    //   return offer.city.name;
+    // })
   })
 };

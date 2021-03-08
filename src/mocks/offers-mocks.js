@@ -345,7 +345,7 @@ export const offersMocks = [
     "pointsLocation": {"latitude": 50.94659143081592, "longitude": 4.372341978138121, "zoom": 10},
     "maxAdults": 1,
     "previewImage": `img/studio-01.jpg`,
-    "price": 100,
+    "price": 80,
     "rating": 3,
     "title": `Wood and stone place`,
     "type": `Studio`
@@ -384,7 +384,7 @@ export const offersMocks = [
     "pointsLocation": {"latitude": 50.96659143081592, "longitude": 4.382341978138121, "zoom": 10},
     "maxAdults": 1,
     "previewImage": `img/studio-01.jpg`,
-    "price": 100,
+    "price": 80,
     "rating": 3,
     "title": `Wood and stone place`,
     "type": `Studio`

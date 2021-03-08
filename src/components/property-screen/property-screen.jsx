@@ -127,7 +127,7 @@ const PropertyScreen = (props) => {
 
             <Map
               offers = {nearOffersFilter}
-              activePin={randomOfferFromArray.id}
+              activeCity ={randomOfferFromArray.id}
               mapSettings={PROPERTY}
             />
 
@@ -152,15 +152,15 @@ const PropertyScreen = (props) => {
 PropertyScreen.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   randomOfferFromArray: offerPropTypes,
-  activePin: PropTypes.string,
+  activeCity: PropTypes.string,
   typeOffer: PropTypes.string,
   mapSettings: PropTypes.string
 };
 
 const mapStateToProps = (state) => {
   return {
-    activePin: state.activeCity,
-    offers: state.activeOffers,
+    activeCity: state.activeCity,
+    offers: state.offers
   };
 };
 
