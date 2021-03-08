@@ -10,7 +10,7 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-angelina.jpg`,
-      "id": 5,
+      "id": 14,
       "isPro": true,
       "name": `Angelina`
     },
@@ -48,7 +48,7 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-angelina.jpg`,
-      "id": 4,
+      "id": 13,
       "isPro": true,
       "name": `Angelina`
     },
@@ -87,7 +87,7 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-max.jpg`,
-      "id": 3,
+      "id": 12,
       "isPro": true,
       "name": `Max`
     },
@@ -126,7 +126,7 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-angelina.jpg`,
-      "id": 2,
+      "id": 11,
       "isPro": true,
       "name": `Angelina`
     },
@@ -165,7 +165,7 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-max.jpg`,
-      "id": 1,
+      "id": 10,
       "isPro": true,
       "name": `Max`
     },
@@ -204,7 +204,7 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-max.jpg`,
-      "id": 4,
+      "id": 9,
       "isPro": true,
       "name": `Max`
     },
@@ -243,7 +243,7 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-angelina.jpg`,
-      "id": 3,
+      "id": 8,
       "isPro": true,
       "name": `Angelina`
     },
@@ -282,7 +282,7 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-angelina.jpg`,
-      "id": 3,
+      "id": 7,
       "isPro": true,
       "name": `Angelina`
     },
@@ -321,7 +321,7 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-max.jpg`,
-      "id": 2,
+      "id": 6,
       "isPro": true,
       "name": `Max`
     },
@@ -345,7 +345,7 @@ export const offersMocks = [
     "pointsLocation": {"latitude": 50.94659143081592, "longitude": 4.372341978138121, "zoom": 10},
     "maxAdults": 1,
     "previewImage": `img/studio-01.jpg`,
-    "price": 100,
+    "price": 80,
     "rating": 3,
     "title": `Wood and stone place`,
     "type": `Studio`
@@ -360,7 +360,7 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-angelina.jpg`,
-      "id": 2,
+      "id": 5,
       "isPro": true,
       "name": `Angelina`
     },
@@ -384,7 +384,7 @@ export const offersMocks = [
     "pointsLocation": {"latitude": 50.96659143081592, "longitude": 4.382341978138121, "zoom": 10},
     "maxAdults": 1,
     "previewImage": `img/studio-01.jpg`,
-    "price": 100,
+    "price": 80,
     "rating": 3,
     "title": `Wood and stone place`,
     "type": `Studio`
@@ -399,7 +399,7 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-angelina.jpg`,
-      "id": 2,
+      "id": 4,
       "isPro": true,
       "name": `Angelina`
     },
@@ -438,7 +438,7 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-angelina.jpg`,
-      "id": 2,
+      "id": 3,
       "isPro": true,
       "name": `Angelina`
     },
@@ -516,7 +516,7 @@ export const offersMocks = [
     "goods": [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
     "host": {
       "avatarUrl": `img/avatar-max.jpg`,
-      "id": 2,
+      "id": 1,
       "isPro": true,
       "name": `Max`
     },

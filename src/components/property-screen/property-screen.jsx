@@ -5,13 +5,14 @@ import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import {reviewsMocks} from "../../mocks/reviews-mocks";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
-import {randomArrayItem} from "../../utils";
+import {getRandomArrayItem} from "../../utils";
 
 import FeedBackForm from "../feedbackform/feedbackform";
 import ReviewList from "../rewiev-list/review-list";
 import PropertyGalleryOffer from "../property-gallery-offer/property-gallery-offer";
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
 import {offerPropTypes} from "../../propetypes";
+import {connect} from "react-redux";
 
 import ContainerOffersList from "../container-offers-list/container-offers-list";
 
@@ -19,7 +20,7 @@ import Map from "../map/map";
 
 const PropertyScreen = (props) => {
   const {offers} = props;
-  const randomOfferFromArray = randomArrayItem(offers);
+  const randomOfferFromArray = getRandomArrayItem(offers);
   const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = randomOfferFromArray;
   const {name, avatarUrl} = host;
   const imagesArray = images.length > 6 ? images.slice(0, 6) : images;
@@ -28,7 +29,7 @@ const PropertyScreen = (props) => {
 
   const PROPERTY = `PROPERTY`;
 
-  const nearOffersFilterList = nearOffersFilter.filter((item) => item.id !== nearOffersFilter[0].id);
+  const nearOffersFilterList = nearOffersFilter.slice(1);
 
   return <React.Fragment>
     <div className="page">
@@ -126,7 +127,7 @@ const PropertyScreen = (props) => {
 
             <Map
               offers = {nearOffersFilter}
-              activePin={offers[0].id} // randomOfferFromArray.id
+              activeCity ={randomOfferFromArray.id}
               mapSettings={PROPERTY}
             />
 
@@ -151,9 +152,19 @@ const PropertyScreen = (props) => {
 PropertyScreen.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   randomOfferFromArray: offerPropTypes,
-  activePin: PropTypes.number,
+  activeCity: PropTypes.string,
   typeOffer: PropTypes.string,
   mapSettings: PropTypes.string
 };
 
-export default PropertyScreen;
+const mapStateToProps = (state) => {
+  return {
+    activeCity: state.activeCity,
+    offers: state.offers.filter((offer) => {
+      return offer.city.name === state.activeCity;// Amsterdam - не могу сюда добавить
+    })
+  };
+};
+
+export default connect(mapStateToProps)(PropertyScreen);
+export {PropertyScreen};

@@ -12,8 +12,11 @@ import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
+
 const MainScreen = (props) => {
-  const {offers, activeCity} = props;
+  const {offers, activeCity, onChangeCity} = props;
   const MAIN = `MAIN`;
 
   return <React.Fragment>
@@ -34,8 +37,10 @@ const MainScreen = (props) => {
 
               {CITIES.map((city, i) => {
                 return (
-                  <li className={`locations__item-link tabs__item ${city === activeCity && `tabs__item--active`}`} key={city + i}>
-                    <a className="locations__item-link tabs__item" href="#">
+                  <li className={`locations__item-link tabs__item`} key={city + i}>
+                    <a className={`locations__item-link tabs__item ${city === activeCity && `tabs__item--active`}`}
+                      href="#"
+                      onClick={() => onChangeCity(city)}>
                       <span>{city}</span>
                     </a>
                   </li>
@@ -49,7 +54,7 @@ const MainScreen = (props) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">312 places to stay in Amsterdam</b>
+              <b className="places__found">{offers.length} places to stay in {activeCity}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -77,7 +82,7 @@ const MainScreen = (props) => {
 
                 <Map
                   offers={offers}
-                  activePin={offers[0].id}
+                  activeCity={offers[0].city.name}
                   mapSettings = {MAIN}
                 />
 
@@ -94,9 +99,25 @@ MainScreen.propTypes = {
   authInfo: PropTypes.arrayOf(authPropTypes),
   offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
-  activePin: PropTypes.string,
+  activeCity: PropTypes.string,
   typeOffer: PropTypes.string,
-  activeCity: PropTypes.string
+  onChangeCity: PropTypes.func
 };
 
-export default MainScreen;
+const mapStateToProps = (state) => { // Передает обновленные свойства из store в компонент
+  return {
+    activeCity: state.activeCity,
+    offers: state.offers.filter((offer) => {
+      return offer.city.name === state.activeCity;
+    })
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({ // Передает в компонент методы для обновления store
+  onChangeCity(city) {
+    dispatch(ActionCreator.changeCity(city));
+  },
+});
+
+export {MainScreen};
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen); // использует store
