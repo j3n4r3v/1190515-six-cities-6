@@ -14,13 +14,13 @@ const PIN = leaflet.icon({
   iconSize: [27, 39]
 });
 
-const ACTIVE_PIN = leaflet.icon({
-  iconUrl: `./img/pin-active.svg`,
-  iconSize: [27, 39]
-});
+// const ACTIVE_PIN = leaflet.icon({
+//   iconUrl: `./img/pin-active.svg`,
+//   iconSize: [27, 39]
+// });
 
 const Map = (props) => {
-  const {offers, activeCity, mapSettings} = props;
+  const {offers, mapSettings} = props; //  activeCity,
   const card = offers[0];
   const {city} = card;
   const mapRef = useRef();
@@ -43,23 +43,23 @@ const Map = (props) => {
       .addTo(mapRef.current);
 
     offers.forEach((offer) => {
-      const {pointsLocation, title, id} = offer;
+      const {pointsLocation, title} = offer;
       leaflet
         .marker({
           lat: pointsLocation.latitude,
           lng: pointsLocation.longitude
         },
-        {icon: id === activeCity ? ACTIVE_PIN : PIN}
+        {icon: PIN} // {icon: offer.city.name === activeCity ? ACTIVE_PIN : PIN}
         )
           .addTo(mapRef.current)
           .bindPopup(title);
-
-
-      return () => {
-        mapRef.current.remove();
-      };
     });
-  }, []);
+
+    return () => {
+      mapRef.current.remove();
+    };
+
+  }, [props.activeCity]);
 
   return (
     <div id="map" style={MapSettings[mapSettings]} ref={mapRef}></div>
@@ -69,7 +69,7 @@ const Map = (props) => {
 Map.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
-  activeCity: PropTypes.number,
+  activeCity: PropTypes.string,
   mapSettings: PropTypes.string
 };
 

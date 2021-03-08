@@ -82,7 +82,7 @@ const MainScreen = (props) => {
 
                 <Map
                   offers={offers}
-                  activeCity={offers[0].id}
+                  activeCity={offers[0].city.name}
                   mapSettings = {MAIN}
                 />
 
@@ -108,7 +108,7 @@ const mapStateToProps = (state) => { // Передает обновленные 
   return {
     activeCity: state.activeCity,
     offers: state.offers.filter((offer) => {
-      return offer.city.name === state.activeCity;// Amsterdam - не могу сюда добавить
+      return offer.city.name === state.activeCity;
     })
   };
 };

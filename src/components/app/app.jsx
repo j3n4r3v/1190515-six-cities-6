@@ -7,20 +7,10 @@ import SignInScreen from "../sign-in-screen/sign-in-screen";
 import MainScreen from "../main-screen/main-sсreen";
 import PropertyScreen from "../property-screen/property-screen";
 import NotFoundScreen from "../not-found-screen/not-found-screen";
-// import {offersMocks} from "../../mocks/offers-mocks";
 
-
-import {CITIES} from "../../const";
 import {offerPropTypes} from "../../propetypes";
 
-const ACTIVE_CITY = CITIES[3];
-
-const App = (props) => {
-  const {offers} = props;
-
-  const filterCityOffers = offers.filter((offer) => {
-    return offer.city.name === ACTIVE_CITY;
-  });
+const App = () => {
 
   return <React.Fragment>
     <BrowserRouter>
@@ -41,8 +31,7 @@ const App = (props) => {
         </Route>
 
         <Route exact path="/offer/:id">
-          <PropertyScreen offers={filterCityOffers}
-          />
+          <PropertyScreen />
         </Route>
 
         <Route>

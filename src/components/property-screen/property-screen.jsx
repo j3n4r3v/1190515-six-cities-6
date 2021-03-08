@@ -160,7 +160,9 @@ PropertyScreen.propTypes = {
 const mapStateToProps = (state) => {
   return {
     activeCity: state.activeCity,
-    offers: state.offers
+    offers: state.offers.filter((offer) => {
+      return offer.city.name === state.activeCity;// Amsterdam - не могу сюда добавить
+    })
   };
 };
 
