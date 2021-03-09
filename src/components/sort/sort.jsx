@@ -5,10 +5,10 @@ import withActiveFlag from "../../hocs/with-active-flag";
 
 const Sort = (props) => {
   const {
-    activeSortItem,
-    isActiveOptions,
+    isActiveOption,
+    isActiveList,
     onActiveChange,
-    sorts = [],
+    sorts = [], // массив названий кнопок
     onSortClick = () => {},
   } = props;
 
@@ -18,29 +18,28 @@ const Sort = (props) => {
       <span
         className="places__sorting-type"
         tabIndex="0"
-        onClick={onActiveChange}
-      >
-        {activeSortItem}
+        onClick={() => onActiveChange()}
+      > Popular
+        {isActiveOption}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
       <ul
-        className={`places__options places__options--custom ${isActiveOptions ?
+        className={`places__options places__options--custom ${isActiveList ?
           `places__options--opened` :
           ``}`}
       >
-        {sorts.map((sort, index) => (
+        {sorts.map((sort, i) => (
           <li
-            className={`places__option
-            ${activeSortItem === sort ?
-            `places__option--active` :
-            ``}`}
+            className={`places__option ${isActiveOption ?
+              `places__option--active` :
+              ``}`}
             tabIndex="0"
-            key={sort + index}
+            key={sort + i}
             onClick={() => {
-              onSortClick(sort);
-              onActiveChange();
+              onSortClick(sort); // нужен ли тут параметр?
+              onActiveChange(sort);
             }}
           >
             {sort}
@@ -52,11 +51,11 @@ const Sort = (props) => {
 };
 
 Sort.propTypes = {
-  activeSortItem: PropTypes.sort,
-  isActiveOptions: PropTypes.flag,
+  isActiveOption: PropTypes.bool,
+  isActiveList: PropTypes.bool,
   onActiveChange: PropTypes.func,
-  sorts: PropTypes.sorts,
-  onSortClick: PropTypes.func,
+  sorts: PropTypes.array,
+  onSortClick: PropTypes.func
 };
 
 export default withActiveFlag(Sort);

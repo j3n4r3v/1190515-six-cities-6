@@ -4,7 +4,7 @@ const withActiveFlag = (Component) => {
 
   const WithActiveFlag = (props) => {
 
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
 
     const handleActiveChange = () => {
       setIsOpen(!isOpen);
@@ -13,8 +13,8 @@ const withActiveFlag = (Component) => {
     return (
       <Component
         {... props}
-        isActiveOptions={useState.isOpen}
-        onActiveChange={handleActiveChange}
+        isActiveOption={isOpen}
+        onActiveChange={() => handleActiveChange()}
       />
     );
   };

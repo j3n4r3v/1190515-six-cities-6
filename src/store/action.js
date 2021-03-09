@@ -1,13 +1,20 @@
-export const ActionType = { // Описываю название самого действия
-  CHANGE_CITY: `main/changeCity`, // как формируется название значения ключа CHANGE_CITY ?
+export const ActionType = {
+  CHANGE_CITY: `main/changeCity`,
+  CHANGE_SORT_TYPE: `main/changeSortType`,
+  CHANGE_ACTIVE_ID_CITY: `main/changeActiveIdCity`
 };
 
-export const ActionCreator = {
-  changeCity: (city) => ({ // Для описания actions в виде обьектов
+export const ActionCreator = { // Для описания actions в виде обьектов
+  changeCity: (city) => ({
     type: ActionType.CHANGE_CITY,
-    payload: city // почему здесь именно city ?
-    // filter: offers.filter((offer) => {
-    //   return offer.city.name;
-    // })
+    payload: city
+  }),
+  changeOffersSortType: (sortType) => ({
+    type: ActionType.CHANGE_SORT_TYPE,
+    payload: sortType
+  }),
+  changeActiveCityId: (id) => ({
+    type: ActionType.CHANGE_ACTIVE_ID_CITY,
+    payload: id
   })
 };

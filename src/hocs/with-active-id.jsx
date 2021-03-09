@@ -7,14 +7,14 @@ const withActiveId = (Component) => {
     const [activeId, setActiveId] = useState(null);
 
     const handleActiveIdChange = (id) => {
-      setActiveId({activeId: id});
+      setActiveId(() => ({activeId: id})); // как прочесть эту функцию?
     };
 
     return (
       <Component
         {...props}
         activeId={activeId}
-        onActiveIdChange={handleActiveIdChange}
+        onActiveIdChange={() => handleActiveIdChange()}
       />
     );
   };

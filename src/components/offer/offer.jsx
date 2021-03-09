@@ -5,13 +5,13 @@ import {offerPropTypes} from "../../propetypes";
 import {Type} from "../../const";
 
 const Offer = (props) => {
-  const {offer, typeOffer} = props; // typeoffer - куда нужно передавать?
+  const {offer, typeOffer, onActiveIdChange} = props;
   const {previewImage, price, rating, title, type, id, isPremium, isFavorite} = offer;
 
-  const offerType = Type[typeOffer]; // Type.typeOffer - почему так нельзя ?
+  const offerType = Type[typeOffer];
 
   return <React.Fragment>
-    <article className={`${offerType.article} place-card`}>
+    <article className={`${offerType.article} place-card`} onOfferHover={onActiveIdChange}>
       {
         isPremium && <div className="place-card__mark">
           <span>Premium</span>
@@ -52,7 +52,8 @@ const Offer = (props) => {
 
 Offer.propTypes = {
   offer: offerPropTypes,
-  typeOffer: PropTypes.string
+  typeOffer: PropTypes.string,
+  onActiveIdChange: PropTypes.func
 };
 
 export default Offer;

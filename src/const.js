@@ -4,37 +4,44 @@ const OfferType = {
   STUDIO: `Studio`
 };
 
+const SortType = {
+  POPULAR: `Popular`,
+  LOW_TO_HIGH: `Price: low to high`,
+  HIGH_TO_LOW: `Price: high to low`,
+  TOP_RATED_FIRST: `Top rated first`,
+};
+
 const Type = {
-  MAIN: { // нужно ли сюда вставлять строку чтобы ссылаться?
-    divClass: `cities__places-list tabs__content`, // куда вставляем(контейнер)
-    article: `cities__place-card`, // что вставляем, карточка
+  MAIN: {
+    divClass: `cities__places-list tabs__content`,
+    article: `cities__place-card`,
     img: {
-      containerClass: `cities`, // cities__image-wrapper обертка для изображения
+      containerClass: `cities`,
       width: 260,
       height: 200
     },
-    info: `place-card__info`, // информация о карточке
+    info: `place-card__info`,
   },
   PROPERTY: {
-    divClass: `near-places__list`, // куда вставляем(контейнер)
-    article: `near-places__card`, // что вставляем, карточка
+    divClass: `near-places__list`,
+    article: `near-places__card`,
     img: {
-      containerClass: `near-places`, // near-places__image-wrapper  обертка для изображения
+      containerClass: `near-places`,
       width: 260,
       height: 200
     },
-    info: `place-card__info`, // информация о карточке
+    info: `place-card__info`,
 
   },
   FAVORITE: {
-    divClass: `favorites__places`, // куда вставляем(контейнер)
-    article: `favorites__card`, // что вставляем, карточка
+    divClass: `favorites__places`,
+    article: `favorites__card`,
     img: {
-      containerClass: `favorites`, // favorites__image-wrapper обертка для изображения
+      containerClass: `favorites`,
       width: 150,
       height: 110
     },
-    info: `favorites__card-info`, // информация о карточке
+    info: `favorites__card-info`,
   },
 };
 
@@ -52,4 +59,4 @@ const MapSettings = {
 
 const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 
-export {OfferType, CITIES, Type, MapSettings};
+export {OfferType, CITIES, Type, MapSettings, SortType};

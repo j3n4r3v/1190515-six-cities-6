@@ -8,19 +8,18 @@ import {MapSettings} from "../../const";
 
 import "leaflet/dist/leaflet.css";
 
-
 const PIN = leaflet.icon({
   iconUrl: `./img/pin.svg`,
   iconSize: [27, 39]
 });
 
-// const ACTIVE_PIN = leaflet.icon({
-//   iconUrl: `./img/pin-active.svg`,
-//   iconSize: [27, 39]
-// });
+const ACTIVE_PIN = leaflet.icon({
+  iconUrl: `./img/pin-active.svg`,
+  iconSize: [27, 39]
+});
 
 const Map = (props) => {
-  const {offers, mapSettings} = props; //  activeCity,
+  const {offers, mapSettings, activeCityId} = props;
   const card = offers[0];
   const {city} = card;
   const mapRef = useRef();
@@ -43,13 +42,13 @@ const Map = (props) => {
       .addTo(mapRef.current);
 
     offers.forEach((offer) => {
-      const {pointsLocation, title} = offer;
+      const {pointsLocation, title, id} = offer;
       leaflet
         .marker({
           lat: pointsLocation.latitude,
           lng: pointsLocation.longitude
         },
-        {icon: PIN} // {icon: offer.city.name === activeCity ? ACTIVE_PIN : PIN}
+        {icon: id === activeCityId ? ACTIVE_PIN : PIN}
         )
           .addTo(mapRef.current)
           .bindPopup(title);
@@ -59,7 +58,7 @@ const Map = (props) => {
       mapRef.current.remove();
     };
 
-  }, [props.activeCity]);
+  }, [props.activeCityId]);
 
   return (
     <div id="map" style={MapSettings[mapSettings]} ref={mapRef}></div>
@@ -69,7 +68,7 @@ const Map = (props) => {
 Map.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
-  activeCity: PropTypes.string,
+  activeCityId: PropTypes.number,
   mapSettings: PropTypes.string
 };
 

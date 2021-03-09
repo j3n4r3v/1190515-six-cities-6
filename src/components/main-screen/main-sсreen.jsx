@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import {CITIES} from "../../const";
+import {CITIES, SortType} from "../../const";
 import {authPropTypes, offerPropTypes} from "../../propetypes";
 
 import ContainerOffersList from "../container-offers-list/container-offers-list";
@@ -10,14 +10,24 @@ import Map from "../map/map";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 
+import Sort from "../sort/sort";
+
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
+import withActiveId from "../../hocs/with-active-id";
+
 const MainScreen = (props) => {
-  const {offers, activeCity, onChangeCity} = props;
+  const {offers,
+    activeCity,
+    activeCityId,
+    onActiveIdChange,
+    onChangeCity,
+    onChangeOffersSortType} = props;
   const MAIN = `MAIN`;
+  const SORTS = Object.values(SortType);
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -55,25 +65,17 @@ const MainScreen = (props) => {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{offers.length} places to stay in {activeCity}</b>
-              <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabIndex={0}>
-                  Popular
-                  <svg className="places__sorting-arrow" width={7} height={4}>
-                    <use xlinkHref="#icon-arrow-select" />
-                  </svg>
-                </span>
-                <ul className="places__options places__options--custom places__options--opened">
-                  <li className="places__option places__option--active" tabIndex={0}>Popular</li>
-                  <li className="places__option" tabIndex={0}>Price: low to high</li>
-                  <li className="places__option" tabIndex={0}>Price: high to low</li>
-                  <li className="places__option" tabIndex={0}>Top rated first</li>
-                </ul>
-              </form>
+
+              <Sort
+                isActiveOption = {SortType}
+                sorts = {SORTS}
+                onSortClick={() => onChangeOffersSortType()} // как понять какой сюда нужно параметр и нужно ли вообще?
+              />
 
               <ContainerOffersList
                 offers={offers}
                 typeOffer={MAIN}
+                onOfferHover={onActiveIdChange} // как понять какой сюда нужно параметр и нужно ли вообще?
               />
 
             </section>
@@ -81,8 +83,8 @@ const MainScreen = (props) => {
               <section className="cities__map map">
 
                 <Map
-                  offers={offers}
-                  activeCity={offers[0].city.name}
+                  offers = {offers}
+                  activeCityId = {activeCityId}
                   mapSettings = {MAIN}
                 />
 
@@ -99,9 +101,13 @@ MainScreen.propTypes = {
   authInfo: PropTypes.arrayOf(authPropTypes),
   offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
+  activeCityId: PropTypes.number,
   activeCity: PropTypes.string,
   typeOffer: PropTypes.string,
-  onChangeCity: PropTypes.func
+  onActiveIdChange: PropTypes.func,
+  onChangeCity: PropTypes.func,
+  onChangeOffersSortType: PropTypes.func,
+  onChangeActiveCityId: PropTypes.func
 };
 
 const mapStateToProps = (state) => { // Передает обновленные свойства из store в компонент
@@ -109,15 +115,24 @@ const mapStateToProps = (state) => { // Передает обновленные 
     activeCity: state.activeCity,
     offers: state.offers.filter((offer) => {
       return offer.city.name === state.activeCity;
-    })
+    }),
+    activeCityId: state.activeCityId
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({ // Передает в компонент методы для обновления store
-  onChangeCity(city) {
+  onChangeCity: (city) => {
     dispatch(ActionCreator.changeCity(city));
   },
+  onChangeActiveCityId: (activeId) => {
+    dispatch(ActionCreator.changeActiveCityId(activeId));
+  },
+  onChangeOffersSortType: (sortType) => {
+    dispatch(ActionCreator.changeOffersSortType(sortType));
+  }
 });
 
 export {MainScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen); // использует store
+export default withActiveId(
+    connect(mapStateToProps, mapDispatchToProps)(MainScreen) // использует store
+);
