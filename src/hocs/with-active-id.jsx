@@ -4,18 +4,16 @@ const withActiveId = (Component) => {
 
   const WithActiveId = (props) => {
 
-    const [data, changeData] = useState({
-      activeId: null
-    });
+    const [activeId, setActiveId] = useState(null);
 
     const handleActiveIdChange = (id) => {
-      changeData(() => ({activeId: id}));
+      setActiveId({activeId: id});
     };
 
     return (
       <Component
         {...props}
-        activeId={useState.activeId}
+        activeId={activeId}
         onActiveIdChange={handleActiveIdChange}
       />
     );

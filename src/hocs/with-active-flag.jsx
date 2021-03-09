@@ -1,21 +1,19 @@
 import React, {useState} from "react";
 
-const withActiveFlag = (Component, status = false) => {
+const withActiveFlag = (Component) => {
 
   const WithActiveFlag = (props) => {
 
-    const [data, changeData] = useState({
-      isActive: status
-    });
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleActiveChange = () => {
-      useState((prevState) => ({isActive: !prevState.isActive}));
+      setIsOpen(!isOpen);
     };
 
     return (
       <Component
         {... props}
-        isActive={useState.isActive}
+        isActiveOptions={useState.isOpen}
         onActiveChange={handleActiveChange}
       />
     );
