@@ -2,12 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import withActiveFlag from "../../hocs/with-active-flag";
+import OptionsItemsList from "../options-items-list/options-items-list";
+
+import {SortType} from "../../const";
 
 const Sort = (props) => {
   const {
-    isActiveOption,
+    activeOption,
     isActiveList,
     onActiveChange,
+    onChangeOption,
     sorts = [], // массив названий кнопок
     onSortClick = () => {},
   } = props;
@@ -20,38 +24,23 @@ const Sort = (props) => {
         tabIndex="0"
         onClick={() => onActiveChange()}
       > Popular
-        {isActiveOption}
+        {activeOption}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      <ul
-        className={`places__options places__options--custom ${isActiveList ?
-          `places__options--opened` :
-          ``}`}
-      >
-        {sorts.map((sort, i) => (
-          <li
-            className={`places__option ${isActiveOption ?
-              `places__option--active` :
-              ``}`}
-            tabIndex="0"
-            key={sort + i}
-            onClick={() => {
-              onSortClick(sort); // нужен ли тут параметр?
-              onActiveChange(sort);
-            }}
-          >
-            {sort}
-          </li>
-        ))}
-      </ul>
+      {
+        isOpen && <OptionsItemsList
+          activeOption={activeOption}
+          onChangeOption={onChangeOption}
+          options={SortType} />
+      }
     </form >
   );
 };
 
 Sort.propTypes = {
-  isActiveOption: PropTypes.bool,
+  activeOption: PropTypes.string,
   isActiveList: PropTypes.bool,
   onActiveChange: PropTypes.func,
   sorts: PropTypes.array,
