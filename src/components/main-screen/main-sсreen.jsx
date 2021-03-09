@@ -6,6 +6,7 @@ import {authPropTypes, offerPropTypes} from "../../propetypes";
 
 import ContainerOffersList from "../container-offers-list/container-offers-list";
 
+import {getActiveOffers} from "../../store/selectors";
 import Map from "../map/map";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
@@ -17,8 +18,6 @@ import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
-import withActiveId from "../../hocs/with-active-id";
-
 const MainScreen = (props) => {
   const {offers,
     activeCity,
@@ -27,7 +26,6 @@ const MainScreen = (props) => {
     onChangeCity,
     onChangeOffersSortType} = props;
   const MAIN = `MAIN`;
-  const SORTS = Object.values(SortType);
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -67,15 +65,14 @@ const MainScreen = (props) => {
               <b className="places__found">{offers.length} places to stay in {activeCity}</b>
 
               <Sort
-                isActiveOption = {SortType}
-                sorts = {SORTS}
-                onSortClick={() => onChangeOffersSortType()} // как понять какой сюда нужно параметр и нужно ли вообще?
+                activeOption = {SortType}
+                onChangeOption={() => onChangeOffersSortType()} // как понять какой сюда нужно параметр и нужно ли вообще?
               />
 
               <ContainerOffersList
                 offers={offers}
                 typeOffer={MAIN}
-                onOfferHover={onActiveIdChange} // как понять какой сюда нужно параметр и нужно ли вообще?
+                onHoverOffer={onActiveIdChange} // как понять какой сюда нужно параметр и нужно ли вообще?
               />
 
             </section>
@@ -113,9 +110,9 @@ MainScreen.propTypes = {
 const mapStateToProps = (state) => { // Передает обновленные свойства из store в компонент
   return {
     activeCity: state.activeCity,
-    offers: state.offers.filter((offer) => {
-      return offer.city.name === state.activeCity;
-    }),
+    offers: getActiveOffers(state), // state.offers.filter((offer) => {
+    //   return offer.city.name === state.activeCity;
+    // }),
     activeCityId: state.activeCityId
   };
 };
@@ -126,13 +123,8 @@ const mapDispatchToProps = (dispatch) => ({ // Передает в компон�
   },
   onChangeActiveCityId: (activeId) => {
     dispatch(ActionCreator.changeActiveCityId(activeId));
-  },
-  onChangeOffersSortType: (sortType) => {
-    dispatch(ActionCreator.changeOffersSortType(sortType));
   }
 });
 
 export {MainScreen};
-export default withActiveId(
-    connect(mapStateToProps, mapDispatchToProps)(MainScreen) // использует store
-);
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen); // использует store

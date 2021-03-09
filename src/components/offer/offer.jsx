@@ -1,17 +1,17 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import {offerPropTypes} from "../../propetypes";
-import {Type} from "../../const";
+import { offerPropTypes } from "../../propetypes";
+import { Type } from "../../const";
 
 const Offer = (props) => {
-  const {offer, typeOffer, onActiveIdChange} = props;
-  const {previewImage, price, rating, title, type, id, isPremium, isFavorite} = offer;
+  const { offer, typeOffer, onActiveIdChange } = props;
+  const { previewImage, price, rating, title, type, id, isPremium, isFavorite } = offer;
 
   const offerType = Type[typeOffer];
 
   return <React.Fragment>
-    <article className={`${offerType.article} place-card`} onOfferHover={onActiveIdChange}>
+    <article className={`${offerType.article} place-card`} onHoverOffer={onActiveIdChange}>
       {
         isPremium && <div className="place-card__mark">
           <span>Premium</span>
@@ -37,7 +37,7 @@ const Offer = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${20 * rating}%`}} />
+            <span style={{ width: `${20 * rating}%` }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

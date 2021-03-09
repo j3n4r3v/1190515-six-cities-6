@@ -4,8 +4,8 @@ import {offersMocks} from "../mocks/offers-mocks";
 
 const initialState = { // В глобальном хранилище начальное state(состояние)
   activeCity: CITIES[3],
-  activeSortType: SortType.POPULAR,
-  activeCityId: null, // DEFAULT_CITY_ID   -   1 ?
+  activeOption: SortType[0],
+  activeCityId: null,
   offers: offersMocks
 };
 
@@ -16,16 +16,17 @@ const reducer = (state = initialState, action) => { // логика измене
         ...state,
         activeCity: action.payload
       };
-    case ActionType.CHANGE_SORT_TYPE:
+    case ActionType.CHANGE_OPTION:
       return {
         ...state,
-        activeSortType: action.payload
+        activeOption: action.payload
       };
     case ActionType.CHANGE_ACTIVE_ID_CITY:
       return {
         ...state,
         activeCityId: action.payload
       };
+
     default:
       return state;
   }
