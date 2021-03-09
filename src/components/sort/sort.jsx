@@ -8,7 +8,7 @@ import {SortType} from "../../const";
 
 const Sort = (props) => {
   const {activeOption, onChangeOption} = props;
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const toggleOption = () => {
     setIsOpen(!isOpen);
@@ -33,7 +33,7 @@ const Sort = (props) => {
       {
         isOpen && <OptionsItemsList
           activeOption={activeOption}
-          onChangeOption={handleChangeOption}
+          onChangeOption={handleChangeOption} // () =>handleChangeOption()?
           options={SortType} />
       }
 

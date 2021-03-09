@@ -1,7 +1,7 @@
 export const ActionType = {
   CHANGE_CITY: `main/changeCity`,
   CHANGE_OPTION: `main/activeOption`,
-  CHANGE_ACTIVE_ID_CITY: `main/changeActiveIdCity`,
+  CHANGE_ACTIVE_OFFER: `main/changeActiveIdCity`,
 };
 
 export const ActionCreator = { // Для описания actions в виде обьектов
@@ -9,12 +9,12 @@ export const ActionCreator = { // Для описания actions в виде о
     type: ActionType.CHANGE_CITY,
     payload: city
   }),
-  changeOption: (sortType) => ({
+  changeOption: (type) => ({
     type: ActionType.CHANGE_OPTION,
-    payload: sortType
+    payload: type
   }),
-  changeActiveCityId: (id) => ({
-    type: ActionType.CHANGE_ACTIVE_ID_CITY,
+  сhangeActiveOffer: (id) => ({
+    type: ActionType.CHANGE_ACTIVE_OFFER,
     payload: id
   })
 };

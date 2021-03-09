@@ -19,9 +19,8 @@ const ACTIVE_PIN = leaflet.icon({
 });
 
 const Map = (props) => {
-  const {offers, mapSettings, activeCityId} = props;
-  const card = offers[0];
-  const {city} = card;
+  const {offers, mapSettings, activeOffer} = props;
+  const {city} = offers[0];
   const mapRef = useRef();
 
   useEffect(() => {
@@ -48,7 +47,7 @@ const Map = (props) => {
           lat: pointsLocation.latitude,
           lng: pointsLocation.longitude
         },
-        {icon: id === activeCityId ? ACTIVE_PIN : PIN}
+        {icon: id === activeOffer ? ACTIVE_PIN : PIN}
         )
           .addTo(mapRef.current)
           .bindPopup(title);
@@ -58,7 +57,7 @@ const Map = (props) => {
       mapRef.current.remove();
     };
 
-  }, [props.activeCityId]);
+  }, [props.activeOffer, props.offers]);
 
   return (
     <div id="map" style={MapSettings[mapSettings]} ref={mapRef}></div>
@@ -68,7 +67,7 @@ const Map = (props) => {
 Map.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
-  activeCityId: PropTypes.number,
+  activeOffer: PropTypes.number,
   mapSettings: PropTypes.string
 };
 

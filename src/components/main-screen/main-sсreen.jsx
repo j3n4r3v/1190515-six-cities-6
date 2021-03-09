@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 
-import {CITIES, SortType} from "../../const";
+import {CITIES} from "../../const";
 import {authPropTypes, offerPropTypes} from "../../propetypes";
 
 import ContainerOffersList from "../container-offers-list/container-offers-list";
@@ -19,12 +19,8 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
 const MainScreen = (props) => {
-  const {offers,
-    activeCity,
-    activeCityId,
-    onActiveIdChange,
-    onChangeCity,
-    onChangeOffersSortType} = props;
+  const {offers, activeCity, onChangeCity} = props;
+  const [activeOffer, setActiveOffer] = useState(0);
   const MAIN = `MAIN`;
 
   return <React.Fragment>
@@ -64,15 +60,12 @@ const MainScreen = (props) => {
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{offers.length} places to stay in {activeCity}</b>
 
-              <Sort
-                activeOption = {SortType}
-                onChangeOption={() => onChangeOffersSortType()} // как понять какой сюда нужно параметр и нужно ли вообще?
-              />
+              <Sort />
 
               <ContainerOffersList
                 offers={offers}
                 typeOffer={MAIN}
-                onHoverOffer={onActiveIdChange} // как понять какой сюда нужно параметр и нужно ли вообще?
+                onChangeActiveOffer={setActiveOffer}
               />
 
             </section>
@@ -81,7 +74,7 @@ const MainScreen = (props) => {
 
                 <Map
                   offers = {offers}
-                  activeCityId = {activeCityId}
+                  activeOffer={activeOffer}
                   mapSettings = {MAIN}
                 />
 
@@ -98,7 +91,7 @@ MainScreen.propTypes = {
   authInfo: PropTypes.arrayOf(authPropTypes),
   offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
-  activeCityId: PropTypes.number,
+  activeOffer: offerPropTypes,
   activeCity: PropTypes.string,
   typeOffer: PropTypes.string,
   onActiveIdChange: PropTypes.func,
@@ -110,9 +103,7 @@ MainScreen.propTypes = {
 const mapStateToProps = (state) => { // Передает обновленные свойства из store в компонент
   return {
     activeCity: state.activeCity,
-    offers: getActiveOffers(state), // state.offers.filter((offer) => {
-    //   return offer.city.name === state.activeCity;
-    // }),
+    offers: getActiveOffers(state),
     activeCityId: state.activeCityId
   };
 };
@@ -121,9 +112,9 @@ const mapDispatchToProps = (dispatch) => ({ // Передает в компон�
   onChangeCity: (city) => {
     dispatch(ActionCreator.changeCity(city));
   },
-  onChangeActiveCityId: (activeId) => {
-    dispatch(ActionCreator.changeActiveCityId(activeId));
-  }
+  // onChangeActiveOffer: (activeId) => {
+  //   dispatch(ActionCreator.сhangeActiveOffer(activeId));
+  // }
 });
 
 export {MainScreen};

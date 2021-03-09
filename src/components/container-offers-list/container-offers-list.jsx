@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Offer from "../offer/offer";
-import { Type } from "../../const";
-import { offerPropTypes } from "../../propetypes";
+import {Type} from "../../const";
+import {offerPropTypes} from "../../propetypes";
 
 const ContainerOffersList = (props) => {
-  const { offers, typeOffer, onActiveIdChange } = props;
+  const {offers, typeOffer, onChangeActiveOffer} = props;
 
   const container = Type[typeOffer];
 
@@ -14,7 +14,7 @@ const ContainerOffersList = (props) => {
 
       {
         offers.length > 0 ?
-          offers.map((it) => <Offer typeOffer={typeOffer} offer={it} key={it.id} onHoverOffer={onActiveIdChange} />) :
+          offers.map((it) => <Offer typeOffer={typeOffer} offer={it} key={it.id} onChangeActiveOffer={onChangeActiveOffer} />) :
           <p>No places to stay available</p>
       }
 
@@ -25,7 +25,7 @@ const ContainerOffersList = (props) => {
 ContainerOffersList.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   typeOffer: PropTypes.string,
-  onActiveIdChange: PropTypes.func
+  onChangeActiveOffer: PropTypes.func
 };
 
 export default ContainerOffersList;
