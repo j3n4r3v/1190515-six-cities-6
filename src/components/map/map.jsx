@@ -34,10 +34,9 @@ const Map = (props) => {
       marker: true
     });
 
-    leaflet
-      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-      })
+    leaflet.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+    })
       .addTo(mapRef.current);
 
     return () => {
@@ -47,7 +46,8 @@ const Map = (props) => {
   }, [props.offers]);
 
   useEffect(() => {
-    const pins = offers.forEach((offer) => {
+    const map = leaflet.layerGroup().addTo(mapRef.current);
+    offers.forEach((offer) => {
       const {pointsLocation, title, id} = offer;
       leaflet
         .marker({
@@ -56,14 +56,13 @@ const Map = (props) => {
         },
         {icon: id === activeOffer ? ACTIVE_PIN : PIN}
         )
-        .addTo(mapRef.current)
+        .addTo(map)
         .bindPopup(title);
     });
-    let map = leaflet.layerGroup(pins).addTo(mapRef.current);
 
     return () => map.clearLayers();
 
-  }, [props.offers, props.activeOffer]);
+  }, [props.activeOffer, props.offers]);
 
   return (
     <div id="map" style={MapSettings[mapSettings]} ref={mapRef}></div>
