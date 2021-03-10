@@ -94,27 +94,20 @@ MainScreen.propTypes = {
   activeOffer: offerPropTypes,
   activeCity: PropTypes.string,
   typeOffer: PropTypes.string,
-  onActiveIdChange: PropTypes.func,
   onChangeCity: PropTypes.func,
-  onChangeOffersSortType: PropTypes.func,
-  onChangeActiveCityId: PropTypes.func
 };
 
 const mapStateToProps = (state) => { // Передает обновленные свойства из store в компонент
   return {
     activeCity: state.activeCity,
     offers: getActiveOffers(state),
-    activeCityId: state.activeCityId
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({ // Передает в компонент методы для обновления store
   onChangeCity: (city) => {
     dispatch(ActionCreator.changeCity(city));
-  },
-  // onChangeActiveOffer: (activeId) => {
-  //   dispatch(ActionCreator.сhangeActiveOffer(activeId));
-  // }
+  }
 });
 
 export {MainScreen};

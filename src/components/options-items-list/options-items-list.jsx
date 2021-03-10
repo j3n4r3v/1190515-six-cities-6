@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 import ChooseOptionItem from "../choose-option-item/choose-option-item";
 
 const OptionsItemsList = (props) => {
-  const {options, activeOption, onChangeOption} = props;
+  const {options, activeOption, onChangeOptionItem} = props;
 
   return (
     <ul className="places__options places__options--custom places__options--opened">
       {
-        options.map((option, i) => <ChooseOptionItem activeOption={activeOption} onChangeOption={onChangeOption} option={option} key={option + i} />)
+        options.map((option, i) => <ChooseOptionItem activeOption={activeOption} onChangeOptionItem={onChangeOptionItem} option={option} key={option + i} />)
       }
     </ul>
   );
@@ -18,7 +18,7 @@ const OptionsItemsList = (props) => {
 OptionsItemsList.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string),
   activeOption: PropTypes.string,
-  onChangeOption: PropTypes.func
+  onChangeOptionItem: PropTypes.func
 };
 
 export default OptionsItemsList;

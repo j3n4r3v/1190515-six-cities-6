@@ -7,17 +7,19 @@ import OptionsItemsList from "../options-items-list/options-items-list";
 import {SortType} from "../../const";
 
 const Sort = (props) => {
-  const {activeOption, onChangeOption} = props;
-  const [isOpen, setIsOpen] = useState(true);
+  const {activeOption, onChangeOptionItem} = props;
+  const [isOpenList, setIsOpenList] = useState(true);
 
   const toggleOption = () => {
-    setIsOpen(!isOpen);
+    setIsOpenList(!isOpenList);
   };
 
   const handleChangeOption = (item) => {
-    onChangeOption(item);
+    onChangeOptionItem(item);
     toggleOption();
   };
+
+  // toggleOption
 
   return (
     <form className="places__sorting" action="#" method="get">
@@ -31,9 +33,9 @@ const Sort = (props) => {
       </span>
 
       {
-        isOpen && <OptionsItemsList
+        isOpenList && <OptionsItemsList
           activeOption={activeOption}
-          onChangeOption={handleChangeOption} // () =>handleChangeOption()?
+          onChangeOptionItem={handleChangeOption} // () =>handleChangeOption()?
           options={SortType} />
       }
 
@@ -43,17 +45,17 @@ const Sort = (props) => {
 
 Sort.propTypes = {
   activeOption: PropTypes.string,
-  onChangeOption: PropTypes.func
+  onChangeOptionItem: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
   return {
-    activeOption: state.activeOption,
+    activeOption: state.activeOption
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({ // Передает в компонент методы для обновления store
-  onChangeOption: (type) => {
+  onChangeOptionItem: (type) => {
     dispatch(ActionCreator.changeOption(type));
   }
 });

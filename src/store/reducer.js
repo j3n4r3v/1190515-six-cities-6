@@ -5,7 +5,6 @@ import {offersMocks} from "../mocks/offers-mocks";
 const initialState = { // В глобальном хранилище начальное state(состояние)
   activeCity: CITIES[3],
   activeOption: SortType[0],
-  activeOfferId: 1,
   offers: offersMocks
 };
 
@@ -20,11 +19,6 @@ const reducer = (state = initialState, action) => { // логика измене
       return {
         ...state,
         activeOption: action.payload
-      };
-    case ActionType.CHANGE_ACTIVE_OFFER:
-      return {
-        ...state,
-        activeOfferId: action.payload
       };
 
     default:
