@@ -33,8 +33,8 @@ export const offersMocks = [
     "pointsLocation": {"latitude": 52.3909553943508, "longitude": 4.85309666406198, "zoom": 10},
     "maxAdults": 2,
     "previewImage": `img/apartment-01.jpg`,
-    "price": 115,
-    "rating": 5,
+    "price": 125,
+    "rating": 2,
     "title": `Beautiful & luxurious studio at great location`,
     "type": `Apartment`
   },
@@ -73,7 +73,7 @@ export const offersMocks = [
     "maxAdults": 2,
     "previewImage": `img/apartment-02.jpg`,
     "price": 115,
-    "rating": 5,
+    "rating": 3,
     "title": `Nice, cozy, warm big bed apartment`,
     "type": `Apartment`
   },
@@ -111,8 +111,8 @@ export const offersMocks = [
     "pointsLocation": {"latitude": 52.3909553943508, "longitude": 4.929309666406198, "zoom": 10},
     "maxAdults": 2,
     "previewImage": `img/apartment-03.jpg`,
-    "price": 115,
-    "rating": 5,
+    "price": 105,
+    "rating": 4,
     "title": `Wood and stone place`,
     "type": `Apartment`
   },
@@ -150,7 +150,7 @@ export const offersMocks = [
     "pointsLocation": {"latitude": 52.3809553943508, "longitude": 4.939309666406198, "zoom": 10},
     "maxAdults": 2,
     "previewImage": `img/apartment-01.jpg`,
-    "price": 115,
+    "price": 95,
     "rating": 5,
     "title": `Beautiful & luxurious studio at great location`,
     "type": `Apartment`

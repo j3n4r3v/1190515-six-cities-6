@@ -1,12 +1,10 @@
 import {ActionType} from "./action";
-
+import {CITIES, SortType} from "../const";
 import {offersMocks} from "../mocks/offers-mocks";
 
-// import {CITIES} from "../../const";
-// const ACTIVE_CITY = CITIES[3];
-
 const initialState = { // В глобальном хранилище начальное state(состояние)
-  activeCity: `Amsterdam`,
+  activeCity: CITIES[3],
+  activeOption: SortType[0],
   offers: offersMocks
 };
 
@@ -14,13 +12,18 @@ const reducer = (state = initialState, action) => { // логика измене
   switch (action.type) {
     case ActionType.CHANGE_CITY:
       return {
-        ...state, // предыдущее состояние копирует
-        activeCity: action.payload // меняет в state ключ activeCity - на выбранный город
-        // offers: action.filter // меняет в state ключ activeOffers- на отфильтрованные предложения
+        ...state,
+        activeCity: action.payload
       };
+    case ActionType.CHANGE_ACTIVE_SORT_TYPE:
+      return {
+        ...state,
+        activeOption: action.payload
+      };
+
     default:
       return state;
   }
 };
 
-export {reducer}; // возвращает  измененное состояние хранилища
+export {reducer};
