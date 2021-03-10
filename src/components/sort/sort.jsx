@@ -19,8 +19,6 @@ const Sort = (props) => {
     toggleOption();
   };
 
-  // toggleOption
-
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>
@@ -35,7 +33,7 @@ const Sort = (props) => {
       {
         isOpenList && <OptionsItemsList
           activeOption={activeOption}
-          onChangeOptionItem={handleChangeOption} // () =>handleChangeOption()?
+          onChangeOption={handleChangeOption}
           options={SortType} />
       }
 
@@ -55,8 +53,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({ // Передает в компонент методы для обновления store
-  onChangeOptionItem: (type) => {
-    dispatch(ActionCreator.changeOption(type));
+  onChangeOptionItem: (option) => {
+    dispatch(ActionCreator.changeOption(option));
   }
 });
 

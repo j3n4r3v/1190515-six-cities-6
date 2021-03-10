@@ -8,8 +8,8 @@ export const ActionCreator = { // Для описания actions в виде о
     type: ActionType.CHANGE_CITY,
     payload: city
   }),
-  changeOption: (type) => ({
+  changeOption: (option) => ({
     type: ActionType.CHANGE_OPTION,
-    payload: type
+    payload: option
   })
 };

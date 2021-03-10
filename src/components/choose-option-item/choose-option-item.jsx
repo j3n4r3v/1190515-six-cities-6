@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ChooseOptionItem = (props) => {
-  const {option, activeOption, onChangeOptionItem} = props;
+  const {option, activeOption, onChangeOption} = props;
 
   return (
     <li className={`places__option ${option === activeOption && `places__option--active`}`}
       tabIndex="0"
-      onClick={() => onChangeOptionItem(option)}
+      onClick={() => onChangeOption(option)}
     >
       {option}
     </li>
@@ -17,7 +17,7 @@ const ChooseOptionItem = (props) => {
 ChooseOptionItem.propTypes = {
   option: PropTypes.string,
   activeOption: PropTypes.string,
-  onChangeOptionItem: PropTypes.func
+  onChangeOption: PropTypes.func
 };
 
 export default ChooseOptionItem;
