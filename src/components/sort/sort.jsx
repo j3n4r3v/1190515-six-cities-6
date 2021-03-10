@@ -8,7 +8,7 @@ import {SortType} from "../../const";
 
 const Sort = (props) => {
   const {activeOption, onChangeOptionItem} = props;
-  const [isOpenList, setIsOpenList] = useState(true);
+  const [isOpenList, setIsOpenList] = useState(false);
 
   const toggleOption = () => {
     setIsOpenList(!isOpenList);
@@ -54,7 +54,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({ // Передает в компонент методы для обновления store
   onChangeOptionItem: (option) => {
-    dispatch(ActionCreator.changeOption(option));
+    dispatch(ActionCreator.changeActiveSortType(option));
   }
 });
 

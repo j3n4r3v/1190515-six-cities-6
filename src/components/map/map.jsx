@@ -40,7 +40,14 @@ const Map = (props) => {
       })
       .addTo(mapRef.current);
 
-    offers.forEach((offer) => {
+    return () => {
+      mapRef.current.remove();
+    };
+
+  }, [props.offers]);
+
+  useEffect(() => {
+    const pins = offers.forEach((offer) => {
       const {pointsLocation, title, id} = offer;
       leaflet
         .marker({
@@ -49,15 +56,14 @@ const Map = (props) => {
         },
         {icon: id === activeOffer ? ACTIVE_PIN : PIN}
         )
-          .addTo(mapRef.current)
-          .bindPopup(title);
+        .addTo(mapRef.current)
+        .bindPopup(title);
     });
+    let map = leaflet.layerGroup(pins).addTo(mapRef.current);
 
-    return () => {
-      mapRef.current.remove();
-    };
+    return () => map.clearLayers();
 
-  }, [props.activeOffer, props.offers]);
+  }, [props.offers, props.activeOffer]);
 
   return (
     <div id="map" style={MapSettings[mapSettings]} ref={mapRef}></div>

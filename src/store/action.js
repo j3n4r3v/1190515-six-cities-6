@@ -1,6 +1,6 @@
 export const ActionType = {
   CHANGE_CITY: `main/changeCity`,
-  CHANGE_OPTION: `main/activeOption`,
+  CHANGE_ACTIVE_SORT_TYPE: `main/activeOption`,
 };
 
 export const ActionCreator = { // Для описания actions в виде обьектов
@@ -8,8 +8,8 @@ export const ActionCreator = { // Для описания actions в виде о
     type: ActionType.CHANGE_CITY,
     payload: city
   }),
-  changeOption: (option) => ({
-    type: ActionType.CHANGE_OPTION,
+  changeActiveSortType: (option) => ({
+    type: ActionType.CHANGE_ACTIVE_SORT_TYPE,
     payload: option
   })
 };

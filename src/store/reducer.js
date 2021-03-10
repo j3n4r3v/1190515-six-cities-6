@@ -15,7 +15,7 @@ const reducer = (state = initialState, action) => { // логика измене
         ...state,
         activeCity: action.payload
       };
-    case ActionType.CHANGE_OPTION:
+    case ActionType.CHANGE_ACTIVE_SORT_TYPE:
       return {
         ...state,
         activeOption: action.payload
