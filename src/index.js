@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import App from "./components/app/app";
-import {createAPI} from "./components/api/api";
+import {createAPI} from "./api";
 
 import {composeWithDevTools} from "redux-devtools-extension";
 import {createStore, applyMiddleware} from "redux";

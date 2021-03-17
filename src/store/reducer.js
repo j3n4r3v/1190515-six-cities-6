@@ -1,11 +1,13 @@
 import {ActionType} from "./action";
 import {CITIES, SortType} from "../const";
-import {offersMocks} from "../mocks/offers-mocks";
+// import {offersMocks} from "../mocks/offers-mocks";
+import {AuthorizationStatus} from "../const";
 
 const initialState = { // В глобальном хранилище начальное state(состояние)
   activeCity: CITIES[3],
   activeOption: SortType[0],
-  offers: offersMocks
+  offers: [],
+  authorizationStatus: AuthorizationStatus.NO_AUTH
 };
 
 const reducer = (state = initialState, action) => { // логика изменения хранилища
@@ -19,6 +21,11 @@ const reducer = (state = initialState, action) => { // логика измене
       return {
         ...state,
         activeOption: action.payload
+      };
+    case ActionType.CHANGE_OFFERS:
+      return {
+        ...state,
+        offers: action.payload
       };
 
     default:

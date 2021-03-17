@@ -52,6 +52,11 @@ const MapSettings = {
   }
 };
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
+
 const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 
-export {OfferType, CITIES, Type, MapSettings, SortType};
+export {OfferType, CITIES, Type, MapSettings, SortType, AuthorizationStatus};
