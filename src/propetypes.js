@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import {OfferType} from "./const";
+// import {OfferType} from "./const";
 
 export const offerPropTypes = PropTypes.shape({
   "bedrooms": PropTypes.number.isRequired,
@@ -32,7 +32,7 @@ export const offerPropTypes = PropTypes.shape({
   "price": PropTypes.number.isRequired,
   "rating": PropTypes.number.isRequired,
   "title": PropTypes.string.isRequired,
-  "type": PropTypes.oneOf([OfferType.APARTMENT, OfferType.PRIVATEROOM, OfferType.STUDIO]).isRequired
+  "type": PropTypes.string.isRequired
 });
 
 export const reviewPropTypes = PropTypes.shape({

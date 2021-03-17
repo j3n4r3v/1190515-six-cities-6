@@ -1,53 +1,52 @@
 import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 
-import {authInfoMocks} from "../../mocks/auth-info-mocks";
-import {reviewsMocks} from "../../mocks/reviews-mocks";
-
+import LoadingScreen from "../loading-screen/loading-screen";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
-import {getRandomArrayItem} from "../../utils";
 
 import FeedBackForm from "../feedbackform/feedbackform";
 import ReviewList from "../rewiev-list/review-list";
 import PropertyGalleryOffer from "../property-gallery-offer/property-gallery-offer";
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
-import {offerPropTypes} from "../../propetypes";
+import {offerPropTypes, reviewPropTypes} from "../../propetypes";
 import {connect} from "react-redux";
 
-import LoadingScreen from "../loading-screen/loading-screen";
+import {useParams} from "react-router-dom";
+
+import {fetchReviews, fetchNearOffersList} from "../../store/api-actions";
+
 import ContainerOffersList from "../container-offers-list/container-offers-list";
 
 import Map from "../map/map";
 
 const PropertyScreen = (props) => {
-  const {offers, isNearOffersLoaded} = props;
-  const randomOfferFromArray = getRandomArrayItem(offers);
-  const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = randomOfferFromArray;
-  const {name, avatarUrl} = host;
-  const imagesArray = images.length > 6 ? images.slice(0, 6) : images;
+  const {offers, reviews, nearOffers, onLoadNearOffers, onLoadReviews, isNearOffersLoaded} = props;
 
-  const nearOffersFilter = offers.length > 3 ? offers.slice(0, 4) : offers;
+  const offer = offers.find((item) => item.id === id); // неосилил я это
+  const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = offer;
+  const {name, avatarUrl} = host;
+
+  const imagesArray = images.length > 6 ? images.slice(0, 6) : images;
 
   const PROPERTY = `PROPERTY`;
 
-  const nearOffersFilterList = nearOffersFilter.slice(1);
+  const {id} = useParams();
 
-  useEffect(() => {
-    isNearOffersLoaded();
-  });
-
-  if (!offers.length) {
+  if (!offers.length && !isNearOffersLoaded) {
     return (
       <LoadingScreen />
     );
   }
 
+  useEffect(() => {
+    onLoadNearOffers(id);
+    onLoadReviews(id);
+  }, [id]);
+
   return <React.Fragment>
     <div className="page">
 
-      <AuthInfoScreen
-        authInfo={authInfoMocks}
-      />
+      <AuthInfoScreen />
 
       <main className="page__main page__main--property">
         <section className="property">
@@ -123,10 +122,10 @@ const PropertyScreen = (props) => {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{reviewsMocks.length}</span></h2>
+                <h2 className="reviews__title">Reviews · <span className="reviews__amount">{reviews.length}</span></h2>
 
                 <ReviewList
-                  reviews = {reviewsMocks}
+                  reviews={reviews}
                 />
 
                 <FeedBackForm />
@@ -137,8 +136,8 @@ const PropertyScreen = (props) => {
           <section className="property__map map">
 
             <Map
-              offers = {nearOffersFilter}
-              activeCity ={randomOfferFromArray.id}
+              offers = {offers}
+              activeOffer ={offer.id}
               mapSettings={PROPERTY}
             />
 
@@ -148,7 +147,7 @@ const PropertyScreen = (props) => {
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
 
               <ContainerOffersList
-                offers={nearOffersFilterList}
+                offers={nearOffers}
                 typeOffer={PROPERTY}
               />
 
@@ -162,21 +161,34 @@ const PropertyScreen = (props) => {
 
 PropertyScreen.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
-  randomOfferFromArray: offerPropTypes,
-  activeCity: PropTypes.string,
+  nearOffers: PropTypes.arrayOf(offerPropTypes),
+  reviews: PropTypes.arrayOf(reviewPropTypes),
+  // activeCity: PropTypes.string,
   typeOffer: PropTypes.string,
   mapSettings: PropTypes.string,
-  isNearOffersLoaded: PropTypes.func
+  isNearOffersLoaded: PropTypes.bool,
+  onLoadNearOffers: PropTypes.func,
+  onLoadReviews: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
   return {
-    activeCity: state.activeCity,
-    offers: state.offers.filter((offer) => {
-      return offer.city.name === state.activeCity;// Amsterdam - не могу сюда добавить
-    })
+    offers: state.offers,
+    // activeCity: state.activeCity,
+    nearOffers: state.nearOffers,
+    isNearOffersLoaded: state.isNearOffersLoaded,
+    reviews: state.reviews
   };
 };
 
-export default connect(mapStateToProps)(PropertyScreen);
+const mapDispatchToProps = (dispatch) => ({
+  onLoadNearOffers: (id) => {
+    dispatch(fetchNearOffersList(id));
+  },
+  onLoadReviews: (id) => { // как понять тут нужно : или  = поставить?
+    dispatch(fetchReviews(id));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyScreen);
 export {PropertyScreen};

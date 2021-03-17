@@ -1,17 +1,18 @@
 export const ActionType = {
-  CHANGE_CITY: `main/changeCity`,
+  ACTIVE_CITY: `main/activeCity`,
   CHANGE_ACTIVE_SORT_TYPE: `main/changeActiveSortType`,
-  RECEIVE_OFFERS: `main/changeOffers`,
-  RECEIVE_REVIEWS: `property/changeReviews`,
-  RECEIVE_NEAR_OFFERS_LIST: `property/changeNearOffersList`,
-  RECEIVE_FAVORITES: `favorite/receiveFavorites`,
+  RECEIVE_OFFERS: `main/receiveOffers`,
+  RECEIVE_REVIEWS: `property/receiveReviews`,
+  RECEIVE_NEAR_OFFERS_LIST: `property/receiveNearOffersList`,
+  RECEIVE_FAVORITE_OFFERS: `favorite/receiveFavoriteOffers`,
+  IS_NEAR_OFFERS_LOADED: `property/isNearOffersLoaded`,
   // CHANGE_FAVORITE_OFFER: `favorite/changeFavoriteOffer`,
   REQUIRE_AUTHORIZATION: `user/requireAuthorization`
 };
 
 export const ActionCreator = { // Для описания actions в виде обьектов
   changeCity: (city) => ({
-    type: ActionType.CHANGE_CITY,
+    type: ActionType.ACTIVE_CITY,
     payload: city
   }),
   changeActiveSortType: (option) => ({
@@ -30,8 +31,11 @@ export const ActionCreator = { // Для описания actions в виде о
     type: ActionType.RECEIVE_NEAR_OFFERS_LIST,
     payload: list
   }),
-  receiveFavorites: (data) => ({
-    type: ActionType.RECEIVE_FAVORITES,
+  isNearOffersLoaded: () => ({
+    type: ActionType.IS_NEARBY_OFFERS_LOADED
+  }),
+  receiveFavoriteOffers: (data) => ({
+    type: ActionType.RECEIVE_FAVORITE_OFFERS,
     payload: data
   }),
   // changeFavoriteOffer: (data) => ({
@@ -39,7 +43,7 @@ export const ActionCreator = { // Для описания actions в виде о
   //   payload: data
   // }),
   requireAuthorization: (status) => ({
-    type: ActionType.CHANGE_REQUIRE_AUTHORIZATION,
+    type: ActionType.REQUIRE_AUTHORIZATION,
     payload: status
   })
 };

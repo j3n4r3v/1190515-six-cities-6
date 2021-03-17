@@ -21,7 +21,7 @@ const store = createStore(reducer,
         )
     ));
 
-store.dispatch(fetchOffersList()); // куда это подключать нужно?
+store.dispatch(fetchOffersList());
 
 ReactDOM.render(
     <Provider store={store}>

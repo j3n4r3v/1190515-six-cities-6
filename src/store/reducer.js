@@ -9,6 +9,7 @@ const initialState = { // В глобальном хранилище начал�
   offers: [],
   reviews: [],
   nearOffers: [],
+  favorites: [],
   // isFavorite: false,
   isOffersLoaded: false,
   isFavoritesLoaded: false,
@@ -18,7 +19,7 @@ const initialState = { // В глобальном хранилище начал�
 
 const reducer = (state = initialState, action) => { // логика изменения хранилища
   switch (action.type) {
-    case ActionType.CHANGE_CITY:
+    case ActionType.ACTIVE_CITY:
       return {
         ...state,
         activeCity: action.payload
@@ -45,7 +46,12 @@ const reducer = (state = initialState, action) => { // логика измене
         nearOffers: action.payload,
         isNearOffersLoaded: true
       };
-    case ActionType.RECEIVE_FAVORITES:
+    case ActionType.IS_NEAR_OFFERS_LOADED:
+      return {
+        ...state,
+        isNearOffersLoaded: false
+      };
+    case ActionType.RECEIVE_FAVORITE_OFFERS:
       return {
         ...state,
         favorites: action.payload,
