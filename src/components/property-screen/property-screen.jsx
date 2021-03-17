@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
@@ -14,12 +14,13 @@ import PropertyInsideItem from "../property-inside-item/property-inside-item";
 import {offerPropTypes} from "../../propetypes";
 import {connect} from "react-redux";
 
+import LoadingScreen from "../loading-screen/loading-screen";
 import ContainerOffersList from "../container-offers-list/container-offers-list";
 
 import Map from "../map/map";
 
 const PropertyScreen = (props) => {
-  const {offers} = props;
+  const {offers, isNearOffersLoaded} = props;
   const randomOfferFromArray = getRandomArrayItem(offers);
   const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = randomOfferFromArray;
   const {name, avatarUrl} = host;
@@ -30,6 +31,16 @@ const PropertyScreen = (props) => {
   const PROPERTY = `PROPERTY`;
 
   const nearOffersFilterList = nearOffersFilter.slice(1);
+
+  useEffect(() => {
+    isNearOffersLoaded();
+  });
+
+  if (!offers.length) {
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return <React.Fragment>
     <div className="page">
@@ -154,7 +165,8 @@ PropertyScreen.propTypes = {
   randomOfferFromArray: offerPropTypes,
   activeCity: PropTypes.string,
   typeOffer: PropTypes.string,
-  mapSettings: PropTypes.string
+  mapSettings: PropTypes.string,
+  isNearOffersLoaded: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
