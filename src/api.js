@@ -3,14 +3,14 @@ import axios from "axios";
 const URL = `https://6.react.pages.academy/six-cities`;
 const REQUEST_TIMEOUT = 5000;
 
-const HttpCode = { // обработка ошибок как?
+const HttpCode = {
   UNAUTHORIZED: 401,
 };
 
-export const createAPI = (onUnauthorized) => {
-  const api = axios.create({
+export const createAPI = (onUnauthorized) => { // принимает callback который нужно вызвать на случай неавторизованности
+  const api = axios.create({ // callback будет редиректить на страницу куда нужно ввести почту/пароль
     baseURL: URL,
-    timeout: REQUEST_TIMEOUT,
+    timeout: REQUEST_TIMEOUT, // + С fetch пришлось бы описывать логику !!!
     withCredentials: true,
   });
 
@@ -20,7 +20,7 @@ export const createAPI = (onUnauthorized) => {
     const {response} = err;
 
     if (response.status === HttpCode.UNAUTHORIZED) {
-      onUnauthorized(); // что конкретно делает этот callback?
+      onUnauthorized(); // callback – который берется из функции createAPI
 
       throw err;
     }
