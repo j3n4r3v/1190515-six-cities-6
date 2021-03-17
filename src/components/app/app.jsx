@@ -35,6 +35,7 @@ const App = () => {
         <Route>
           <NotFoundScreen/>
         </Route>
+
       </Switch>
     </BrowserRouter>
   </React.Fragment>;
