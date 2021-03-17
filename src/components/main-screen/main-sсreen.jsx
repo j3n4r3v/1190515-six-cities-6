@@ -10,18 +10,26 @@ import {getActiveOffers} from "../../store/selectors";
 import Map from "../map/map";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
+import LoadingScreen from "../loading-screen/loading-screen";
 
 import Sort from "../sort/sort";
 
-import {authInfoMocks} from "../../mocks/auth-info-mocks";
+// import {authInfoMocks} from "../../mocks/auth-info-mocks";
+// import {fetchOffersList} from "../../store/api-actions";
 
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
 const MainScreen = (props) => {
-  const {offers, activeCity, onChangeCity} = props;
+  const {offers, activeCity, onChangeCity, isOffersLoaded} = props;
   const [activeOffer, setActiveOffer] = useState(0);
   const MAIN = `MAIN`;
+
+  if (!isOffersLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -29,9 +37,7 @@ const MainScreen = (props) => {
     </div>
     <div className="page page--gray page--main">
 
-      <AuthInfoScreen
-        authInfo={authInfoMocks}
-      />
+      <AuthInfoScreen />
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
@@ -73,9 +79,9 @@ const MainScreen = (props) => {
               <section className="cities__map map">
 
                 <Map
-                  offers = {offers}
+                  offers={offers}
                   activeOffer={activeOffer}
-                  mapSettings = {MAIN}
+                  mapSettings={MAIN}
                 />
 
               </section>
@@ -95,12 +101,14 @@ MainScreen.propTypes = {
   activeCity: PropTypes.string,
   typeOffer: PropTypes.string,
   onChangeCity: PropTypes.func,
+  isOffersLoaded: PropTypes.bool
 };
 
 const mapStateToProps = (state) => { // Передает обновленные свойства из store в компонент
   return {
     activeCity: state.activeCity,
     offers: getActiveOffers(state),
+    isOffersLoaded: state.isOffersLoaded
   };
 };
 

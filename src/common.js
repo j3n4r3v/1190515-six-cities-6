@@ -1,29 +1,28 @@
-const adaptToServer = (data) => {
-      "id": id,
-      "comments": comments,
-      "film_info": {
-        "title": title,
-        "alternative_title": altTitle,
-        "total_rating": rating,
-        "poster": poster,
-        "age_rating": age,
-        "director": director,
-        "writers": writers,
-        "actors": actors,
-        "release": {
-          "date": releaseDate,
-          "release_country": country,
-        },
-        "runtime": duration,
-        "genre": genres,
-        "description": description,
-      },
-      "user_details": {
-        "watchlist": isInWatchlist,
-        "already_watched": isInHistory,
-        "watching_date": watchingDate,
-        "favorite": isInFavorites,
+const adaptToServer = () => {
+  const adaptedData = Object.assign(
+      {},
+      data
+      {
+        previewImage: data.preview_image,
+        isPremium: data.is_premium,
+        isFavorite: data.is_favorite,
+        maxAdults: data.max_adults,
+        host: {
+          ...data.host,
+          avatarUrl: data.host.avatar_url,
+          isPro: data.host.is_pro,
+        }
       }
-    };
+  );
 
-  export {adaptToServer};
+  delete adaptedData.preview_image;
+  delete adaptedData.is_premium;
+  delete adaptedData.is_favorite;
+  delete adaptedData.host.avatar_url;
+  delete adaptedData.host.is_pro;
+  delete adaptedData.max_adults;
+
+  return adaptedData;
+};
+
+export {adaptToServer};

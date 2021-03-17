@@ -11,6 +11,8 @@ import thunk from "redux-thunk";
 
 import {reducer} from "./store/reducer";
 
+import {fetchOffersList} from "./store/api-actions";
+
 const api = createAPI();
 
 const store = createStore(reducer,
@@ -19,7 +21,7 @@ const store = createStore(reducer,
         )
     ));
 
-store.dispatch(fetchOffersList());
+store.dispatch(fetchOffersList()); // куда это подключать нужно?
 
 ReactDOM.render(
     <Provider store={store}>

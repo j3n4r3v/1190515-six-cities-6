@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Link} from "react-router-dom";
 
 import PropTypes from "prop-types";
@@ -6,17 +6,29 @@ import {authPropTypes, offerPropTypes} from "../../propetypes";
 import {authInfoMocks} from "../../mocks/auth-info-mocks";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
+import LoadingScreen from "../loading-screen/loading-screen";
 
+import {fetchFavorites} from "../../store/api-actions";
 import ContainerOffersList from "../container-offers-list/container-offers-list";
 
 import {connect} from "react-redux";
 
 const FavoritesScreen = (props) => {
-  const {offers} = props;
+  const {offers, isFavoritesLoaded} = props;
   const city = offers[0].city;
   const id = offers[0].id;
 
   const FAVORITE = `FAVORITE`;
+
+  useEffect(() => {
+    isFavoritesLoaded();
+  });
+
+  if (!offers.length) {
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return <React.Fragment>
     <div>
@@ -81,13 +93,21 @@ const FavoritesScreen = (props) => {
 FavoritesScreen.propTypes = {
   authInfo: PropTypes.arrayOf(authPropTypes),
   offers: PropTypes.arrayOf(offerPropTypes),
-  typeOffer: PropTypes.string
+  typeOffer: PropTypes.string,
+  isFavoritesLoaded: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
   return {
-    offers: state.offers
+    offers: state.favorites
   };
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  isFavoritesLoaded() {
+    dispatch(fetchFavorites());
+  }
+});
+
 export {FavoritesScreen};
-export default connect(mapStateToProps)(FavoritesScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(FavoritesScreen);

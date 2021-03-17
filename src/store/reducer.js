@@ -7,6 +7,12 @@ const initialState = { // В глобальном хранилище начал�
   activeCity: CITIES[3],
   activeOption: SortType[0],
   offers: [],
+  reviews: [],
+  nearOffers: [],
+  // isFavorite: false,
+  isOffersLoaded: false,
+  // isFavoritesLoaded: false,
+  isNearOffersLoaded: false,
   authorizationStatus: AuthorizationStatus.NO_AUTH
 };
 
@@ -22,11 +28,33 @@ const reducer = (state = initialState, action) => { // логика измене
         ...state,
         activeOption: action.payload
       };
-    case ActionType.CHANGE_OFFERS:
+    case ActionType.RECEIVE_OFFERS:
       return {
         ...state,
-        offers: action.payload
+        offers: action.payload,
+        isOffersLoaded: true
       };
+    case ActionType.RECEIVE_REVIEWS:
+      return {
+        ...state,
+        reviews: action.payload
+      };
+    case ActionType.RECEIVE_NEAR_OFFERS_LIST:
+      return {
+        ...state,
+        nearOffers: action.payload,
+        isNearOffersLoaded: true
+      };
+    case ActionType.RECEIVE_FAVORITES:
+      return {
+        ...state,
+        favorites: action.payload
+      };
+      // case ActionType.CHANGE_FAVORITE_OFFER:
+      //   return {
+      //     ...state,
+      //     isFavorite: action.payload
+      //   };
 
     default:
       return state;
