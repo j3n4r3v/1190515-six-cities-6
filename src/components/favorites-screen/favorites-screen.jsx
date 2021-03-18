@@ -13,23 +13,24 @@ import ContainerOffersList from "../container-offers-list/container-offers-list"
 import {connect} from "react-redux";
 
 const FavoritesScreen = (props) => {
-  const {offers, onFavoritesLoaded} = props;
+  const {offers, onFavoritesLoaded, isFavoritesLoaded} = props;
   const favoriteOffers = offers.filter((offer) => offer.isFavorite);
-  const city = favoriteOffers[0].city;
-  const id = favoriteOffers[0].id;
+  // const city = favoriteOffers[0].city;
+  const city = favoriteOffers.find((item) => item.city === city);
+  // const id = favoriteOffers[0].id;
+  const id = favoriteOffers.find((item) => item.id === id);
 
   const FAVORITE = `FAVORITE`;
-
-  if (!offers.length) {
-    return (
-      <LoadingScreen />
-    );
-  }
 
   useEffect(() => {
     onFavoritesLoaded();
   });
 
+  if (!isFavoritesLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
   return <React.Fragment>
     <div>
       <div style={{display: `none`}}>
@@ -93,12 +94,14 @@ FavoritesScreen.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   favoriteOffers: PropTypes.arrayOf(offerPropTypes),
   typeOffer: PropTypes.string,
-  onFavoritesLoaded: PropTypes.func
+  onFavoritesLoaded: PropTypes.func,
+  isFavoritesLoaded: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {
   return {
-    offers: state.favorites // достаю из store уже обновленные данные - offers после dispatch(fetchFavorites());
+    offers: state.favorites,
+    isFavoritesLoaded: state.isFavoritesLoaded // достаю из store уже обновленные данные - offers после dispatch(fetchFavorites());
   };
 };
 

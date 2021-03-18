@@ -14,9 +14,6 @@ import LoadingScreen from "../loading-screen/loading-screen";
 
 import Sort from "../sort/sort";
 
-// import {authInfoMocks} from "../../mocks/auth-info-mocks";
-// import {fetchOffersList} from "../../store/api-actions";
-
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
@@ -80,7 +77,7 @@ const MainScreen = (props) => {
 
                 <Map
                   offers={offers}
-                  activeOffer={activeOffer}
+                  activeOffer={activeOffer.id}
                   mapSettings={MAIN}
                 />
 

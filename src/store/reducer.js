@@ -1,6 +1,5 @@
 import {ActionType} from "./action";
 import {CITIES, SortType} from "../const";
-// import {offersMocks} from "../mocks/offers-mocks";
 import {AuthorizationStatus} from "../const";
 
 const initialState = { // В глобальном хранилище начальное state(состояние)
@@ -46,11 +45,11 @@ const reducer = (state = initialState, action) => { // логика измене
         nearOffers: action.payload,
         isNearOffersLoaded: true
       };
-    case ActionType.IS_NEAR_OFFERS_LOADED:
-      return {
-        ...state,
-        isNearOffersLoaded: false
-      };
+    // case ActionType.IS_NEAR_OFFERS_LOADED:
+    //   return {
+    //     ...state,
+    //     isNearOffersLoaded: false
+    //   };
     case ActionType.RECEIVE_FAVORITE_OFFERS:
       return {
         ...state,

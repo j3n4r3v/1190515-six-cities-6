@@ -22,26 +22,25 @@ import Map from "../map/map";
 const PropertyScreen = (props) => {
   const {offers, reviews, nearOffers, onLoadNearOffers, onLoadReviews, isNearOffersLoaded} = props;
 
-  const offer = offers.find((item) => item.id === id); // неосилил я это
-  const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = offer;
-  const {name, avatarUrl} = host;
-
-  const imagesArray = images.length > 6 ? images.slice(0, 6) : images;
-
   const PROPERTY = `PROPERTY`;
 
   const {id} = useParams();
-
-  if (!offers.length && !isNearOffersLoaded) {
-    return (
-      <LoadingScreen />
-    );
-  }
 
   useEffect(() => {
     onLoadNearOffers(id);
     onLoadReviews(id);
   }, [id]);
+
+  if (!isNearOffersLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
+
+  const offer = offers.find((item) => item.id === +id); // неосилил я это
+  const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = offer;
+  const {name, avatarUrl} = host;
+  const imagesArray = images.length > 6 ? images.slice(0, 6) : images;
 
   return <React.Fragment>
     <div className="page">
@@ -163,7 +162,6 @@ PropertyScreen.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   nearOffers: PropTypes.arrayOf(offerPropTypes),
   reviews: PropTypes.arrayOf(reviewPropTypes),
-  // activeCity: PropTypes.string,
   typeOffer: PropTypes.string,
   mapSettings: PropTypes.string,
   isNearOffersLoaded: PropTypes.bool,
@@ -174,7 +172,6 @@ PropertyScreen.propTypes = {
 const mapStateToProps = (state) => {
   return {
     offers: state.offers,
-    // activeCity: state.activeCity,
     nearOffers: state.nearOffers,
     isNearOffersLoaded: state.isNearOffersLoaded,
     reviews: state.reviews

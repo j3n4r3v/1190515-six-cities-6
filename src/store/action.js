@@ -31,9 +31,9 @@ export const ActionCreator = { // Для описания actions в виде о
     type: ActionType.RECEIVE_NEAR_OFFERS_LIST,
     payload: list
   }),
-  isNearOffersLoaded: () => ({
-    type: ActionType.IS_NEARBY_OFFERS_LOADED
-  }),
+  // isNearOffersLoaded: () => ({
+  //   type: ActionType.IS_NEARBY_OFFERS_LOADED
+  // }),
   receiveFavoriteOffers: (data) => ({
     type: ActionType.RECEIVE_FAVORITE_OFFERS,
     payload: data

@@ -46,4 +46,18 @@ const adaptReviewsToClient = (data) => {
   return adaptedData;
 };
 
-export {adaptToServer, adaptReviewsToClient};
+const adaptAuthInfoToClient = (data) => {
+  const adaptedData = {
+    ...data,
+    avatarUrl: data.avatar_url,
+    isPro: data.is_pro,
+  };
+
+  delete adaptedData.data.avatar_url;
+  delete adaptedData.data.is_pro;
+
+
+  return adaptedData;
+};
+
+export {adaptToServer, adaptReviewsToClient, adaptAuthInfoToClient};

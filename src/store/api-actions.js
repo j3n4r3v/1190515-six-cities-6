@@ -11,18 +11,18 @@ export const fetchOffersList = () => (dispatch, _getState, api) => ( //  аси�
     })
 );
 
-// export const fetchReviews = (id) => (dispatch, _getState, api) => (
-//   api.get(`/comments/${id}`)
-//     .then((response) =>
-//       response.data.map((review) => adaptReviewsToClient(review)))
-//     .then((data) =>
-//       dispatch(ActionCreator.receiveReviews(data)))
-// );
-
 export const fetchReviews = (id) => (dispatch, _getState, api) => (
   api.get(`/comments/${id}`)
-    .then(({data}) => dispatch(ActionCreator.receiveReviews(data.map(adaptReviewsToClient))))
+    .then((response) =>
+      response.data.map((review) => adaptReviewsToClient(review)))
+    .then((data) =>
+      dispatch(ActionCreator.receiveReviews(data)))
 );
+
+// export const fetchReviews = (id) => (dispatch, _getState, api) => (
+//   api.get(`/comments/${id}`)
+//     .then(({data}) => dispatch(ActionCreator.receiveReviews(data.map(adaptReviewsToClient))))
+// );
 
 export const fetchNearOffersList = (id) => (dispatch, _getState, api) => (
   api.get(`/hotels/${id}/nearby`)
