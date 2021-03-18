@@ -5,9 +5,9 @@ export const ActionType = {
   RECEIVE_REVIEWS: `property/receiveReviews`,
   RECEIVE_NEAR_OFFERS_LIST: `property/receiveNearOffersList`,
   RECEIVE_FAVORITE_OFFERS: `favorite/receiveFavoriteOffers`,
-  IS_NEAR_OFFERS_LOADED: `property/isNearOffersLoaded`,
+  // IS_NEAR_OFFERS_LOADED: `property/isNearOffersLoaded`,
   // CHANGE_FAVORITE_OFFER: `favorite/changeFavoriteOffer`,
-  REQUIRE_AUTHORIZATION: `user/requireAuthorization`
+  RECEIVE_AUTHSTATUS: `user/receiveAuthStatus`
 };
 
 export const ActionCreator = { // Для описания actions в виде обьектов
@@ -42,8 +42,8 @@ export const ActionCreator = { // Для описания actions в виде о
   //   type: ActionType.CHANGE_FAVORITE_OFFER,
   //   payload: data
   // }),
-  requireAuthorization: (status) => ({
-    type: ActionType.REQUIRE_AUTHORIZATION,
+  requireAuthStatus: (status) => ({
+    type: ActionType.RECEIVE_AUTHSTATUS,
     payload: status
   })
 };

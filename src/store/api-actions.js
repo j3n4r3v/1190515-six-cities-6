@@ -1,6 +1,5 @@
 import {adaptToServer, adaptReviewsToClient} from "../common";
 import {ActionCreator} from "../store/action";
-import {AuthorizationStatus} from "../const";
 
 export const fetchOffersList = () => (dispatch, _getState, api) => ( //  асинхронный action
   api.get(`/hotels`)
@@ -42,11 +41,11 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(`/login`)
-    .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
+    .then((status) => dispatch(ActionCreator.requireAuthStatus(status)))
     .catch(() => {})
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(`/login`, {email, password})
-    .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
+    .then((status) => dispatch(ActionCreator.requireAuthStatus(status)))
 );
