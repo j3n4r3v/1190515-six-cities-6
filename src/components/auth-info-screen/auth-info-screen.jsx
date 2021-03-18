@@ -1,11 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {authPropTypes} from "../../propetypes";
+// import {authPropTypes} from "../../propetypes";
 
-const AuthInfoScreen = (props) => {
-  const {authInfo} = props;
-  const {avatarUrl, email} = authInfo;
+const AuthInfoScreen = () => {
 
   return <React.Fragment>
     <header className="header">
@@ -13,7 +11,7 @@ const AuthInfoScreen = (props) => {
         <div className="header__wrapper">
           <div className="header__left">
             <Link className="header__logo-link" to="/">
-              <img className="header__logo" src={avatarUrl} alt="6 cities logo" width={81} height={41} />
+              <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width={81} height={41} />
             </Link>
           </div>
           <nav className="header__nav">
@@ -22,7 +20,7 @@ const AuthInfoScreen = (props) => {
                 <a className="header__nav-link header__nav-link--profile" href="#">
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
-                  <span className="header__user-name user__name">{email}</span>
+                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
                 </a>
               </li>
             </ul>
@@ -33,8 +31,8 @@ const AuthInfoScreen = (props) => {
   </React.Fragment>;
 };
 
-AuthInfoScreen.propTypes = {
-  authInfo: authPropTypes
-};
+// AuthInfoScreen.propTypes = {
+//   authInfo: authPropTypes
+// };
 
 export default AuthInfoScreen;

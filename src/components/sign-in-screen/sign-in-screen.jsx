@@ -1,6 +1,5 @@
 import React from "react";
 
-import {authInfoMocks} from "../../mocks/auth-info-mocks";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 
 const SignInScreen = () => {
@@ -11,9 +10,7 @@ const SignInScreen = () => {
     </div>
     <div className="page page--gray page--login">
 
-      <AuthInfoScreen
-        authInfo={authInfoMocks}
-      />
+      <AuthInfoScreen />
 
       <main className="page__main page__main--login">
         <div className="page__login-container container">

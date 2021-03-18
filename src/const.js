@@ -1,8 +1,8 @@
-const OfferType = {
-  APARTMENT: `Apartment`,
-  PRIVATEROOM: `Private room`,
-  STUDIO: `Studio`
-};
+// const OfferType = {
+//   APARTMENT: `Apartment`,
+//   PRIVATEROOM: `Private room`,
+//   STUDIO: `Studio`
+// };
 
 const SortType = [`Popular`, `Price: low to high`, `Price: high to low`, `Top rated first`];
 
@@ -52,6 +52,11 @@ const MapSettings = {
   }
 };
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
+
 const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 
-export {OfferType, CITIES, Type, MapSettings, SortType};
+export {CITIES, Type, MapSettings, SortType, AuthorizationStatus};

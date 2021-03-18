@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 import FavoritesScreen from "../favorites-screen/favorites-screen";
@@ -8,7 +8,7 @@ import MainScreen from "../main-screen/main-sсreen";
 import PropertyScreen from "../property-screen/property-screen";
 import NotFoundScreen from "../not-found-screen/not-found-screen";
 
-import {offerPropTypes} from "../../propetypes";
+// import {offerPropTypes} from "../../propetypes";
 
 const App = () => {
 
@@ -18,33 +18,32 @@ const App = () => {
 
         <Route exact path="/">
           <MainScreen/>
-          {/* offers={offersMocks}  activeCity={ACTIVE_CITY} - можно уже удалить из за initialState ? /> */}
         </Route>
 
         <Route exact path="/login">
-          <SignInScreen />
+          <SignInScreen/>
         </Route>
 
         <Route exact path="/favorites">
-          <FavoritesScreen />
-          {/* offers={offers}  activeCity={ACTIVE_CITY} - можно уже удалить из за initialState ? /> */}
+          <FavoritesScreen/>
         </Route>
 
         <Route exact path="/offer/:id">
-          <PropertyScreen />
+          <PropertyScreen/>
         </Route>
 
         <Route>
-          <NotFoundScreen />
+          <NotFoundScreen/>
         </Route>
+
       </Switch>
     </BrowserRouter>
   </React.Fragment>;
 };
 
-App.propTypes = {
-  offers: PropTypes.arrayOf(offerPropTypes),
-  activeCity: PropTypes.string
-};
+// App.propTypes = {
+//   offers: PropTypes.arrayOf(offerPropTypes),
+//   activeCity: PropTypes.string
+// };
 
 export default App;
