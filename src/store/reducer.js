@@ -61,6 +61,11 @@ const reducer = (state = initialState, action) => { // логика измене
       //     ...state,
       //     isFavorite: action.payload
       //   };
+    case ActionType.REQUIRE_AUTHORIZATION:
+      return {
+        ...state,
+        authorizationStatus: AuthorizationStatus.AUTH
+      };
 
     default:
       return state;
