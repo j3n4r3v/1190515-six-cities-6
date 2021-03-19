@@ -1,5 +1,4 @@
 import React from "react";
-// import PropTypes from "prop-types";
 import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
 
 import FavoritesScreen from "../favorites-screen/favorites-screen";
@@ -42,10 +41,5 @@ const App = () => {
     </BrowserRouter>
   </React.Fragment>;
 };
-
-// App.propTypes = {
-//   offers: PropTypes.arrayOf(offerPropTypes),
-//   activeCity: PropTypes.string
-// };
 
 export default App;
