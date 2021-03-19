@@ -15,11 +15,11 @@ import LoadingScreen from "../loading-screen/loading-screen";
 import Sort from "../sort/sort";
 
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {ActionCreator} from "../../store/actions";
 
 const MainScreen = (props) => {
   const {offers, activeCity, onChangeCity, isOffersLoaded} = props;
-  const [activeOffer, setActiveOffer] = useState(0);
+  const [activeOffer, setActiveOffer] = useState();
   const MAIN = `MAIN`;
 
   if (!isOffersLoaded) {

@@ -1,4 +1,4 @@
-import {ActionType} from "./action";
+import {ActionType} from "./actions";
 import {CITIES, SortType, AuthorizationStatus} from "../const";
 
 const initialState = { // В глобальном хранилище начальное state(состояние)
@@ -60,7 +60,7 @@ const reducer = (state = initialState, action) => { // логика измене
       //     ...state,
       //     isFavorite: action.payload
       //   };
-    case ActionType.RECEIVE_AUTHORIZATIONSTATUS:
+    case ActionType.RECEIVE_AUTHORIZATION_STATUS:
       return {
         ...state,
         authorizationStatus: action.payload

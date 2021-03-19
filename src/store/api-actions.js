@@ -1,5 +1,5 @@
-import {adaptToServer, adaptReviewsToClient} from "../common";
-import {ActionCreator} from "../store/action";
+import {adaptToServer, adaptReviewsToClient, adaptAuthInfoToClient} from "../common";
+import {ActionCreator} from "../store/actions";
 
 export const fetchOffersList = () => (dispatch, _getState, api) => ( //  асинхронный action
   api.get(`/hotels`)
@@ -17,11 +17,6 @@ export const fetchReviews = (id) => (dispatch, _getState, api) => (
     .then((data) =>
       dispatch(ActionCreator.receiveReviews(data)))
 );
-
-// export const fetchReviews = (id) => (dispatch, _getState, api) => (
-//   api.get(`/comments/${id}`)
-//     .then(({data}) => dispatch(ActionCreator.receiveReviews(data.map(adaptReviewsToClient))))
-// );
 
 export const fetchNearOffersList = (id) => (dispatch, _getState, api) => (
   api.get(`/hotels/${id}/nearby`)
@@ -41,18 +36,19 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
 
 export const checkAuthStatus = () => (dispatch, _getState, api) => (
   api.get(`/login`)
-    .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(status)))
+    .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(status))))
     .catch(() => {})
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(`/login`, {email, password})
-    .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(status)))
+    .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(status))))
+    .then(() => dispatch(ActionCreator.redirectToRoute(`/`)))
 );
 // Login – если пользователь не авторизован, в action мы будем сообщать email / password.
 // Для этого нужно будет сделать post запрос на / login с паролем + логином и обработать результат.
 
 export const logout = ({login: email, password}) => (dispatch, _getState, api) => (
   api.get(`/logout`, {email, password})
-    .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(status)))
+    .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(null)))
 );

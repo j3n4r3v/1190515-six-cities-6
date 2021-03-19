@@ -1,13 +1,13 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import { connect } from "react-redux";
+import { ActionCreator } from "../../store/actions";
 import OptionsItemsList from "../options-items-list/options-items-list";
 
-import {SortType} from "../../const";
+import { SortType } from "../../const";
 
 const Sort = (props) => {
-  const {activeOption, onChangeOptionItem} = props;
+  const { activeOption, onChangeOptionItem } = props;
   const [isOpenList, setIsOpenList] = useState(false);
 
   const toggleOption = () => {
@@ -58,5 +58,5 @@ const mapDispatchToProps = (dispatch) => ({ // Передает в компон�
   }
 });
 
-export {Sort};
+export { Sort };
 export default connect(mapStateToProps, mapDispatchToProps)(Sort);

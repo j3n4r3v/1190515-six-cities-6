@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 import {authPropTypes} from "../../propetypes";
-import ActionCreator from "../../store/action";
+import {ActionCreator} from "../../store/actions";
 import {logout} from "../../store/api-actions";
 
 
@@ -31,12 +31,15 @@ const AuthInfoScreen = ({onLogout, onChangePage, onLogin}) => {
             <ul className="header__nav-list">
               <li className="header__nav-item user">
                 <Link to={onLogin && `${`/favorites`}` || `${`/login`}`} className="header__nav-link header__nav-link--profile">
+
                   {
                     onLogin && <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                   }
+
                   <span className="header__user-name user__name">{onLogin && onLogin.data.email || `Sign In`}</span>
                 </Link>
               </li>
+
               {onLogin &&
                 <li className="header__nav-item user">
                   <button
