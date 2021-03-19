@@ -77,7 +77,7 @@ const MainScreen = (props) => {
 
                 <Map
                   offers={offers}
-                  activeOffer={activeOffer.id}
+                  activeOffer={activeOffer}
                   mapSettings={MAIN}
                 />
 

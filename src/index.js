@@ -4,6 +4,8 @@ import ReactDOM from "react-dom";
 import App from "./components/app/app";
 import {createAPI} from "./api";
 
+import {ActionCreator} from "./store/action";
+
 import {composeWithDevTools} from "redux-devtools-extension";
 import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
@@ -11,9 +13,13 @@ import thunk from "redux-thunk";
 
 import {reducer} from "./store/reducer";
 
-import {fetchOffersList} from "./store/api-actions";
+import {fetchOffersList, checkAuthStatus} from "./store/api-actions";
 
-const api = createAPI();
+const api = createAPI(
+    () => store.dispatch(ActionCreator.receiveAuthStatus(status)) // иначе можно как-то записать тут?
+);
+// createAPI принимает callback который нужно вызвать на случай неавторизованности
+// обновит store - authStatus: true
 
 const store = createStore(reducer,
     composeWithDevTools(
@@ -21,7 +27,8 @@ const store = createStore(reducer,
         )
     ));
 
-store.dispatch(fetchOffersList());
+store.dispatch(checkAuthStatus()); // посылаем запрос (aсинхронный action - вызов функции)
+store.dispatch(fetchOffersList()); // на сервер и обрабатываем ответ?
 
 ReactDOM.render(
     <Provider store={store}>

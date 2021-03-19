@@ -1,9 +1,3 @@
-// const OfferType = {
-//   APARTMENT: `Apartment`,
-//   PRIVATEROOM: `Private room`,
-//   STUDIO: `Studio`
-// };
-
 const SortType = [`Popular`, `Price: low to high`, `Price: high to low`, `Top rated first`];
 
 const Type = {

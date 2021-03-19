@@ -39,13 +39,15 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
       dispatch(ActionCreator.receiveFavoriteOffers(data)))
 );
 
-export const checkAuth = () => (dispatch, _getState, api) => (
+export const checkAuthStatus = () => (dispatch, _getState, api) => (
   api.get(`/login`)
-    .then((status) => dispatch(ActionCreator.requireAuthStatus(status)))
+    .then((status) => dispatch(ActionCreator.receiveAuthStatus(status)))
     .catch(() => {})
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(`/login`, {email, password})
-    .then((status) => dispatch(ActionCreator.requireAuthStatus(status)))
+    .then((status) => dispatch(ActionCreator.receiveAuthStatus(status)))
 );
+// Login – если пользователь не авторизован, в action мы будем сообщать email / password.
+// Для этого нужно будет сделать post запрос на / login с паролем + логином и обработать результат.

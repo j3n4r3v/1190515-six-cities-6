@@ -42,7 +42,7 @@ export const ActionCreator = { // Для описания actions в виде о
   //   type: ActionType.CHANGE_FAVORITE_OFFER,
   //   payload: data
   // }),
-  requireAuthStatus: (status) => ({
+  receiveAuthStatus: (status) => ({
     type: ActionType.RECEIVE_AUTHSTATUS,
     payload: status
   })
