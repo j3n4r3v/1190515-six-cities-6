@@ -1,5 +1,10 @@
 const SortType = [`Popular`, `Price: low to high`, `Price: high to low`, `Top rated first`];
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
+
 const Type = {
   MAIN: {
     divClass: `cities__places-list tabs__content`,
@@ -48,4 +53,4 @@ const MapSettings = {
 
 const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 
-export {CITIES, Type, MapSettings, SortType};
+export {CITIES, Type, MapSettings, SortType, AuthorizationStatus};

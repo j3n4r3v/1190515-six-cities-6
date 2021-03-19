@@ -9,7 +9,7 @@ import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 
 const SignInScreen = ({onSubmit}) => {
 
-  const emailRef = useRef();
+  const loginRef = useRef();
   const passwordRef = useRef();
 
   const history = useHistory();
@@ -19,7 +19,7 @@ const SignInScreen = ({onSubmit}) => {
   };
 
   onSubmit({
-    login: emailRef.current.value,
+    login: loginRef.current.value,
     password: passwordRef.current.value
   });
 
@@ -38,11 +38,11 @@ const SignInScreen = ({onSubmit}) => {
             <form onSubmit={handleSubmit} className="login__form form" action="#" method="post">
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
-                <input ref={emailRef} className="login__input form__input" type="email" name="email" placeholder="Email" required />
+                <input ref={loginRef} className="login__input form__input" type="email" name="email" placeholder="Email" />
               </div>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">Password</label>
-                <input ref={passwordRef} className="login__input form__input" type="password" name="password" placeholder="Password" required />
+                <input ref={passwordRef} className="login__input form__input" type="password" name="password" placeholder="Password" />
               </div>
               <button onClick={() => history.push(`/`)} className="login__submit form__submit button" type="submit">Sign in</button>
             </form>
@@ -72,4 +72,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export {SignInScreen};
-export default connect(null, mapDispatchToProps)(SignInScreen);
+export default connect(mapDispatchToProps)(SignInScreen);

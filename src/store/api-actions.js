@@ -41,13 +41,18 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
 
 export const checkAuthStatus = () => (dispatch, _getState, api) => (
   api.get(`/login`)
-    .then((status) => dispatch(ActionCreator.receiveAuthStatus(status)))
+    .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(status)))
     .catch(() => {})
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(`/login`, {email, password})
-    .then((status) => dispatch(ActionCreator.receiveAuthStatus(status)))
+    .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(status)))
 );
 // Login – если пользователь не авторизован, в action мы будем сообщать email / password.
 // Для этого нужно будет сделать post запрос на / login с паролем + логином и обработать результат.
+
+export const logout = ({login: email, password}) => (dispatch, _getState, api) => (
+  api.get(`/logout`, {email, password})
+    .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(status)))
+);

@@ -1,5 +1,5 @@
 import {ActionType} from "./action";
-import {CITIES, SortType} from "../const";
+import {CITIES, SortType, AuthorizationStatus} from "../const";
 
 const initialState = { // В глобальном хранилище начальное state(состояние)
   activeCity: CITIES[3],
@@ -12,7 +12,7 @@ const initialState = { // В глобальном хранилище начал�
   isOffersLoaded: false,
   isFavoritesLoaded: false,
   isNearOffersLoaded: false,
-  authStatus: false
+  authorizationStatus: AuthorizationStatus.NO_AUTH
 };
 
 const reducer = (state = initialState, action) => { // логика изменения хранилища
@@ -60,10 +60,10 @@ const reducer = (state = initialState, action) => { // логика измене
       //     ...state,
       //     isFavorite: action.payload
       //   };
-    case ActionType.RECEIVE_AUTHSTATUS:
+    case ActionType.RECEIVE_AUTHORIZATIONSTATUS:
       return {
         ...state,
-        authStatus: true
+        authorizationStatus: action.payload
       };
 
     default:

@@ -7,7 +7,7 @@ export const ActionType = {
   RECEIVE_FAVORITE_OFFERS: `favorite/receiveFavoriteOffers`,
   // IS_NEAR_OFFERS_LOADED: `property/isNearOffersLoaded`,
   // CHANGE_FAVORITE_OFFER: `favorite/changeFavoriteOffer`,
-  RECEIVE_AUTHSTATUS: `user/receiveAuthStatus`
+  RECEIVE_AUTHORIZATIONSTATUS: `login/receiveAuthorizationStatus`
 };
 
 export const ActionCreator = { // Для описания actions в виде обьектов
@@ -42,8 +42,8 @@ export const ActionCreator = { // Для описания actions в виде о
   //   type: ActionType.CHANGE_FAVORITE_OFFER,
   //   payload: data
   // }),
-  receiveAuthStatus: (status) => ({
-    type: ActionType.RECEIVE_AUTHSTATUS,
+  receiveAuthorizationStatus: (status) => ({
+    type: ActionType.RECEIVE_AUTHORIZATIONSTATUS,
     payload: status
   })
 };
