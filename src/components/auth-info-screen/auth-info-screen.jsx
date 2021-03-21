@@ -43,7 +43,7 @@ const AuthInfoScreen = ({onChangePage, authorizationStatus, authInfo, onLogout})
               {authorizationStatus &&
                 <li className="header__nav-item user">
                   <button
-                    onClick={() => onLogout()}
+                    onClick={() => onLogout(authInfo)}
                     style={LogoutStyles}
                     className="header__nav-link header__nav-link--profile"
                   >

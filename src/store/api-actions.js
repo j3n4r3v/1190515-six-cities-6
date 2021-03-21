@@ -53,11 +53,11 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
 // Login – если пользователь не авторизован, в action мы будем сообщать email / password.
 // Для этого нужно будет сделать post запрос на / login с паролем + логином и обработать результат.
 
-export const logout = ({login: email, password}) => (dispatch, _getState, api) => {
+export const logout = ({email, password}) => (dispatch, _getState, api) => {
   return api.get(`/logout`, {email, password})
   .then((response) => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(response.data))))
-  .then((data) => {
-    dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH));
-    dispatch(ActionCreator.setAuthInfo(data));
-  });
+    .then((data) => {
+      dispatch(ActionCreator.setAuthInfo(data));
+      dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH));
+    });
 };
