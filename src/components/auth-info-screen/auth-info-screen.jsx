@@ -7,15 +7,15 @@ import {authPropTypes} from "../../propetypes";
 import {ActionCreator} from "../../store/actions";
 import {logout} from "../../store/api-actions";
 
-// const LogoutStyles = {
-//   border: `5px`,
-//   marginLeft: `15px`,
-//   backgroundColor: `transparent`,
-//   textTransform: `uppercase`,
-//   outline: `2px`
-// };
+const LogoutStyles = {
+  border: `5px`,
+  marginLeft: `15px`,
+  backgroundColor: `transparent`,
+  textTransform: `uppercase`,
+  outline: `2px`
+};
 
-const AuthInfoScreen = ({onChangePage, authorizationStatus, authInfo}) => {
+const AuthInfoScreen = ({onChangePage, authorizationStatus, authInfo, onLogout}) => {
 
   return <React.Fragment>
     <header className="header">
@@ -30,7 +30,7 @@ const AuthInfoScreen = ({onChangePage, authorizationStatus, authInfo}) => {
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <Link to={authorizationStatus && `${`/favorites`}` || `${`/login`}`} className="header__nav-link header__nav-link--profile">
+                <Link to={authorizationStatus && authInfo.email && `${`/favorites`}` || `${`/login`}`} className="header__nav-link header__nav-link--profile">
 
                   {
                     authorizationStatus && <div className="header__avatar-wrapper user__avatar-wrapper"></div>
@@ -40,10 +40,8 @@ const AuthInfoScreen = ({onChangePage, authorizationStatus, authInfo}) => {
                 </Link>
               </li>
 
-              {/* {authorizationStatus &&
+              {authorizationStatus &&
                 <li className="header__nav-item user">
-                onLogout,
-                onLogout: PropTypes.func,
                   <button
                     onClick={() => onLogout()}
                     style={LogoutStyles}
@@ -52,7 +50,7 @@ const AuthInfoScreen = ({onChangePage, authorizationStatus, authInfo}) => {
                     <span className="header__user-name user__name">Logout</span>
                   </button>
                 </li>
-              } */}
+              }
 
             </ul>
           </nav>
@@ -79,8 +77,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.receiveNearOffersList());
     dispatch(ActionCreator.receiveFavoriteOffers());
   },
-  onLogout() {
-    dispatch(logout());
+  onLogout(authInfo) {
+    dispatch(logout(authInfo));
   }
 });
 
