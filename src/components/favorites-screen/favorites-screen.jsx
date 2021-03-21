@@ -7,23 +7,19 @@ import {authPropTypes, offerPropTypes} from "../../propetypes";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import LoadingScreen from "../loading-screen/loading-screen";
 
+import FavoriteList from "../favorite-list/favorite-list";
 import {fetchFavorites} from "../../store/api-actions";
-import ContainerOffersList from "../container-offers-list/container-offers-list";
 
 import {connect} from "react-redux";
 
 const FavoritesScreen = (props) => {
-  const {offers, onFavoritesLoaded, isFavoritesLoaded, isOffersLoaded} = props;
-
-  const favoriteOffers = offers.filter((offer) => offer.isFavorite === true);
-  const city = favoriteOffers.find((offer) => offer.city.name);
-  const id = favoriteOffers.find((offer) => offer.id);
-
-  const FAVORITE = `FAVORITE`;
+  const {offers, onFavoritesLoaded, isOffersLoaded, isFavoritesLoaded} = props;
 
   useEffect(() => {
     onFavoritesLoaded();
   });
+
+  const FAVORITE = `FAVORITE`;
 
   if (!isOffersLoaded || !isFavoritesLoaded) {
     return (
@@ -43,38 +39,9 @@ const FavoritesScreen = (props) => {
           <div className="page__favorites-container container">
             <section className="favorites">
               <h1 className="favorites__title">{offers.length && `Saved listing` || `Nothing yet saved`}</h1>
-              <ul className="favorites__list">
-                <li className="favorites__locations-items">
-                  <div className="favorites__locations locations locations--current">
-                    <div className="locations__item">
-                      <Link className="locations__item-link" to={`/${city}/${id}`}>
-                        <span>{city}</span>
-                      </Link>
-                    </div>
-                  </div>
 
-                  <ContainerOffersList
-                    offers={offers}
-                    typeOffer={FAVORITE}
-                  />
+              <FavoriteList offers={offers} typeOffer={FAVORITE}/>
 
-                </li>
-                {/* <li className="favorites__locations-items">
-                  <div className="favorites__locations locations locations--current">
-                    <div className="locations__item">
-                      <Link className="locations__item-link" to={`/city/${id}`}>
-                        <span>{city}</span>
-                      </Link>
-                    </div>
-                  </div>
-
-                  <ContainerOffersList
-                    offers={favoriteOffers}
-                    typeOffer={FAVORITE}
-                  />
-
-                </li> */}
-              </ul>
             </section>
           </div>
         </main>
