@@ -21,7 +21,7 @@ const PrivateRoute = ({render, path, exact, authorizationStatus}) => {
 };
 
 PrivateRoute.propTypes = {
-  authorizationStatus: PropTypes.string,
+  authorizationStatus: PropTypes.object,
   exact: PropTypes.bool,
   path: PropTypes.string,
   render: PropTypes.func

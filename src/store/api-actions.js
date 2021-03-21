@@ -41,18 +41,18 @@ export const checkAuthStatus = () => (dispatch, _getState, api) => (
     .catch(() => {})
 );
 
-export const login = ({login: email, password}) => (dispatch, _getState, api) => {
-  return api.post(`/login`, {email, password})
-    .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(AuthorizationStatus.AUTH))))
-    .then(() => dispatch(ActionCreator.setAuthInfo({email, password})));
+export const login = ({login: email, password, avatarUrl}) => (dispatch, _getState, api) => {
+  return api.post(`/login`, {email, password, avatarUrl})
+    // .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(AuthorizationStatus.AUTH))))
+    .then(() => dispatch(ActionCreator.setAuthInfo(adaptAuthInfoToClient({email, password, avatarUrl}))));
   // .then(() => dispatch(ActionCreator.redirectToRoute(`/`)));
 };
 
 // dispatch(ActionCreator.redirectToRoute(`/`));
 
-export const logout = ({email, password}) => (dispatch, _getState, api) => {
-  return api.get(`/logout`, {email, password})
-    .then(() => dispatch(ActionCreator.setAuthInfo({password: ``, email: ``})))
-    .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH)));
+export const logout = ({email, password, avatarUrl}) => (dispatch, _getState, api) => {
+  return api.get(`/logout`, {email, password, avatarUrl})
+    .then(() => dispatch(ActionCreator.setAuthInfo({password: ``, email: ``, avatarUrl: ``})));
+  // .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH)));
 };
 

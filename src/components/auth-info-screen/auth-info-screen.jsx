@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-import {authPropTypes} from "../../propetypes";
+// import {authPropTypes} from "../../propetypes";
 import {ActionCreator} from "../../store/actions";
 import {logout} from "../../store/api-actions";
 
@@ -15,7 +15,7 @@ const LogoutStyles = {
   outline: `2px`
 };
 
-const AuthInfoScreen = ({onChangePage, authorizationStatus, authInfo, onLogout}) => {
+const AuthInfoScreen = ({onChangePage, authInfo, onLogout, isMainPage = false}) => {
 
   return <React.Fragment>
     <header className="header">
@@ -23,24 +23,30 @@ const AuthInfoScreen = ({onChangePage, authorizationStatus, authInfo, onLogout})
         <div className="header__wrapper">
           <div className="header__left">
             <Link
-              className="header__logo-link header__logo-link--active" to="/" onClick={() => onChangePage}>
+              className={`header__logo-link ${isMainPage ? `header__logo-link--active` : ``}`} to="/" onClick={() => onChangePage}>
               <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width={81} height={41} />
             </Link>
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <Link to={authorizationStatus && authInfo.email && `${`/favorites`}` || `${`/login`}`} className="header__nav-link header__nav-link--profile">
+                <Link to={authInfo.email && `${`/favorites`}` || `${`/login`}`} className="header__nav-link header__nav-link--profile">
 
                   {
-                    authorizationStatus && <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+                    authInfo && <div
+                      className="header__avatar-wrapper user__avatar-wrapper"
+                      style={{
+                        backgroundImage: `${authInfo.avatarUrl}`,
+                        // borderRadius: `50%`
+                      }}>
+                    </div>
                   }
 
-                  <span className="header__user-name user__name">{authorizationStatus && authInfo.email || `Sign In`}</span>
+                  <span className="header__user-name user__name">{authInfo.email || `Sign In`}</span>
                 </Link>
               </li>
 
-              {authorizationStatus &&
+              {authInfo &&
                 <li className="header__nav-item user">
                   <button
                     onClick={() => onLogout(authInfo)}
@@ -63,12 +69,12 @@ const AuthInfoScreen = ({onChangePage, authorizationStatus, authInfo, onLogout})
 AuthInfoScreen.propTypes = {
   onChangePage: PropTypes.func,
   onLogout: PropTypes.func,
-  authorizationStatus: authPropTypes,
-  authInfo: PropTypes.object
+  authInfo: PropTypes.object,
+  isMainPage: PropTypes.bool
+
 };
 
 const mapStateToProps = (state) => ({
-  authorizationStatus: state.authorizationStatus,
   authInfo: state.authInfo
 });
 

@@ -13,7 +13,7 @@ const initialState = { // В глобальном хранилище начал�
   isFavoritesLoaded: false,
   isNearOffersLoaded: false,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  authInfo: {password: ``, email: ``}
+  authInfo: {password: ``, email: ``, avatarUrl: ``}
 };
 
 const reducer = (state = initialState, action) => { // логика изменения хранилища
