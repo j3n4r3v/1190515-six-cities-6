@@ -53,8 +53,8 @@ const adaptAuthInfoToClient = (data) => {
     isPro: data.is_pro,
   };
 
-  delete adaptedData.data.avatar_url;
-  delete adaptedData.data.is_pro;
+  delete adaptedData.avatar_url;
+  delete adaptedData.is_pro;
 
 
   return adaptedData;

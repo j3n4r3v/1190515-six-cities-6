@@ -8,7 +8,8 @@ export const ActionType = {
   // IS_NEAR_OFFERS_LOADED: `property/isNearOffersLoaded`,
   // CHANGE_FAVORITE_OFFER: `favorite/changeFavoriteOffer`,
   RECEIVE_AUTHORIZATION_STATUS: `login/receiveAuthorizationStatus`,
-  REDIRECT_TO_ROUTE: `login/redirectToRoute`
+  REDIRECT_TO_ROUTE: `login/redirectToRoute`,
+  SET_AUTHORIZATION_INFO: `login/setAuthInfo`
 };
 
 export const ActionCreator = { // Для описания actions в виде обьектов
@@ -46,6 +47,10 @@ export const ActionCreator = { // Для описания actions в виде о
   receiveAuthorizationStatus: (status) => ({
     type: ActionType.RECEIVE_AUTHORIZATION_STATUS,
     payload: status
+  }),
+  setAuthInfo: (info) => ({
+    type: ActionType.SET_AUTHORIZATION_INFO,
+    payload: info
   }),
   redirectToRoute: (url) => ({
     type: ActionType.REDIRECT_TO_ROUTE,

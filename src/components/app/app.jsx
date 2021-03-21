@@ -7,7 +7,7 @@ import MainScreen from "../main-screen/main-sсreen";
 import PropertyScreen from "../property-screen/property-screen";
 import NotFoundScreen from "../not-found-screen/not-found-screen";
 
-import {PrivateRoute} from "../private-route/private-route";
+import PrivateRoute from "../private-route/private-route";
 
 const App = () => {
 
@@ -23,9 +23,7 @@ const App = () => {
           <SignInScreen/>
         </Route>
 
-        <PrivateRoute exact path="/favorites">
-          <FavoritesScreen/>
-        </PrivateRoute>
+        <PrivateRoute render={() => <FavoritesScreen />} exact path="/favorites"/>
 
         <Route exact path="/offer/:id">
           <PropertyScreen/>

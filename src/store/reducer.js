@@ -12,7 +12,8 @@ const initialState = { // В глобальном хранилище начал�
   isOffersLoaded: false,
   isFavoritesLoaded: false,
   isNearOffersLoaded: false,
-  authorizationStatus: AuthorizationStatus.NO_AUTH
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  authInfo: {login: ``, email: ``}
 };
 
 const reducer = (state = initialState, action) => { // логика изменения хранилища
@@ -64,6 +65,11 @@ const reducer = (state = initialState, action) => { // логика измене
       return {
         ...state,
         authorizationStatus: action.payload
+      };
+    case ActionType.SET_AUTHORIZATION_INFO:
+      return {
+        ...state,
+        authInfo: action.payload.payload
       };
 
     default:

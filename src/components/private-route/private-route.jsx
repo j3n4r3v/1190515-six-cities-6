@@ -6,33 +6,32 @@ import {connect} from "react-redux";
 
 import {AuthorizationStatus} from "../../const";
 
-const PrivateRoute = ({render, path, exact, onLogin}) => {
+const PrivateRoute = ({render, path, exact, authorizationStatus}) => {
 
   return (
     <Route
       path={path}
       exact={exact}
-      render={(routeProps) => {
-        return (
-          onLogin === AuthorizationStatus.AUTH
-            ? render(routeProps)
-            : <Redirect to={`/login`} />
-        );
-      }}
-    />
+    > { authorizationStatus === AuthorizationStatus.AUTH
+        ? render()
+        : <Redirect to={`/login`} />
+      }
+    </Route>
   );
 };
 
 PrivateRoute.propTypes = {
-  onLogin: PropTypes.string,
+  authorizationStatus: PropTypes.string,
   exact: PropTypes.bool,
   path: PropTypes.string,
   render: PropTypes.func
 };
 
-const mapStateToProps = (state) => ({
-  onLogin: state.authorizationStatus
-});
+const mapStateToProps = (state) => {
+  return {
+    authorizationStatus: state.authorizationStatus
+  };
+};
 
 export {PrivateRoute};
-export default connect(mapStateToProps)(PrivateRoute);
+export default connect(mapStateToProps, null)(PrivateRoute);

@@ -1,5 +1,6 @@
 import {adaptToServer, adaptReviewsToClient, adaptAuthInfoToClient} from "../common";
 import {ActionCreator} from "../store/actions";
+import {AuthorizationStatus} from "../const";
 
 export const fetchOffersList = () => (dispatch, _getState, api) => ( //  асинхронный action
   api.get(`/hotels`)
@@ -36,15 +37,19 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
 
 export const checkAuthStatus = () => (dispatch, _getState, api) => (
   api.get(`/login`)
-    .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(status))))
+    .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.AUTH)))
     .catch(() => {})
 );
 
-export const login = ({login: email, password}) => (dispatch, _getState, api) => (
-  api.post(`/login`, {email, password})
-    .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(status))))
-    .then(() => dispatch(ActionCreator.redirectToRoute(`/`)))
-);
+export const login = ({login: email, password}) => (dispatch, _getState, api) => {
+  return api.post(`/login`, {email, password})
+    .then((response) => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(response.data))))
+    .then((data) => {
+      dispatch(ActionCreator.redirectToRoute(`/`));
+      dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.AUTH));
+      dispatch(ActionCreator.setAuthInfo(data));
+    });
+};
 // Login – если пользователь не авторизован, в action мы будем сообщать email / password.
 // Для этого нужно будет сделать post запрос на / login с паролем + логином и обработать результат.
 

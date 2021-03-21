@@ -13,12 +13,11 @@ import ContainerOffersList from "../container-offers-list/container-offers-list"
 import {connect} from "react-redux";
 
 const FavoritesScreen = (props) => {
-  const {offers, onFavoritesLoaded, isFavoritesLoaded} = props;
-  const favoriteOffers = offers.filter((offer) => offer.isFavorite);
-  // const city = favoriteOffers[0].city;
-  const city = favoriteOffers.find((item) => item.city === city);
-  // const id = favoriteOffers[0].id;
-  const id = favoriteOffers.find((item) => item.id === id);
+  const {offers, onFavoritesLoaded, isFavoritesLoaded, isOffersLoaded} = props;
+
+  const favoriteOffers = offers.filter((offer) => offer.isFavorite === true);
+  const city = favoriteOffers.find((offer) => offer.city.name);
+  const id = favoriteOffers.find((offer) => offer.id);
 
   const FAVORITE = `FAVORITE`;
 
@@ -26,7 +25,7 @@ const FavoritesScreen = (props) => {
     onFavoritesLoaded();
   });
 
-  if (!isFavoritesLoaded) {
+  if (!isOffersLoaded || !isFavoritesLoaded) {
     return (
       <LoadingScreen />
     );
@@ -43,28 +42,28 @@ const FavoritesScreen = (props) => {
         <main className="page__main page__main--favorites">
           <div className="page__favorites-container container">
             <section className="favorites">
-              <h1 className="favorites__title">{favoriteOffers.length && `Saved listing` || `Nothing yet saved`}</h1>
+              <h1 className="favorites__title">{offers.length && `Saved listing` || `Nothing yet saved`}</h1>
               <ul className="favorites__list">
                 <li className="favorites__locations-items">
                   <div className="favorites__locations locations locations--current">
                     <div className="locations__item">
-                      <Link className="locations__item-link" to={`/city/${id}`}>
-                        <span>{city.name}</span>
+                      <Link className="locations__item-link" to={`/${city}/${id}`}>
+                        <span>{city}</span>
                       </Link>
                     </div>
                   </div>
 
                   <ContainerOffersList
-                    offers={favoriteOffers}
+                    offers={offers}
                     typeOffer={FAVORITE}
                   />
 
                 </li>
-                <li className="favorites__locations-items">
+                {/* <li className="favorites__locations-items">
                   <div className="favorites__locations locations locations--current">
                     <div className="locations__item">
                       <Link className="locations__item-link" to={`/city/${id}`}>
-                        <span>{city.name}</span>
+                        <span>{city}</span>
                       </Link>
                     </div>
                   </div>
@@ -74,7 +73,7 @@ const FavoritesScreen = (props) => {
                     typeOffer={FAVORITE}
                   />
 
-                </li>
+                </li> */}
               </ul>
             </section>
           </div>
@@ -95,13 +94,15 @@ FavoritesScreen.propTypes = {
   favoriteOffers: PropTypes.arrayOf(offerPropTypes),
   typeOffer: PropTypes.string,
   onFavoritesLoaded: PropTypes.func,
-  isFavoritesLoaded: PropTypes.bool
+  isFavoritesLoaded: PropTypes.bool,
+  isOffersLoaded: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {
   return {
     offers: state.favorites,
-    isFavoritesLoaded: state.isFavoritesLoaded // достаю из store уже обновленные данные - offers после dispatch(fetchFavorites());
+    isFavoritesLoaded: state.isFavoritesLoaded,
+    isOffersLoaded: state.isOffersLoaded
   };
 };
 
