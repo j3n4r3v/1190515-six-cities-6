@@ -69,7 +69,7 @@ const reducer = (state = initialState, action) => { // логика измене
     case ActionType.SET_AUTHORIZATION_INFO:
       return {
         ...state,
-        authInfo: action.payload.payload
+        authInfo: action.payload
       };
 
     default:

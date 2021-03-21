@@ -43,21 +43,16 @@ export const checkAuthStatus = () => (dispatch, _getState, api) => (
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => {
   return api.post(`/login`, {email, password})
-    .then((response) => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(response.data))))
-    .then((data) => {
-      dispatch(ActionCreator.redirectToRoute(`/`));
-      dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.AUTH));
-      dispatch(ActionCreator.setAuthInfo(data));
-    });
+    .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(AuthorizationStatus.AUTH))))
+    .then(() => dispatch(ActionCreator.setAuthInfo({email, password})));
+  // .then(() => dispatch(ActionCreator.redirectToRoute(`/`)));
 };
-// Login – если пользователь не авторизован, в action мы будем сообщать email / password.
-// Для этого нужно будет сделать post запрос на / login с паролем + логином и обработать результат.
+
+// dispatch(ActionCreator.redirectToRoute(`/`));
 
 export const logout = ({email, password}) => (dispatch, _getState, api) => {
   return api.get(`/logout`, {email, password})
-  .then((response) => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(response.data))))
-    .then((data) => {
-      dispatch(ActionCreator.setAuthInfo(data));
-      dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH));
-    });
+    .then(() => dispatch(ActionCreator.setAuthInfo({password: ``, email: ``})))
+    .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH)));
 };
+

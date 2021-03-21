@@ -17,7 +17,7 @@ const FavoritesScreen = (props) => {
 
   useEffect(() => {
     onFavoritesLoaded();
-  });
+  }, []);
 
   const FAVORITE = `FAVORITE`;
 
