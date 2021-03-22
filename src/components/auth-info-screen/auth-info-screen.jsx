@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 // import {authPropTypes} from "../../propetypes";
 // import {ActionCreator} from "../../store/actions";
 import {logout} from "../../store/api-actions";
+import {authPropTypes} from "../../propetypes";
 
 const LogoutStyles = {
   border: `5px`,
@@ -30,13 +31,13 @@ const AuthInfoScreen = ({authInfo, onLogout, isMainPage = false}) => {
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <Link to={authInfo.email && `${`/favorites`}` || `${`/login`}`} className="header__nav-link header__nav-link--profile">
+                <Link to={authInfo && `${`/favorites`}` || `${`/login`}`} className="header__nav-link header__nav-link--profile">
 
                   {
                     authInfo && <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                   }
 
-                  <span className="header__user-name user__name">{authInfo.email || `Sign In`}</span>
+                  <span className="header__user-name user__name">{authInfo && authInfo.email || `Sign In`}</span>
                 </Link>
               </li>
 
@@ -45,8 +46,7 @@ const AuthInfoScreen = ({authInfo, onLogout, isMainPage = false}) => {
                   <button
                     onClick={() => onLogout(authInfo)}
                     style={LogoutStyles}
-                    className="header__nav-link header__nav-link--profile"
-                  >
+                    className="header__nav-link header__nav-link--profile">
                     <span className="header__user-name user__name">Logout</span>
                   </button>
                 </li>
@@ -62,13 +62,12 @@ const AuthInfoScreen = ({authInfo, onLogout, isMainPage = false}) => {
 
 AuthInfoScreen.propTypes = {
   onLogout: PropTypes.func,
-  authInfo: PropTypes.object,
+  authInfo: authPropTypes,
   isMainPage: PropTypes.bool
 };
 
 const mapStateToProps = (state) => ({
   authInfo: state.authInfo,
-  isMainPage: state.isMainPage
 });
 
 const mapDispatchToProps = (dispatch) => ({

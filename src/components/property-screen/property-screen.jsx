@@ -8,7 +8,7 @@ import FeedBackForm from "../feedbackform/feedbackform";
 import ReviewList from "../review-list/review-list";
 import PropertyGalleryOffer from "../property-gallery-offer/property-gallery-offer";
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
-import {offerPropTypes, reviewPropTypes} from "../../propetypes";
+import {offerPropTypes, reviewPropTypes, authPropTypes} from "../../propetypes";
 import {connect} from "react-redux";
 
 import {useParams} from "react-router-dom";
@@ -18,10 +18,9 @@ import {fetchPropertyInfo} from "../../store/api-actions";
 import ContainerOffersList from "../container-offers-list/container-offers-list";
 
 import Map from "../map/map";
-import PrivateRoute from "../private-route/private-route";
 
 const PropertyScreen = (props) => {
-  const {offers, reviews, nearOffers, onLoadData, propertyInfoIsLoaded} = props;
+  const {offers, reviews, nearOffers, onLoadData, propertyInfoIsLoaded, authInfo, isDataLoaded} = props;
 
   const PROPERTY = `PROPERTY`;
 
@@ -31,13 +30,13 @@ const PropertyScreen = (props) => {
     onLoadData(id);
   }, [id]);
 
-  if (!propertyInfoIsLoaded) {
+  if (!isDataLoaded || !propertyInfoIsLoaded) {
     return (
       <LoadingScreen />
     );
   }
 
-  const offer = offers.find((item) => item.id === +id); // неосилил я это
+  const offer = offers.find((item) => item.id === +id);
   const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = offer;
   const {name, avatarUrl} = host;
   const imagesArray = images.length > 6 ? images.slice(0, 6) : images;
@@ -124,10 +123,9 @@ const PropertyScreen = (props) => {
                 <h2 className="reviews__title">Reviews · <span className="reviews__amount">{reviews.length}</span></h2>
 
                 <ReviewList
-                  reviews={reviews} id={id}
-                />
+                  reviews={reviews} id={id} />
 
-                <PrivateRoute noAuth={() => ``} render={() => <FeedBackForm id={id} />} />
+                {authInfo ? <FeedBackForm id={id} /> : ``}
 
               </section>
             </div>
@@ -167,7 +165,9 @@ PropertyScreen.propTypes = {
   mapSettings: PropTypes.string,
   propertyInfoIsLoaded: PropTypes.bool,
   id: PropTypes.number,
-  onLoadData: PropTypes.func
+  onLoadData: PropTypes.func,
+  isDataLoaded: PropTypes.bool,
+  authInfo: authPropTypes
 };
 
 const mapStateToProps = (state) => {
@@ -176,20 +176,17 @@ const mapStateToProps = (state) => {
     nearOffers: state.nearOffers,
     reviews: state.reviews,
     propertyInfoIsLoaded: state.propertyInfoIsLoaded,
+    authInfo: state.authInfo,
+    isDataLoaded: state.isDataLoaded
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  // onLoadNearOffers: (id) => {
-  //   dispatch(fetchNearOffersList(id));
-  // },
-  // onLoadReviews: (id) => { // как понять тут нужно : или  = поставить?
-  //   dispatch(fetchReviewsList(id));
-  // }
   onLoadData(id) {
     dispatch(fetchPropertyInfo(id));
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PropertyScreen);
 export {PropertyScreen};
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyScreen);
+

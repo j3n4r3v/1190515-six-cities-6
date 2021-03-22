@@ -56,7 +56,7 @@ const FavoritesScreen = (props) => {
 };
 
 FavoritesScreen.propTypes = {
-  authInfo: PropTypes.arrayOf(authPropTypes),
+  authInfo: authPropTypes,
   offers: PropTypes.arrayOf(offerPropTypes),
   favoriteOffers: PropTypes.arrayOf(offerPropTypes),
   typeOffer: PropTypes.string,
@@ -75,7 +75,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   onFavoritesLoaded: () => {
-    dispatch(fetchFavorites()); // обновляю данные store вызовом функции onFavoritesLoaded()
+    dispatch(fetchFavorites());
   }
 });
 

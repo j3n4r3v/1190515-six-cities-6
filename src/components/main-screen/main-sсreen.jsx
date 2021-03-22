@@ -91,7 +91,7 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  authInfo: PropTypes.arrayOf(authPropTypes),
+  authInfo: authPropTypes,
   offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
   activeOffer: offerPropTypes,
@@ -101,7 +101,7 @@ MainScreen.propTypes = {
   isDataLoaded: PropTypes.bool
 };
 
-const mapStateToProps = (state) => { // Передает обновленные свойства из store в компонент
+const mapStateToProps = (state) => {
   return {
     activeCity: state.activeCity,
     offers: getActiveOffers(state),
@@ -109,11 +109,11 @@ const mapStateToProps = (state) => { // Передает обновленные 
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({ // Передает в компонент методы для обновления store
+const mapDispatchToProps = (dispatch) => ({
   onChangeCity: (city) => {
     dispatch(ActionCreator.changeCity(city));
   }
 });
 
 export {MainScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen); // использует store
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

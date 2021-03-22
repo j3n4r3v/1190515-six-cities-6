@@ -6,7 +6,6 @@ const initialState = { // В глобальном хранилище начал�
   activeOption: SortType[0],
   offers: [],
   isDataLoaded: false,
-  isMainPage: false,
   reviews: [],
   isFormDisabled: false,
   isFormError: false,
@@ -17,7 +16,7 @@ const initialState = { // В глобальном хранилище начал�
   url: null,
   // isFavorite: false,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  authInfo: {password: ``, email: ``, avatarUrl: ``}
+  authInfo: null
 };
 
 const reducer = (state = initialState, action) => { // логика изменения хранилища
@@ -65,7 +64,7 @@ const reducer = (state = initialState, action) => { // логика измене
       };
     case ActionType.SET_AUTHORIZATION_INFO:
       return {
-        ...state, authInfo: action.payload, isMainPage: true
+        ...state, authInfo: action.payload
       };
     case ActionType.FORM_IS_DISABLED:
       return {

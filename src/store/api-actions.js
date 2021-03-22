@@ -1,6 +1,6 @@
 import {adaptToServer, adaptReviewsToClient, adaptAuthInfoToClient} from "../common";
 import {ActionCreator} from "../store/actions";
-import {AuthorizationStatus} from "../const";
+// import {AuthorizationStatus} from "../const";
 
 export const fetchOffersList = () => (dispatch, _getState, api) => (
   api.get(`/hotels`)
@@ -75,7 +75,7 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
 
 export const checkAuthStatus = () => (dispatch, _getState, api) => (
   api.get(`/login`)
-    .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.AUTH)))
+    .then((response) => dispatch(ActionCreator.setAuthInfo(adaptAuthInfoToClient(response))))
     .catch(() => { })
 );
 
@@ -90,7 +90,7 @@ export const login = ({login: email, password, avatarUrl}) => (dispatch, _getSta
 
 export const logout = ({email, password, avatarUrl}) => (dispatch, _getState, api) => {
   return api.get(`/logout`, {email, password, avatarUrl})
-    .then(() => dispatch(ActionCreator.setAuthInfo(adaptAuthInfoToClient({password: ``, email: ``, avatarUrl: ``}))));
+    .then(() => dispatch(ActionCreator.setAuthInfo(null)));
   // .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH)));
 };
 
