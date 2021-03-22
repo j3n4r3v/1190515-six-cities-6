@@ -77,10 +77,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  // onChangePage() {
-  //   dispatch(ActionCreator.receiveNearOffersList());
-  //   dispatch(ActionCreator.receiveFavoriteOffers());
-  // },
   onLogout(authInfo) {
     dispatch(logout(authInfo));
   }
