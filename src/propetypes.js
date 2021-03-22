@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-// import {OfferType} from "./const";
 
 export const offerPropTypes = PropTypes.shape({
   "bedrooms": PropTypes.number.isRequired,

@@ -1,5 +1,5 @@
-import {adaptToServer, adaptReviewsToClient} from "../common";
-import {ActionCreator} from "../store/action";
+import {adaptToServer, adaptReviewsToClient, adaptAuthInfoToClient} from "../common";
+import {ActionCreator} from "../store/actions";
 import {AuthorizationStatus} from "../const";
 
 export const fetchOffersList = () => (dispatch, _getState, api) => ( //  асинхронный action
@@ -19,11 +19,6 @@ export const fetchReviews = (id) => (dispatch, _getState, api) => (
       dispatch(ActionCreator.receiveReviews(data)))
 );
 
-// export const fetchReviews = (id) => (dispatch, _getState, api) => (
-//   api.get(`/comments/${id}`)
-//     .then(({data}) => dispatch(ActionCreator.receiveReviews(data.map(adaptReviewsToClient))))
-// );
-
 export const fetchNearOffersList = (id) => (dispatch, _getState, api) => (
   api.get(`/hotels/${id}/nearby`)
     .then((response) =>
@@ -40,13 +35,24 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
       dispatch(ActionCreator.receiveFavoriteOffers(data)))
 );
 
-export const checkAuth = () => (dispatch, _getState, api) => (
+export const checkAuthStatus = () => (dispatch, _getState, api) => (
   api.get(`/login`)
-    .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
-    .catch(() => { })
+    .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.AUTH)))
+    .catch(() => {})
 );
 
-export const login = ({login: email, password}) => (dispatch, _getState, api) => (
-  api.post(`/login`, {email, password})
-    .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
-);
+export const login = ({login: email, password, avatarUrl}) => (dispatch, _getState, api) => {
+  return api.post(`/login`, {email, password, avatarUrl})
+    // .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(AuthorizationStatus.AUTH))))
+    .then(() => dispatch(ActionCreator.setAuthInfo(adaptAuthInfoToClient({email, password, avatarUrl}))));
+  // .then(() => dispatch(ActionCreator.redirectToRoute(`/`)));
+};
+
+// dispatch(ActionCreator.redirectToRoute(`/`));
+
+export const logout = ({email, password, avatarUrl}) => (dispatch, _getState, api) => {
+  return api.get(`/logout`, {email, password, avatarUrl})
+    .then(() => dispatch(ActionCreator.setAuthInfo({password: ``, email: ``, avatarUrl: ``})));
+  // .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH)));
+};
+

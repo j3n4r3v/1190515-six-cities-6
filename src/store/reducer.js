@@ -1,6 +1,5 @@
-import {ActionType} from "./action";
-import {CITIES, SortType} from "../const";
-import {AuthorizationStatus} from "../const";
+import {ActionType} from "./actions";
+import {CITIES, SortType, AuthorizationStatus} from "../const";
 
 const initialState = { // В глобальном хранилище начальное state(состояние)
   activeCity: CITIES[3],
@@ -13,7 +12,8 @@ const initialState = { // В глобальном хранилище начал�
   isOffersLoaded: false,
   isFavoritesLoaded: false,
   isNearOffersLoaded: false,
-  authorizationStatus: AuthorizationStatus.NO_AUTH
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  authInfo: {password: ``, email: ``, avatarUrl: ``}
 };
 
 const reducer = (state = initialState, action) => { // логика изменения хранилища
@@ -61,6 +61,16 @@ const reducer = (state = initialState, action) => { // логика измене
       //     ...state,
       //     isFavorite: action.payload
       //   };
+    case ActionType.RECEIVE_AUTHORIZATION_STATUS:
+      return {
+        ...state,
+        authorizationStatus: action.payload
+      };
+    case ActionType.SET_AUTHORIZATION_INFO:
+      return {
+        ...state,
+        authInfo: action.payload
+      };
 
     default:
       return state;

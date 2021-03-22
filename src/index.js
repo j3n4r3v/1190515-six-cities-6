@@ -9,23 +9,29 @@ import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import thunk from "redux-thunk";
 
+import {ActionCreator} from "./store/actions";
 import {reducer} from "./store/reducer";
+import {fetchOffersList, checkAuthStatus} from "./store/api-actions";
+import {redirect} from "./store/redirect";
 
-import {fetchOffersList} from "./store/api-actions";
-
-const api = createAPI();
+const api = createAPI(
+    () => store.dispatch(ActionCreator.receiveAuthorizationStatus(status)) // иначе можно как-то записать тут?
+);
+// createAPI принимает callback который нужно вызвать на случай неавторизованности
+// обновит store - authStatus: true
 
 const store = createStore(reducer,
     composeWithDevTools(
-        applyMiddleware(thunk.withExtraArgument(api)
-        )
+        applyMiddleware(thunk.withExtraArgument(api)),
+        applyMiddleware(redirect)
     ));
 
-store.dispatch(fetchOffersList());
+store.dispatch(checkAuthStatus()); // посылаем запрос (aсинхронный action - вызов функции)
+store.dispatch(fetchOffersList()); // на сервер и обрабатываем ответ?
 
 ReactDOM.render(
     <Provider store={store}>
-      <App/>
+      <App />
     </Provider>,
     document.querySelector(`#root`)
 );

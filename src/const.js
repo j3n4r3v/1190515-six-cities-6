@@ -1,10 +1,9 @@
-// const OfferType = {
-//   APARTMENT: `Apartment`,
-//   PRIVATEROOM: `Private room`,
-//   STUDIO: `Studio`
-// };
-
 const SortType = [`Popular`, `Price: low to high`, `Price: high to low`, `Top rated first`];
+
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
 
 const Type = {
   MAIN: {
@@ -50,11 +49,6 @@ const MapSettings = {
     height: `579px`,
     margin: `0 auto 50px`,
   }
-};
-
-const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`
 };
 
 const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];

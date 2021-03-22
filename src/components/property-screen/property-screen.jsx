@@ -20,7 +20,7 @@ import ContainerOffersList from "../container-offers-list/container-offers-list"
 import Map from "../map/map";
 
 const PropertyScreen = (props) => {
-  const {offers, reviews, nearOffers, onLoadNearOffers, onLoadReviews, isNearOffersLoaded} = props;
+  const {offers, reviews, nearOffers, onLoadNearOffers, onLoadReviews, isNearOffersLoaded, isOffersLoaded} = props;
 
   const PROPERTY = `PROPERTY`;
 
@@ -31,7 +31,7 @@ const PropertyScreen = (props) => {
     onLoadReviews(id);
   }, [id]);
 
-  if (!isNearOffersLoaded) {
+  if (!isOffersLoaded || !isNearOffersLoaded) {
     return (
       <LoadingScreen />
     );
@@ -148,6 +148,7 @@ const PropertyScreen = (props) => {
               <ContainerOffersList
                 offers={nearOffers}
                 typeOffer={PROPERTY}
+                onChangeActiveOffer={() => {}}
               />
 
             </section>
@@ -165,6 +166,7 @@ PropertyScreen.propTypes = {
   typeOffer: PropTypes.string,
   mapSettings: PropTypes.string,
   isNearOffersLoaded: PropTypes.bool,
+  isOffersLoaded: PropTypes.bool,
   onLoadNearOffers: PropTypes.func,
   onLoadReviews: PropTypes.func
 };
@@ -174,6 +176,7 @@ const mapStateToProps = (state) => {
     offers: state.offers,
     nearOffers: state.nearOffers,
     isNearOffersLoaded: state.isNearOffersLoaded,
+    isOffersLoaded: state.isOffersLoaded,
     reviews: state.reviews
   };
 };

@@ -1,5 +1,4 @@
 import React from "react";
-// import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 import FavoritesScreen from "../favorites-screen/favorites-screen";
@@ -8,7 +7,7 @@ import MainScreen from "../main-screen/main-sсreen";
 import PropertyScreen from "../property-screen/property-screen";
 import NotFoundScreen from "../not-found-screen/not-found-screen";
 
-// import {offerPropTypes} from "../../propetypes";
+import PrivateRoute from "../private-route/private-route";
 
 const App = () => {
 
@@ -24,9 +23,7 @@ const App = () => {
           <SignInScreen/>
         </Route>
 
-        <Route exact path="/favorites">
-          <FavoritesScreen/>
-        </Route>
+        <PrivateRoute render={() => <FavoritesScreen />} exact path="/favorites"/>
 
         <Route exact path="/offer/:id">
           <PropertyScreen/>
@@ -40,10 +37,5 @@ const App = () => {
     </BrowserRouter>
   </React.Fragment>;
 };
-
-// App.propTypes = {
-//   offers: PropTypes.arrayOf(offerPropTypes),
-//   activeCity: PropTypes.string
-// };
 
 export default App;
