@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 // import {authPropTypes} from "../../propetypes";
-import {ActionCreator} from "../../store/actions";
+// import {ActionCreator} from "../../store/actions";
 import {logout} from "../../store/api-actions";
 
 const LogoutStyles = {
@@ -15,7 +15,7 @@ const LogoutStyles = {
   outline: `2px`
 };
 
-const AuthInfoScreen = ({onChangePage, authInfo, onLogout, isMainPage = false}) => {
+const AuthInfoScreen = ({authInfo, onLogout, isMainPage = false}) => {
 
   return <React.Fragment>
     <header className="header">
@@ -23,7 +23,7 @@ const AuthInfoScreen = ({onChangePage, authInfo, onLogout, isMainPage = false}) 
         <div className="header__wrapper">
           <div className="header__left">
             <Link
-              className={`header__logo-link ${isMainPage ? `header__logo-link--active` : ``}`} to="/" onClick={() => onChangePage}>
+              className={`header__logo-link ${isMainPage ? `header__logo-link--active` : ``}`} to="/">
               <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width={81} height={41} />
             </Link>
           </div>
@@ -67,11 +67,9 @@ const AuthInfoScreen = ({onChangePage, authInfo, onLogout, isMainPage = false}) 
 };
 
 AuthInfoScreen.propTypes = {
-  onChangePage: PropTypes.func,
   onLogout: PropTypes.func,
   authInfo: PropTypes.object,
   isMainPage: PropTypes.bool
-
 };
 
 const mapStateToProps = (state) => ({
@@ -79,10 +77,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onChangePage() {
-    dispatch(ActionCreator.receiveNearOffersList());
-    dispatch(ActionCreator.receiveFavoriteOffers());
-  },
+  // onChangePage() {
+  //   dispatch(ActionCreator.receiveNearOffersList());
+  //   dispatch(ActionCreator.receiveFavoriteOffers());
+  // },
   onLogout(authInfo) {
     dispatch(logout(authInfo));
   }

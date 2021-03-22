@@ -18,11 +18,11 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../store/actions";
 
 const MainScreen = (props) => {
-  const {offers, activeCity, onChangeCity, isOffersLoaded} = props;
+  const {offers, activeCity, onChangeCity, isDataLoaded} = props;
   const [activeOffer, setActiveOffer] = useState();
   const MAIN = `MAIN`;
 
-  if (!isOffersLoaded) {
+  if (!isDataLoaded) {
     return (
       <LoadingScreen />
     );
@@ -98,14 +98,14 @@ MainScreen.propTypes = {
   activeCity: PropTypes.string,
   typeOffer: PropTypes.string,
   onChangeCity: PropTypes.func,
-  isOffersLoaded: PropTypes.bool
+  isDataLoaded: PropTypes.bool
 };
 
 const mapStateToProps = (state) => { // Передает обновленные свойства из store в компонент
   return {
     activeCity: state.activeCity,
     offers: getActiveOffers(state),
-    isOffersLoaded: state.isOffersLoaded
+    isDataLoaded: state.isDataLoaded
   };
 };
 

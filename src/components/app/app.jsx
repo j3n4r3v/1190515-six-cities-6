@@ -1,5 +1,5 @@
 import React from "react";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, BrowserRouter, Redirect} from "react-router-dom";
 
 import FavoritesScreen from "../favorites-screen/favorites-screen";
 import SignInScreen from "../sign-in-screen/sign-in-screen";
@@ -23,14 +23,15 @@ const App = () => {
           <SignInScreen/>
         </Route>
 
-        <PrivateRoute render={() => <FavoritesScreen />} exact path="/favorites"/>
+        <PrivateRoute render={() => <FavoritesScreen />} exact path="/favorites" noAuth={() => <Redirect to="/login"></Redirect>}/>
 
         <Route exact path="/offer/:id">
           <PropertyScreen/>
         </Route>
 
-        <Route>
-          <NotFoundScreen/>
+
+        <Route exact path="/not-found">
+          <NotFoundScreen />
         </Route>
 
       </Switch>

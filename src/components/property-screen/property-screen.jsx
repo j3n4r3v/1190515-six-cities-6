@@ -5,7 +5,7 @@ import LoadingScreen from "../loading-screen/loading-screen";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 
 import FeedBackForm from "../feedbackform/feedbackform";
-import ReviewList from "../rewiev-list/review-list";
+import ReviewList from "../review-list/review-list";
 import PropertyGalleryOffer from "../property-gallery-offer/property-gallery-offer";
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
 import {offerPropTypes, reviewPropTypes} from "../../propetypes";
@@ -13,25 +13,25 @@ import {connect} from "react-redux";
 
 import {useParams} from "react-router-dom";
 
-import {fetchReviews, fetchNearOffersList} from "../../store/api-actions";
+import {fetchPropertyInfo} from "../../store/api-actions";
 
 import ContainerOffersList from "../container-offers-list/container-offers-list";
 
 import Map from "../map/map";
+import PrivateRoute from "../private-route/private-route";
 
 const PropertyScreen = (props) => {
-  const {offers, reviews, nearOffers, onLoadNearOffers, onLoadReviews, isNearOffersLoaded, isOffersLoaded} = props;
+  const {offers, reviews, nearOffers, onLoadData, propertyInfoIsLoaded} = props;
 
   const PROPERTY = `PROPERTY`;
 
   const {id} = useParams();
 
   useEffect(() => {
-    onLoadNearOffers(id);
-    onLoadReviews(id);
+    onLoadData(id);
   }, [id]);
 
-  if (!isOffersLoaded || !isNearOffersLoaded) {
+  if (!propertyInfoIsLoaded) {
     return (
       <LoadingScreen />
     );
@@ -124,10 +124,10 @@ const PropertyScreen = (props) => {
                 <h2 className="reviews__title">Reviews · <span className="reviews__amount">{reviews.length}</span></h2>
 
                 <ReviewList
-                  reviews={reviews}
+                  reviews={reviews} id={id}
                 />
 
-                <FeedBackForm />
+                <PrivateRoute noAuth={() => ``} render={() => <FeedBackForm id={id} />} />
 
               </section>
             </div>
@@ -135,8 +135,8 @@ const PropertyScreen = (props) => {
           <section className="property__map map">
 
             <Map
-              offers = {offers}
-              activeOffer ={offer.id}
+              offers={offers}
+              activeOffer={offer.id}
               mapSettings={PROPERTY}
             />
 
@@ -148,7 +148,7 @@ const PropertyScreen = (props) => {
               <ContainerOffersList
                 offers={nearOffers}
                 typeOffer={PROPERTY}
-                onChangeActiveOffer={() => {}}
+                onChangeActiveOffer={() => { }}
               />
 
             </section>
@@ -165,28 +165,29 @@ PropertyScreen.propTypes = {
   reviews: PropTypes.arrayOf(reviewPropTypes),
   typeOffer: PropTypes.string,
   mapSettings: PropTypes.string,
-  isNearOffersLoaded: PropTypes.bool,
-  isOffersLoaded: PropTypes.bool,
-  onLoadNearOffers: PropTypes.func,
-  onLoadReviews: PropTypes.func
+  propertyInfoIsLoaded: PropTypes.bool,
+  id: PropTypes.number,
+  onLoadData: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
   return {
     offers: state.offers,
     nearOffers: state.nearOffers,
-    isNearOffersLoaded: state.isNearOffersLoaded,
-    isOffersLoaded: state.isOffersLoaded,
-    reviews: state.reviews
+    reviews: state.reviews,
+    propertyInfoIsLoaded: state.propertyInfoIsLoaded,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onLoadNearOffers: (id) => {
-    dispatch(fetchNearOffersList(id));
-  },
-  onLoadReviews: (id) => { // как понять тут нужно : или  = поставить?
-    dispatch(fetchReviews(id));
+  // onLoadNearOffers: (id) => {
+  //   dispatch(fetchNearOffersList(id));
+  // },
+  // onLoadReviews: (id) => { // как понять тут нужно : или  = поставить?
+  //   dispatch(fetchReviewsList(id));
+  // }
+  onLoadData(id) {
+    dispatch(fetchPropertyInfo(id));
   }
 });
 

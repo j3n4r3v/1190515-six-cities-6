@@ -5,13 +5,16 @@ const initialState = { // В глобальном хранилище начал�
   activeCity: CITIES[3],
   activeOption: SortType[0],
   offers: [],
+  isDataLoaded: false,
   reviews: [],
+  isDisabled: false,
+  isError: false,
+  offer: {},
   nearOffers: [],
   favorites: [],
+  propertyInfoIsLoaded: false,
+  url: null,
   // isFavorite: false,
-  isOffersLoaded: false,
-  isFavoritesLoaded: false,
-  isNearOffersLoaded: false,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   authInfo: {password: ``, email: ``, avatarUrl: ``}
 };
@@ -20,58 +23,61 @@ const reducer = (state = initialState, action) => { // логика измене
   switch (action.type) {
     case ActionType.ACTIVE_CITY:
       return {
-        ...state,
-        activeCity: action.payload
+        ...state, activeCity: action.payload
       };
     case ActionType.CHANGE_ACTIVE_SORT_TYPE:
       return {
-        ...state,
-        activeOption: action.payload
+        ...state, activeOption: action.payload
+      };
+    case ActionType.SCREEN_IS_LOADED:
+      return {
+        ...state, propertyInfoIsLoaded: true
       };
     case ActionType.RECEIVE_OFFERS:
       return {
-        ...state,
-        offers: action.payload,
-        isOffersLoaded: true
+        ...state, offers: action.payload, isDataLoaded: true
+      };
+    case ActionType.SET_OFFER:
+      return {
+        ...state, offer: action.payload, isDataLoaded: true
       };
     case ActionType.RECEIVE_REVIEWS:
       return {
-        ...state,
-        reviews: action.payload
+        ...state, reviews: action.payload, isDataLoaded: true
       };
     case ActionType.RECEIVE_NEAR_OFFERS_LIST:
       return {
-        ...state,
-        nearOffers: action.payload,
-        isNearOffersLoaded: true
+        ...state, nearOffers: action.payload, isDataLoaded: true
       };
-    // case ActionType.IS_NEAR_OFFERS_LOADED:
-    //   return {
-    //     ...state,
-    //     isNearOffersLoaded: false
-    //   };
     case ActionType.RECEIVE_FAVORITE_OFFERS:
       return {
-        ...state,
-        favorites: action.payload,
-        isFavoritesLoaded: true
+        ...state, favorites: action.payload, isDataLoaded: true
       };
-      // case ActionType.CHANGE_FAVORITE_OFFER:
-      //   return {
-      //     ...state,
-      //     isFavorite: action.payload
-      //   };
+    // case ActionType.CHANGE_FAVORITE_OFFER:
+    //   return {
+    //     ...state,
+    //     isFavorite: action.payload
+    //   };
     case ActionType.RECEIVE_AUTHORIZATION_STATUS:
       return {
-        ...state,
-        authorizationStatus: action.payload
+        ...state, authorizationStatus: action.payload
       };
     case ActionType.SET_AUTHORIZATION_INFO:
       return {
-        ...state,
-        authInfo: action.payload
+        ...state, authInfo: action.payload
       };
-
+    case ActionType.SET_IS_DISABLED:
+      return {
+        ...state, isDisabled: action.payload
+      };
+    case ActionType.SET_IS_ERROR:
+      return {
+        ...state, isError: action.payload
+      };
+    case ActionType.REDIRECT_TO_ROUTE:
+      return {
+        ...state, url: action.payload
+      };
     default:
       return state;
   }
