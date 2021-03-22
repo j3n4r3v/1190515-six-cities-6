@@ -33,13 +33,7 @@ const AuthInfoScreen = ({authInfo, onLogout, isMainPage = false}) => {
                 <Link to={authInfo.email && `${`/favorites`}` || `${`/login`}`} className="header__nav-link header__nav-link--profile">
 
                   {
-                    authInfo && <div
-                      className="header__avatar-wrapper user__avatar-wrapper"
-                      style={{
-                        backgroundImage: `${authInfo.avatarUrl}`,
-                        // borderRadius: `50%`
-                      }}>
-                    </div>
+                    authInfo && <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                   }
 
                   <span className="header__user-name user__name">{authInfo.email || `Sign In`}</span>
@@ -73,7 +67,8 @@ AuthInfoScreen.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  authInfo: state.authInfo
+  authInfo: state.authInfo,
+  isMainPage: state.isMainPage
 });
 
 const mapDispatchToProps = (dispatch) => ({

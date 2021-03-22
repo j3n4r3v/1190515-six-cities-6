@@ -11,8 +11,8 @@ export const ActionType = {
   REDIRECT_TO_ROUTE: `propert/notFound`,
   SET_AUTHORIZATION_INFO: `login/setAuthInfo`,
   SET_OFFER: `property/setOffer`,
-  SET_IS_DISABLED: `property/setIsDisabled`,
-  SET_IS_ERROR: `property/setIsError`,
+  FORM_IS_DISABLED: `property/formIsDisabled`,
+  FORM_IS_ERROR: `property/formIsError`,
   SCREEN_IS_LOADED: ``
 };
 
@@ -35,11 +35,11 @@ export const ActionCreator = { // Для описания actions в виде о
   setOffer: (data) => ({
     type: ActionType.SET_OFFER, payload: data
   }),
-  setIsDisabled: (bool) => ({
-    type: ActionType.SET_IS_DISABLED, payload: bool
+  formIsDisabled: (bool) => ({
+    type: ActionType.FORM_IS_DISABLED, payload: bool
   }),
-  setIsError: (bool) => ({
-    type: ActionType.SET_IS_ERROR, payload: bool
+  formIsError: (bool) => ({
+    type: ActionType.FORM_IS_ERROR, payload: bool
   }),
   propertyInfoIsLoaded: (bool) => ({
     type: ActionType.SCREEN_IS_LOADED, payload: bool

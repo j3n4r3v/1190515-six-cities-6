@@ -6,9 +6,10 @@ const initialState = { // В глобальном хранилище начал�
   activeOption: SortType[0],
   offers: [],
   isDataLoaded: false,
+  isMainPage: false,
   reviews: [],
-  isDisabled: false,
-  isError: false,
+  isFormDisabled: false,
+  isFormError: false,
   offer: {},
   nearOffers: [],
   favorites: [],
@@ -64,15 +65,15 @@ const reducer = (state = initialState, action) => { // логика измене
       };
     case ActionType.SET_AUTHORIZATION_INFO:
       return {
-        ...state, authInfo: action.payload
+        ...state, authInfo: action.payload, isMainPage: true
       };
-    case ActionType.SET_IS_DISABLED:
+    case ActionType.FORM_IS_DISABLED:
       return {
-        ...state, isDisabled: action.payload
+        ...state, isFormDisabled: action.payload
       };
-    case ActionType.SET_IS_ERROR:
+    case ActionType.FORM_IS_ERROR:
       return {
-        ...state, isError: action.payload
+        ...state, isFormError: action.payload
       };
     case ActionType.REDIRECT_TO_ROUTE:
       return {

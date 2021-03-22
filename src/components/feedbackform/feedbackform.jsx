@@ -9,7 +9,7 @@ import {ActionCreator} from "../../store/actions";
 
 import Error from "../feedbackform/error";
 
-const FeedBackForm = ({id, onSubmit, isDisabled, isError, onError}) => {
+const FeedBackForm = ({id, onSubmit, isFormDisabled, isFormError, onError}) => {
 
   const [data, setData] = useState({
     review: ``,
@@ -17,20 +17,20 @@ const FeedBackForm = ({id, onSubmit, isDisabled, isError, onError}) => {
   });
 
   useEffect(() => {
-    if (!isDisabled && !isError) {
+    if (!isFormDisabled && !isFormError) {
       setData((prevState) => ({
         ...prevState,
         review: ``,
         rating: ``
       }));
     }
-  }, [isDisabled, isError]);
+  }, [isFormDisabled, isFormError]);
 
   useEffect(() => {
-    if (isError) {
+    if (isFormError) {
       setTimeout(() => onError(false), 5000);
     }
-  }, [isError]);
+  }, [isFormError]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -57,7 +57,7 @@ const FeedBackForm = ({id, onSubmit, isDisabled, isError, onError}) => {
       action="#"
       method="post">
       {
-        isError && <Error />
+        isFormError && <Error />
       }
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
@@ -73,7 +73,7 @@ const FeedBackForm = ({id, onSubmit, isDisabled, isError, onError}) => {
                   value={`${star}`}
                   id={`${star}-stars`}
                   type="radio"
-                  disabled={isDisabled}
+                  disabled={isFormDisabled}
                   checked={star === data.rating}
                 />
                 <label
@@ -98,7 +98,7 @@ const FeedBackForm = ({id, onSubmit, isDisabled, isError, onError}) => {
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
         maxLength={300}
-        disabled={isDisabled}
+        disabled={isFormDisabled}
         value={data.review}
       ></textarea>
       <div className="reviews__button-wrapper">
@@ -119,14 +119,14 @@ const FeedBackForm = ({id, onSubmit, isDisabled, isError, onError}) => {
 FeedBackForm.propTypes = {
   onSubmit: PropTypes.func,
   id: PropTypes.string,
-  isDisabled: PropTypes.bool,
-  isError: PropTypes.bool,
+  isFormDisabled: PropTypes.bool,
+  isFormError: PropTypes.bool,
   onError: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
-  isDisabled: state.isDisabled,
-  isError: state.isError
+  isFormDisabled: state.isFormDisabled,
+  isFormError: state.isFormError
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -134,7 +134,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(addComment(comment, id));
   },
   onError(bool) {
-    dispatch(ActionCreator.setIsError(bool));
+    dispatch(ActionCreator.formIsError(bool));
   }
 });
 

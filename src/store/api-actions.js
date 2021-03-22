@@ -60,11 +60,11 @@ export const fetchPropertyInfo = (id) => (dispatch, _getState, api) => {
 };
 
 export const addComment = (comment, id) => (dispatch, _getState, api) => {
-  dispatch(ActionCreator.setIsDisabled(true));
+  dispatch(ActionCreator.formIsDisabled(true));
   api.post(`comments/${id}`, comment)
     .then(({data}) => dispatch(ActionCreator.receiveReviewsList(data.map(adaptReviewsToClient))))
-    .catch(() => dispatch(ActionCreator.setIsError(true)))
-    .finally(() => dispatch(ActionCreator.setIsDisabled(false)));
+    .catch(() => dispatch(ActionCreator.formIsError(true)))
+    .finally(() => dispatch(ActionCreator.formIsDisabled(false)));
 };
 
 export const fetchFavorites = () => (dispatch, _getState, api) => (
