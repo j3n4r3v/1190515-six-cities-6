@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 
 // import {authPropTypes} from "../../propetypes";
 // import {ActionCreator} from "../../store/actions";
-import { logout } from "../../store/api-actions";
-import { authPropTypes } from "../../propetypes";
+import {logout} from "../../store/api-actions";
+import {authPropTypes} from "../../propetypes";
 
 const LogoutStyles = {
   border: `5px`,
@@ -16,7 +16,7 @@ const LogoutStyles = {
   outline: `2px`
 };
 
-const AuthInfoScreen = ({ authInfo, onLogout, isMainPage = false }) => {
+const AuthInfoScreen = ({authInfo, onLogout, isMainPage = false}) => {
 
   return <React.Fragment>
     <header className="header">
@@ -76,5 +76,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export { AuthInfoScreen };
+export {AuthInfoScreen};
 export default connect(mapStateToProps, mapDispatchToProps)(AuthInfoScreen);

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 
 import LoadingScreen from "../loading-screen/loading-screen";
@@ -8,23 +8,23 @@ import FeedBackForm from "../feedbackform/feedbackform";
 import ReviewList from "../review-list/review-list";
 import PropertyGalleryOffer from "../property-gallery-offer/property-gallery-offer";
 import PropertyInsideItem from "../property-inside-item/property-inside-item";
-import { offerPropTypes, reviewPropTypes, authPropTypes } from "../../propetypes";
-import { connect } from "react-redux";
+import {offerPropTypes, reviewPropTypes, authPropTypes} from "../../propetypes";
+import {connect} from "react-redux";
 
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 
-import { fetchPropertyInfo } from "../../store/api-actions";
+import {fetchPropertyInfo} from "../../store/api-actions";
 
 import ContainerOffersList from "../container-offers-list/container-offers-list";
 
 import Map from "../map/map";
 
 const PropertyScreen = (props) => {
-  const { offers, reviews, nearOffers, onLoadData, propertyInfoIsLoaded, authInfo, isDataLoaded } = props;
+  const {offers, reviews, nearOffers, onLoadData, propertyInfoIsLoaded, authInfo, isDataLoaded} = props;
 
   const PROPERTY = `PROPERTY`;
 
-  const { id } = useParams();
+  const {id} = useParams();
 
   useEffect(() => {
     onLoadData(id);
@@ -37,8 +37,8 @@ const PropertyScreen = (props) => {
   }
 
   const offer = offers.find((item) => item.id === +id);
-  const { isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description } = offer;
-  const { name, avatarUrl } = host;
+  const {isPremium, images, bedrooms, price, maxAdults, goods, rating, title, type, host, description} = offer;
+  const {name, avatarUrl} = host;
   const imagesArray = images.length > 6 ? images.slice(0, 6) : images;
 
   return <React.Fragment>
@@ -75,7 +75,7 @@ const PropertyScreen = (props) => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{ width: `${20 * rating}%` }} />
+                  <span style={{width: `${20 * rating}%`}} />
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{rating}</span>
@@ -187,6 +187,6 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export { PropertyScreen };
+export {PropertyScreen};
 export default connect(mapStateToProps, mapDispatchToProps)(PropertyScreen);
 
