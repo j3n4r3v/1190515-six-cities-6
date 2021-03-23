@@ -70,7 +70,7 @@ export const addComment = (comment, id) => (dispatch, _getState, api) => {
 export const fetchFavorites = () => (dispatch, _getState, api) => (
   api.get(`/favorite`)
     .then((response) =>
-      dispatch(ActionCreator.receiveFavoriteOffers(adaptToServer(response.data))))
+      dispatch(ActionCreator.receiveFavoriteOffers((response.data.map((el) => adaptToServer(el))))))
 );
 
 export const checkAuthStatus = () => (dispatch, _getState, api) => (

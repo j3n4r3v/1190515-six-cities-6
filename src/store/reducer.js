@@ -12,6 +12,7 @@ const initialState = { // В глобальном хранилище начал�
   offer: {},
   nearOffers: [],
   favorites: [],
+  isFavoritesLoaded: false,
   propertyInfoIsLoaded: false,
   url: null,
   // isFavorite: false,
@@ -51,7 +52,7 @@ const reducer = (state = initialState, action) => { // логика измене
       };
     case ActionType.RECEIVE_FAVORITE_OFFERS:
       return {
-        ...state, favorites: action.payload, isDataLoaded: true
+        ...state, favorites: action.payload, isFavoritesLoaded: true
       };
     // case ActionType.CHANGE_FAVORITE_OFFER:
     //   return {

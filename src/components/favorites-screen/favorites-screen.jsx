@@ -13,7 +13,7 @@ import {fetchFavorites} from "../../store/api-actions";
 import {connect} from "react-redux";
 
 const FavoritesScreen = (props) => {
-  const {offers, onFavoritesLoaded, isDataLoaded, isFavoritesLoaded} = props;
+  const {offers, onFavoritesLoaded, isFavoritesLoaded} = props;
 
   useEffect(() => {
     onFavoritesLoaded();
@@ -21,7 +21,7 @@ const FavoritesScreen = (props) => {
 
   const FAVORITE = `FAVORITE`;
 
-  if (!isDataLoaded || !isFavoritesLoaded) {
+  if (!isFavoritesLoaded) {
     return (
       <LoadingScreen />
     );
@@ -62,14 +62,12 @@ FavoritesScreen.propTypes = {
   typeOffer: PropTypes.string,
   onFavoritesLoaded: PropTypes.func,
   isFavoritesLoaded: PropTypes.bool,
-  isDataLoaded: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {
   return {
     offers: state.favorites,
     isFavoritesLoaded: state.isFavoritesLoaded,
-    isDataLoaded: state.isDataLoaded
   };
 };
 

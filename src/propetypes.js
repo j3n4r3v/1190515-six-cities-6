@@ -48,11 +48,11 @@ export const reviewPropTypes = PropTypes.shape({
 });
 
 export const authPropTypes = PropTypes.shape({
-  avatarUrl: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-  isPro: PropTypes.bool.isRequired,
-  email: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
+  avatarUrl: PropTypes.string,
+  id: PropTypes.number,
+  isPro: PropTypes.bool,
+  email: PropTypes.string,
+  name: PropTypes.string
 });
 
 export const TypePropTypes = PropTypes.shape({
