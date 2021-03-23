@@ -4,24 +4,23 @@ import PropTypes from "prop-types";
 import {Route} from "react-router-dom";
 import {connect} from "react-redux";
 
-import {AuthorizationStatus} from "../../const";
+import {Redirect} from "react-router-dom";
 
-const PrivateRoute = ({render, path, exact, authorizationStatus, noAuth}) => {
+const PrivateRoute = ({render, path, exact, authInfo}) => {
 
   return (
     <Route
       path={path}
       exact={exact}
-    > { authorizationStatus === AuthorizationStatus.AUTH
-        ? render()
-        : noAuth()
+    > { authInfo && render()
+        || <Redirect to="/login" />
       }
     </Route>
   );
 };
 
 PrivateRoute.propTypes = {
-  authorizationStatus: PropTypes.string,
+  authInfo: PropTypes.object,
   exact: PropTypes.bool,
   path: PropTypes.string,
   render: PropTypes.func,
@@ -30,7 +29,7 @@ PrivateRoute.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    authorizationStatus: state.authorizationStatus
+    authInfo: state.authInfo
   };
 };
 

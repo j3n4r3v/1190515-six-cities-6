@@ -1,5 +1,5 @@
 import React from "react";
-import {Switch, Route, Router as BrowserRouter, Redirect} from "react-router-dom";
+import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
 
 import browserHistory from "../../browser-history";
 
@@ -25,7 +25,7 @@ const App = () => {
           <SignInScreen/>
         </Route>
 
-        <PrivateRoute render={() => <FavoritesScreen />} exact path="/favorites" noAuth={() => <Redirect to="/login"></Redirect>}/>
+        <PrivateRoute render={() => <FavoritesScreen />} exact path="/favorites" />
 
         <Route exact path="/offer/:id">
           <PropertyScreen/>
