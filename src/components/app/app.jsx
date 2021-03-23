@@ -1,5 +1,7 @@
 import React from "react";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
+
+import browserHistory from "../../browser-history";
 
 import FavoritesScreen from "../favorites-screen/favorites-screen";
 import SignInScreen from "../sign-in-screen/sign-in-screen";
@@ -12,7 +14,7 @@ import PrivateRoute from "../private-route/private-route";
 const App = () => {
 
   return <React.Fragment>
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
 
         <Route exact path="/">
@@ -29,8 +31,9 @@ const App = () => {
           <PropertyScreen/>
         </Route>
 
-        <Route>
-          <NotFoundScreen/>
+
+        <Route exact path="/not-found">
+          <NotFoundScreen />
         </Route>
 
       </Switch>

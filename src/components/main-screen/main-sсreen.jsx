@@ -18,11 +18,11 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../store/actions";
 
 const MainScreen = (props) => {
-  const {offers, activeCity, onChangeCity, isOffersLoaded} = props;
+  const {offers, activeCity, onChangeCity, isDataLoaded} = props;
   const [activeOffer, setActiveOffer] = useState();
   const MAIN = `MAIN`;
 
-  if (!isOffersLoaded) {
+  if (!isDataLoaded) {
     return (
       <LoadingScreen />
     );
@@ -91,29 +91,29 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  authInfo: PropTypes.arrayOf(authPropTypes),
+  authInfo: authPropTypes,
   offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
   activeOffer: offerPropTypes,
   activeCity: PropTypes.string,
   typeOffer: PropTypes.string,
   onChangeCity: PropTypes.func,
-  isOffersLoaded: PropTypes.bool
+  isDataLoaded: PropTypes.bool
 };
 
-const mapStateToProps = (state) => { // Передает обновленные свойства из store в компонент
+const mapStateToProps = (state) => {
   return {
     activeCity: state.activeCity,
     offers: getActiveOffers(state),
-    isOffersLoaded: state.isOffersLoaded
+    isDataLoaded: state.isDataLoaded
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({ // Передает в компонент методы для обновления store
+const mapDispatchToProps = (dispatch) => ({
   onChangeCity: (city) => {
     dispatch(ActionCreator.changeCity(city));
   }
 });
 
 export {MainScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen); // использует store
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

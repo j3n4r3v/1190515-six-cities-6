@@ -1,7 +1,6 @@
 import React, {useRef} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {useHistory} from "react-router-dom";
 
 import {login} from "../../store/api-actions";
 
@@ -12,16 +11,12 @@ const SignInScreen = ({onSubmit}) => {
   const loginRef = useRef();
   const passwordRef = useRef();
 
-  const history = useHistory();
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
     onSubmit({
       login: loginRef.current.value,
       password: passwordRef.current.value
-    }).then(() => {
-      history.push(`/`);
     });
   };
   return <React.Fragment>
