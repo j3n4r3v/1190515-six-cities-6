@@ -5,6 +5,7 @@ import {Route} from "react-router-dom";
 import {connect} from "react-redux";
 
 import {Redirect} from "react-router-dom";
+import {authPropTypes} from "../../propetypes";
 
 const PrivateRoute = ({render, path, exact, authInfo}) => {
 
@@ -20,7 +21,7 @@ const PrivateRoute = ({render, path, exact, authInfo}) => {
 };
 
 PrivateRoute.propTypes = {
-  authInfo: PropTypes.object,
+  authInfo: authPropTypes,
   exact: PropTypes.bool,
   path: PropTypes.string,
   render: PropTypes.func,

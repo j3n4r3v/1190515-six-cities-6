@@ -25,7 +25,7 @@ const App = () => {
           <SignInScreen/>
         </Route>
 
-        <PrivateRoute render={() => <FavoritesScreen />} exact path="/favorites" />
+        <PrivateRoute render={() => <FavoritesScreen />} exact path="/favorites"/>
 
         <Route exact path="/offer/:id">
           <PropertyScreen/>

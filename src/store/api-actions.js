@@ -1,6 +1,6 @@
 import {adaptToServer, adaptReviewsToClient, adaptAuthInfoToClient} from "../common";
 import {ActionCreator} from "../store/actions";
-// import {AuthorizationStatus} from "../const";
+import {AuthorizationStatus} from "../const";
 
 export const fetchOffersList = () => (dispatch, _getState, api) => (
   api.get(`/hotels`)
@@ -69,19 +69,19 @@ export const addComment = (comment, id) => (dispatch, _getState, api) => {
 
 export const fetchFavorites = () => (dispatch, _getState, api) => (
   api.get(`/favorite`)
-    .then((data) =>
-      dispatch(ActionCreator.receiveFavoriteOffers(adaptToServer(data))))
+    .then((response) =>
+      dispatch(ActionCreator.receiveFavoriteOffers(adaptToServer(response.data))))
 );
 
 export const checkAuthStatus = () => (dispatch, _getState, api) => (
   api.get(`/login`)
-    .then((response) => dispatch(ActionCreator.setAuthInfo(adaptAuthInfoToClient(response))))
+    .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.AUTH)))
     .catch(() => { })
 );
 
 export const login = ({login: email, password, avatarUrl}) => (dispatch, _getState, api) => {
   return api.post(`/login`, {email, password, avatarUrl})
-    // .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(AuthorizationStatus.AUTH))))
+    .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(AuthorizationStatus.AUTH))))
     .then(() => dispatch(ActionCreator.setAuthInfo({email, password, avatarUrl})))
     .then(() => dispatch(ActionCreator.redirectToRoute(`/`)));
 };
