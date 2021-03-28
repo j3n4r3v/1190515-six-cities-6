@@ -14,7 +14,7 @@ export const ActionType = {
   SCREEN_IS_LOADED: ``
 };
 
-// export const ActionCreator = {
+
 export const changeCity = (city) => ({
   type: ActionType.ACTIVE_CITY, payload: city
 });
@@ -58,9 +58,7 @@ export const receiveFavoriteOffers = (data) => ({
   //   type: ActionType.CHANGE_FAVORITE_OFFER,
   //   payload: data
   // }),
-  // receiveAuthorizationStatus: (status) => ({
-  //   type: ActionType.RECEIVE_AUTHORIZATION_STATUS, payload: status
-  // }),
+
 export const setAuthInfo = (info) => ({
   type: ActionType.SET_AUTHORIZATION_INFO, payload: info
 });
