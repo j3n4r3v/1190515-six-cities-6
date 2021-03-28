@@ -1,3 +1,5 @@
+import {createAction} from '@reduxjs/toolkit';
+
 export const ActionType = {
   ACTIVE_CITY: `main/activeCity`,
   CHANGE_ACTIVE_SORT_TYPE: `main/changeActiveSortType`,
@@ -14,55 +16,80 @@ export const ActionType = {
   SCREEN_IS_LOADED: ``
 };
 
-
-export const changeCity = (city) => ({
-  type: ActionType.ACTIVE_CITY, payload: city
+export const changeCity = createAction(ActionType.ACTIVE_CITY, (city) => {
+  return {
+    payload: city
+  };
 });
 
-export const changeActiveSortType = (option) => ({
-  type: ActionType.CHANGE_ACTIVE_SORT_TYPE, payload: option
+export const changeActiveSortType = createAction(ActionType.CHANGE_ACTIVE_SORT_TYPE, (option) => {
+  return {
+    payload: option
+  };
 });
 
-export const receiveOffers = (data) => ({
-  type: ActionType.RECEIVE_OFFERS, payload: data
+export const receiveOffers = createAction(ActionType.RECEIVE_OFFERS, (data) => {
+  return {
+    payload: data
+  };
 });
 
-export const receiveReviewsList = (reviews) => ({
-  type: ActionType.RECEIVE_REVIEWS, payload: reviews
+export const receiveReviewsList = createAction(ActionType.RECEIVE_REVIEWS, (reviews) => {
+  return {
+    payload: reviews
+  };
 });
 
-export const receiveNearOffersList = (list) => ({
-  type: ActionType.RECEIVE_NEAR_OFFERS_LIST, payload: list
+export const receiveNearOffersList = createAction(ActionType.RECEIVE_NEAR_OFFERS_LIST, (list) => {
+  return {
+    payload: list
+  };
 });
 
-export const setOffer = (data) => ({
-  type: ActionType.SET_OFFER, payload: data
+export const setOffer = createAction(ActionType.SET_OFFER, (data) => {
+  return {
+    payload: data
+  };
 });
 
-export const formIsDisabled = (bool) => ({
-  type: ActionType.FORM_IS_DISABLED, payload: bool
+export const formIsDisabled = createAction(ActionType.FORM_IS_DISABLED, (bool) => {
+  return {
+    payload: bool
+  };
 });
 
-export const formIsError = (bool) => ({
-  type: ActionType.FORM_IS_ERROR, payload: bool
+export const formIsError = createAction(ActionType.FORM_IS_ERROR, (bool) => {
+  return {
+    payload: bool
+  };
 });
 
-export const propertyInfoIsLoaded = (bool) => ({
-  type: ActionType.SCREEN_IS_LOADED, payload: bool
+export const propertyInfoIsLoaded = createAction(ActionType.SCREEN_IS_LOADED, (bool) => {
+  return {
+    payload: bool
+  };
 });
 
-export const receiveFavoriteOffers = (data) => ({
-  type: ActionType.RECEIVE_FAVORITE_OFFERS, payload: data
-});
-  // changeFavoriteOffer: (data) => ({
-  //   type: ActionType.CHANGE_FAVORITE_OFFER,
-  //   payload: data
-  // }),
-
-export const setAuthInfo = (info) => ({
-  type: ActionType.SET_AUTHORIZATION_INFO, payload: info
+export const receiveFavoriteOffers = createAction(ActionType.RECEIVE_FAVORITE_OFFERS, (data) => {
+  return {
+    payload: data
+  };
 });
 
-export const redirectToRoute = (url) => ({
-  type: ActionType.REDIRECT_TO_ROUTE, payload: url
+// changeFavoriteOffer: (data) => ({
+//   type: ActionType.CHANGE_FAVORITE_OFFER,
+//   payload: data
+// }),
+
+export const setAuthInfo = createAction(ActionType.SET_AUTHORIZATION_INFO, (info) => {
+  return {
+    payload: info
+  };
 });
+
+export const redirectToRoute = createAction(ActionType.REDIRECT_TO_ROUTE, (url) => {
+  return {
+    payload: url
+  };
+});
+
