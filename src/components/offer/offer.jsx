@@ -6,6 +6,10 @@ import {Type} from "../../const";
 
 const Offer = (props) => {
   const {offer, typeOffer, onChangeActiveOffer} = props;
+
+  // eslint-disable-next-line no-console
+  console.log(`<Offer/>.: Render`);
+
   const {previewImage, price, rating, title, type, id, isPremium, isFavorite} = offer;
 
   const offerType = Type[typeOffer];

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/actions";
+import {changeActiveSortType} from "../../store/actions";
 import OptionsItemsList from "../options-items-list/options-items-list";
 
 import {SortType} from "../../const";
@@ -54,7 +54,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeOptionItem: (option) => {
-    dispatch(ActionCreator.changeActiveSortType(option));
+    dispatch(changeActiveSortType(option));
   }
 });
 

@@ -15,12 +15,15 @@ import LoadingScreen from "../loading-screen/loading-screen";
 import Sort from "../sort/sort";
 
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/actions";
+import {changeCity} from "../../store/actions";
 
 const MainScreen = (props) => {
   const {offers, activeCity, onChangeCity, isDataLoaded} = props;
-  const [activeOffer, setActiveOffer] = useState();
+  const [activeOfferId, setActiveOfferId] = useState();
   const MAIN = `MAIN`;
+  const activeCard = offers.find((offer) => offer.city.name === activeCity);
+  // eslint-disable-next-line no-console
+  console.log(<MainScreen />);
 
   if (!isDataLoaded) {
     return (
@@ -68,7 +71,7 @@ const MainScreen = (props) => {
               <ContainerOffersList
                 offers={offers}
                 typeOffer={MAIN}
-                onChangeActiveOffer={setActiveOffer}
+                onChangeActiveOffer={setActiveOfferId}
               />
 
             </section>
@@ -77,8 +80,9 @@ const MainScreen = (props) => {
 
                 <Map
                   offers={offers}
-                  activeOffer={activeOffer}
+                  activeOfferId={activeOfferId}
                   mapSettings={MAIN}
+                  activeCity={activeCard}
                 />
 
               </section>
@@ -94,7 +98,7 @@ MainScreen.propTypes = {
   authInfo: authPropTypes,
   offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
-  activeOffer: offerPropTypes,
+  activeOfferId: PropTypes.number,
   activeCity: PropTypes.string,
   typeOffer: PropTypes.string,
   onChangeCity: PropTypes.func,
@@ -111,7 +115,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeCity: (city) => {
-    dispatch(ActionCreator.changeCity(city));
+    dispatch(changeCity(city));
   }
 });
 

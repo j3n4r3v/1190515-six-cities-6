@@ -7,6 +7,9 @@ import {offerPropTypes} from "../../propetypes";
 const ContainerOffersList = (props) => {
   const {offers, typeOffer, onChangeActiveOffer} = props;
 
+  // eslint-disable-next-line no-console
+  console.log(`<ContainerOffersList/>.: Render`);
+
   const container = Type[typeOffer];
 
   return (

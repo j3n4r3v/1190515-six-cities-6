@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 // import {authPropTypes} from "../../propetypes";
-// import {ActionCreator} from "../../store/actions";
+
 import {logout} from "../../store/api-actions";
 import {authPropTypes} from "../../propetypes";
 

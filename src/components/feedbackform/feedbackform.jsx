@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {stars} from "../../const";
 
 import {addComment} from "../../store/api-actions";
-import {ActionCreator} from "../../store/actions";
+import {formIsError} from "../../store/actions";
 
 import Error from "../feedbackform/error";
 
@@ -134,7 +134,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(addComment(comment, id));
   },
   onError(bool) {
-    dispatch(ActionCreator.formIsError(bool));
+    dispatch(formIsError(bool));
   }
 });
 

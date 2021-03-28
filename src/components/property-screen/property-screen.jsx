@@ -134,7 +134,7 @@ const PropertyScreen = (props) => {
 
             <Map
               offers={offers}
-              activeOffer={offer.id}
+              activeOfferId={offer.id}
               mapSettings={PROPERTY}
             />
 
