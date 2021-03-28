@@ -6,7 +6,7 @@ import { createAPI } from "./api";
 
 import { Provider } from "react-redux";
 
-import { addAuthInfo } from "./store/actions";
+import { setAuthInfo } from "./store/actions";
 import { reducer } from "./store/reducer";
 import { fetchOffersList, checkAuthStatus } from "./store/api-actions";
 import { redirect } from "./store/redirect";
@@ -14,7 +14,7 @@ import { redirect } from "./store/redirect";
 import { configureStore } from '@reduxjs/toolkit';
 
 const api = createAPI(
-  () => store.dispatch(addAuthInfo(null))
+  () => store.dispatch(setAuthInfo(null))
 );
 // createAPI принимает callback который нужно вызвать на случай неавторизованности, обновит store
 

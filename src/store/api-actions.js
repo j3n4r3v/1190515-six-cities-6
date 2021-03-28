@@ -9,7 +9,7 @@ import {
   redirectToRoute,
   formIsDisabled,
   formIsError,
-  addAuthInfo,
+  setAuthInfo,
   updateFavoritesList,
   updateOffersList,
   updateOffer,
@@ -90,7 +90,7 @@ export const updateNearOffers = (id, status) => (dispatch, _getState, api) => (
 
 export const checkAuthStatus = () => (dispatch, _getState, api) => (
   api.get(`/login`)
-    .then((response) => dispatch(addAuthInfo(adaptAuthInfoToClient(response.data))))
+    .then((response) => dispatch(setAuthInfo(adaptAuthInfoToClient(response.data))))
     // .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(status)))
     // не могу понять как связать получение AuthorizationStatus из store без изменения?
     .catch(() => { })
@@ -100,7 +100,7 @@ export const login = ({login: email, password, avatarUrl}) => (dispatch, _getSta
   return api.post(`/login`, {email, password, avatarUrl})
     .then(() => {
       // dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.AUTH));
-      dispatch(addAuthInfo({email, password, avatarUrl}));
+      dispatch(setAuthInfo({email, password, avatarUrl}));
     })
     .then(() => dispatch(redirectToRoute(`/`)));
 };
@@ -109,7 +109,7 @@ export const logout = ({email, password, avatarUrl}) => (dispatch, _getState, ap
   return api.get(`/logout`, {email, password, avatarUrl})
     // .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH)))
     .then(() => {
-      dispatch(addAuthInfo(null));
+      dispatch(setAuthInfo(null));
       dispatch(redirectToRoute(`/`));
     })
     .catch(() => { });

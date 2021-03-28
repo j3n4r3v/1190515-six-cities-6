@@ -2,13 +2,15 @@ import {createReducer} from '@reduxjs/toolkit';
 import {updateFavorites, receiveFavoritesOffers} from "../actions";
 
 const initialState = {
-  favorites: []
+  favorites: [],
+  isFavoritesLoaded: false
 };
 
 const favoriteData = createReducer(initialState, (builder) => {
   builder
     .addCase(receiveFavoritesOffers, (state, action) => {
       state.favorites = action.payload;
+      state.isFavoritesLoaded = true;
     })
     .addCase(updateFavorites, (state, action) => {
       const index = state.favorites.findIndex((favorite) => favorite.id === action.payload.id);

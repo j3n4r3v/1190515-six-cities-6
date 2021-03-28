@@ -14,10 +14,10 @@ export const ActionType = {
   UPDATE_NEAR_OFFERS_LIST: `property/updateNearOffers`,
   // RECEIVE_AUTHORIZATION_STATUS: `login/receiveAuthorizationStatus`,
   REDIRECT_TO_ROUTE: `propert/notFound`,
-  ADD_AUTHORIZATION_INFO: `login/addAuthInfo`,
+  SET_AUTH_INFO: `login/setAuthInfo`,
   FORM_IS_DISABLED: `property/formIsDisabled`,
   FORM_IS_ERROR: `property/formIsError`,
-  PROPERTY_SCREEN_IS_LOADED: ``
+  PROPERTY_INFO_IS_LOADED: ``
 };
 
 export const changeCity = createAction(ActionType.ACTIVE_CITY, (city) => {
@@ -98,7 +98,7 @@ export const formIsError = createAction(ActionType.FORM_IS_ERROR, (bool) => {
   };
 });
 
-export const propertyInfoIsLoaded = createAction(ActionType.PROPERTY_SCREEN_IS_LOADED, (bool) => {
+export const propertyInfoIsLoaded = createAction(ActionType.PROPERTY_INFO_IS_LOADED, (bool) => {
   return {
     payload: bool
   };
@@ -115,7 +115,7 @@ export const receiveFavoriteOffers = createAction(ActionType.RECEIVE_FAVORITE_OF
 //   payload: data
 // }),
 
-export const addAuthInfo = createAction(ActionType.ADD_AUTHORIZATION_INFO, (info) => {
+export const setAuthInfo = createAction(ActionType.SET_AUTH_INFO, (info) => {
   return {
     payload: info
   };
