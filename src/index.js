@@ -14,13 +14,12 @@ import {reducer} from "./store/reducer";
 import {fetchOffersList, checkAuthStatus} from "./store/api-actions";
 import {redirect} from "./store/redirect";
 
-import {AuthorizationStatus} from "./const";
+// import {AuthorizationStatus} from "./const";
 
 const api = createAPI(
-    () => store.dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH))
+    () => store.dispatch(ActionCreator.setAuthInfo(null))
 );
-// createAPI принимает callback который нужно вызвать на случай неавторизованности
-// обновит store
+// createAPI принимает callback который нужно вызвать на случай неавторизованности, обновит store
 
 const store = createStore(reducer,
     composeWithDevTools(

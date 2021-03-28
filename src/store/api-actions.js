@@ -1,6 +1,6 @@
 import {adaptToServer, adaptReviewsToClient, adaptAuthInfoToClient} from "../common";
 import {ActionCreator} from "../store/actions";
-import {AuthorizationStatus} from "../const";
+// import {AuthorizationStatus} from "../const";
 
 export const fetchOffersList = () => (dispatch, _getState, api) => (
   api.get(`/hotels`)
@@ -42,26 +42,16 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
 
 export const checkAuthStatus = () => (dispatch, _getState, api) => (
   api.get(`/login`)
-    .then(() => {
-      dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH));
-      dispatch(ActionCreator.setAuthInfo(null));
-    })
+    .then((response) => dispatch(ActionCreator.setAuthInfo(adaptAuthInfoToClient(response.data)))) // response.data???
+    // .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(status)))
+    // не могу понять как связать получение AuthorizationStatus из store без изменения?
     .catch(() => { })
 );
-
-// export const checkAuthStatus = ({ login: email, password, avatarUrl }) => (dispatch, _getState, api) => (
-//   api.get(`/login`, { email, password, avatarUrl })
-//     .then(() => {
-//       dispatch(ActionCreator.receiveAuthorizationStatus());
-//       dispatch(ActionCreator.setAuthInfo({ email, password, avatarUrl }));
-//     })
-//     .catch(() => { })
-// );
 
 export const login = ({login: email, password, avatarUrl}) => (dispatch, _getState, api) => {
   return api.post(`/login`, {email, password, avatarUrl})
     .then(() => {
-      dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.AUTH));
+      // dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.setAuthInfo({email, password, avatarUrl}));
     })
     .then(() => dispatch(ActionCreator.redirectToRoute(`/`)));
@@ -69,6 +59,6 @@ export const login = ({login: email, password, avatarUrl}) => (dispatch, _getSta
 
 export const logout = ({email, password, avatarUrl}) => (dispatch, _getState, api) => {
   return api.get(`/logout`, {email, password, avatarUrl})
-    .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH)))
+    // .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH)))
     .then(() => dispatch(ActionCreator.setAuthInfo(null)));
 };

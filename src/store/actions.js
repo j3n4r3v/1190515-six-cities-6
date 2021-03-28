@@ -51,9 +51,9 @@ export const ActionCreator = { // Для описания actions в виде о
   //   type: ActionType.CHANGE_FAVORITE_OFFER,
   //   payload: data
   // }),
-  receiveAuthorizationStatus: (status) => ({
-    type: ActionType.RECEIVE_AUTHORIZATION_STATUS, payload: status
-  }),
+  // receiveAuthorizationStatus: (status) => ({
+  //   type: ActionType.RECEIVE_AUTHORIZATION_STATUS, payload: status
+  // }),
   setAuthInfo: (info) => ({
     type: ActionType.SET_AUTHORIZATION_INFO, payload: info
   }),
