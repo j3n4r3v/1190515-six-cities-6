@@ -11,39 +11,6 @@ export const fetchOffersList = () => (dispatch, _getState, api) => (
     })
 );
 
-// export const fetchNearOffersList = (id) => (dispatch, _getState, api) => (
-//   api.get(`/hotels/${id}/nearby`)
-//     .then((response) =>
-//       response.data.map((offer) => adaptToServer(offer)))
-//     .then((data) => {
-//       return dispatch(ActionCreator.receiveNearOffersList(data));
-//     })
-// );
-
-// export const fetchOfferById = (id) => (dispatch, _getState, api) => {
-//   api.get(`/hotels/${id}`)
-//     .then((response) =>
-//       response.data.map((offer) => adaptToServer(offer)))
-//     .then((data) => {
-//       return dispatch(ActionCreator.setOffer(data));
-//     })
-//     .catch(() => dispatch(ActionCreator.redirectToRoute(`/not-found`)));
-// };
-
-// export const fetchReviewsList = (id) => (dispatch, _getState, api) => (
-//   api.get(`/comments/${id}`)
-//     .then((response) =>
-//       response.data.map((comment) => adaptReviewsToClient(comment)))
-//     .then((data) => {
-//       return dispatch(ActionCreator.receiveReviewsList(data));
-//     })
-// );
-
-// export const sendReview = (id, {review, rating}) => (dispatch, _state, api) => {
-//   api.post(`/comments/${id}`, {review, rating})
-//     .then(() => dispatch(ActionCreator.receiveReviewsList({review, rating})));
-// };
-
 export const fetchPropertyInfo = (id) => (dispatch, _getState, api) => {
   Promise.all([
     api.get(`/hotels/${id}`),
@@ -75,22 +42,33 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
 
 export const checkAuthStatus = () => (dispatch, _getState, api) => (
   api.get(`/login`)
-    .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.AUTH)))
+    .then(() => {
+      dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH));
+      dispatch(ActionCreator.setAuthInfo(null));
+    })
     .catch(() => { })
 );
 
+// export const checkAuthStatus = ({ login: email, password, avatarUrl }) => (dispatch, _getState, api) => (
+//   api.get(`/login`, { email, password, avatarUrl })
+//     .then(() => {
+//       dispatch(ActionCreator.receiveAuthorizationStatus());
+//       dispatch(ActionCreator.setAuthInfo({ email, password, avatarUrl }));
+//     })
+//     .catch(() => { })
+// );
+
 export const login = ({login: email, password, avatarUrl}) => (dispatch, _getState, api) => {
   return api.post(`/login`, {email, password, avatarUrl})
-    .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(adaptAuthInfoToClient(AuthorizationStatus.AUTH))))
-    .then(() => dispatch(ActionCreator.setAuthInfo({email, password, avatarUrl})))
+    .then(() => {
+      dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.AUTH));
+      dispatch(ActionCreator.setAuthInfo({email, password, avatarUrl}));
+    })
     .then(() => dispatch(ActionCreator.redirectToRoute(`/`)));
 };
 
-// dispatch(ActionCreator.redirectToRoute(`/`));
-
 export const logout = ({email, password, avatarUrl}) => (dispatch, _getState, api) => {
   return api.get(`/logout`, {email, password, avatarUrl})
+    .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH)))
     .then(() => dispatch(ActionCreator.setAuthInfo(null)));
-  // .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH)));
 };
-

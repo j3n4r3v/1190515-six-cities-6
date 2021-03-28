@@ -52,7 +52,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({ // Передает в компонент методы для обновления store
+const mapDispatchToProps = (dispatch) => ({
   onChangeOptionItem: (option) => {
     dispatch(ActionCreator.changeActiveSortType(option));
   }

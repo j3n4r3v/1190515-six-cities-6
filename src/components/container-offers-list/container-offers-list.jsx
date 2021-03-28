@@ -14,8 +14,8 @@ const ContainerOffersList = (props) => {
 
       {
         offers.length > 0 ?
-          offers.map((it) => <Offer typeOffer={typeOffer} offer={it} key={it.id} onChangeActiveOffer={onChangeActiveOffer} />) :
-          <p>No places to stay available</p>
+          offers.map((it) => <Offer typeOffer={typeOffer} offer={it} key={it.id} onChangeActiveOffer={onChangeActiveOffer} />)
+          : <p>No places to stay available</p>
       }
 
     </div>
