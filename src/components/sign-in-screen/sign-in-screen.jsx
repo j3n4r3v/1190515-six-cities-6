@@ -1,23 +1,31 @@
 import React, {useRef} from "react";
-import PropTypes from "prop-types";
-import {connect} from "react-redux";
 
 import {login} from "../../store/api-actions";
+import {useDispatch, useSelector} from "react-redux";
+import {Redirect} from "react-router-dom";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 
-const SignInScreen = ({onSubmit}) => {
+
+const SignInScreen = () => {
 
   const loginRef = useRef();
   const passwordRef = useRef();
 
+  const dispatch = useDispatch();
+  const {authInfo} = useSelector((state) => state.USER);
+
+  if (authInfo) {
+    return <Redirect to={`${`/`}`} />;
+  }
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    onSubmit({
+    dispatch(login({
       login: loginRef.current.value,
       password: passwordRef.current.value
-    });
+    }));
   };
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -74,15 +82,5 @@ const SignInScreen = ({onSubmit}) => {
   </React.Fragment>;
 };
 
-SignInScreen.propTypes = {
-  onSubmit: PropTypes.func
-};
+export default {SignInScreen};
 
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit(auth) {
-    return dispatch(login(auth));
-  }
-});
-
-export {SignInScreen};
-export default connect(null, mapDispatchToProps)(SignInScreen);
