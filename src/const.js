@@ -1,4 +1,4 @@
-const SortType = [`Popular`, `Price: low to high`, `Price: high to low`, `Top rated first`];
+const PlacesSortType = [`Popular`, `Price: low to high`, `Price: high to low`, `Top rated first`];
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
@@ -55,4 +55,4 @@ const MapSettings = {
 
 const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 
-export {CITIES, Type, MapSettings, SortType, AuthorizationStatus, stars};
+export {CITIES, Type, MapSettings, PlacesSortType, AuthorizationStatus, stars};

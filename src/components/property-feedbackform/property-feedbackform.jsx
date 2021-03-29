@@ -1,15 +1,17 @@
 import React, {useState, useEffect} from "react";
-import PropTypes from "prop-types";
-import {connect} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
+import {useParams} from "react-router-dom";
 
 import {stars} from "../../const";
+import {addReview} from "../../store/api-actions";
+import {formIsError} from "../../store/actions";
 
-import {addComment} from "../../store/api-actions";
-import {ActionCreator} from "../../store/actions";
+import Error from "../property-feedbackform/error";
 
-import Error from "../feedbackform/error";
-
-const FeedBackForm = ({id, onSubmit, isFormDisabled, isFormError, onError}) => {
+const PropertyFeedBackForm = () => {
+  const {id} = useParams();
+  const dispatch = useDispatch();
+  const {isFormDisabled, isFormError} = useSelector((state) => state.PROPERTY);
 
   const [data, setData] = useState({
     review: ``,
@@ -17,28 +19,27 @@ const FeedBackForm = ({id, onSubmit, isFormDisabled, isFormError, onError}) => {
   });
 
   useEffect(() => {
-    if (!isFormDisabled && !isFormError) {
-      setData((prevState) => ({
-        ...prevState,
+    if (!isFormError && !isFormDisabled) {
+      setData(() => ({
         review: ``,
         rating: ``
       }));
     }
-  }, [isFormDisabled, isFormError]);
+  }, [isFormError, isFormDisabled]);
 
   useEffect(() => {
     if (isFormError) {
-      setTimeout(() => onError(false), 5000);
+      setTimeout(() => dispatch(formIsError(false), 5000));
     }
   }, [isFormError]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    onSubmit({
+    dispatch(addReview({
       comment: data.review,
       rating: data.rating
-    }, id);
+    }, id));
 
   };
 
@@ -100,7 +101,7 @@ const FeedBackForm = ({id, onSubmit, isFormDisabled, isFormError, onError}) => {
         maxLength={300}
         disabled={isFormDisabled}
         value={data.review}
-      ></textarea>
+      />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
@@ -116,29 +117,4 @@ const FeedBackForm = ({id, onSubmit, isFormDisabled, isFormError, onError}) => {
   </React.Fragment>;
 };
 
-FeedBackForm.propTypes = {
-  onSubmit: PropTypes.func,
-  id: PropTypes.string,
-  isFormDisabled: PropTypes.bool,
-  isFormError: PropTypes.bool,
-  onError: PropTypes.func
-};
-
-const mapStateToProps = (state) => ({
-  isFormDisabled: state.isFormDisabled,
-  isFormError: state.isFormError
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit(comment, id) {
-    dispatch(addComment(comment, id));
-  },
-  onError(bool) {
-    dispatch(ActionCreator.formIsError(bool));
-  }
-});
-
-export {FeedBackForm};
-export default connect(mapStateToProps, mapDispatchToProps)(FeedBackForm);
-
-
+export default PropertyFeedBackForm;

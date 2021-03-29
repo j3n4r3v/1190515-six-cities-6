@@ -1,10 +1,9 @@
 import React, {useState} from "react";
-import PropTypes from "prop-types";
-
-import {CITIES} from "../../const";
-import {authPropTypes, offerPropTypes} from "../../propetypes";
 
 import ContainerOffersList from "../container-offers-list/container-offers-list";
+import LocationsList from "../locations-list/locations-list";
+
+import {useSelector, useDispatch} from "react-redux";
 
 import {getActiveOffers} from "../../store/selectors";
 import Map from "../map/map";
@@ -12,15 +11,25 @@ import Map from "../map/map";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import LoadingScreen from "../loading-screen/loading-screen";
 
-import Sort from "../sort/sort";
+import PlacesSort from "../places-sort/places-sort";
 
-import {connect} from "react-redux";
-import {ActionCreator} from "../../store/actions";
+import {updateOffers} from "../../store/api-actions";
 
-const MainScreen = (props) => {
-  const {offers, activeCity, onChangeCity, isDataLoaded} = props;
+const MainScreen = () => {
+
+  const {activeCity, isDataLoaded} = useSelector((state) => state.MAIN);
+  const offers = useSelector(getActiveOffers);
+
+  const dispatch = useDispatch();
+
   const [activeOffer, setActiveOffer] = useState();
-  const MAIN = `MAIN`;
+
+  const activeCard = offers.find((offer) => offer.city.name === activeCity);
+
+  const handleFavorite = (id, status) => {
+    dispatch(updateOffers(id, status));
+  };
+
 
   if (!isDataLoaded) {
     return (
@@ -39,23 +48,9 @@ const MainScreen = (props) => {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
 
-              {CITIES.map((city, i) => {
-                return (
-                  <li className={`locations__item-link tabs__item`} key={city + i}>
-                    <a className={`locations__item-link tabs__item ${city === activeCity && `tabs__item--active`}`}
-                      href="#"
-                      onClick={() => onChangeCity(city)}>
-                      <span>{city}</span>
-                    </a>
-                  </li>
-                );
-              })}
+          <LocationsList />
 
-            </ul>
-          </section>
         </div>
         <div className="cities">
           <div className="cities__places-container container">
@@ -63,12 +58,13 @@ const MainScreen = (props) => {
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{offers.length} places to stay in {activeCity}</b>
 
-              <Sort />
+              <PlacesSort />
 
               <ContainerOffersList
                 offers={offers}
-                typeOffer={MAIN}
+                typeOffer={`MAIN`}
                 onChangeActiveOffer={setActiveOffer}
+                onFavoriteClick={handleFavorite}
               />
 
             </section>
@@ -78,7 +74,8 @@ const MainScreen = (props) => {
                 <Map
                   offers={offers}
                   activeOffer={activeOffer}
-                  mapSettings={MAIN}
+                  mapSettings={`MAIN`}
+                  activeCity={activeCard}
                 />
 
               </section>
@@ -90,30 +87,5 @@ const MainScreen = (props) => {
   </React.Fragment>;
 };
 
-MainScreen.propTypes = {
-  authInfo: authPropTypes,
-  offers: PropTypes.arrayOf(offerPropTypes),
-  offer: offerPropTypes,
-  activeOffer: offerPropTypes,
-  activeCity: PropTypes.string,
-  typeOffer: PropTypes.string,
-  onChangeCity: PropTypes.func,
-  isDataLoaded: PropTypes.bool
-};
+export default MainScreen;
 
-const mapStateToProps = (state) => {
-  return {
-    activeCity: state.activeCity,
-    offers: getActiveOffers(state),
-    isDataLoaded: state.isDataLoaded
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  onChangeCity: (city) => {
-    dispatch(ActionCreator.changeCity(city));
-  }
-});
-
-export {MainScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

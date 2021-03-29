@@ -8,71 +8,84 @@ import {MapSettings} from "../../const";
 
 import "leaflet/dist/leaflet.css";
 
-const PIN = leaflet.icon({
+const ICON = leaflet.icon({
   iconUrl: `./img/pin.svg`,
   iconSize: [27, 39]
 });
-
-const ACTIVE_PIN = leaflet.icon({
+const ACTIVE_PIN_ICON = leaflet.icon({
   iconUrl: `./img/pin-active.svg`,
   iconSize: [27, 39]
 });
-
-const Map = (props) => {
-  const {offers, mapSettings, activeOffer} = props;
-  const {city} = offers[0];
+const Map = ({activeCity, offers, activeOffer, mapSettings}) => {
   const mapRef = useRef();
-
+  const markersRef = useRef(leaflet.layerGroup([]));
+  const activeMarkerRef = useRef(leaflet.layerGroup([]));
   useEffect(() => {
+    const {city: {location}} = activeCity;
     mapRef.current = leaflet.map(`map`, {
-      center: {
-        lat: city.location.latitude,
-        lng: city.location.longitude
-      },
-      zoom: city.location.zoom,
+      center: [location.latitude, location.longitude],
+      zoom: location.zoom,
       zoomControl: false,
-      marker: true
+      marker: true,
+      layers: [markersRef.current, activeMarkerRef.current]
     });
-
-    leaflet.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-    })
+    leaflet
+      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+      })
       .addTo(mapRef.current);
-
+    mapRef.current.setView([location.latitude, location.longitude], location.zoom);
     return () => {
       mapRef.current.remove();
+      mapRef.current = null;
     };
-
-  }, [props.offers]);
-
+  }, []);
   useEffect(() => {
-    const map = leaflet.layerGroup().addTo(mapRef.current);
-    offers.forEach((offer) => {
-      const {pointsLocation, title, id} = offer;
-      leaflet
-        .marker({
-          lat: pointsLocation.latitude,
-          lng: pointsLocation.longitude
-        },
-        {icon: id === activeOffer ? ACTIVE_PIN : PIN}
-        )
-        .addTo(map)
-        .bindPopup(title);
-    });
-
-    return () => map.clearLayers();
-
-  }, [props.activeOffer, props.offers]);
+    const {city: {location}} = activeCity;
+    if (mapRef.current) {
+      mapRef.current.flyTo(
+          [location.latitude, location.longitude],
+          location.zoom,
+          {duration: 0.5}
+      );
+      offers.map((offer) => {
+        markersRef.current.addLayer(
+            leaflet.marker([offer.location.latitude, offer.location.longitude], {
+              icon: ICON,
+            })
+        );
+      });
+    }
+    return () => {
+      markersRef.current.clearLayers();
+    };
+  }, [offers, activeCity.city.name]);
+  useEffect(() => {
+    if (activeOffer) {
+      const {location} = activeOffer;
+      activeMarkerRef.current.addLayer(
+          leaflet.marker(
+              [location.latitude, location.longitude],
+              {icon: ACTIVE_PIN_ICON}
+          )
+      );
+    }
+    return () => {
+      activeMarkerRef.current.clearLayers();
+    };
+  }, [activeOffer]);
 
   return (
-    <div id="map" style={MapSettings[mapSettings]} ref={mapRef}></div>
+
+    <div id="map" style={MapSettings[mapSettings]}></div>
   );
+
 };
 
 Map.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
-  offer: offerPropTypes,
-  activeOffer: PropTypes.number,
+  activeOffer: offerPropTypes,
+  activeCity: offerPropTypes,
   mapSettings: PropTypes.string
 };
 
