@@ -40,7 +40,7 @@ export const fetchPropertyInfo = (id) => (dispatch, _getState, api) => {
     .catch(() => dispatch(redirectToRoute(`/not-found`)));
 };
 
-export const addComment = (comment, id) => (dispatch, _getState, api) => {
+export const addReview = (comment, id) => (dispatch, _getState, api) => {
   dispatch(formIsDisabled(true));
   api.post(`comments/${id}`, comment)
     .then(({data}) => dispatch(receiveReviews(data.map(adaptReviewsToClient))))

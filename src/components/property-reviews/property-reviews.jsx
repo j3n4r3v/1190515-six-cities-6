@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 
 import {reviewPropTypes} from "../../propetypes";
 
-import FeedBackForm from "../feedbackform/feedbackform";
+import PropertyFeedBackForm from "../feedbackform/feedbackform";
 import PropertyReviewItem from "../property-review-item/property-review-item";
 
 
@@ -21,7 +21,7 @@ const PropertyReviews = ({reviews}) => {
         }
       </ul>
       {
-        authInfo ? <FeedBackForm /> : ``
+        authInfo ? <PropertyFeedBackForm /> : ``
       }
     </section>
   );
