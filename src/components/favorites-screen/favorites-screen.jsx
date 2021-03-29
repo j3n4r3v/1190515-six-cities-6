@@ -1,8 +1,6 @@
 import React, {useEffect} from "react";
 import {Link} from "react-router-dom";
-
-import PropTypes from "prop-types";
-import {authPropTypes, offerPropTypes} from "../../propetypes";
+import {useSelector, useDispatch} from "react-redux";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import LoadingScreen from "../loading-screen/loading-screen";
@@ -10,16 +8,19 @@ import LoadingScreen from "../loading-screen/loading-screen";
 import FavoriteList from "../favorite-list/favorite-list";
 import {fetchFavorites} from "../../store/api-actions";
 
-import {connect} from "react-redux";
+const FavoritesScreen = () => {
 
-const FavoritesScreen = (props) => {
-  const {offers, onFavoritesLoaded, isFavoritesLoaded} = props;
+  const dispatch = useDispatch();
+  const {authInfo} = useSelector((state) => state.USER);
+
 
   useEffect(() => {
-    onFavoritesLoaded();
-  }, []);
+    if (authInfo) {
+      dispatch(fetchFavorites());
+    }
+  }, [authInfo]);
 
-  const FAVORITE = `FAVORITE`;
+  const {favorites, isFavoritesLoaded} = useSelector((state) => state.FAVORITE);
 
   if (!isFavoritesLoaded) {
     return (
@@ -38,9 +39,9 @@ const FavoritesScreen = (props) => {
         <main className="page__main page__main--favorites">
           <div className="page__favorites-container container">
             <section className="favorites">
-              <h1 className="favorites__title">{offers.length && `Saved listing` || `Nothing yet saved`}</h1>
+              <h1 className="favorites__title">{favorites.length && `Saved listing` || `Nothing yet saved`}</h1>
 
-              <FavoriteList offers={offers} typeOffer={FAVORITE} />
+              <FavoriteList offers={favorites} typeOffer="FAVORITE" />
 
             </section>
           </div>
@@ -55,27 +56,5 @@ const FavoritesScreen = (props) => {
   </React.Fragment>;
 };
 
-FavoritesScreen.propTypes = {
-  authInfo: authPropTypes,
-  offers: PropTypes.arrayOf(offerPropTypes),
-  favoriteOffers: PropTypes.arrayOf(offerPropTypes),
-  typeOffer: PropTypes.string,
-  onFavoritesLoaded: PropTypes.func,
-  isFavoritesLoaded: PropTypes.bool,
-};
+export default FavoritesScreen;
 
-const mapStateToProps = (state) => {
-  return {
-    offers: state.favorites,
-    isFavoritesLoaded: state.isFavoritesLoaded,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  onFavoritesLoaded: () => {
-    dispatch(fetchFavorites());
-  }
-});
-
-export {FavoritesScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(FavoritesScreen);
