@@ -55,4 +55,4 @@ const MapSettings = {
 
 const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 
-export { CITIES, Type, MapSettings, PlacesSortType, AuthorizationStatus, stars };
+export {CITIES, Type, MapSettings, PlacesSortType, AuthorizationStatus, stars};
