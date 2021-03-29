@@ -1,4 +1,4 @@
-import { createAction } from "@reduxjs/toolkit";
+import {createAction} from "@reduxjs/toolkit";
 
 export const ActionType = {
   ACTIVE_CITY: `main/activeCity`,
@@ -17,7 +17,7 @@ export const ActionType = {
   SET_AUTH_INFO: `login/setAuthInfo`,
   FORM_IS_DISABLED: `property/formIsDisabled`,
   FORM_IS_ERROR: `property/formIsError`,
-  IS_PROPERTY_INFO_LOADED: ``
+  PROPERTY_SET_IS_LOADED: ``
 };
 
 export const changeCity = createAction(ActionType.ACTIVE_CITY, (city) => {
@@ -98,7 +98,7 @@ export const formIsError = createAction(ActionType.FORM_IS_ERROR, (bool) => {
   };
 });
 
-export const isPropertyInfoLoaded = createAction(ActionType.IS_PROPERTY_INFO_LOADED, (bool) => {
+export const propertySetIsLoaded = createAction(ActionType.PROPERTY_SET_IS_LOADED, (bool) => {
   return {
     payload: bool
   };

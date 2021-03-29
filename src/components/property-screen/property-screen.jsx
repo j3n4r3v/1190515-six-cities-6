@@ -19,7 +19,6 @@ import {getActiveReviews} from "../../store/selectors";
 
 import {fetchPropertyInfo, updateSelectOffer, updateNearOffers} from "../../store/api-actions";
 
-
 const PropertyScreen = () => {
 
   const {id} = useParams();
@@ -32,13 +31,13 @@ const PropertyScreen = () => {
   }, [id]);
 
   // const {isDataLoaded} = useSelector((state) => state.MAIN);
-  const {offer, nearOffers, isPropertyInfoLoaded} = useSelector((state) => state.PROPERTY);
+  const {offer, nearOffers, isPropertySetLoaded} = useSelector((state) => state.PROPERTY);
   const {authInfo} = useSelector((state) => state.USER);
   const reviews = useSelector(getActiveReviews);
 
 
-  // if (!isDataLoaded || !isPropertyInfoLoaded) {
-  if (!isPropertyInfoLoaded) {
+  // if (!isDataLoaded || !propertyInfoIsLoaded) {
+  if (!isPropertySetLoaded) {
     return (
       <LoadingScreen />
     );
@@ -124,7 +123,7 @@ const PropertyScreen = () => {
 
               <ContainerOffersList
                 offers={nearOffers}
-                typeOffer="PROPERTY"
+                typeOffer={`PROPERTY`}
                 onScrollToTop={handleScrollTop}
                 onChangeActiveOffer={() => { }}
                 onFavoriteClick={handleFavorite}

@@ -41,7 +41,7 @@ const FavoritesScreen = () => {
             <section className="favorites">
               <h1 className="favorites__title">{favorites.length && `Saved listing` || `Nothing yet saved`}</h1>
 
-              <FavoriteList offers={favorites} typeOffer="FAVORITE" />
+              <FavoriteList offers={favorites} typeOffer={`FAVORITE`} />
 
             </section>
           </div>
