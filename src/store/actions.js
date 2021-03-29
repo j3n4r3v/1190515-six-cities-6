@@ -17,7 +17,7 @@ export const ActionType = {
   SET_AUTH_INFO: `login/setAuthInfo`,
   FORM_IS_DISABLED: `property/formIsDisabled`,
   FORM_IS_ERROR: `property/formIsError`,
-  PROPERTY_INFO_IS_LOADED: ``
+  IS_PROPERTY_INFO_LOADED: ``
 };
 
 export const changeCity = createAction(ActionType.ACTIVE_CITY, (city) => {
@@ -98,7 +98,7 @@ export const formIsError = createAction(ActionType.FORM_IS_ERROR, (bool) => {
   };
 });
 
-export const propertyInfoIsLoaded = createAction(ActionType.PROPERTY_INFO_IS_LOADED, (bool) => {
+export const isPropertyInfoLoaded = createAction(ActionType.IS_PROPERTY_INFO_LOADED, (bool) => {
   return {
     payload: bool
   };

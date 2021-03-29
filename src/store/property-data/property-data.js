@@ -3,7 +3,7 @@ import {
   receiveNearOffers,
   receiveReviews,
   receiveOffer,
-  propertyInfoIsLoaded,
+  isPropertyInfoLoaded,
   formIsError,
   formIsDisabled,
   updateOffer,
@@ -14,7 +14,7 @@ const initialState = {
   offer: {},
   nearOffers: [],
   reviews: [],
-  propertyInfoIsLoaded: false,
+  isPropertyInfoLoaded: false,
   isFormDisabled: false,
   isFormError: false,
 };
@@ -36,8 +36,8 @@ const propertyData = createReducer(initialState, (builder) => {
     .addCase(formIsError, (state, action) => {
       state.isFormError = action.payload;
     })
-    .addCase(propertyInfoIsLoaded, (state, action) => {
-      state.propertyInfoIsLoaded = action.payload;
+    .addCase(isPropertyInfoLoaded, (state, action) => {
+      state.isPropertyInfoLoaded = action.payload;
     })
     .addCase(updateOffer, (state, action) => {
       state.offer = action.payload;

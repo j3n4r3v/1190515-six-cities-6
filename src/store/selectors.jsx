@@ -22,3 +22,14 @@ export const getActiveOffers = createSelector(
       }
     }
 );
+
+export const getReviews = (state) => state[NameSpace.PROPERTY].reviews;
+
+export const getActiveReviews = createSelector(
+    getReviews,
+    (reviews) => {
+      const activeReviews = reviews.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      return activeReviews.length > 5 ? activeReviews.slice(0, 5) : activeReviews;
+    }
+);
