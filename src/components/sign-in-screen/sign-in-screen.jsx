@@ -82,5 +82,5 @@ const SignInScreen = () => {
   </React.Fragment>;
 };
 
-export default {SignInScreen};
+export default SignInScreen;
 
