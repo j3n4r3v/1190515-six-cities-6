@@ -1,8 +1,8 @@
-import {createAction} from "@reduxjs/toolkit";
+import { createAction } from "@reduxjs/toolkit";
 
 export const ActionType = {
   ACTIVE_CITY: `main/activeCity`,
-  CHANGE_ACTIVE_SORT_TYPE: `main/changeActiveSortType`,
+  CHANGE_ACTIVE_SORT_TYPE: `main/changeActivePlacesSortType`,
   RECEIVE_OFFERS: `main/receiveOffers`,
   RECEIVE_OFFER: `property/receiveOffer`,
   RECEIVE_REVIEWS: `property/receiveReviews`,
@@ -26,7 +26,7 @@ export const changeCity = createAction(ActionType.ACTIVE_CITY, (city) => {
   };
 });
 
-export const changeActiveSortType = createAction(ActionType.CHANGE_ACTIVE_SORT_TYPE, (option) => {
+export const changeActivePlacesSortType = createAction(ActionType.CHANGE_ACTIVE_SORT_TYPE, (option) => {
   return {
     payload: option
   };

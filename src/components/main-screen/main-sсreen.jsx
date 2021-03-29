@@ -11,7 +11,7 @@ import Map from "../map/map";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import LoadingScreen from "../loading-screen/loading-screen";
 
-import Sort from "../sort/sort";
+import PlacesSort from "../places-sort/places-sort";
 
 import {updateOffers} from "../../store/api-actions";
 
@@ -58,7 +58,7 @@ const MainScreen = () => {
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{offers.length} places to stay in {activeCity}</b>
 
-              <Sort />
+              <PlacesSort />
 
               <ContainerOffersList
                 offers={offers}

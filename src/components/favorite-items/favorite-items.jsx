@@ -3,8 +3,16 @@ import PropTypes from "prop-types";
 import ContainerOffersList from "../container-offers-list/container-offers-list";
 import {offerPropTypes} from "../../propetypes";
 
-const FavoriteItems = (props) => {
-  const {city, offers, typeOffer} = props;
+import {useDispatch} from "react-redux";
+import {updateFavorites} from "../store/api/api-actions";
+
+const FavoriteItems = ({city, offers, typeOffer}) => {
+
+  const dispatch = useDispatch();
+
+  const handleFavorite = (id, status) => {
+    dispatch(updateFavorites(id, status));
+  };
 
   return (
     <li className="favorites__locations-items">
@@ -15,15 +23,15 @@ const FavoriteItems = (props) => {
           </a>
         </div>
       </div>
-      <ContainerOffersList offers={offers} typeOffer={typeOffer} onChangeActiveOffer={() => {}} />
+      <ContainerOffersList offers={offers} typeOffer={typeOffer} onChangeActiveOffer={() => { }} onFavoriteClick={handleFavorite} />
     </li>
   );
 };
 
 FavoriteItems.propTypes = {
   city: PropTypes.string,
+  typeOffer: PropTypes.string,
   offers: PropTypes.arrayOf(offerPropTypes),
-  typeOffer: PropTypes.string
 };
 
 export default FavoriteItems;

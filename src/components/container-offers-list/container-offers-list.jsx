@@ -4,11 +4,7 @@ import Offer from "../offer/offer";
 import {Type} from "../../const";
 import {offerPropTypes} from "../../propetypes";
 
-const ContainerOffersList = (props) => {
-  const {offers, typeOffer, onChangeActiveOffer} = props;
-
-  // eslint-disable-next-line no-console
-  console.log(`<ContainerOffersList/>.: Render`);
+const ContainerOffersList = ({offers, typeOffer, onChangeActiveOffer, onScrollToTop, onFavoriteClick}) => {
 
   const container = Type[typeOffer];
 
@@ -17,7 +13,16 @@ const ContainerOffersList = (props) => {
 
       {
         offers.length > 0 ?
-          offers.map((it) => <Offer typeOffer={typeOffer} offer={it} key={it.id} onChangeActiveOffer={onChangeActiveOffer} />)
+          offers.map((it) =>
+
+            <Offer typeOffer={typeOffer}
+              offer={it}
+              key={it.id}
+              onChangeActiveOffer={onChangeActiveOffer}
+              onScrollToTop={onScrollToTop}
+              onFavoriteClick={onFavoriteClick}
+            />)
+
           : <p>No places to stay available</p>
       }
 
@@ -28,7 +33,9 @@ const ContainerOffersList = (props) => {
 ContainerOffersList.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   typeOffer: PropTypes.string,
-  onChangeActiveOffer: PropTypes.func
+  onChangeActiveOffer: PropTypes.func,
+  onScrollToTop: PropTypes.func,
+  onFavoriteClick: PropTypes.func
 };
 
 export default ContainerOffersList;
