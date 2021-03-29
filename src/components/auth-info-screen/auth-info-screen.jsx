@@ -1,12 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import PropTypes from "prop-types";
-import {connect} from "react-redux";
 
-// import {authPropTypes} from "../../propetypes";
+import {useDispatch, useSelector} from "react-redux";
 
+import {propertyInfoIsLoaded} from "../../store/actions";
 import {logout} from "../../store/api-actions";
-import {authPropTypes} from "../../propetypes";
+
 
 const LogoutStyles = {
   border: `5px`,
@@ -16,7 +15,10 @@ const LogoutStyles = {
   outline: `2px`
 };
 
-const AuthInfoScreen = ({authInfo, onLogout, isMainPage = false}) => {
+const AuthInfoScreen = () => {
+
+  const dispatch = useDispatch();
+  const {authInfo} = useSelector((state) => state.USER);
 
   return <React.Fragment>
     <header className="header">
@@ -24,14 +26,17 @@ const AuthInfoScreen = ({authInfo, onLogout, isMainPage = false}) => {
         <div className="header__wrapper">
           <div className="header__left">
             <Link
-              className={`header__logo-link ${isMainPage ? `header__logo-link--active` : ``}`} to="/">
+              className="header__logo-link `header__logo-link--active"
+              to="/"
+              onClick={() => dispatch(propertyInfoIsLoaded(false))}>
               <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width={81} height={41} />
             </Link>
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <Link to={authInfo && `${`/favorites`}` || `${`/login`}`} className="header__nav-link header__nav-link--profile">
+                <Link className="header__nav-link header__nav-link--profile"
+                  to={authInfo && `${`/favorites`}` || `${`/login`}`}>
 
                   {
                     authInfo && <div className="header__avatar-wrapper user__avatar-wrapper"></div>
@@ -44,7 +49,7 @@ const AuthInfoScreen = ({authInfo, onLogout, isMainPage = false}) => {
               {authInfo &&
                 <li className="header__nav-item user">
                   <button
-                    onClick={() => onLogout(authInfo)}
+                    onClick={() => dispatch(logout(authInfo))}
                     style={LogoutStyles}
                     className="header__nav-link header__nav-link--profile">
                     <span className="header__user-name user__name">Logout</span>
@@ -60,21 +65,5 @@ const AuthInfoScreen = ({authInfo, onLogout, isMainPage = false}) => {
   </React.Fragment>;
 };
 
-AuthInfoScreen.propTypes = {
-  onLogout: PropTypes.func,
-  authInfo: authPropTypes,
-  isMainPage: PropTypes.bool
-};
+export default AuthInfoScreen;
 
-const mapStateToProps = (state) => ({
-  authInfo: state.authInfo,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onLogout(authInfo) {
-    dispatch(logout(authInfo));
-  }
-});
-
-export {AuthInfoScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(AuthInfoScreen);
