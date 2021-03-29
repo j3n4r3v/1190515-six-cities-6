@@ -1,10 +1,10 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import leaflet from "leaflet";
 import PropTypes from "prop-types";
 
-import {offerPropTypes} from "../../propetypes";
+import { offerPropTypes } from "../../propetypes";
 
-import {MapSettings} from "../../const";
+import { MapSettings } from "../../const";
 
 import "leaflet/dist/leaflet.css";
 
@@ -19,8 +19,8 @@ const ACTIVE_PIN = leaflet.icon({
 });
 
 const Map = (props) => {
-  const {offers, mapSettings, activeOfferId} = props;
-  const {city: {location}} = offers[0];
+  const { offers, mapSettings, activeOffer } = props;
+  const { city: { location } } = offers[0];
   // const {city: {location}} = activeCity;
   const mapRef = useRef();
 
@@ -49,13 +49,13 @@ const Map = (props) => {
   useEffect(() => {
     const map = leaflet.layerGroup().addTo(mapRef.current);
     offers.forEach((offer) => {
-      const {pointsLocation, title, id} = offer;
+      const { pointsLocation, title, id } = offer;
       leaflet
         .marker({
           lat: pointsLocation.latitude,
           lng: pointsLocation.longitude
         },
-        {icon: id === activeOfferId ? ACTIVE_PIN : PIN}
+          { icon: id === activeOffer ? ACTIVE_PIN : PIN }
         )
         .addTo(map)
         .bindPopup(title);
@@ -63,7 +63,7 @@ const Map = (props) => {
 
     return () => map.clearLayers();
 
-  }, [props.activeOfferId, props.offers]);
+  }, [props.activeOffer, props.offers]);
 
   return (
     <div id="map" style={MapSettings[mapSettings]} ref={mapRef}></div>
@@ -73,7 +73,7 @@ const Map = (props) => {
 Map.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   offer: offerPropTypes,
-  activeOfferId: PropTypes.number,
+  activeOffer: PropTypes.number,
   // activeCity: offerPropTypes,
   mapSettings: PropTypes.string
 };

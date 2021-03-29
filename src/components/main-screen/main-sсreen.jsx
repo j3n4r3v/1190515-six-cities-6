@@ -1,10 +1,9 @@
 import React, {useState} from "react";
-import PropTypes from "prop-types";
-
-import {CITIES} from "../../const";
-import {authPropTypes, offerPropTypes} from "../../propetypes";
 
 import ContainerOffersList from "../container-offers-list/container-offers-list";
+import LocationsList from "../locations-list/locations-list";
+
+import {useSelector, useDispatch} from "react-redux";
 
 import {getActiveOffers} from "../../store/selectors";
 import Map from "../map/map";
@@ -14,16 +13,23 @@ import LoadingScreen from "../loading-screen/loading-screen";
 
 import Sort from "../sort/sort";
 
-import {connect} from "react-redux";
-import {changeCity} from "../../store/actions";
+import {updateOffers} from "../../store/api-actions";
 
-const MainScreen = (props) => {
-  const {offers, activeCity, onChangeCity, isDataLoaded} = props;
-  const [activeOfferId, setActiveOfferId] = useState();
-  const MAIN = `MAIN`;
+const MainScreen = () => {
+
+  const {activeCity, isDataLoaded} = useSelector((state) => state.MAIN);
+  const offers = useSelector(getActiveOffers);
+
+  const dispatch = useDispatch();
+
+  const [activeOffer, setActiveOffer] = useState();
+
   const activeCard = offers.find((offer) => offer.city.name === activeCity);
-  // eslint-disable-next-line no-console
-  console.log(<MainScreen />);
+
+  const handleFavorite = (id, status) => {
+    dispatch(updateOffers(id, status));
+  };
+
 
   if (!isDataLoaded) {
     return (
@@ -42,23 +48,9 @@ const MainScreen = (props) => {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
 
-              {CITIES.map((city, i) => {
-                return (
-                  <li className={`locations__item-link tabs__item`} key={city + i}>
-                    <a className={`locations__item-link tabs__item ${city === activeCity && `tabs__item--active`}`}
-                      href="#"
-                      onClick={() => onChangeCity(city)}>
-                      <span>{city}</span>
-                    </a>
-                  </li>
-                );
-              })}
+          <LocationsList />
 
-            </ul>
-          </section>
         </div>
         <div className="cities">
           <div className="cities__places-container container">
@@ -70,8 +62,9 @@ const MainScreen = (props) => {
 
               <ContainerOffersList
                 offers={offers}
-                typeOffer={MAIN}
-                onChangeActiveOffer={setActiveOfferId}
+                typeOffer={`MAIN`}
+                onChangeActiveOffer={setActiveOffer}
+                onFavoriteClick={handleFavorite}
               />
 
             </section>
@@ -80,8 +73,8 @@ const MainScreen = (props) => {
 
                 <Map
                   offers={offers}
-                  activeOfferId={activeOfferId}
-                  mapSettings={MAIN}
+                  activeOffer={activeOffer}
+                  mapSettings={`MAIN`}
                   activeCity={activeCard}
                 />
 
@@ -94,30 +87,5 @@ const MainScreen = (props) => {
   </React.Fragment>;
 };
 
-MainScreen.propTypes = {
-  authInfo: authPropTypes,
-  offers: PropTypes.arrayOf(offerPropTypes),
-  offer: offerPropTypes,
-  activeOfferId: PropTypes.number,
-  activeCity: PropTypes.string,
-  typeOffer: PropTypes.string,
-  onChangeCity: PropTypes.func,
-  isDataLoaded: PropTypes.bool
-};
+export default MainScreen;
 
-const mapStateToProps = (state) => {
-  return {
-    activeCity: state.activeCity,
-    offers: getActiveOffers(state),
-    isDataLoaded: state.isDataLoaded
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  onChangeCity: (city) => {
-    dispatch(changeCity(city));
-  }
-});
-
-export {MainScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

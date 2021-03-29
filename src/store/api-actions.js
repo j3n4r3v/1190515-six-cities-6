@@ -69,7 +69,7 @@ export const updateFavorites = (id, status) => (dispatch, _getState, api) => (
     .catch(() => { })
 );
 
-export const updateCheckOffer = (id, status) => (dispatch, _getState, api) => (
+export const updateSelectOffer = (id, status) => (dispatch, _getState, api) => (
   api.post(`${`/favorite`}/${id}/${Number(status)}`)
     .then(({data}) => {
       dispatch(updateOffer(adaptToServer(data)));
