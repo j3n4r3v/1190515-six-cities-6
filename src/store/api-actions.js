@@ -1,11 +1,11 @@
-import {adaptToServer, adaptReviewsToClient, adaptAuthInfoToClient} from "../common";
+import { adaptToServer, adaptReviewsToClient, adaptAuthInfoToClient } from "../common";
 import {
   receiveOffers,
   receiveOffer,
   receiveNearOffers,
   receiveReviews,
   receiveFavoritesOffers,
-  propertyInfoIsLoaded,
+  isPropertyInfoLoaded,
   redirectToRoute,
   formIsDisabled,
   formIsError,
@@ -36,14 +36,14 @@ export const fetchPropertyInfo = (id) => (dispatch, _getState, api) => {
       dispatch(receiveNearOffers(nearOffers.data.map(adaptToServer)));
       dispatch(receiveReviews(reviews.data.map(adaptReviewsToClient)));
     })
-    .then(() => dispatch(propertyInfoIsLoaded(true)))
+    .then(() => dispatch(isPropertyInfoLoaded(true)))
     .catch(() => dispatch(redirectToRoute(`/not-found`)));
 };
 
 export const addReview = (comment, id) => (dispatch, _getState, api) => {
   dispatch(formIsDisabled(true));
   api.post(`comments/${id}`, comment)
-    .then(({data}) => dispatch(receiveReviews(data.map(adaptReviewsToClient))))
+    .then(({ data }) => dispatch(receiveReviews(data.map(adaptReviewsToClient))))
     .catch(() => dispatch(formIsError(true)))
     .finally(() => dispatch(formIsDisabled(false)));
 };
@@ -56,13 +56,13 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
 
 export const updateOffers = (id, status) => (dispatch, _getState, api) => (
   api.post(`${`/favorite`}/${id}/${Number(status)}`)
-    .then(({data}) => dispatch(updateOffersList((adaptToServer(data)))))
+    .then(({ data }) => dispatch(updateOffersList((adaptToServer(data)))))
     .catch(() => { })
 );
 
 export const updateFavorites = (id, status) => (dispatch, _getState, api) => (
   api.post(`${`/favorite`}/${id}/${Number(status)}`)
-    .then(({data}) => {
+    .then(({ data }) => {
       dispatch(updateFavoritesList(adaptToServer(data)));
       dispatch(updateOffersList(adaptToServer(data)));
     })
@@ -71,7 +71,7 @@ export const updateFavorites = (id, status) => (dispatch, _getState, api) => (
 
 export const updateSelectOffer = (id, status) => (dispatch, _getState, api) => (
   api.post(`${`/favorite`}/${id}/${Number(status)}`)
-    .then(({data}) => {
+    .then(({ data }) => {
       dispatch(updateOffer(adaptToServer(data)));
       dispatch(updateOffersList(adaptToServer(data)));
     })
@@ -80,7 +80,7 @@ export const updateSelectOffer = (id, status) => (dispatch, _getState, api) => (
 
 export const updateNearOffers = (id, status) => (dispatch, _getState, api) => (
   api.post(`${`/favorite`}/${id}/${Number(status)}`)
-    .then(({data}) => {
+    .then(({ data }) => {
       dispatch(updateNearOffersList(adaptToServer(data)));
       dispatch(updateOffersList(adaptToServer(data)));
     })
@@ -95,14 +95,14 @@ export const checkAuthStatus = () => (dispatch, _getState, api) => (
     .catch(() => { })
 );
 
-export const login = ({login: email, password, avatarUrl}) => (dispatch, _getState, api) => {
-  return api.post(`/login`, {email, password, avatarUrl})
-    .then(() => dispatch(setAuthInfo({email, password, avatarUrl})))
+export const login = ({ login: email, password, avatarUrl }) => (dispatch, _getState, api) => {
+  return api.post(`/login`, { email, password, avatarUrl })
+    .then(() => dispatch(setAuthInfo({ email, password, avatarUrl })))
     .then(() => dispatch(redirectToRoute(`/`)));
 };
 
-export const logout = ({email, password, avatarUrl}) => (dispatch, _getState, api) => {
-  return api.get(`/logout`, {email, password, avatarUrl})
+export const logout = ({ email, password, avatarUrl }) => (dispatch, _getState, api) => {
+  return api.get(`/logout`, { email, password, avatarUrl })
     .then(() => {
       dispatch(setAuthInfo(null));
       dispatch(redirectToRoute(`/`));

@@ -114,7 +114,7 @@ const PropertyScreen = () => {
               offers={nearOffers}
               activeOffer={offer}
               activeCity={offer}
-              mapSettings="PROPERTY"
+              mapSettings={`PROPERTY`}
             />
 
           </section>

@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 
 import {reviewPropTypes} from "../../propetypes";
 
-import PropertyFeedBackForm from "../feedbackform/feedbackform";
+import PropertyFeedBackForm from "../property-feedbackform/property-feedbackform";
 import PropertyReviewItem from "../property-review-item/property-review-item";
 
 

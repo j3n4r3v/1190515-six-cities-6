@@ -1,10 +1,10 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import {propertyInfoIsLoaded} from "../../store/actions";
-import {logout} from "../../store/api-actions";
+import { isPropertyInfoLoaded } from "../../store/actions";
+import { logout } from "../../store/api-actions";
 
 
 const LogoutStyles = {
@@ -18,7 +18,7 @@ const LogoutStyles = {
 const AuthInfoScreen = () => {
 
   const dispatch = useDispatch();
-  const {authInfo} = useSelector((state) => state.USER);
+  const { authInfo } = useSelector((state) => state.USER);
 
   return <React.Fragment>
     <header className="header">
@@ -28,7 +28,7 @@ const AuthInfoScreen = () => {
             <Link
               className="header__logo-link `header__logo-link--active"
               to="/"
-              onClick={() => dispatch(propertyInfoIsLoaded(false))}>
+              onClick={() => dispatch(isPropertyInfoLoaded(false))}>
               <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width={81} height={41} />
             </Link>
           </div>

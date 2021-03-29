@@ -4,7 +4,7 @@ import ContainerOffersList from "../container-offers-list/container-offers-list"
 import {offerPropTypes} from "../../propetypes";
 
 import {useDispatch} from "react-redux";
-import {updateFavorites} from "../store/api/api-actions";
+import {updateFavorites} from "../../store/api-actions";
 
 const FavoriteItems = ({city, offers, typeOffer}) => {
 

@@ -6,7 +6,7 @@ import {stars} from "../../const";
 import {addReview} from "../../store/api-actions";
 import {formIsError} from "../../store/actions";
 
-import Error from "../feedbackform/error";
+import Error from "../property-feedbackform/error";
 
 const PropertyFeedBackForm = () => {
   const {id} = useParams();
