@@ -1,4 +1,4 @@
-import {createReducer} from '@reduxjs/toolkit';
+import {createReducer} from "@reduxjs/toolkit";
 import {setAuthInfo, redirectToRoute} from "../actions";
 
 const initialState = {
@@ -6,7 +6,7 @@ const initialState = {
   url: null
 };
 
-const user = createReducer(initialState, (builder) => {
+const userData = createReducer(initialState, (builder) => {
   builder
     .addCase(setAuthInfo, (state, action) => {
       state.authInfo = action.payload;
@@ -16,4 +16,4 @@ const user = createReducer(initialState, (builder) => {
     });
 });
 
-export {user};
+export {userData};

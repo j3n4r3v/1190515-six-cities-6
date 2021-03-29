@@ -1,4 +1,4 @@
-import {createAction} from '@reduxjs/toolkit';
+import {createAction} from "@reduxjs/toolkit";
 
 export const ActionType = {
   ACTIVE_CITY: `main/activeCity`,

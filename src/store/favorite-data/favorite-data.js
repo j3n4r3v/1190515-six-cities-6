@@ -1,5 +1,5 @@
-import {createReducer} from '@reduxjs/toolkit';
-import {updateFavorites, receiveFavoritesOffers} from "../actions";
+import {createReducer} from "@reduxjs/toolkit";
+import {updateFavoritesList, receiveFavoritesOffers} from "../actions";
 
 const initialState = {
   favorites: [],
@@ -12,7 +12,7 @@ const favoriteData = createReducer(initialState, (builder) => {
       state.favorites = action.payload;
       state.isFavoritesLoaded = true;
     })
-    .addCase(updateFavorites, (state, action) => {
+    .addCase(updateFavoritesList, (state, action) => {
       const index = state.favorites.findIndex((favorite) => favorite.id === action.payload.id);
       state.favorites = [
         ...state.favorites.slice(0, index),

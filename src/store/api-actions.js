@@ -15,7 +15,6 @@ import {
   updateOffer,
   updateNearOffersList
 } from "../store/actions";
-// import {AuthorizationStatus} from "../const";
 
 export const fetchOffersList = () => (dispatch, _getState, api) => (
   api.get(`/hotels`)
@@ -98,16 +97,12 @@ export const checkAuthStatus = () => (dispatch, _getState, api) => (
 
 export const login = ({login: email, password, avatarUrl}) => (dispatch, _getState, api) => {
   return api.post(`/login`, {email, password, avatarUrl})
-    .then(() => {
-      // dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.AUTH));
-      dispatch(setAuthInfo({email, password, avatarUrl}));
-    })
+    .then(() => dispatch(setAuthInfo({email, password, avatarUrl})))
     .then(() => dispatch(redirectToRoute(`/`)));
 };
 
 export const logout = ({email, password, avatarUrl}) => (dispatch, _getState, api) => {
   return api.get(`/logout`, {email, password, avatarUrl})
-    // .then(() => dispatch(ActionCreator.receiveAuthorizationStatus(AuthorizationStatus.NO_AUTH)))
     .then(() => {
       dispatch(setAuthInfo(null));
       dispatch(redirectToRoute(`/`));

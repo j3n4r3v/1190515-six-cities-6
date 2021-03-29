@@ -1,8 +1,9 @@
 import {createSelector} from "reselect";
+import {NameSpace} from "../store/reducer";
 
-const getCity = (state) => state.activeCity;
-const getOffers = (state) => state.offers;
-const getOption = (state) => state.activeOption;
+const getCity = (state) => state[NameSpace.MAIN].activeCity;
+const getOffers = (state) => state[NameSpace.MAIN].offers;
+const getOption = (state) => state[NameSpace.MAIN].activeOption;
 
 export const getActiveOffers = createSelector(
     [getCity, getOffers, getOption],
