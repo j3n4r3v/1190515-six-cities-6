@@ -5,14 +5,17 @@ import {useSelector, useDispatch} from "react-redux";
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import LoadingScreen from "../loading-screen/loading-screen";
 
-import FavoriteList from "../favorite-list/favorite-list";
 import {fetchFavorites} from "../../store/api-actions";
+
+import FavoritesLoaded from "../favorites-loaded/favorites-loaded";
+import FavoritesNoLoaded from "../favorites-no-loaded/favorites-no-loaded";
+
+import {AppRoute} from "../../const";
 
 const FavoritesScreen = () => {
 
   const dispatch = useDispatch();
   const {authInfo} = useSelector((state) => state.USER);
-
 
   useEffect(() => {
     if (authInfo) {
@@ -36,18 +39,12 @@ const FavoritesScreen = () => {
 
         <AuthInfoScreen />
 
-        <main className="page__main page__main--favorites">
-          <div className="page__favorites-container container">
-            <section className="favorites">
-              <h1 className="favorites__title">{favorites.length && `Saved listing` || `Nothing yet saved`}</h1>
+        {
+          favorites.length > 0 ? <FavoritesLoaded /> : <FavoritesNoLoaded />
+        }
 
-              <FavoriteList offers={favorites} typeOffer={`FAVORITE`} />
-
-            </section>
-          </div>
-        </main>
         <footer className="footer container">
-          <Link className="footer__logo-link" to="/">
+          <Link className="footer__logo-link" to={`${AppRoute.MAIN}`}>
             <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width={64} height={33} />
           </Link>
         </footer>

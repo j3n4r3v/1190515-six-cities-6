@@ -12,7 +12,7 @@ const ContainerOffersList = ({offers, typeOffer, onChangeActiveOffer, onScrollTo
     <div className={`${container.divClass} places__list`}>
 
       {
-        offers.length > 0 ?
+        offers.length > 0 &&
           offers.map((it) =>
 
             <Offer typeOffer={typeOffer}
@@ -22,8 +22,6 @@ const ContainerOffersList = ({offers, typeOffer, onChangeActiveOffer, onScrollTo
               onScrollToTop={onScrollToTop}
               onFavoriteClick={onFavoriteClick}
             />)
-
-          : <p>No places to stay available</p>
       }
 
     </div>

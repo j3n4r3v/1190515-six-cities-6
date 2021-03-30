@@ -23,7 +23,7 @@ const FavoriteItems = ({city, offers, typeOffer}) => {
           </a>
         </div>
       </div>
-      <ContainerOffersList offers={offers} typeOffer={typeOffer} onChangeActiveOffer={() => { }} onFavoriteClick={handleFavorite} />
+      <ContainerOffersList offers={offers} typeOffer={typeOffer} onFavoriteClick={handleFavorite} />
     </li>
   );
 };

@@ -7,6 +7,23 @@ const AuthorizationStatus = {
 
 const stars = [5, 4, 3, 2, 1];
 
+const AppRoute = {
+  MAIN: `/`,
+  // PROPERTY: `/property`,
+  FAVORITES: `/favorites`,
+  LOGIN: `/login`,
+  OFFER: `/offer`,
+  NOT_FOUND: `/not-found`
+};
+const APIRoute = {
+  LOGIN: `/login`,
+  OFFERS: `/hotels`,
+  COMMENTS: `/comments`,
+  FAVORITE: `/favorite`,
+  LOGOUT: `/logout`,
+  NEAROFFERS: `/nearby`
+};
+
 const Type = {
   MAIN: {
     divClass: `cities__places-list tabs__content`,
@@ -55,4 +72,4 @@ const MapSettings = {
 
 const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 
-export {CITIES, Type, MapSettings, PlacesSortType, AuthorizationStatus, stars};
+export {CITIES, Type, MapSettings, PlacesSortType, AuthorizationStatus, stars, AppRoute, APIRoute};

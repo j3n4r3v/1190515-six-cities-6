@@ -19,6 +19,8 @@ import {getActiveReviews} from "../../store/selectors";
 
 import {fetchPropertyInfo, updateSelectOffer, updateNearOffers} from "../../store/api-actions";
 
+import {AppRoute} from "../../const";
+
 const PropertyScreen = () => {
 
   const {id} = useParams();
@@ -30,13 +32,10 @@ const PropertyScreen = () => {
     dispatch(fetchPropertyInfo(id));
   }, [id]);
 
-  // const {isDataLoaded} = useSelector((state) => state.MAIN);
   const {offer, nearOffers, isPropertySetLoaded} = useSelector((state) => state.PROPERTY);
   const {authInfo} = useSelector((state) => state.USER);
   const reviews = useSelector(getActiveReviews);
 
-
-  // if (!isDataLoaded || !propertyInfoIsLoaded) {
   if (!isPropertySetLoaded) {
     return (
       <LoadingScreen />
@@ -76,7 +75,7 @@ const PropertyScreen = () => {
                 </h1>
                 <button className={`property__bookmark-button button ${isFavorite && `property__bookmark-button--active`}`}
                   type="button"
-                  onClick={() => authInfo && dispatch(updateSelectOffer(id, !isFavorite)) || history.push(`${`/login`}`)}
+                  onClick={() => authInfo && dispatch(updateSelectOffer(id, !isFavorite)) || history.push(`${AppRoute.LOGIN}`)}
                 >
                   <svg className="property__bookmark-icon" width={31} height={33}>
                     <use xlinkHref="#icon-bookmark" />

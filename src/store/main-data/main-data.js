@@ -1,5 +1,5 @@
 import {createReducer} from "@reduxjs/toolkit";
-import {changeCity, changeActivePlacesSortType, receiveOffers, updateOffersList} from "../actions";
+import {changeCity, changeActiveSortType, receiveOffers, updateOffersList} from "../actions";
 
 const initialState = {
   activeCity: `Paris`,
@@ -13,7 +13,7 @@ const mainData = createReducer(initialState, (builder) => {
     .addCase(changeCity, (state, action) => {
       state.activeCity = action.payload;
     })
-    .addCase(changeActivePlacesSortType, (state, action) => {
+    .addCase(changeActiveSortType, (state, action) => {
       state.activeOption = action.payload;
     })
     .addCase(receiveOffers, (state, action) => {
