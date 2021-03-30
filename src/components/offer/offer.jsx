@@ -15,7 +15,12 @@ const Offer = ({offer, typeOffer, onChangeActiveOffer, onScrollToTop, onFavorite
   const offerType = Type[typeOffer];
 
   return <React.Fragment>
-    <article className={`${offerType.article} place-card`} onMouseOver={() => onChangeActiveOffer(offer)}>
+    <article className={`${offerType.article} place-card`} onMouseOver={() => {
+      if (onChangeActiveOffer) {
+        onChangeActiveOffer(offer);
+      }
+    }
+    }>
       {
         isPremium && <div className="place-card__mark">
           <span>Premium</span>

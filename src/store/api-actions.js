@@ -92,8 +92,6 @@ export const updateNearOffers = (id, status) => (dispatch, _getState, api) => (
 export const checkAuthStatus = () => (dispatch, _getState, api) => (
   api.get(`${APIRoute.LOGIN}`)
     .then(({data}) => dispatch(setAuthInfo(adaptAuthInfoToClient(data))))
-  // .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(status)))   AUTH/NO-AUTH?????
-  // не могу понять как связать получение AuthorizationStatus из store без изменения?
   .catch(() => { })
 );
 

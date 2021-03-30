@@ -20,22 +20,6 @@ const CitiesLoaded = () => {
     dispatch(updateOffers(id, status));
   };
 
-  // import { useState } from 'react';
-  // export const useUserAnswers = (question, onAnswer) => {
-  //   const answersCount = question.answers.length;
-  //   const [answers, setAnswers] = useState(new Array(answersCount).fill(false));
-  //   const handleAnswer = () => {
-  //     onAnswer(question, answers);
-  //   };
-  //   const handleAnswerChange = (id, value) => {
-  //     const userAnswers = answers.slice(0);
-  //     userAnswers[id] = value;
-  //     setAnswers(userAnswers);
-  //   };
-  //   return [answers, handleAnswer, handleAnswerChange];
-  // };
-
-
   return (
     <div className="cities">
       <div className="cities__places-container container">
@@ -47,7 +31,7 @@ const CitiesLoaded = () => {
 
           <ContainerOffersList
             offers={offers}
-            typeOffer={`MAIN`} // "MAIN" ??
+            typeOffer={`MAIN`}
             onChangeActiveOffer={setActiveOffer}
             onFavoriteClick={handleFavorite}
           />

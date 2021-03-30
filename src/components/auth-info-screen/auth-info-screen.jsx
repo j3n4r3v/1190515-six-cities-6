@@ -38,11 +38,9 @@ const AuthInfoScreen = () => {
                 <Link className="header__nav-link header__nav-link--profile"
                   to={authInfo && `${AppRoute.FAVORITES}` || `${AppRoute.LOGIN}`}>
 
-                  {
-                    authInfo && <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                    //   style={{backgroundImage: authInfo.avatarUrl}}>
-                    // </div>
-                  }
+                  {authInfo && <div className="header__avatar-wrapper user__avatar-wrapper"
+                    style={{backgroundImage: `url(${authInfo.avatarUrl})`}}>
+                  </div>}
 
                   <span className="header__user-name user__name">{authInfo && authInfo.email || `Sign In`}</span>
                 </Link>
