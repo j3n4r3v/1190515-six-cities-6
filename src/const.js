@@ -2,6 +2,15 @@ const PlacesSortType = [`Popular`, `Price: low to high`, `Price: high to low`, `
 
 const stars = [5, 4, 3, 2, 1];
 
+const CommentLength = {
+  MIN: 50,
+  MAX: 300
+};
+
+const WIDTH_PER_STAR = 20;
+
+const ERROR_TIMEOUT = 3000;
+
 const AppRoute = {
   MAIN: `/`,
   FAVORITES: `/favorites`,
@@ -66,4 +75,4 @@ const MapSettings = {
 
 const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 
-export {CITIES, Type, MapSettings, PlacesSortType, stars, AppRoute, APIRoute};
+export {CITIES, Type, MapSettings, PlacesSortType, CommentLength, ERROR_TIMEOUT, WIDTH_PER_STAR, stars, AppRoute, APIRoute};

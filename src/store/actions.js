@@ -12,7 +12,7 @@ export const ActionType = {
   UPDATE_NEAR_OFFERS_LIST: `property/updateNearOffers`,
   REDIRECT_TO_ROUTE: `property/notFound`,
   FORM_IS_DISABLED: `property/formIsDisabled`,
-  FORM_IS_ERROR: `property/formIsError`,
+  SET_IS_ERROR: `property/setIsError`,
   SET_AUTH_INFO: `login/setAuthInfo`,
   RECEIVE_FAVORITES_OFFERS: `favorite/receiveFavoritesOffers`,
   UPDATE_FAVORITES_LIST: `favorite/updateFavorites`,
@@ -91,7 +91,7 @@ export const formIsDisabled = createAction(ActionType.FORM_IS_DISABLED, (bool) =
   };
 });
 
-export const formIsError = createAction(ActionType.FORM_IS_ERROR, (bool) => {
+export const setIsError = createAction(ActionType.SET_IS_ERROR, (bool) => {
   return {
     payload: bool
   };

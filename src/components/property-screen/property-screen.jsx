@@ -19,7 +19,9 @@ import {getActiveReviews} from "../../store/selectors";
 
 import {fetchPropertyInfo, updateSelectOffer, updateNearOffers} from "../../store/api-actions";
 
-import {AppRoute} from "../../const";
+import {AppRoute, WIDTH_PER_STAR} from "../../const";
+
+import withError from "../hocs/with-error";
 
 const PropertyScreen = () => {
 
@@ -85,7 +87,7 @@ const PropertyScreen = () => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: `${20 * rating}%`}} />
+                  <span style={{width: `${WIDTH_PER_STAR * rating}%`}} />
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{rating}</span>
@@ -136,6 +138,7 @@ const PropertyScreen = () => {
   </React.Fragment>;
 };
 
-export default PropertyScreen;
+export {PropertyScreen};
+export default withError(PropertyScreen);
 
 

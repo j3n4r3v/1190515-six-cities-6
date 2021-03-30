@@ -1,11 +1,18 @@
 import {createReducer} from "@reduxjs/toolkit";
-import {changeCity, changeActiveSortType, receiveOffers, updateOffersList} from "../actions";
+import {
+  changeCity,
+  changeActiveSortType,
+  receiveOffers,
+  updateOffersList,
+  setIsError
+} from "../actions";
 
 const initialState = {
   activeCity: `Paris`,
   activeOption: `Popular`,
   offers: [],
-  isDataLoaded: false
+  isDataLoaded: false,
+  isError: false
 };
 
 const mainData = createReducer(initialState, (builder) => {
@@ -19,6 +26,9 @@ const mainData = createReducer(initialState, (builder) => {
     .addCase(receiveOffers, (state, action) => {
       state.offers = action.payload;
       state.isDataLoaded = true;
+    })
+    .addCase(setIsError, (state, action) => {
+      state.isError = action.payload;
     })
     .addCase(updateOffersList, (state, action) => {
       const index = state.offers.findIndex((offer) => offer.id === action.payload.id);

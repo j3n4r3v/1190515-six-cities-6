@@ -1,6 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+import withError from "../hocs/with-error";
+
 const NotFoundScreen = () => {
 
   return <React.Fragment>
@@ -12,4 +14,6 @@ const NotFoundScreen = () => {
   </React.Fragment>;
 };
 
-export default NotFoundScreen;
+export {NotFoundScreen};
+export default withError(NotFoundScreen);
+

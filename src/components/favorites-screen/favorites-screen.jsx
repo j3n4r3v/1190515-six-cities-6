@@ -12,6 +12,8 @@ import FavoritesNoLoaded from "../favorites-no-loaded/favorites-no-loaded";
 
 import {AppRoute} from "../../const";
 
+import withError from "../hocs/with-error";
+
 const FavoritesScreen = () => {
 
   const dispatch = useDispatch();
@@ -53,5 +55,7 @@ const FavoritesScreen = () => {
   </React.Fragment>;
 };
 
-export default FavoritesScreen;
+export {FavoritesScreen};
+export default withError(FavoritesScreen);
+
 

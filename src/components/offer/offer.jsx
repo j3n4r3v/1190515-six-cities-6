@@ -4,7 +4,8 @@ import {useSelector} from "react-redux";
 import PropTypes from "prop-types";
 
 import {offerPropTypes} from "../../propetypes";
-import {Type, APIRoute} from "../../const";
+import {Type, APIRoute, WIDTH_PER_STAR} from "../../const";
+
 
 const Offer = ({offer, typeOffer, onChangeActiveOffer, onScrollToTop, onFavoriteClick}) => {
   const {previewImage, price, rating, title, type, id, isPremium, isFavorite} = offer;
@@ -49,7 +50,7 @@ const Offer = ({offer, typeOffer, onChangeActiveOffer, onScrollToTop, onFavorite
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${20 * rating}%`}} />
+            <span style={{width: `${WIDTH_PER_STAR * rating}%`}} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

@@ -4,7 +4,6 @@ import {
   receiveReviews,
   receiveOffer,
   propertySetIsLoaded,
-  formIsError,
   formIsDisabled,
   updateOffer,
   updateNearOffersList
@@ -16,7 +15,6 @@ const initialState = {
   reviews: [],
   isPropertySetLoaded: false,
   isFormDisabled: false,
-  isFormError: false,
 };
 
 const propertyData = createReducer(initialState, (builder) => {
@@ -32,9 +30,6 @@ const propertyData = createReducer(initialState, (builder) => {
     })
     .addCase(formIsDisabled, (state, action) => {
       state.isFormDisabled = action.payload;
-    })
-    .addCase(formIsError, (state, action) => {
-      state.isFormError = action.payload;
     })
     .addCase(propertySetIsLoaded, (state, action) => {
       state.isPropertySetLoaded = action.payload;

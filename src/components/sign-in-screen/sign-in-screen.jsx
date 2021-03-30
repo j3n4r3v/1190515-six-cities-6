@@ -1,12 +1,15 @@
 import React, {useRef} from "react";
 
-import {login} from "../../store/api-actions";
 import {useDispatch, useSelector} from "react-redux";
 import {Redirect} from "react-router-dom";
+
+import {login} from "../../store/api-actions";
 
 import {AppRoute} from "../../const";
 
 import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
+
+import withError from "../hocs/with-error";
 
 const SignInScreen = () => {
 
@@ -83,5 +86,7 @@ const SignInScreen = () => {
   </React.Fragment>;
 };
 
-export default SignInScreen;
+export {SignInScreen};
+export default withError(SignInScreen);
+
 

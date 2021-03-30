@@ -1,6 +1,7 @@
 import React from "react";
 
 import {reviewPropTypes} from "../../propetypes";
+import {WIDTH_PER_STAR} from "../../const";
 
 const Review = (props) => {
   const {review} = props;
@@ -20,7 +21,7 @@ const Review = (props) => {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{width: `${20 * rating}%`}} />
+            <span style={{width: `${WIDTH_PER_STAR * rating}%`}} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

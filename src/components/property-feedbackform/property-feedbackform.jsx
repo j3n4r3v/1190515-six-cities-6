@@ -4,14 +4,15 @@ import {useParams} from "react-router-dom";
 
 import {stars} from "../../const";
 import {addReview} from "../../store/api-actions";
-import {formIsError} from "../../store/actions";
 
 import Error from "../property-feedbackform/error";
+
+import {CommentLength} from "../../const";
 
 const PropertyFeedBackForm = () => {
   const {id} = useParams();
   const dispatch = useDispatch();
-  const {isFormDisabled, isFormError} = useSelector((state) => state.PROPERTY);
+  const {isFormDisabled, isError} = useSelector((state) => state.PROPERTY);
 
   const [data, setData] = useState({
     review: ``,
@@ -19,19 +20,19 @@ const PropertyFeedBackForm = () => {
   });
 
   useEffect(() => {
-    if (!isFormError && !isFormDisabled) {
+    if (!isError && !isFormDisabled) {
       setData(() => ({
         review: ``,
         rating: ``
       }));
     }
-  }, [isFormError, isFormDisabled]);
+  }, [isError, isFormDisabled]);
 
   useEffect(() => {
-    if (isFormError) {
-      setTimeout(() => dispatch(formIsError(false), 5000));
+    if (isError) {
+      setTimeout(() => dispatch(isError(false), 5000));
     }
-  }, [isFormError]);
+  }, [isError]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -58,7 +59,7 @@ const PropertyFeedBackForm = () => {
       action="#"
       method="post">
       {
-        isFormError && <Error />
+        isError && <Error />
       }
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
@@ -98,13 +99,13 @@ const PropertyFeedBackForm = () => {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        maxLength={300}
+        maxLength={CommentLength.MAX}
         disabled={isFormDisabled}
         value={data.review}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
-          To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
+          To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">{CommentLength.MIN} characters</b>.
         </p>
         <button
           className="reviews__submit form__submit button"

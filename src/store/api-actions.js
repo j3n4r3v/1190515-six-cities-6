@@ -8,7 +8,7 @@ import {
   propertySetIsLoaded,
   redirectToRoute,
   formIsDisabled,
-  formIsError,
+  setIsError,
   setAuthInfo,
   updateFavoritesList,
   updateOffersList,
@@ -25,6 +25,9 @@ export const fetchOffersList = () => (dispatch, _getState, api) => (
     .then((data) => {
       return dispatch(receiveOffers(data));
     })
+    .catch(() => {
+      dispatch(setIsError(true));
+    })
 );
 
 export const fetchPropertyInfo = (id) => (dispatch, _getState, api) => {
@@ -39,14 +42,19 @@ export const fetchPropertyInfo = (id) => (dispatch, _getState, api) => {
       dispatch(receiveReviews(reviews.data.map(adaptReviewsToClient)));
     })
     .then(() => dispatch(propertySetIsLoaded(true)))
-    .catch(() => dispatch(redirectToRoute(`${AppRoute.NOT_FOUND}`)));
+    .catch(() => {
+      dispatch(setIsError(true));
+      dispatch(redirectToRoute(`${AppRoute.NOT_FOUND}`));
+    });
 };
 
 export const addReview = (comment, id) => (dispatch, _getState, api) => {
   dispatch(formIsDisabled(true));
   api.post(`${APIRoute.COMMENTS}/${id}`, comment)
     .then(({data}) => dispatch(receiveReviews(data.map(adaptReviewsToClient))))
-    .catch(() => dispatch(formIsError(true)))
+    .catch(() => {
+      dispatch(setIsError(true));
+    })
     .finally(() => dispatch(formIsDisabled(false)));
 };
 
@@ -54,12 +62,17 @@ export const fetchFavorites = () => (dispatch, _getState, api) => (
   api.get(`${APIRoute.FAVORITE}`)
     .then(({data}) =>
       dispatch(receiveFavoritesOffers((data.map((el) => adaptToServer(el))))))
+    .catch(() => {
+      dispatch(setIsError(true));
+    })
 );
 
 export const updateOffers = (id, status) => (dispatch, _getState, api) => (
   api.post(`${`${APIRoute.FAVORITE}`}/${id}/${Number(status)}`)
     .then(({data}) => dispatch(updateOffersList((adaptToServer(data)))))
-    .catch(() => { })
+    .catch(() => {
+      dispatch(setIsError(true));
+    })
 );
 
 export const updateFavorites = (id, status) => (dispatch, _getState, api) => (
@@ -68,7 +81,9 @@ export const updateFavorites = (id, status) => (dispatch, _getState, api) => (
       dispatch(updateFavoritesList(adaptToServer(data)));
       dispatch(updateOffersList(adaptToServer(data)));
     })
-    .catch(() => { })
+    .catch(() => {
+      dispatch(setIsError(true));
+    })
 );
 
 export const updateSelectOffer = (id, status) => (dispatch, _getState, api) => (
@@ -77,16 +92,20 @@ export const updateSelectOffer = (id, status) => (dispatch, _getState, api) => (
       dispatch(updateOffer(adaptToServer(data)));
       dispatch(updateOffersList(adaptToServer(data)));
     })
-    .catch(() => { })
+    .catch(() => {
+      dispatch(setIsError(true));
+    })
 );
 
 export const updateNearOffers = (id, status) => (dispatch, _getState, api) => (
-  api.post(`${APIRoute.NEAROFFERS}/${id}/${Number(status)}`)
+  api.post(`${APIRoute.FAVORITE}/${id}/${Number(status)}`)
     .then(({data}) => {
       dispatch(updateNearOffersList(adaptToServer(data)));
       dispatch(updateOffersList(adaptToServer(data)));
     })
-    .catch(() => { })
+    .catch(() => {
+      dispatch(setIsError(true));
+    })
 );
 
 export const checkAuthStatus = () => (dispatch, _getState, api) => (

@@ -1,5 +1,6 @@
 import React from "react";
 import {reviewPropTypes} from "../../propetypes";
+import {WIDTH_PER_STAR} from "../../const";
 
 const PropertyReviewItem = ({review}) => {
   const {comment, date, rating, user} = review;
@@ -18,7 +19,7 @@ const PropertyReviewItem = ({review}) => {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{width: `${20 * rating}%`}}></span>
+            <span style={{width: `${WIDTH_PER_STAR * rating}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
