@@ -4,18 +4,18 @@ export const ActionType = {
   ACTIVE_CITY: `main/activeCity`,
   CHANGE_ACTIVE_SORT_TYPE: `main/changeActiveSortType`,
   RECEIVE_OFFERS: `main/receiveOffers`,
+  UPDATE_OFFERS_LIST: `main/updateOffers`,
   RECEIVE_OFFER: `property/receiveOffer`,
   RECEIVE_REVIEWS: `property/receiveReviews`,
   RECEIVE_NEAR_OFFERS: `property/receiveNearOffers`,
-  RECEIVE_FAVORITES_OFFERS: `favorite/receiveFavoritesOffers`,
-  UPDATE_FAVORITES_LIST: `favorite/updateFavorites`,
-  UPDATE_OFFERS_LIST: `main/updateOffers`,
   UPDATE_OFFER: `property/updateOffer`,
   UPDATE_NEAR_OFFERS_LIST: `property/updateNearOffers`,
-  REDIRECT_TO_ROUTE: `propert/notFound`,
-  SET_AUTH_INFO: `login/setAuthInfo`,
+  REDIRECT_TO_ROUTE: `property/notFound`,
   FORM_IS_DISABLED: `property/formIsDisabled`,
   FORM_IS_ERROR: `property/formIsError`,
+  SET_AUTH_INFO: `login/setAuthInfo`,
+  RECEIVE_FAVORITES_OFFERS: `favorite/receiveFavoritesOffers`,
+  UPDATE_FAVORITES_LIST: `favorite/updateFavorites`,
   PROPERTY_SET_IS_LOADED: ``
 };
 

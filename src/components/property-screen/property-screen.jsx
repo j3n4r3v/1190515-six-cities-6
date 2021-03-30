@@ -32,13 +32,10 @@ const PropertyScreen = () => {
     dispatch(fetchPropertyInfo(id));
   }, [id]);
 
-  // const {isDataLoaded} = useSelector((state) => state.MAIN);
   const {offer, nearOffers, isPropertySetLoaded} = useSelector((state) => state.PROPERTY);
   const {authInfo} = useSelector((state) => state.USER);
   const reviews = useSelector(getActiveReviews);
 
-
-  // if (!isDataLoaded || !propertyInfoIsLoaded) {
   if (!isPropertySetLoaded) {
     return (
       <LoadingScreen />

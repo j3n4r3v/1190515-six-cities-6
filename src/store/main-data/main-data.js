@@ -1,5 +1,5 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { changeCity, changeActiveSortType, receiveOffers, updateOffersList } from "../actions";
+import {createReducer} from "@reduxjs/toolkit";
+import {changeCity, changeActiveSortType, receiveOffers, updateOffersList} from "../actions";
 
 const initialState = {
   activeCity: `Paris`,
@@ -30,4 +30,4 @@ const mainData = createReducer(initialState, (builder) => {
     });
 });
 
-export { mainData };
+export {mainData};
