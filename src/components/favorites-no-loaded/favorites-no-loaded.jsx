@@ -1,6 +1,6 @@
 import React from "react";
 
-const NoFavoritesLoaded = () => {
+const FavoritesNoLoaded = () => {
 
   return (
     <main className="page__main page__main--favorites page__main--favorites-empty">
@@ -17,4 +17,4 @@ const NoFavoritesLoaded = () => {
   );
 };
 
-export default NoFavoritesLoaded;
+export default FavoritesNoLoaded;
