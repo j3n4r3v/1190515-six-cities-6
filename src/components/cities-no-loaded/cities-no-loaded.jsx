@@ -1,6 +1,6 @@
 import React from "react";
 
-const NoCitiesLoaded = () => {
+const CitiesNoLoaded = () => {
 
   return (
     <div className="cities">
@@ -17,4 +17,4 @@ const NoCitiesLoaded = () => {
   );
 };
 
-export default NoCitiesLoaded;
+export default CitiesNoLoaded;

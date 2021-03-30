@@ -2,7 +2,7 @@ import {createAction} from "@reduxjs/toolkit";
 
 export const ActionType = {
   ACTIVE_CITY: `main/activeCity`,
-  CHANGE_ACTIVE_SORT_TYPE: `main/changeActivePlacesSortType`,
+  CHANGE_ACTIVE_SORT_TYPE: `main/changeActiveSortType`,
   RECEIVE_OFFERS: `main/receiveOffers`,
   RECEIVE_OFFER: `property/receiveOffer`,
   RECEIVE_REVIEWS: `property/receiveReviews`,
@@ -12,7 +12,6 @@ export const ActionType = {
   UPDATE_OFFERS_LIST: `main/updateOffers`,
   UPDATE_OFFER: `property/updateOffer`,
   UPDATE_NEAR_OFFERS_LIST: `property/updateNearOffers`,
-  // RECEIVE_AUTHORIZATION_STATUS: `login/receiveAuthorizationStatus`,
   REDIRECT_TO_ROUTE: `propert/notFound`,
   SET_AUTH_INFO: `login/setAuthInfo`,
   FORM_IS_DISABLED: `property/formIsDisabled`,
@@ -26,7 +25,7 @@ export const changeCity = createAction(ActionType.ACTIVE_CITY, (city) => {
   };
 });
 
-export const changeActivePlacesSortType = createAction(ActionType.CHANGE_ACTIVE_SORT_TYPE, (option) => {
+export const changeActiveSortType = createAction(ActionType.CHANGE_ACTIVE_SORT_TYPE, (option) => {
   return {
     payload: option
   };
@@ -109,11 +108,6 @@ export const receiveFavoriteOffers = createAction(ActionType.RECEIVE_FAVORITE_OF
     payload: data
   };
 });
-
-// changeFavoriteOffer: (data) => ({
-//   type: ActionType.CHANGE_FAVORITE_OFFER,
-//   payload: data
-// }),
 
 export const setAuthInfo = createAction(ActionType.SET_AUTH_INFO, (info) => {
   return {

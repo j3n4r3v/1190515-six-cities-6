@@ -1,14 +1,14 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-import {useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-import {changeActivePlacesSortType} from "../../store/actions";
+import { changeActiveSortType } from "../../store/actions";
 import OptionsItemsList from "../options-items-list/options-items-list";
 
-import {PlacesSortType} from "../../const";
+import { PlacesSortType } from "../../const";
 
 const PlacesSort = () => {
-  const {activeOption} = useSelector((state) => state.MAIN);
+  const { activeOption } = useSelector((state) => state.MAIN);
   const dispatch = useDispatch();
 
   const [isOpenList, setIsOpenList] = useState(false);
@@ -18,7 +18,7 @@ const PlacesSort = () => {
   };
 
   const handleChangeOption = (item) => {
-    dispatch(changeActivePlacesSortType(item));
+    dispatch(changeActiveSortType(item));
     handleOption();
   };
 

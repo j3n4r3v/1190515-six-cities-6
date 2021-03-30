@@ -16,8 +16,10 @@ import {
   updateNearOffersList
 } from "../store/actions";
 
+import {AppRoute, APIRoute} from "../const";
+
 export const fetchOffersList = () => (dispatch, _getState, api) => (
-  api.get(`/hotels`)
+  api.get(`${APIRoute.OFFERS}`)
     .then((response) =>
       response.data.map((offer) => adaptToServer(offer)))
     .then((data) => {
@@ -27,9 +29,9 @@ export const fetchOffersList = () => (dispatch, _getState, api) => (
 
 export const fetchPropertyInfo = (id) => (dispatch, _getState, api) => {
   Promise.all([
-    api.get(`/hotels/${id}`),
-    api.get(`/hotels/${id}/nearby`),
-    api.get(`comments/${id}`)
+    api.get(`${APIRoute.OFFERS}/${id}`),
+    api.get(`${APIRoute.OFFERS}/${id}${APIRoute.NEAROFFERS}`),
+    api.get(`${APIRoute.COMMENTS}/${id}`)
   ])
     .then(([offer, nearOffers, reviews]) => {
       dispatch(receiveOffer(adaptToServer(offer.data)));
@@ -37,31 +39,31 @@ export const fetchPropertyInfo = (id) => (dispatch, _getState, api) => {
       dispatch(receiveReviews(reviews.data.map(adaptReviewsToClient)));
     })
     .then(() => dispatch(propertySetIsLoaded(true)))
-    .catch(() => dispatch(redirectToRoute(`/not-found`)));
+    .catch(() => dispatch(redirectToRoute(`${AppRoute.NOT_FOUND}`)));
 };
 
 export const addReview = (comment, id) => (dispatch, _getState, api) => {
   dispatch(formIsDisabled(true));
-  api.post(`comments/${id}`, comment)
+  api.post(`${APIRoute.COMMENTS}/${id}`, comment)
     .then(({data}) => dispatch(receiveReviews(data.map(adaptReviewsToClient))))
     .catch(() => dispatch(formIsError(true)))
     .finally(() => dispatch(formIsDisabled(false)));
 };
 
 export const fetchFavorites = () => (dispatch, _getState, api) => (
-  api.get(`/favorite`)
-    .then((response) =>
-      dispatch(receiveFavoritesOffers((response.data.map((el) => adaptToServer(el))))))
+  api.get(`${APIRoute.FAVORITE}`)
+    .then(({data}) =>
+      dispatch(receiveFavoritesOffers((data.map((el) => adaptToServer(el))))))
 );
 
 export const updateOffers = (id, status) => (dispatch, _getState, api) => (
-  api.post(`${`/favorite`}/${id}/${Number(status)}`)
+  api.post(`${`${APIRoute.FAVORITE}`}/${id}/${Number(status)}`)
     .then(({data}) => dispatch(updateOffersList((adaptToServer(data)))))
     .catch(() => { })
 );
 
 export const updateFavorites = (id, status) => (dispatch, _getState, api) => (
-  api.post(`${`/favorite`}/${id}/${Number(status)}`)
+  api.post(`${APIRoute.FAVORITE}/${id}/${Number(status)}`)
     .then(({data}) => {
       dispatch(updateFavoritesList(adaptToServer(data)));
       dispatch(updateOffersList(adaptToServer(data)));
@@ -70,7 +72,7 @@ export const updateFavorites = (id, status) => (dispatch, _getState, api) => (
 );
 
 export const updateSelectOffer = (id, status) => (dispatch, _getState, api) => (
-  api.post(`${`/favorite`}/${id}/${Number(status)}`)
+  api.post(`${APIRoute.FAVORITE}/${id}/${Number(status)}`)
     .then(({data}) => {
       dispatch(updateOffer(adaptToServer(data)));
       dispatch(updateOffersList(adaptToServer(data)));
@@ -79,7 +81,7 @@ export const updateSelectOffer = (id, status) => (dispatch, _getState, api) => (
 );
 
 export const updateNearOffers = (id, status) => (dispatch, _getState, api) => (
-  api.post(`${`/favorite`}/${id}/${Number(status)}`)
+  api.post(`${APIRoute.NEAROFFERS}/${id}/${Number(status)}`)
     .then(({data}) => {
       dispatch(updateNearOffersList(adaptToServer(data)));
       dispatch(updateOffersList(adaptToServer(data)));
@@ -88,24 +90,24 @@ export const updateNearOffers = (id, status) => (dispatch, _getState, api) => (
 );
 
 export const checkAuthStatus = () => (dispatch, _getState, api) => (
-  api.get(`/login`)
-    .then((response) => dispatch(setAuthInfo(adaptAuthInfoToClient(response.data))))
-    // .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(status)))
-    // не могу понять как связать получение AuthorizationStatus из store без изменения?
-    .catch(() => { })
+  api.get(`${APIRoute.LOGIN}`)
+    .then(({data}) => dispatch(setAuthInfo(adaptAuthInfoToClient(data))))
+  // .then((status) => dispatch(ActionCreator.receiveAuthorizationStatus(status)))
+  // не могу понять как связать получение AuthorizationStatus из store без изменения?
+  .catch(() => { })
 );
 
 export const login = ({login: email, password, avatarUrl}) => (dispatch, _getState, api) => {
-  return api.post(`/login`, {email, password, avatarUrl})
+  return api.post(`${APIRoute.LOGIN}`, {email, password, avatarUrl})
     .then(() => dispatch(setAuthInfo({email, password, avatarUrl})))
-    .then(() => dispatch(redirectToRoute(`/`)));
+  .then(() => dispatch(redirectToRoute(`${AppRoute.MAIN}`)));
 };
 
 export const logout = ({email, password, avatarUrl}) => (dispatch, _getState, api) => {
   return api.get(`/logout`, {email, password, avatarUrl})
     .then(() => {
       dispatch(setAuthInfo(null));
-      dispatch(redirectToRoute(`/`));
+      dispatch(redirectToRoute(`${AppRoute.MAIN}`));
     })
     .catch(() => { });
 };

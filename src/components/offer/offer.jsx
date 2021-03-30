@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import PropTypes from "prop-types";
 
 import {offerPropTypes} from "../../propetypes";
-import {Type} from "../../const";
+import {Type, APIRoute} from "../../const";
 
 const Offer = ({offer, typeOffer, onChangeActiveOffer, onScrollToTop, onFavoriteClick}) => {
   const {previewImage, price, rating, title, type, id, isPremium, isFavorite} = offer;
@@ -34,7 +34,7 @@ const Offer = ({offer, typeOffer, onChangeActiveOffer, onScrollToTop, onFavorite
           </div>
           <button className={`place-card__bookmark-button button ${isFavorite && `place-card__bookmark-button--active`}`}
             type="button"
-            onClick={() => authInfo && onFavoriteClick(id, !isFavorite) || history.push(`${`/login`}`)}
+            onClick={() => authInfo ? onFavoriteClick(id, !isFavorite) : history.push(`${APIRoute.LOGIN}`)}
           >
             <svg className="place-card__bookmark-icon" width={18} height={19}>
               <use xlinkHref="#icon-bookmark" />

@@ -10,7 +10,7 @@ import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 import LoadingScreen from "../loading-screen/loading-screen";
 
 import CitiesLoaded from "../cities-loaded/cities-loaded";
-import NoCitiesLoaded from "../no-cities-loaded/no-cities-loaded";
+import CitiesNoLoaded from "../cities-no-loaded/cities-no-loaded";
 
 const MainScreen = () => {
 
@@ -39,7 +39,7 @@ const MainScreen = () => {
 
         </div>
         {
-          offers.length && <CitiesLoaded /> || <NoCitiesLoaded />
+          offers.length && <CitiesLoaded /> || <CitiesNoLoaded />
         }
       </main>
     </div>

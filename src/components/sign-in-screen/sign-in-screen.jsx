@@ -4,8 +4,9 @@ import {login} from "../../store/api-actions";
 import {useDispatch, useSelector} from "react-redux";
 import {Redirect} from "react-router-dom";
 
-import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
+import {AppRoute} from "../../const";
 
+import AuthInfoScreen from "../auth-info-screen/auth-info-screen";
 
 const SignInScreen = () => {
 
@@ -16,7 +17,7 @@ const SignInScreen = () => {
   const {authInfo} = useSelector((state) => state.USER);
 
   if (authInfo) {
-    return <Redirect to={`${`/`}`} />;
+    return <Redirect to={`${AppRoute.MAIN}`} />;
   }
 
   const handleSubmit = (evt) => {

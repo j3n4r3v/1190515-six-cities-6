@@ -11,28 +11,30 @@ import NotFoundScreen from "../not-found-screen/not-found-screen";
 
 import PrivateRoute from "../private-route/private-route";
 
+import {AppRoute} from "../../const";
+
 const App = () => {
 
   return <React.Fragment>
     <BrowserRouter history={browserHistory}>
       <Switch>
 
-        <Route exact path="/">
+        <Route exact path={`${AppRoute.MAIN}`}>
           <MainScreen/>
         </Route>
 
-        <Route exact path="/login">
+        <Route exact path={`${AppRoute.LOGIN}`}>
           <SignInScreen/>
         </Route>
 
-        <PrivateRoute render={() => <FavoritesScreen />} exact path="/favorites"/>
+        <PrivateRoute render={() => <FavoritesScreen />} exact path={`${AppRoute.FAVORITES}`}/>
 
-        <Route exact path="/offer/:id">
+        <Route exact path={`${AppRoute.OFFER}/:id`}>
           <PropertyScreen/>
         </Route>
 
 
-        <Route exact path="/not-found">
+        <Route exact path={`${AppRoute.NOT_FOUND}`}>
           <NotFoundScreen />
         </Route>
 

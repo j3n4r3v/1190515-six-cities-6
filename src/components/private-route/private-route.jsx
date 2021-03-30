@@ -6,6 +6,8 @@ import {useSelector} from "react-redux";
 
 import {Redirect} from "react-router-dom";
 
+import {AppRoute} from "../../const";
+
 const PrivateRoute = ({render, path, exact}) => {
 
   const {authInfo} = useSelector((state) => state.USER);
@@ -15,7 +17,7 @@ const PrivateRoute = ({render, path, exact}) => {
       path={path}
       exact={exact}
     > { authInfo && render()
-        || <Redirect to="/login" />
+        || <Redirect to={`${AppRoute.LOGIN}`} />
       }
     </Route>
   );
