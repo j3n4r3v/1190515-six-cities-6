@@ -16,7 +16,7 @@ const PrivateRoute = ({render, path, exact}) => {
     <Route
       path={path}
       exact={exact}
-    > { authInfo && render() // тернарный оператор или через && ?
+    > { authInfo && render()
         || <Redirect to={`${AppRoute.LOGIN}`} />
       }
     </Route>

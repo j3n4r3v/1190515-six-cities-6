@@ -16,7 +16,6 @@ import {configureStore} from "@reduxjs/toolkit";
 const api = createAPI(
     () => store.dispatch(setAuthInfo(null))
 );
-// createAPI принимает callback который нужно вызвать на случай неавторизованности, обновит store
 
 const store = configureStore({
   reducer,

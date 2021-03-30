@@ -1,15 +1,9 @@
 const PlacesSortType = [`Popular`, `Price: low to high`, `Price: high to low`, `Top rated first`];
 
-const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`
-};
-
 const stars = [5, 4, 3, 2, 1];
 
 const AppRoute = {
   MAIN: `/`,
-  // PROPERTY: `/property`,
   FAVORITES: `/favorites`,
   LOGIN: `/login`,
   OFFER: `/offer`,
@@ -72,4 +66,4 @@ const MapSettings = {
 
 const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 
-export {CITIES, Type, MapSettings, PlacesSortType, AuthorizationStatus, stars, AppRoute, APIRoute};
+export {CITIES, Type, MapSettings, PlacesSortType, stars, AppRoute, APIRoute};
