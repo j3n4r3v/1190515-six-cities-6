@@ -39,6 +39,8 @@ const AuthInfoScreen = () => {
 
                   {
                     authInfo && <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+                    //   style={{backgroundImage: authInfo.avatarUrl}}>
+                    // </div>
                   }
 
                   <span className="header__user-name user__name">{authInfo && authInfo.email || `Sign In`}</span>
