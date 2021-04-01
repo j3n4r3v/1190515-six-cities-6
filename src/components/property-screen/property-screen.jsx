@@ -96,7 +96,7 @@ const PropertyScreen = () => {
               <PropertyFeatures type={type} bedrooms={bedrooms} maxAdults={maxAdults} />
 
               <div className="property__price">
-                <b className="property__price-value">{price}</b>
+                <b className="property__price-value">&euro;{price}</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
 
