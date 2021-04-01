@@ -81,7 +81,7 @@ const PropertyFeedBackForm = () => {
                 <label
                   htmlFor={`${star}-stars`}
                   className="reviews__rating-label form__rating-label"
-                  title="perfect"
+                  title={star}
                 >
                   <svg className="form__star-image" width="37" height="33">
                     <use xlink="true" href="#icon-star"></use>
