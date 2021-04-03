@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
 
-import {stars} from "../../const";
+import {STARS} from "../../const";
 import {addReview} from "../../store/api-actions";
 
 import Error from "../property-feedbackform/error";
@@ -65,7 +65,7 @@ const PropertyFeedBackForm = () => {
       <div className="reviews__rating-form form__rating">
 
         {
-          stars.map((star) => {
+          STARS.map((star) => {
             return (
               <React.Fragment key={star}>
                 <input
@@ -76,7 +76,7 @@ const PropertyFeedBackForm = () => {
                   id={`${star}-stars`}
                   type="radio"
                   disabled={isFormDisabled}
-                  checked={star === data.rating}
+                  checked={`${star}` === data.rating}
                 />
                 <label
                   htmlFor={`${star}-stars`}
