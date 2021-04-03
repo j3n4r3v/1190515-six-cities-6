@@ -111,17 +111,20 @@ export const updateNearOffers = (id, status) => (dispatch, _getState, api) => (
 export const checkAuthStatus = () => (dispatch, _getState, api) => (
   api.get(`${APIRoute.LOGIN}`)
     .then(({data}) => dispatch(setAuthInfo(adaptAuthInfoToClient(data))))
-  .catch(() => { })
+    .catch(() => dispatch(setAuthInfo(null)))
 );
 
-export const login = ({login: email, password, avatarUrl}) => (dispatch, _getState, api) => {
-  return api.post(`${APIRoute.LOGIN}`, {email, password, avatarUrl})
-    .then(() => dispatch(setAuthInfo({email, password, avatarUrl})))
-  .then(() => dispatch(redirectToRoute(`${AppRoute.MAIN}`)));
+export const login = ({login: email, password}) => (dispatch, _getState, api) => {
+  return api.post(`${APIRoute.LOGIN}`, {email, password})
+    .then(({data}) => {
+      dispatch(setAuthInfo(adaptAuthInfoToClient(data)));
+      dispatch(redirectToRoute(`${AppRoute.MAIN}`));
+    })
+    .catch(() => { });
 };
 
-export const logout = ({email, password, avatarUrl}) => (dispatch, _getState, api) => {
-  return api.get(`/logout`, {email, password, avatarUrl})
+export const logout = () => (dispatch, _getState, api) => {
+  return api.get(`${APIRoute.LOGOUT}`)
     .then(() => {
       dispatch(setAuthInfo(null));
       dispatch(redirectToRoute(`${AppRoute.MAIN}`));
